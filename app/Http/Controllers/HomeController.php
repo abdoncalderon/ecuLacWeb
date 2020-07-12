@@ -2,27 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\User;
+use App\Rol;
+use App\Categoria;
+use App\Producto;
+use App\Pedido;
+use App\ItemPedido;
+
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('home');
+        User::crearSuperUsuario();
+        if(Auth::guest()){
+            $categorias = Categoria::all()->take(3);
+            $destacados = Producto::where('esDestacado',1)->take(8)->get();
+            return view('tienda.vitrina')
+            ->with(compact('categorias'))
+            ->with(compact('destacados'));
+        }else{
+            if(Rol::esExterno(auth()->user()->rol_id)==1){
+               
+                $categorias = Categoria::all()->take(3);
+                $destacados = Producto::where('esDestacado',1)->take(8)->get();
+                return view('tienda.vitrina')
+                ->with(compact('categorias'))
+                ->with(compact('destacados'));
+            }else{
+                return view('layouts.internal');
+            }
+           
+        }
     }
+    
 }

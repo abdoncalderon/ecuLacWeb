@@ -1,0 +1,87 @@
+@extends('layouts.external')
+
+@section('contenidoPrincipal')
+
+    <div class="vitrina">
+        
+        <div class="carrusel">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="imagen" src="{{ asset('img/carousel1.jpg') }}"  alt="">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="imagen" src="{{ asset('img/carousel2.jpg') }}" alt="">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="imagen" src="{{ asset('img/carousel3.jpg') }}" alt="">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="titulo">
+            <p><i class="fas fa-th"></i> {{ __('messages.ourCategories') }}</p>
+                <a href="#">{{ __('messages.showAll')}}</a>
+        </div>
+        
+        <div class="categorias">
+            @foreach ($categorias as $categoria)
+                <article class="categoria">
+                    <div class="nombre">{{ $categoria->nombre }}</div>
+                    <div class="descripcion">{{ $categoria->descripcion }}</div>
+                    <a href="#">
+                        <div class="imagen" style="background-image: url({{ asset('img/categorias/'.$categoria->imagen) }});"></div>
+                    </a>
+                </article>
+            
+            @endforeach
+        </div>
+        
+        <div class="titulo">
+            <p><i class="fas fa-medal"></i>  {{ __('messages.ourHighlights') }}</p>
+            <a href="#">{{ __('messages.showAll')}}</a>
+        </div>
+        
+        <div class="destacados">
+
+            @foreach ($destacados as $destacado)
+                <article class="destacado">
+                    <div class="imagen" style="background-image: url({{ asset('img/productos/'.$destacado->imagenPredeterminada($destacado->id)) }})">
+                        <div class="{{ $destacado->estado }}">{{ $destacado->estado }}</div>
+                        @if($destacado->descuento>0)
+                            <div class="descuento">-{{ $destacado->descuento }}%</div>
+                        @endif
+                    </div>
+                    <div class="nombre"><p>{{ $destacado->nombre}}</p></div>
+                    <div class="acciones">
+                        <a href="#">{{ __('content.buy')}}</a>
+                        <a href="{{ route('tienda.estante',$destacado) }}">{{ __('content.view')}}</a>
+                    </div>
+                    <div class="precio"><p>USD {{ $destacado->precioUnitario }} x 1 {{ __('content.unity')}}</p></div>
+                </article>
+            @endforeach
+
+        </div>
+
+        <div class="titulo">
+            <h6>Contactenos</h6>
+        </div>
+        
+        <div class="informacion">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        
+    </div>
+    
+@endsection

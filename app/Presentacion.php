@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Presentacion extends Model
 {
-    //
+    protected $table = 'presentaciones';
+
+    protected $fillable = ['categoria_id','envase','contenido','medida',];
+
+    public function categoria($id){
+        $categoria = Categoria::find($id);
+        return $categoria->nombre;
+    }
 }

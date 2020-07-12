@@ -1,0 +1,137 @@
+@media (max-width: 1400) and (min-width: 451px)
+{
+    .contenedor{
+        width: 100%;
+    }
+
+    .logo{
+        width: 40%;
+        margin:auto;
+    }
+    
+    .barraMenu{
+        width: 100%;
+        overflow: visible;
+    }
+
+    .carrito li a span{
+        display: none;
+    }
+
+    .menu li a{
+        display: inline;
+    }
+    
+    .menu ul{
+        display: none;
+        position: relative;
+        left: -10px;
+        top:9px;
+        z-index: 10;
+    }
+
+    .menu ul li{
+        display: block;
+        padding-left: 5px;
+        background-color:lightgrey;
+        line-height: 30px;
+        width: 150px;
+        border-radius: 0;
+        border: none;
+    }
+
+    .menu ul li:hover{
+        background-color:grey;
+    }
+    
+    .menu ul li a{
+        color:gray;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: smaller;
+    }
+
+    .menu ul li:hover > a{
+        color: white;
+    }
+
+    .menu li:hover > ul{
+        display: block;
+    }
+    
+    .menu li a i{
+        margin-right: 10px;
+    }
+
+    .contenido{
+        width: 100%;
+        margin: auto;
+     }
+
+     .opcion{
+        width: 18%;
+        background-color: whitesmoke;
+        border-radius: 5px;
+        height: auto;
+        margin:10px;
+    }
+
+    .opcion-titulo{
+        display: block;
+        font-family: Arial;
+        font-size: 10px;
+        border-radius: 0px 0px 5px 5px;
+        background-color: lightskyblue;
+        border: 0px;
+        padding: 2px 5px;
+        text-align: center;
+    }
+
+    .carrusel{
+        background-color:green;
+        height: 300px;
+    }
+    
+    .barraBusqueda{
+        background-color:grey;
+        height: 40px;
+    }
+       
+    .catalogo{
+        background-color:yellow;
+        height: 300px;
+    }
+    
+    .tabla th, td{
+        padding: 5px 5px;
+        border-bottom: 1px solid lightgrey;
+    }
+
+    .barraEstado{
+        background-color:gray;
+        width: 100%;
+        height: 50px;
+        margin:auto;
+    }
+    
+    .barraEstado div{
+        color: white;
+        font-size: smaller;
+        margin-left:15px;
+        margin-top:3px;
+    }
+
+    .barraEstado div:nth-child(1){
+        float: left;
+        width: 100%;
+    }
+    
+    .barraEstado div:nth-child(2){
+        position: relative;
+        width: 100%;
+    }
+
+    .cart li a:nth-child(0) {
+        display: none;
+    }
+}

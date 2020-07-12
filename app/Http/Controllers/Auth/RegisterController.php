@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Cliente;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     /*
@@ -29,45 +30,56 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
+    
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+ 
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+    
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            // 'name' => ['required', 'string', 'max:255'],
+            'nombreCompleto'=>['required'],
+            'cedula'=>['required','max:10','unique:users'],
+            'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'telefono'=>['required','max:15'],
+            'rol_id'=>['required'],
+            'usuario'=>['required','max:50','unique:users'],
+            'password'=> ['required', 'string', 'min:8', 'confirmed'],
+            'ciudad_id'=> ['required'],
+            'direccion'=> ['required', 'string', 'max:255'],
+            'latitud'=> ['string', 'max:50'],
+            'longitud'=> ['string', 'max:50'], 
+
         ]);
     }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
+    
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $nuevoUsuario = User::create([
+            'nombreCompleto' => $data['nombreCompleto'],
+            'cedula'  => $data['cedula'],
+            'telefono' => $data['telefono'],
             'email' => $data['email'],
+            'rol_id' => $data['rol_id'],
+            'usuario' => $data['usuario'],
             'password' => Hash::make($data['password']),
+
         ]);
+        
+        Cliente::create([
+            'usuario_id'=>$nuevoUsuario->id,
+            'ciudad_id'=>$data['ciudad_id'],
+            'direccion'=>$data['direccion'],
+        ]);
+
+        return $nuevoUsuario;
+        
     }
-}
+} 

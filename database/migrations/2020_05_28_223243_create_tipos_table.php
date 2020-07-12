@@ -6,27 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTiposTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+   
     public function up()
     {
         Schema::create('tipos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',50)->unique();
+            $table->string('nombre',50);
             $table->foreignId('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
+            
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+   
     public function down()
     {
         Schema::dropIfExists('tipos');
