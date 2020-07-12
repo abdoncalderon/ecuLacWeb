@@ -1,4 +1,4 @@
-@extends('layouts.external')
+{{-- @extends('layouts.external')
 
 @section('indice')
     <div id="indice">
@@ -46,4 +46,4 @@
         </div>
     </div>
     
-@endsection
+@endsection --}}
