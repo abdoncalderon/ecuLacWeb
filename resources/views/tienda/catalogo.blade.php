@@ -14,11 +14,13 @@
 
 @section('contenidoPrincipal')
     
-    <div class="tienda">
+    <div class="catalogo">
 
         <div class="resultados">
-            <p class="totales">{{ count($productos) }} {{ __('messages.results') }}</p>
-            
+            <p class="totales">{{ count($productos) }} {{ __('content.results') }}</p>
+            <div class="paginacion">
+                {{ $productos->links() }}
+            </div>
         </div>
 
         <div class="filtros">
@@ -31,29 +33,25 @@
                     <option value="2">{{  __('messages.ourHighlights') }}</option>
                 </select>
             </div>
-
             <div class="categorias">
                 <p class="titulo">{{ __('content.categories')}}</p>
                 @foreach ($categorias as $categoria)
-                    <a class="categoria" href="{{ route('tienda.filtroCategoria',$categoria->categoria_id)}}">{{ $categoria->categoria($categoria->categoria_id) }}</a>
+                    <a class="categoria" href="{{ route('tienda.filtroCategoria',['categoria'=>$categoria->categoria_id, 'busqueda'=> $busqueda]) }}">{{ $categoria->categoria($categoria->categoria_id) }}</a>
                 @endforeach
             </div>
-
             <div class="tipos">
                 <p class="titulo">{{ __('content.types')}}</p>
                 @foreach ($tipos as $tipo)
-                    <a class="tipo" href="{{ route('tienda.filtroTipo',$tipo->tipo_id)}}">{{ $tipo->tipo($tipo->tipo_id) }}</a>
+                    <a class="tipo" href="{{ route('tienda.filtroTipo',['tipo'=>$tipo->tipo_id, 'busqueda'=>$busqueda]) }}">{{ $tipo->tipo($tipo->tipo_id) }}</a>
                 @endforeach
             </div>
-
             <div class="presentaciones">
                 <p class="titulo">{{ __('content.presentations')}}</p>
                 @foreach ($presentaciones as $presentacion)
-                    <a class="presentacion" href="{{ route('tienda.filtroPresentacion',$presentacion->presentacion_id)}}">{{ $presentacion->presentacion($presentacion->presentacion_id) }}</a>
+                    <a class="presentacion" href="{{ route('tienda.filtroPresentacion',['presentacion'=>$presentacion->presentacion_id,'busqueda'=>$busqueda]) }}">{{ $presentacion->presentacion($presentacion->presentacion_id) }}</a>
                 @endforeach
             </div>
-
-            <a href="#" class="borrar">{{ __('content.delete') }}</a>
+            <a class="eliminar" href="{{ route('tienda.filtroBorrar')}}" class="borrar">{{ __('content.clean') }} {{ __('content.filter') }}</a>
 
         </div>
 
@@ -75,11 +73,14 @@
                     <div class="precio"><p>USD {{ $producto->precioUnitario }} x 1 {{ __('content.unity')}}</p></div>
                 </article>
             @endforeach
-
+           
+            
         </div>
 
-    </div>
         
+
+    </div>
+    
 
 @endsection
         

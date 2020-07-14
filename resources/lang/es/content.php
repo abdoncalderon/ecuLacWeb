@@ -123,7 +123,8 @@ return [
     'since'=>'Desde',
     'subtotal'=>'Subtotal',
     'results'=>'Resultados',
-    
+    'pay'=>'Pagar',
+    'clean'=>'Limpiar',
 
     'currency'=>'US$',
     

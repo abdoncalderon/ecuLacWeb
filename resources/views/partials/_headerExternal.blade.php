@@ -2,13 +2,15 @@
     <div class="cabeceraExterna">
         <div class="logo">
             <a href="{{ route('home')}}">
-                <img src="{{ asset('img/ecolac4.png') }}">
+                <img src="{{ asset('img/logos/ecolac4.png') }}">
             </a>
         </div>
         <div class="busqueda">
             <form method="POST" action="{{ route('tienda.catalogo') }}">
                 @csrf
                 <input 
+                    id="busqueda"
+                    name="busqueda"
                     class="textbox" 
                     type="text"
                     placeholder="Busque su producto" 

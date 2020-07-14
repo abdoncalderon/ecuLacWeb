@@ -15,7 +15,7 @@ class ItemPedidoController extends Controller
         $pedidoAbierto = Pedido::abierto(auth()->id());
         $itemsPedido = Pedido::items($pedidoAbierto);
         $pedido = Pedido::find($pedidoAbierto);
-        return view('itemspedidos.index')
+        return view('clientes.pedido')
         ->with(compact('pedido'))
         ->with(compact('itemsPedido'));
     }
@@ -42,18 +42,20 @@ class ItemPedidoController extends Controller
                 'subtotal'=>$subtotal,
             ]);
             Producto::actualizarExistencia($producto->id,'VENTA',$cantidad);
-            return redirect()->route('home');
+            return redirect()->route('clientes.pedido');
         }else{
             return back()->withErrors(__('messages.fieldEmpty'));
         }
         
     }
 
+
     public function destroy($id){
         $item=ItemPedido::find($id);
         $item->delete();
+
         Producto::actualizarExistencia($item->producto_id,'CANCELACION',$item->cantidad);
-        return redirect()->route('itemspedidos.index');
+        return redirect()->route('clientes.pedido');
     }
 
 }

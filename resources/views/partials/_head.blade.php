@@ -6,9 +6,9 @@
 
 <title>{{ config('app.name', 'Laravel') }} @yield('title','')</title>
 
-<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-<link rel="stylesheet" href="../../css/ecolacweb_pc.css">
+<link rel="stylesheet" href="{{ asset('css/ecolacweb_pc.css') }}">
 
 {{-- <link rel="stylesheet" href="../../css/ecolacweb_tablet.css">
 

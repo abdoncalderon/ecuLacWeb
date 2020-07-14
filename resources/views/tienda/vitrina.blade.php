@@ -8,13 +8,13 @@
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="imagen" src="{{ asset('img/carousel1.jpg') }}"  alt="">
+                        <img class="imagen" src="{{ asset('img/carrusel/carrusel1.jpg') }}"  alt="">
                     </div>
                     <div class="carousel-item">
-                        <img class="imagen" src="{{ asset('img/carousel2.jpg') }}" alt="">
+                        <img class="imagen" src="{{ asset('img/carrusel/carrusel2.jpg') }}" alt="">
                     </div>
                     <div class="carousel-item">
-                        <img class="imagen" src="{{ asset('img/carousel3.jpg') }}" alt="">
+                        <img class="imagen" src="{{ asset('img/carrusel/carrusel3.jpg') }}" alt="">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -42,13 +42,12 @@
                         <div class="imagen" style="background-image: url({{ asset('img/categorias/'.$categoria->imagen) }});"></div>
                     </a>
                 </article>
-            
             @endforeach
         </div>
         
         <div class="titulo">
             <p><i class="fas fa-medal"></i>  {{ __('messages.ourHighlights') }}</p>
-            <a href="#">{{ __('messages.showAll')}}</a>
+            <a href="{{ route('tienda.filtroDestacados') }}">{{ __('messages.showAll')}}</a>
         </div>
         
         <div class="destacados">
@@ -63,8 +62,13 @@
                     </div>
                     <div class="nombre"><p>{{ $destacado->nombre}}</p></div>
                     <div class="acciones">
-                        <a href="#">{{ __('content.buy')}}</a>
-                        <a href="{{ route('tienda.estante',$destacado) }}">{{ __('content.view')}}</a>
+                        {{-- <a href="{{ route('cliente.comprarahora',) }}">{{ __('content.buy')}}</a> --}}
+                        <form method="POST" action="{{ route('itemspedidos.store',$destacado) }}">
+                            @csrf
+                            <input hidden type="text" id="cantidad" name="cantidad" value="1">
+                            <button class="comprar" type="submit">{{ __('content.buy') }} x 1</button>
+                        </form>
+                        <a class="ver" href="{{ route('tienda.estante',$destacado) }}">{{ __('content.view')}}</a>
                     </div>
                     <div class="precio"><p>USD {{ $destacado->precioUnitario }} x 1 {{ __('content.unity')}}</p></div>
                 </article>

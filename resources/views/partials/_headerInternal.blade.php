@@ -1,12 +1,12 @@
 <header>
     <div class="cabeceraInterna">
         <div class="logo">
-            <img src="{{ asset('img/ecolac4.png') }}" alt="">
+            <img src="{{ asset('img/logos/ecolac4.png') }}" alt="">
         </div>
         <div class="cinta">
             <div class="opcion">
                 <a href="{{ route('provincias.index') }}">
-                    <img class="icono" src="{{ asset('img/provincias.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/provincias.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.provinces') }}
                     </div>
@@ -14,7 +14,7 @@
             </div>
             <div class="opcion">
                 <a href="{{ route('ciudades.index') }}">
-                    <img class="icono" src="{{ asset('img/ciudades.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/ciudades.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.cities') }}
                     </div>
@@ -22,7 +22,7 @@
             </div>
             <div class="opcion">
                 <a href="{{ route('sucursales.index') }}">
-                    <img class="icono" src="{{ asset('img/sucursales.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/sucursales.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.offices') }}
                     </div>
@@ -30,7 +30,7 @@
             </div>
             <div class="opcion">
                 <a href="{{ route('categorias.index') }}">
-                    <img class="icono" src="{{ asset('img/categorias.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/categorias.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.categories') }}
                     </div>
@@ -38,7 +38,7 @@
             </div>
             <div class="opcion">
                 <a href="{{ route('tipos.index') }}">
-                    <img class="icono" src="{{ asset('img/tipos.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/tipos.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.types') }}
                     </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="opcion">
                 <a href="{{ route('presentaciones.index') }}">
-                    <img class="icono" src="{{ asset('img/presentaciones.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/presentaciones.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.presentations') }}
                     </div>
@@ -54,7 +54,7 @@
             </div>
             <div class="opcion">
                 <a class="" href="{{ route('productos.index') }}">
-                    <img class="icono" src="{{ asset('img/productos.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/productos.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.products') }}
                     </div>
@@ -62,7 +62,7 @@
             </div>
             <div class="opcion">
                 <a class="" href="{{ route('roles.index') }}">
-                    <img class="icono" src="{{ asset('img/roles.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/roles.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.roles') }}
                     </div>
@@ -70,7 +70,7 @@
             </div>
             <div class="opcion">
                 <a class="" href="#">
-                    <img class="icono" src="{{ asset('img/menus.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/menus.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.menus') }}
                     </div>
@@ -78,7 +78,7 @@
             </div>
             <div class="opcion">
                 <a class="" href="{{ route('usuarios.index') }}">
-                    <img class="icono" src="{{ asset('img/usuarios.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/usuarios.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.users') }}
                     </div>
@@ -86,7 +86,7 @@
             </div>
             <div class="opcion">
                 <a class="" href="{{ route('pedidos.index') }}">
-                    <img class="icono" src="{{ asset('img/pedidos.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/pedidos.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.orders') }}
                     </div>
@@ -94,7 +94,7 @@
             </div>
             <div class="opcion">
                 <a class="" href="#">
-                    <img class="icono" src="{{ asset('img/ventas.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/ventas.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.sales') }}
                     </div>
@@ -102,7 +102,7 @@
             </div>
             <div class="opcion">
                 <a class="" href="#">
-                    <img class="icono" src="{{ asset('img/despachos.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/despachos.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.deliveries') }}
                     </div>
@@ -110,7 +110,7 @@
             </div>
             <div class="opcion">
                 <a class="" href="#">
-                    <img class="icono" src="{{ asset('img/reportes.png') }}" alt="">
+                    <div class="icono" style="background-image: url({{ asset('img/iconos/reportes.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.reports') }}
                     </div>

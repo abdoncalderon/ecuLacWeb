@@ -79,11 +79,13 @@ Route::get('/usuarios/activate/{usuario}','UsuarioController@activate')->name('u
 Route::patch('/usuarios/{usuario}','UsuarioController@update')->name('usuarios.update')->middleware('auth');
 Route::get('/usuarios/{usuario}','UsuarioController@destroy')->name('usuarios.destroy')->middleware('auth');
 
-Route::post('/tienda','TiendaController@catalogo')->name('tienda.catalogo');
+Route::post('/tienda/catalogo','TiendaController@catalogo')->name('tienda.catalogo');
 Route::get('/tienda/vitrina','TiendaController@vitrina')->name('tienda.vitrina');
-Route::get('/tienda/filtroCategoria/{categoria}','TiendaController@filtroCategoria')->name('tienda.filtroCategoria');
-Route::get('/tienda/filtroTipo/{tipo}','TiendaController@filtroTipo')->name('tienda.filtroTipo');
-Route::get('/tienda/filtroPresentacion/{presentacion}','TiendaController@filtroPresentacion')->name('tienda.filtroPresentacion');
+Route::get('/tienda/filtroDestacados','TiendaController@filtroDestacados')->name('tienda.filtroDestacados');
+Route::get('/tienda/filtroCategoria/{categoria}/{busqueda?}','TiendaController@filtroCategoria')->name('tienda.filtroCategoria');
+Route::get('/tienda/filtroTipo/{tipo}/{busqueda?}','TiendaController@filtroTipo')->name('tienda.filtroTipo');
+Route::get('/tienda/filtroPresentacion/{presentacion}/{busqueda?}','TiendaController@filtroPresentacion')->name('tienda.filtroPresentacion');
+Route::get('/tienda/filtroBorrar','TiendaController@filtroBorrar')->name('tienda.filtroBorrar');
 Route::get('/tienda/estante/{producto}','TiendaController@estante')->name('tienda.estante');
 
 Route::get('/itemspedidos','ItemPedidoController@index')->name('itemspedidos.index')->middleware('auth');
@@ -98,7 +100,7 @@ Route::get('/pedidos','PedidoController@index')->name('pedidos.index')->middlewa
 Route::get('/pedidos/create','PedidoController@create')->name('pedidos.create')->middleware('auth');
 Route::get('/pedidos/show/{pedido}','PedidoController@show')->name('pedidos.show')->middleware('auth');
 Route::post('/pedidos','PedidoController@store')->name('pedidos.store')->middleware('auth');
-Route::get('/pedidos/{pedido}','PedidoController@destroy')->name('itemspedidos.destroy')->middleware('auth');
+Route::get('/pedidos/{pedido}','PedidoController@destroy')->name('pedidos.destroy')->middleware('auth');
 
 Route::get('/clientes/cuenta','ClienteController@cuenta')->name('clientes.cuenta')->middleware('auth');
 Route::get('/clientes/historial','ClienteController@historial')->name('clientes.historial')->middleware('auth');

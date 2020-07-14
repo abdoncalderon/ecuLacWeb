@@ -13,31 +13,32 @@ use Illuminate\Http\Request;
 class TiendaController extends Controller
 {
     public function catalogo(Request $request){
-        $busqueda = $request->busqueda;
+        $busqueda = $request->input('busqueda');
         if(empty($busqueda)){
-            $productos = Producto::all();
+            $productos = Producto::where('id','!=','0')->paginate(12);
             $categorias= Producto::select('categoria_id')->distinct()->get();
             $tipos= Producto::select('tipo_id')->distinct()->get();
             $presentaciones= Producto::select('presentacion_id')->distinct()->get();
         }else{
-            $productos = Producto::where('descripcion','like', '%'.$busqueda.'%')->get();
-            $categorias = Producto::select('categoria_id')->where('descripcion','like', '%'.$busqueda.'%')->distinct()->get();
-            $tipos = Producto::select('tipo_id')->where('descripcion','like', '%'.$busqueda.'%')->distinct()->get();
-            $presentaciones = Producto::select('presentacion_id')->where('descripcion','like', '%'.$busqueda.'%')->distinct()->get();
+            $productos = Producto::where('nombre','like', '%'.$busqueda.'%')->paginate(12);
+            $categorias = Producto::select('categoria_id')->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
+            $tipos = Producto::select('tipo_id')->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
+            $presentaciones = Producto::select('presentacion_id')->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
         }
         return view('tienda.catalogo')
         ->with(compact('productos'))
         ->with(compact('categorias'))
         ->with(compact('tipos'))
-        ->with(compact('presentaciones'));
+        ->with(compact('presentaciones'))
+        ->with(compact('busqueda'));
     }
 
     public function vitrina(){
-        $categorias = Categoria::all()->take(4);
-        $destacados = Producto::all()->take(10);
-        return view('tienda.showcase')
-            ->with(compact('categorias'))
-            ->with(compact('destacados'));
+        $categorias = Categoria::all()->take(3);
+        $destacados = Producto::where('esDestacado',1)->take(8)->get();
+        return view('tienda.vitrina')
+        ->with(compact('categorias'))
+        ->with(compact('destacados'));
     }
 
     public function estante(Producto $producto){
@@ -49,43 +50,75 @@ class TiendaController extends Controller
         ->with(compact('imagenPredeterminada'));
     }
 
-    public function filtroCategoria($id){
-        $productos = Producto::where('categoria_id','=',$id)->get();
-        $categorias = Producto::select('categoria_id')->where('categoria_id','=',$id)->distinct()->get();
-        $tipos = Producto::select('tipo_id')->where('categoria_id','=',$id)->distinct()->get();
-        $presentaciones = Producto::select('presentacion_id')->where('categoria_id','=',$id)->distinct()->get();
-
+    public function filtroBorrar(){
+        $busqueda = null;
+        $productos = Producto::where('id','!=',0)->paginate(12);
+        $categorias = Producto::select('categoria_id')->where('id','!=',0)->distinct()->get();
+        $tipos = Producto::select('tipo_id')->where('id','!=',0)->distinct()->get();
+        $presentaciones = Producto::select('presentacion_id')->where('id','!=',0)->distinct()->get();
         return view('tienda.catalogo')
         ->with(compact('productos'))
         ->with(compact('categorias'))
         ->with(compact('tipos'))
-        ->with(compact('presentaciones'));
+        ->with(compact('presentaciones'))
+        ->with(compact('busqueda'));
     }
 
-    public function filtroTipo($id){
-        $productos = Producto::where('tipo_id','=',$id)->get();
-        $tipos = Producto::select('tipo_id')->where('tipo_id','=',$id)->distinct()->get();
-        $categorias = Producto::select('categoria_id')->where('tipo_id','=',$id)->distinct()->get();
-        $presentaciones = Producto::select('presentacion_id')->where('tipo_id','=',$id)->distinct()->get();
-
+    public function filtroDestacados(){
+        $busqueda = null;
+        $productos = Producto::where('esDestacado',1)->paginate(12);
+        $categorias = Producto::select('categoria_id')->where('esDestacado',1)->distinct()->get();
+        $tipos = Producto::select('tipo_id')->where('esDestacado',1)->distinct()->get();
+        $presentaciones = Producto::select('presentacion_id')->where('esDestacado',1)->distinct()->get();
         return view('tienda.catalogo')
         ->with(compact('productos'))
         ->with(compact('categorias'))
         ->with(compact('tipos'))
-        ->with(compact('presentaciones'));
+        ->with(compact('presentaciones'))
+        ->with(compact('busqueda'));
     }
 
-    public function filtroPresentacion($id){
-        $productos = Producto::where('presentacion_id','=',$id)->get();
-        $tipos = Producto::select('tipo_id')->where('presentacion_id','=',$id)->distinct()->get();
-        $categorias = Producto::select('categoria_id')->where('presentacion_id','=',$id)->distinct()->get();
-        $presentaciones = Producto::select('presentacion_id')->where('presentacion_id','=',$id)->distinct()->get();
+    public function filtroCategoria($categoria, $busqueda = null){
+       
+        $productos = Producto::where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->paginate(12);
+        $categorias = Producto::select('categoria_id')->where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
+        $tipos = Producto::select('tipo_id')->where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
+        $presentaciones = Producto::select('presentacion_id')->where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
+        
+        return view('tienda.catalogo')
+        ->with(compact('productos'))
+        ->with(compact('categorias'))
+        ->with(compact('tipos'))
+        ->with(compact('presentaciones'))
+        ->with(compact('busqueda'));
+    }
+
+    public function filtroTipo($tipo, $busqueda = null){
+        $productos = Producto::where('tipo_id','=',$tipo)->where('nombre','like', '%'.$busqueda.'%')->paginate(12);
+        $tipos = Producto::select('tipo_id')->where('tipo_id','=',$tipo)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
+        $categorias = Producto::select('categoria_id')->where('tipo_id','=',$tipo)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
+        $presentaciones = Producto::select('presentacion_id')->where('tipo_id','=',$tipo)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
 
         return view('tienda.catalogo')
         ->with(compact('productos'))
         ->with(compact('categorias'))
         ->with(compact('tipos'))
-        ->with(compact('presentaciones'));
+        ->with(compact('presentaciones'))
+        ->with(compact('busqueda'));
+    }
+
+    public function filtroPresentacion($presentacion, $busqueda = null){
+        $productos = Producto::where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->paginate(12);;
+        $tipos = Producto::select('tipo_id')->where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
+        $categorias = Producto::select('categoria_id')->where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
+        $presentaciones = Producto::select('presentacion_id')->where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
+
+        return view('tienda.catalogo')
+        ->with(compact('productos'))
+        ->with(compact('categorias'))
+        ->with(compact('tipos'))
+        ->with(compact('presentaciones'))
+        ->with(compact('busqueda'));
     }
 
     

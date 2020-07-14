@@ -42,7 +42,8 @@
             <div class="productos">{{ count($itemsPedido).' '.__('content.products')}}</div>
             <div class="valor">{{ __('content.currency') }} {{ $pedido->total($pedido->id) }}</div>
             <a class="pagar" href="#">{{ __('content.pay') }}</a>
-            <a class="seguir" href="{{ route('home') }}">{{ __('content.shopcontinue') }}</a>
+            <a class="seguir" href="{{ route('home') }}">{{ __('messages.shopcontinue') }}</a>
+            <a class="cancelar" href="{{-- {{ route('pedidos.destroy',$pedido->id) }} --}}">{{ __('content.cancel') }} {{ __('content.order') }}</a>
         </div>
     </div>
     

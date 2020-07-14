@@ -6,7 +6,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home')}}">{{ __('content.home') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('content.order') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('home')}}">{{ __('content.catalogue') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('content.product') }}</li>
             </ol>
         </nav>
     </div>
@@ -25,7 +26,7 @@
                 @endforeach
             </div>
             <div class="predeterminada" style="background-image: url({{ asset('img/productos/'.$imagenPredeterminada) }})">
-                <div class="logo" style="background-image: url({{ asset('img/ecolac3.png') }})" ></div>
+                <div class="logo" style="background-image: url({{ asset('img/logos/ecolac3.png') }})" ></div>
             </div>
         </div>
 
@@ -74,8 +75,9 @@
                 
                 @if($producto->existenciaActual>0)
                     <div class="acciones">
-                        <button class="agregar" type="submit" ><i class="fas fa-shopping-cart"></i>{{ ' '.__('messages.addToCart')}}</button>
-                        <a class="comprar" href="{{ route('itemspedidos.index') }}"><i class="fas fa-dollar-sign"></i>{{ ' '.__('messages.buyNow')}}</a>
+                        <button class="agregar" type="submit"><i class="fas fa-shopping-cart"></i>{{ ' '.__('messages.addToCart')}}</button>
+                        <a class="comprar" href="{{ route('clientes.pedido') }}"><i class="fas fa-dollar-sign"></i>{{ ' '.__('messages.buyNow')}}</a>
+                        
                     </div>
                 @endif
             </form>

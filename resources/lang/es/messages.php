@@ -29,7 +29,8 @@ return [
     'orderExist'=>'Ya existe un pedido abierto para este Cliente',
     'myaccount'=>'Mi Cuenta',
     'myorders'=>'Mis Pedidos',
-    'payments'=>'Métodos de Pago'
+    'payments'=>'Métodos de Pago',
+    'shopcontinue'=>'Continue Comprando',
 
 
     
