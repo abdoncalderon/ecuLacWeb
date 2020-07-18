@@ -62,12 +62,15 @@
                     </div>
                     <div class="nombre"><p>{{ $destacado->nombre}}</p></div>
                     <div class="acciones">
-                        {{-- <a href="{{ route('cliente.comprarahora',) }}">{{ __('content.buy')}}</a> --}}
-                        <form method="POST" action="{{ route('itemspedidos.store',$destacado) }}">
-                            @csrf
-                            <input hidden type="text" id="cantidad" name="cantidad" value="1">
-                            <button class="comprar" type="submit">{{ __('content.buy') }} x 1</button>
-                        </form>
+                        @if($destacado->estado == 'Disponible')
+                            <form method="POST" action="{{ route('itemspedidos.store') }}">
+                                @csrf
+                                <input hidden type="text" id="cantidad" name="cantidad" value="1">
+                                <input hidden type="text" id="producto_id" name="producto_id" value="{{ $destacado->id }}">
+                                <input hidden type="text" id="cliente_id" name="cliente_id" value="{{ auth()->id() }}">
+                                <button class="comprar" type="submit">{{ __('content.buy') }} x 1</button>
+                            </form>
+                        @endif
                         <a class="ver" href="{{ route('tienda.estante',$destacado) }}">{{ __('content.view')}}</a>
                     </div>
                     <div class="precio"><p>USD {{ $destacado->precioUnitario }} x 1 {{ __('content.unity')}}</p></div>

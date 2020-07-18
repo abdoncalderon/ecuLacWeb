@@ -22,7 +22,7 @@
                     <div class="estado">{{ $pedido->estado }}</div>
                     <div class="fecha">{{ $pedido->fechaCreacion }}</div>
                     <div class="enviado">{{ $pedido->cliente($pedido->cliente_id) }}</div>
-                    <div class="total">Total: {{ $pedido->total($pedido->id) }}</div>
+                    <div class="total">Total: {{ $pedido->total($pedido) }}</div>
                 </div>                    
                 <div class="titulo">
                     <div class="orden">{{ __('content.items').' '.__('content.order').': '.count($pedido->items($pedido->id)) }}</div>
@@ -33,11 +33,11 @@
                 <div class="items">
                     @foreach ($pedido->items($pedido->id) as $item)
                         <article class="item">
-                            <div class="imagen" style="background-image: url({{ asset('img/productos/'.$item->producto($item->id)->imagenPredeterminada($item->producto_id)) }})"></div>
+                            <div class="imagen" style="background-image: url({{ asset('img/productos/'.$item->producto($item)->imagenPredeterminada($item->producto_id)) }})"></div>
                             <div class="detalles">
                                 <div>
-                                    <div class="nombre">{{ $item->producto($item->id)->nombre}}</div>
-                                    <div class="descripcion">{{ $item->producto($item->id)->descripcion}}</div>
+                                    <div class="nombre">{{ $item->producto($item)->nombre}}</div>
+                                    <div class="descripcion">{{ $item->producto($item)->descripcion}}</div>
                                 </div>
                             </div>
                             <div class="estado">{{ $item->estado }}  {{ Carbon\Carbon::parse($item->created_at)->format('d M Y')}}</div>

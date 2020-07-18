@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home')}}">{{ __('content.home') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('home')}}">{{ __('content.catalogue') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('tienda.catalogo')}}">{{ __('content.catalog') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('content.product') }}</li>
             </ol>
         </nav>
@@ -32,7 +32,9 @@
 
         <div class="detalles">
             <div class="etiquetas">
-                <p class="destacado">{{ $producto->esDestacado==1 ? __('content.highLight') : '' }}</p>
+                @if($producto->esDestacado==1)
+                <p class="destacado">{{ __('content.highLight') }}</p>
+                @endif
                 <p class="{{ $producto->estado }}">{{ $producto->estado }}</p>
             </div>
             <p class="nombre">{{ $producto->nombre }}</p>
@@ -45,8 +47,8 @@
         </div>
 
         <div class="pedido">
-            <form method="POST" action="{{ route('itemspedidos.store',$producto) }}">
-            @csrf
+            <form method="POST" action="{{ route('itemspedidos.store') }}">
+                @csrf
                 <div class="datos">
                     <div class="{{ $producto->estado }}">{{ $producto->estado }}</div>
                     <div class="precio">US$ {{ $producto->precioDescuento($producto->id) }}</div>
@@ -57,9 +59,11 @@
                     <div class="etiqueta">{{ __('content.quantity') }}</div>
                         <input 
                             class="valor" 
-                            type="text" 
+                            type="number"
+                            min="1" 
                             name="cantidad" 
                             id="cantidad" 
+                            autocomplete="off"
                             {{ $producto->existenciaActual<=0 ? 'disabled' : '' }} 
                             onchange="document.getElementById('cantidadCompra').value=this.value"
                         >
@@ -75,9 +79,10 @@
                 
                 @if($producto->existenciaActual>0)
                     <div class="acciones">
+                        <input hidden type="text" id="producto_id" name="producto_id" value="{{ $producto->id }}">
+                        <input hidden type="text" id="cliente_id" name="cliente_id" value="{{ auth()->id() }}">
                         <button class="agregar" type="submit"><i class="fas fa-shopping-cart"></i>{{ ' '.__('messages.addToCart')}}</button>
                         <a class="comprar" href="{{ route('clientes.pedido') }}"><i class="fas fa-dollar-sign"></i>{{ ' '.__('messages.buyNow')}}</a>
-                        
                     </div>
                 @endif
             </form>

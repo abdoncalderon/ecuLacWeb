@@ -29,13 +29,44 @@ class Pedido extends Model
         ]);
     }
 
-    static public function total($pedidoId){
+    static public function total(Pedido $pedido){
+        return $pedido->subtotal($pedido->id) + $pedido->valorIva($pedido->id);
+    }
+
+    static public function subtotal($pedidoId){
         $itemsPedido = Pedido::items($pedidoId);
         $total=0;
         foreach ($itemsPedido as $item){
             $total=$total+$item->subtotal;
         }
         return $total;
+    }
+
+    static public function valorDescuento($pedidoId){
+        $itemsPedido = Pedido::items($pedidoId);
+        $valorDescuento=0;
+        foreach ($itemsPedido as $item){
+            $valorDescuento = $valorDescuento + Producto::valorDescuento($item->producto_id);
+        }
+        return $valorDescuento;
+    }
+
+    static public function valorIva($pedidoId){
+        $itemsPedido = Pedido::items($pedidoId);
+        $valorIva=0;
+        foreach ($itemsPedido as $item){
+            $valorIva = $valorIva + Producto::valorIva($item->producto_id);
+        }
+        return $valorIva;
+    }
+
+    static public function cantidades($pedidoId){
+        $itemsPedido = Pedido::items($pedidoId);
+        $cantidades=0;
+        foreach ($itemsPedido as $item){
+            $cantidades=$cantidades+$item->cantidad;
+        }
+        return $cantidades;
     }
 
     static public function cliente($clienteId)

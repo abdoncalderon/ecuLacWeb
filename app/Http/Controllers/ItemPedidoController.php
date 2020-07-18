@@ -7,7 +7,7 @@ use App\Pedido;
 use App\ItemPedido;
 use App\Http\Requests\StoreItemPedidoRequest;
 
-use Illuminate\Http\Request;
+
 
 class ItemPedidoController extends Controller
 {
@@ -20,17 +20,16 @@ class ItemPedidoController extends Controller
         ->with(compact('itemsPedido'));
     }
 
-    public function store(Request $request, Producto $producto){
-       
+    public function store(StoreItemPedidoRequest $request){
         if (!empty($request->input('cantidad'))){
             
-            if(Pedido::abierto(auth()->id())==0){
+            if(Pedido::abierto($request->input('cliente_id'))==0){
                 Pedido::crear();
             }
             $cantidad=$request->input('cantidad');
-            $pedidoAbierto = Pedido::abierto(auth()->id());
-
-            $subtotal = $cantidad * $producto->precioUnitario;
+            $pedidoAbierto = Pedido::abierto($request->input('cliente_id'));
+            $producto = Producto::find($request->input('producto_id'));
+            $subtotal = $cantidad * $producto->precioDescuento($producto->id);
            
             ItemPedido::create([
                 'pedido_id'=>$pedidoAbierto,
@@ -42,20 +41,17 @@ class ItemPedidoController extends Controller
                 'subtotal'=>$subtotal,
             ]);
             Producto::actualizarExistencia($producto->id,'VENTA',$cantidad);
-            return redirect()->route('clientes.pedido');
+            return back();
         }else{
             return back()->withErrors(__('messages.fieldEmpty'));
         }
         
     }
 
-
     public function destroy($id){
-        $item=ItemPedido::find($id);
-        $item->delete();
-
-        Producto::actualizarExistencia($item->producto_id,'CANCELACION',$item->cantidad);
-        return redirect()->route('clientes.pedido');
+        $itemPedido = ItemPedido::find($id);
+        ItemPedido::eliminar($itemPedido);
+        return back();
     }
 
 }

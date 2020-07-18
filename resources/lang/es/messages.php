@@ -31,6 +31,9 @@ return [
     'myorders'=>'Mis Pedidos',
     'payments'=>'Métodos de Pago',
     'shopcontinue'=>'Continue Comprando',
+    'confirmPay'=>'Por favor necesitamos su confirmación para proceder al pago',
+    'confirmOrder'=>'Por favor necesitamos su confirmación para proceder con la orden',
+    'valueToPay'=>'Valor a Pagar',
 
 
     

@@ -85,7 +85,7 @@
                 </a>
             </div>
             <div class="opcion">
-                <a class="" href="{{ route('pedidos.index') }}">
+                <a class="" href="{{ route('pedidos.index','Pedidos') }}">
                     <div class="icono" style="background-image: url({{ asset('img/iconos/pedidos.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.orders') }}
@@ -101,7 +101,7 @@
                 </a>
             </div>
             <div class="opcion">
-                <a class="" href="#">
+                <a class="" href="{{ route('pedidos.index','Despachos') }}">
                     <div class="icono" style="background-image: url({{ asset('img/iconos/despachos.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.deliveries') }}

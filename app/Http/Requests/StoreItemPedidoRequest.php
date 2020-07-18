@@ -16,7 +16,9 @@ class StoreItemPedidoRequest extends FormRequest
     public function rules()
     {
         return [
-            'cantidad'=>'required!numeric',
+            'cliente_id'=>'required|numeric',
+            'producto_id'=>'required|numeric|exists:productos,id',
+            'cantidad'=>'required|numeric',
         ];
     }
 }

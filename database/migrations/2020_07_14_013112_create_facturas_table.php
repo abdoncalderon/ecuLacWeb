@@ -18,7 +18,7 @@ class CreateFacturasTable extends Migration
             $table->decimal('valorDescuento',9,2);
             $table->decimal('valorIva',9,2);
             $table->string('tipoPago',13); /* {efectivo, tarjeta, transferencia} */
-            $table->string('estado',9); /* {pagado, pendiente} */
+            $table->string('estado',9); /* {pagada, pendiente} */
             $table->timestamps();
         });
     }

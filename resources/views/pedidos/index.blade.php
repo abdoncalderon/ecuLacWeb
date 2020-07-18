@@ -5,7 +5,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home')}}">{{ __('content.home') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('content.orders') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $vista }}</li>
             </ol>
         </nav>
     </div>
@@ -20,12 +20,12 @@
         </div>
     @endif
     <div class='ventana'>
-        <div class="titulo">{{ __('content.orders').' '.__('content.clients')}}</div>
+        <div class="titulo">{{ $vista }} {{ __('content.clients')}}</div>
         <div class="contenido">
             <div class="index">
                 <div>
                     <span>
-                    <a class="btn btn-success " href="{{ route('pedidos.create')}}">{{ __('content.create') }}  {{ __('content.order') }}</a>
+                    <a class="btn btn-success " href="{{ route('pedidos.create',$vista)}}">{{ __('content.create') }}  {{ __('content.order') }}</a>
                     </span>
                 </div>
                 <div class="table-responsive">
@@ -51,8 +51,8 @@
                                     <td>{{ $pedido->fechaEntrega }}</td>
                                     <td>{{ $pedido->estado }}</td>
                                     <td>
-                                        <a class="accion" href="{{route('pedidos.show',$pedido)}}">{{ __('content.open') }}</a>
-                                        <a class="accion" href="{{-- {{route('pedidos.destroy',$pedido->id)}} --}}">{{ __('content.delete') }}</a>
+                                        <a class="accion" href="{{ route('pedidos.show',['vista'=>$vista, 'pedido'=>$pedido]) }}">{{ __('content.show') }}</a>
+                                        <a class="accion" href="{{ route('pedidos.destroy',$pedido->id) }}">{{ __('content.delete') }}</a>
                                     </td>
                                 </tr>
                             @endforeach

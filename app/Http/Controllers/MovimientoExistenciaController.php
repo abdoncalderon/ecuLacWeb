@@ -26,7 +26,8 @@ class MovimientoExistenciaController extends Controller
     public function store(StoreMovimientoExistenciaRequest $request){
         $producto = Producto::find($request->input('producto_id'));
         if ($producto->existenciaActual>=$request->input('cantidad')){
-            MovimientoExistencia::create($request->validated());
+            $request->validated();
+            MovimientoExistencia::movimiento($request->input('tipoMovimiento'), $request->input('cliente_id'), $request->input('producto_id'), $request->input('cantidad'));
             Producto::actualizarExistencia($request->input('producto_id'),$request->input('tipoMovimiento'),$request->input('cantidad'));
             return redirect()->route('productos.index');
         }else{

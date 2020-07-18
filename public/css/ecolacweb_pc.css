@@ -20,6 +20,10 @@ nav{
 }
 
 	.menuPrincipal{
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
 		height: 40px;
 		background-color:  rgb(0,174,239) ;
 		overflow: hidden;
@@ -44,6 +48,7 @@ nav{
 
 header{
 	border-bottom: 1px solid rgb(211,211,211);
+	margin-top: 40px;
 }
 
 /*-------------------------------------------------------------------------------------------------------------------*/
@@ -148,8 +153,8 @@ header{
 				text-decoration: none;
 				border: 1px solid rgb(0,174,239);
 				padding: 5px 5px;
-				background-color: rgb(0,174,239);
 				color: white;
+				background-color: rgb(0,174,239);
 				font-size: 0.9em;
 			}
 
@@ -176,7 +181,7 @@ header{
 			.cabeceraExterna .cuenta a{
 				text-decoration: none;
 				border: 1px solid rgb(0,174,239);
-				padding: 5px 15px;
+				padding: 3px 20px;
 				color: white;
 				background-color: rgb(0,174,239);
 				font-size: 0.9em;
@@ -209,7 +214,7 @@ header{
 		}
 
 		.cabeceraInterna .logo img{
-			width: 85%;
+			width: 95%;
 			margin: auto;
 		}
 
@@ -318,6 +323,7 @@ section{
 	.vitrina .carrusel{
 		grid-column: 1/11;
 		background-color: rgb(211,211,211);
+		z-index: -10;
 	}
 
 		.vitrina .carrusel .imagen{
@@ -325,6 +331,7 @@ section{
 			height: 350px;
 			overflow: hidden;
 			border-radius: 4px 4px;
+			z-index: -10;
 		}
 
 	.vitrina .categorias{
@@ -749,7 +756,7 @@ section{
 				border-bottom: 1px solid rgb(211,211,211);
 			}
 	
-				.catalogo .productos .producto .acciones a{
+				.catalogo .productos .producto .acciones .ver{
 					background-color:  rgb(0,174,239);
 					text-decoration: none;
 					font-size: 1em;
@@ -758,9 +765,17 @@ section{
 					text-align: center;
 				}
 	
-				.catalogo .productos .producto .acciones a:hover{
+				.catalogo .productos .producto .acciones .ver:hover{
 					background-color:  rgb(0,174,239);
 				}
+
+				.catalogo .productos .producto .acciones .comprar{
+					padding: 5px 15px;
+					border: 1px solid rgb(0,174,239);
+					color:  rgb(0,174,239);
+					background-color: white;
+				}
+
 	
 			.catalogo .productos .producto .precio{
 				width: 100%;
@@ -1105,6 +1120,7 @@ section{
 				margin: 1em;
 				float: right;
 			}
+
 	.pedido .resumen{
 		border: 1px solid rgb(211, 211, 211);
 		padding: 20px 0px;
@@ -1135,6 +1151,17 @@ section{
 			text-align: center;
 			font-size: 1.5em;
 			text-decoration: none;
+		}
+
+		.pedido .resumen .agregar{
+			display: block;
+			width: 80%;
+			margin: auto;
+			padding: 5px 0px;
+			border: 0px;
+			background-color:rgb(0,174,239); 
+			color: white;
+			font-size: 1.5em;
 		}
 
 		.pedido .resumen .seguir{
@@ -1420,6 +1447,309 @@ section{
 				}
 
 /*-------------------------------------------------------------------------------------------------------------------*/
+
+
+
+.preorden{
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	grid-template-rows: auto;
+	grid-gap: 2em;
+	
+}
+
+	.preorden .items{
+			
+	}
+
+		.preorden .items .cabecera{
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-rows: auto;
+			grid-gap: 1em;
+			margin-bottom: 2em;
+		}
+
+			.preorden .items .cabecera .cliente{
+				border: 1px solid rgb(211, 211, 211);
+				background-color: white;
+			}
+
+				.preorden .items .cabecera .cliente .titulo{
+					background-color: rgb(0,174,239) ;
+					color: white;
+					text-align: center;
+					padding: 5px 15px;
+					font-size: 1em;
+					height: auto;
+					margin: 0px;
+				}
+
+				.preorden .items .cabecera .cliente .nombre{
+					padding: 3px 15px;
+					text-transform: uppercase;
+					font-weight: bold;
+					margin:0px ;
+				}
+
+				.preorden .items .cabecera .cliente .identificacion{
+					padding: 3px 15px;
+					margin:0px ;
+				}
+
+				.preorden .items .cabecera .cliente .email{
+					padding: 3px 15px;
+					margin:0px ;
+				}
+	
+			.preorden .items .cabecera .direccion{
+				border: 1px solid rgb(211, 211, 211);
+				background-color: white;
+			}
+
+				.preorden .items .cabecera .direccion .titulo{
+					background-color: rgb(0,174,239) ;
+					color: white;
+					text-align: center;
+					padding: 5px 15px;
+					font-size: 1em;
+					height: auto;
+					margin: 0px;
+				}
+
+				.preorden .items .cabecera .direccion .calle{
+					padding: 3px 15px;
+					text-transform: uppercase;
+					font-weight: bold;
+					margin:0px ;
+				}
+
+				.preorden .items .cabecera .direccion .ciudad{
+					padding: 3px 15px;
+					margin:0px ;
+				}
+
+				.preorden .items .cabecera .direccion .telefono{
+					padding: 3px 15px;
+					margin:0px ;
+				}
+
+	
+			.preorden .items .cabecera .pago{
+				border: 1px solid rgb(211, 211, 211);
+				background-color: white;
+			}
+
+				.preorden .items .cabecera .pago .titulo{
+					background-color: rgb(0,174,239) ;
+					color: white;
+					text-align: center;
+					padding: 5px 15px;
+					font-size: 1em;
+					height: auto;
+					margin: 0px;
+				}
+
+				.preorden .items .cabecera .pago .tipos{
+					padding: 15px 20px;
+				}
+
+					.preorden .items .cabecera .pago .tipos .efectivo{
+						padding: 3px 15px;
+						margin:0px ;
+					}
+
+					.preorden .items .cabecera .pago .tipos .credito{
+						padding: 3px 15px;
+						margin:0px ;
+					}
+
+
+
+
+
+		.preorden .items .titulo{
+		
+			border-bottom: 1px solid rgb(211, 211, 211); 
+			height: 30px;
+			
+		}
+
+			.preorden .items .titulo .orden{
+				float: left;
+				font-size: 1em;
+				color: black;
+				margin: 0px 10px;
+			}
+
+			.preorden .items .titulo .precio{
+				float: right;
+				font-size: 1em;
+				color: black;
+				margin: 0px 10px;
+			}
+
+		.preorden .items .item{
+			display: grid;
+			grid-template-columns: 1fr 4fr 1fr;
+			grid-template-rows: 250px;
+			border-bottom: 1px solid rgb(211, 211, 211);
+		}
+
+			.preorden .items .item .imagen{
+				background-position: center;
+				background-size: cover;
+				margin: 2em 0em;
+			}
+		
+			.preorden .items .item .detalles{
+				display: grid;
+				grid-template-columns: 2fr 1fr 1fr;
+			}
+
+				.preorden .items .item .detalles .nombre{
+					font-size: 1.3em;
+					margin: 1em;
+				}
+
+				.preorden .items .item .detalles .descripcion{
+					font-size: 1em;
+					color: gray;
+					margin: 1em;
+				}
+
+				.preorden .items .item .detalles .estado{
+					font-size: 1em;
+					padding: 5px 10px;
+					color: rgb(0,174,239);
+					margin: 1em;
+				}
+
+				.preorden .items .item .detalles .cantidad{
+					margin: 1em;
+				}
+
+			.preorden .items .item .precio{
+				margin: 1em 1em 0px 1em;
+				text-align: right;
+			}
+
+			.preorden .items .item .descuento{
+				margin: 0em 1em;
+				text-align: right;
+			}
+
+			
+			.preorden .items .item .subtotal{
+				border-top: 1px solid rgb(211, 211, 211);
+				margin: 0em 1em;
+				text-align: right;
+			}
+
+			.preorden .items .item .eliminar{
+				text-decoration: none;
+				color: red;
+				margin: 1em;
+				float: right;
+			}
+	
+	.preorden .resumen{
+		border: 1px solid rgb(211, 211, 211);
+		padding: 20px 0px;
+	}
+
+		.preorden .resumen .titulo{
+			font-size: 1.5em;
+			text-align: center;
+			color: gray;
+			border-bottom: 1px solid rgb(211,211,211);
+		}
+
+		.preorden .resumen .subtotal{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto;
+			padding: 0px 10px;
+			margin-top: 15px;
+		}
+
+			.preorden .resumen .subtotal .cantidad{
+				text-align: left;
+				font-size: 1em;
+			}
+
+
+			.preorden .resumen .subtotal .precio{
+				text-align: right;
+				font-size: 1em;
+			}
+
+		.preorden .resumen .impuesto{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto;
+			padding: 0px 10px;
+			margin-bottom: 15px;
+			
+		}
+
+			.preorden .resumen .impuesto .tipo{
+				text-align: left;
+				font-size: 1em;
+			}
+
+			.preorden .resumen .impuesto .valor{
+				text-align: right;
+				font-size: 1em;
+			}
+
+
+		.preorden .resumen .total{
+			font-size: 1.5em;
+			color: black;
+			text-align: center;
+			padding: 20px 0px;
+			border-top: 1px solid rgb(211,211,211);
+
+		}
+
+		.preorden .resumen .pagar{
+			display: block;
+			width: 80%;
+			margin: auto;
+			padding: 3px 0px;
+			border: 0px;
+			background-color:rgb(0,174,239); 
+			color: white;
+			font-size: 1.5em;
+		}
+
+		.preorden .resumen .seguir{
+			display: block;
+			margin: 15px 30px;
+			border: 1px solid rgb(0,174,239); 
+			color: rgb(0,174,239);
+			text-align: center;
+			font-size: 1.5em;
+			text-decoration: none;
+		}
+
+		.preorden .resumen .cancelar{
+			display: block;
+			margin: 15px 30px;
+			border: 1px solid rgb(0,174,239); 
+			color: rgb(0,174,239);
+			text-align: center;
+			font-size: 1.5em;
+			text-decoration: none;
+		}
+		
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
 
 .tabla{
 	width: 100%;

@@ -35,7 +35,7 @@
                     <input 
                         id="fecha" 
                         name="fecha" 
-                        value="{{ now()->toTimeString() }}" 
+                        value="{{ Carbon\Carbon::now()->toDateTimeString() }}" 
                         hidden
                     >
 

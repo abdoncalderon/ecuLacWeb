@@ -67,8 +67,16 @@
                     </div>
                     <div class="nombre"><p>{{ $producto->nombre }}</p></div>
                     <div class="acciones">
-                        <a href="#">{{ __('content.buy')}}</a>
-                        <a href="{{ route('tienda.estante',$producto) }}">{{ __('content.view')}}</a>
+                        @if($producto->estado == 'Disponible')
+                        <form method="POST" action="{{ route('itemspedidos.store') }}">
+                            @csrf
+                            <input hidden type="text" id="cantidad" name="cantidad" value="1">
+                            <input hidden type="text" id="producto_id" name="producto_id" value="{{ $producto->id }}">
+                            <input hidden type="text" id="cliente_id" name="cliente_id" value="{{ auth()->id() }}">
+                            <button class="comprar" type="submit">{{ __('content.buy') }} x 1</button>
+                        </form>
+                        @endif
+                        <a class="ver" href="{{ route('tienda.estante',$producto) }}">{{ __('content.view')}}</a>
                     </div>
                     <div class="precio"><p>USD {{ $producto->precioUnitario }} x 1 {{ __('content.unity')}}</p></div>
                 </article>

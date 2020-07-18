@@ -34,14 +34,43 @@ class Producto extends Model
         }
     }
 
-    public function precioDescuento($productoId){
+    static public function subtotal($productoId){
+        $producto = Producto::find($productoId);
+        return $producto::precioDescuento($productoId) + $producto::valorIva($productoId);
+    }
+
+
+    static public function precioDescuento($productoId){
+        $producto = Producto::find($productoId);
+        $precio = $producto->precioUnitario;
+        $descuento = $producto::valorDescuento($productoId);
+        if ($descuento > 0){
+            return round(($precio - $descuento),2);
+        }else{
+            return round($precio,2);
+        }
+    }
+
+    static public function valorDescuento($productoId){
         $producto = Producto::find($productoId);
         $precio = $producto->precioUnitario;
         $descuento = $producto->descuento;
         if ($descuento > 0){
-            return round($precio - ($precio * ($descuento / 100)),2);
+            return round($precio * ($descuento / 100),2);
         }else{
-            return round($precio,2);
+            return 0;
+        }
+        
+    }
+
+    static public function valorIva($productoId){
+        $producto = Producto::find($productoId);
+        $precioDescuento = $producto->precioDescuento($productoId);
+        $iva = $producto->iva;
+        if ($iva > 0){
+            return round($precioDescuento * ($iva / 100),2);
+        }else{
+            return 0;
         }
         
     }

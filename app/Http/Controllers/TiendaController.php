@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 use App\Producto;
 use App\Categoria;
 use App\ImagenProducto;
-use App\Pedido;
-use App\ItemPedido;
 
 use Illuminate\Http\Request;
 
-
 class TiendaController extends Controller
 {
-    public function catalogo(Request $request){
+    public function busqueda(Request $request){
         $busqueda = $request->input('busqueda');
+        return redirect()->route('tienda.catalogo',$busqueda);
+    }
+
+    public function catalogo($busqueda = null){
         if(empty($busqueda)){
             $productos = Producto::where('id','!=','0')->paginate(12);
             $categorias= Producto::select('categoria_id')->distinct()->get();

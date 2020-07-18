@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="busqueda">
-            <form method="POST" action="{{ route('tienda.catalogo') }}">
+            <form method="POST" action="{{ route('tienda.busqueda') }}">
                 @csrf
                 <input 
                     id="busqueda"
@@ -24,7 +24,9 @@
         <div class="carrito">
             <a href="{{ route('clientes.pedido') }}"><i class="fas fa-shopping-cart"></i></a>
             @auth
-                <p>{{ count( App\Pedido::items(App\Pedido::abierto(auth()->id()))) ?? '0' }}</p>
+                @if(App\Pedido::abierto(auth()->id())!=0)
+                    <p>{{ count( App\Pedido::items(App\Pedido::abierto(auth()->id()))) ?? '0' }}</p>
+                @endif
             @endauth
         </div>
         @guest

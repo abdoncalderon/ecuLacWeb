@@ -40,6 +40,7 @@ return [
     'sales'=>'Ventas',
     'orders'=>'Pedidos',
     'order'=>'Pedido',
+    'delivery'=>'Despacho',
     'deliveries'=>'Despachos',
     'record'=>'Historial',
     'provinces'=>'Provincias',
@@ -125,6 +126,14 @@ return [
     'results'=>'Resultados',
     'pay'=>'Pagar',
     'clean'=>'Limpiar',
+    'show'=>'Mostrar',
+    'catalog'=>'Catálogo',
+    'preorder'=>'Pre-Ordenar',
+    'toOrder'=>'Ordenar',
+    'cash'=>'Efectivo',
+    'credit'=>'Credito',
+    'data'=>'Datos',
+    'summary'=>'Resumen',
 
     'currency'=>'US$',
     

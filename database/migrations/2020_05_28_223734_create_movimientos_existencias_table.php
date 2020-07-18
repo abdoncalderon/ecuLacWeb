@@ -20,6 +20,7 @@ class CreateMovimientosExistenciasTable extends Migration
             $table->foreign('sucursal_id')->references('id')->on('sucursales')->onUpdate('cascade')->onDelete('restrict');
             $table->string('tipoMovimiento',11); /* {reposicion, cancelacion, venta} */
             $table->unsignedInteger('cantidad');
+            $table->unsignedInteger('saldo');
             $table->timestamps();
         });
     }

@@ -52,4 +52,9 @@ class User extends Authenticatable
         
     }
 
+    static public function ciudad($ciudadId){
+        $ciudad = Ciudad::find($ciudadId);
+        return $ciudad->nombre;
+    }
+
 }
