@@ -11,8 +11,11 @@ use Illuminate\Http\Request;
 class MovimientoExistenciaController extends Controller
 {
     
-    public function index(){
-        return view('movimientosexistencias.index');
+    public function index(Producto $producto){
+        $movimientosExistencias = MovimientoExistencia::where('producto_id',$producto->id)->paginate(10);
+        return view('movimientosexistencias.index')
+        ->with(compact('movimientosExistencias'))
+        ->with(compact('producto'));
     }
     
     public function create(Producto $producto){
@@ -25,14 +28,8 @@ class MovimientoExistenciaController extends Controller
 
     public function store(StoreMovimientoExistenciaRequest $request){
         $producto = Producto::find($request->input('producto_id'));
-        if ($producto->existenciaActual>=$request->input('cantidad')){
-            $request->validated();
-            MovimientoExistencia::movimiento($request->input('tipoMovimiento'), $request->input('cliente_id'), $request->input('producto_id'), $request->input('cantidad'));
-            Producto::actualizarExistencia($request->input('producto_id'),$request->input('tipoMovimiento'),$request->input('cantidad'));
-            return redirect()->route('productos.index');
-        }else{
-            return back()->withErrors(__('messages.noStock'));
-        }
-        
+        MovimientoExistencia::reposicion($request->input('sucursal_id'), $request->input('producto_id'), $request->input('cantidad'));
+        Producto::actualizarExistencia($request->input('producto_id'),$request->input('tipoMovimiento'),$request->input('cantidad'));
+        return redirect()->route('movimientosexistencias.index',$producto);
     }
 }

@@ -19,7 +19,6 @@ class StoreMovimientoExistenciaRequest extends FormRequest
             'usuario_id'=>'required',
             'producto_id'=>'required',
             'sucursal_id'=>'required',
-            'tipoMovimiento'=>'required',
             'cantidad'=>'required|numeric',
         ];
     }

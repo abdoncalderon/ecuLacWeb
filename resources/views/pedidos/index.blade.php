@@ -51,7 +51,21 @@
                                     <td>{{ $pedido->fechaEntrega }}</td>
                                     <td>{{ $pedido->estado }}</td>
                                     <td>
-                                        <a class="accion" href="{{ route('pedidos.show',['vista'=>$vista, 'pedido'=>$pedido]) }}">{{ __('content.show') }}</a>
+                                        @switch($vista)
+                                            @case('Pedidos')
+                                                @if($pedido->estado=='ABIERTO')
+                                                    <a class="accion" href="{{ route('pedidos.edit',['vista'=>$vista, 'pedido'=>$pedido]) }}">{{ __('content.edit') }}</a>
+                                                @else
+                                                    <a class="accion" href="{{ route('pedidos.show',['vista'=>$vista, 'pedido'=>$pedido]) }}">{{ __('content.show') }}</a>
+                                                @endif
+                                                @break
+                                            @case('Despachos')
+                                                
+                                                @break
+                                            @default
+                                                
+                                        @endswitch
+                                        {{-- <a class="accion" href="{{ route('pedidos.show',['vista'=>$vista, 'pedido'=>$pedido]) }}">{{ __('content.show') }}</a> --}}
                                         <a class="accion" href="{{ route('pedidos.destroy',$pedido->id) }}">{{ __('content.delete') }}</a>
                                     </td>
                                 </tr>

@@ -34,6 +34,8 @@ return [
     'confirmPay'=>'Por favor necesitamos su confirmación para proceder al pago',
     'confirmOrder'=>'Por favor necesitamos su confirmación para proceder con la orden',
     'valueToPay'=>'Valor a Pagar',
+    'noStock'=>'No hay existencia suficiente de este Producto',
+
 
 
     

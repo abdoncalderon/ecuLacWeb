@@ -32,7 +32,7 @@ class ItemPedido extends Model
         $productoId = $itemPedido->producto_id;
         $cantidad = $itemPedido->cantidad;
         $itemPedido->delete();
-        MovimientoExistencia::movimiento('CANCELACION', $pedido->cliente_id, $productoId, $cantidad);
+        MovimientoExistencia::cancelacion($pedido->cliente_id, $productoId, $cantidad);
         Producto::actualizarExistencia($productoId,'CANCELACION',$cantidad);
     }
 

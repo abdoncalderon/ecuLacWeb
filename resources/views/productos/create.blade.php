@@ -46,17 +46,14 @@
                         <div class="form-group row">
                             <label for="descripcion" class="col-md-4 col-form-label text-md-right">{{ __('content.description') }}</label>
                             <div class="col-md-6">
-                                <input 
+                                <textarea
                                     id="descripcion" 
                                     name="descripcion" 
-                                    type="text" 
                                     maxlength="255" 
                                     class="form-control @error('contenido') is-invalid @enderror" 
-                                    value="{{ old('descripcion') }}" 
-                                    required 
-                                    autocomplete="descripcion" 
+                                    required
                                     placeholder="Descripción"
-                                    autofocus>
+                                    autofocus></textarea>
 
                                 @error('descripcion')
                                     <span class="invalid-feedback" role="alert">

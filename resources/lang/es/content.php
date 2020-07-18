@@ -134,6 +134,7 @@ return [
     'credit'=>'Credito',
     'data'=>'Datos',
     'summary'=>'Resumen',
+    'balance'=>'Saldo',
 
     'currency'=>'US$',
     

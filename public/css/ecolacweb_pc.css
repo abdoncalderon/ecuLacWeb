@@ -27,6 +27,7 @@ nav{
 		height: 40px;
 		background-color:  rgb(0,174,239) ;
 		overflow: hidden;
+		z-index: 1000;
 	}
 
 		.menuPrincipal .bienvenida{
@@ -323,7 +324,7 @@ section{
 	.vitrina .carrusel{
 		grid-column: 1/11;
 		background-color: rgb(211,211,211);
-		z-index: -10;
+		
 	}
 
 		.vitrina .carrusel .imagen{
@@ -331,7 +332,7 @@ section{
 			height: 350px;
 			overflow: hidden;
 			border-radius: 4px 4px;
-			z-index: -10;
+			
 		}
 
 	.vitrina .categorias{

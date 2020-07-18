@@ -22,7 +22,6 @@ class ItemPedidoController extends Controller
 
     public function store(StoreItemPedidoRequest $request){
         if (!empty($request->input('cantidad'))){
-            
             if(Pedido::abierto($request->input('cliente_id'))==0){
                 Pedido::crear();
             }
@@ -30,18 +29,22 @@ class ItemPedidoController extends Controller
             $pedidoAbierto = Pedido::abierto($request->input('cliente_id'));
             $producto = Producto::find($request->input('producto_id'));
             $subtotal = $cantidad * $producto->precioDescuento($producto->id);
-           
-            ItemPedido::create([
-                'pedido_id'=>$pedidoAbierto,
-                'producto_id'=>$producto->id,
-                'cantidad'=>$cantidad,
-                'precioUnitario'=>$producto->precioUnitario,
-                'descuento'=>$producto->descuento,
-                'iva'=>$producto->iva,
-                'subtotal'=>$subtotal,
-            ]);
-            Producto::actualizarExistencia($producto->id,'VENTA',$cantidad);
-            return back();
+            $existenciaActual = $producto->existenciaActual;
+            if($existenciaActual>=$cantidad){
+                ItemPedido::create([
+                    'pedido_id'=>$pedidoAbierto,
+                    'producto_id'=>$producto->id,
+                    'cantidad'=>$cantidad,
+                    'precioUnitario'=>$producto->precioUnitario,
+                    'descuento'=>$producto->descuento,
+                    'iva'=>$producto->iva,
+                    'subtotal'=>$subtotal,
+                ]);
+                Producto::actualizarExistencia($producto->id,'VENTA',$cantidad);
+                return back();
+            }else{
+                return back()->withErrors(__('messages.noStock'));
+            }
         }else{
             return back()->withErrors(__('messages.fieldEmpty'));
         }

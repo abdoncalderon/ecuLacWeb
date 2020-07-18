@@ -15,16 +15,20 @@ class RolesTableSeeder extends Seeder
     {
         return DB::table('roles')->insert([
             [
-                "nombre" => 'SUPERUSUARIO'
+                "nombre" => 'SUPERUSUARIO',
+                "esExterno"=>'0'
             ],
             [
-                "nombre" => 'ADMINISTRADOR'
+                "nombre" => 'ADMINISTRADOR',
+                "esExterno"=>'0'
             ],
             [
-                "nombre" => 'VENDEDOR'
+                "nombre" => 'VENDEDOR',
+                "esExterno"=>'0'
             ],
             [
-                "nombre" => 'REPARTIDOR'
+                "nombre" => 'REPARTIDOR',
+                "esExterno"=>'0'
             ],
             [
                 "nombre" => 'CLIENTE',

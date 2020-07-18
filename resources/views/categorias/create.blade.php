@@ -13,6 +13,12 @@
 @endsection
 
 @section('contenidoPrincipal')
+    @if($errors->any())
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ $errors->first() }}
+    </div>
+    @endif
     <div class="ventana">
         <div class="titulo">{{ __('content.add') }}  {{ __('content.category') }}</div>
             <div class="contenido">
@@ -36,6 +42,26 @@
                                     autofocus>
 
                                 @error('nombre')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="descripcion" class="col-md-4 col-form-label text-md-right">{{ __('content.description') }}</label>
+                            <div class="col-md-6">
+                                <textarea
+                                    id="descripcion" 
+                                    name="descripcion" 
+                                    maxlength="255" 
+                                    class="form-control @error('contenido') is-invalid @enderror" 
+                                    required
+                                    placeholder="Descripción"
+                                    autofocus></textarea>
+
+                                @error('descripcion')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

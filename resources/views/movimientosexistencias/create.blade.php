@@ -6,7 +6,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home')}}">{{ __('content.home') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('productos.index')}}">{{ __('content.products') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('movimientosexistencias.index')}}">{{ __('content.move').' '.__('content.stock') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('movimientosexistencias.index',$producto)}}">{{ __('content.move').' '.__('content.stock') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('content.add') }}</li>
             </ol>
         </nav>
@@ -50,13 +50,6 @@
                         id="producto_id" 
                         name="producto_id" 
                         value="{{ $producto->id }}" 
-                        hidden
-                    >
-
-                    <input 
-                        id="tipoMovimiento" 
-                        name="tipoMovimiento" 
-                        value="REPOSICION" 
                         hidden
                     >
 
@@ -125,12 +118,10 @@
                             <input 
                                 id="cantidad" 
                                 name="cantidad" 
-                                type="text" 
-                                maxlength="10" 
+                                type="number" 
+                                min="1" 
                                 class="form-control @error('nombre') is-invalid @enderror" 
-                                value="{{ old('cantidad') }}" 
                                 required 
-                                placeholder="0"
                                 autofocus>
 
                             @error('cantidad')

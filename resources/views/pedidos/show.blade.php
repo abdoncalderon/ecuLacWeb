@@ -51,15 +51,15 @@
             <div class="resumen">
                 <div class="total">Total</div>
                 <div class="productos">{{ count($itemsPedido).' '.__('content.products')}}</div>
-                <div class="valor">{{ __('content.currency') }} {{ $pedido->total($pedido->id) }}</div>
-                <button type="button" class="agregar" data-toggle="modal" data-target="#exampleModalCenter">{{ __('content.add') }} {{ __('content.products') }}</button>
+                <div class="valor">{{ __('content.currency') }} {{ $pedido->total($pedido) }}</div>
+                {{-- <button type="button" class="agregar" data-toggle="modal" data-target="#agregarProductosModal">{{ __('content.add') }} {{ __('content.products') }}</button> --}}
                 <a class="seguir" href="{{ route('pedidos.destroy',$pedido->id) }}">{{ __('content.cancel') }} {{ __('content.order') }}</a>
             </div>
         </div>
     </div>
 
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    {{-- <div class="modal fade" id="agregarProductosModal" tabindex="-1" role="dialog" aria-labelledby="agregarProductosModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <form method="POST" action="{{ route('itemspedidos.store') }}">
@@ -124,5 +124,5 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

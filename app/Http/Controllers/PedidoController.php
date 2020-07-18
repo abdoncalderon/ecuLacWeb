@@ -18,11 +18,9 @@ class PedidoController extends Controller
                 $pedidos = Pedido::where('vendedor_id',auth()->id())->orWhere('vendedor_id',NULL)->paginate(10);
                 break;
             case 'Despachos':
-                $pedidos = Pedido::where('repartidor_id',auth()->id())->Where('estado','!=','ABIERTO')->paginate(10);
+                $pedidos = Pedido::where('repartidor_id',auth()->id())->orWhere('estado','!=','ABIERTO')->paginate(10);
                 break;
-            
         }
-        
         return view('pedidos.index')
         ->with(compact('pedidos'))
         ->with(compact('vista'));
@@ -32,6 +30,15 @@ class PedidoController extends Controller
         
         $itemsPedido = Pedido::items($pedido->id);
         return view('pedidos.show')
+        ->with(compact('pedido'))
+        ->with(compact('itemsPedido'))
+        ->with(compact('vista'));
+    }
+
+    public function edit($vista, Pedido $pedido){
+        
+        $itemsPedido = Pedido::items($pedido->id);
+        return view('pedidos.edit')
         ->with(compact('pedido'))
         ->with(compact('itemsPedido'))
         ->with(compact('vista'));
