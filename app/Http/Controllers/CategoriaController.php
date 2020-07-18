@@ -37,6 +37,7 @@ class CategoriaController extends Controller
         Categoria::create([
             'nombre'=>$request->nombre,
             'imagen'=>$nombreArchivo,
+            'descripcion'=>$request->descripcion,
         ]);
         return redirect()->route('categorias.index');
     }
