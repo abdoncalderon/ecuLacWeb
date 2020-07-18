@@ -25,7 +25,7 @@ class MovimientoExistencia extends Model
         $movimiento = MovimientoExistencia::where('producto_id',$productoId)->where('sucursal_id',$sucursalId)->orderBy('id','DESC')->first();
         
         if (empty($movimiento)){
-            $saldo = 0;
+            $saldo = $cantidad;
         }else{
             $saldo = $movimiento->saldo + $cantidad;
         }
@@ -35,9 +35,9 @@ class MovimientoExistencia extends Model
             'usuario_id'=>auth()->id(),
             'producto_id'=>$productoId,
             'sucursal_id'=>$sucursalId,
-            'tipMovimiento'=>$tipoMovimiento,
+            'tipoMovimiento'=>$tipoMovimiento,
             'cantidad'=>$cantidad,
-            'saldo' => $saldo,
+            'saldo'=>$saldo,
         ]);
     }
 
@@ -51,18 +51,19 @@ class MovimientoExistencia extends Model
         $sucursalId = $sucursal->id;
         $movimiento = MovimientoExistencia::where('producto_id',$productoId)->where('sucursal_id',$sucursalId)->latest()->first();
         if (empty($movimiento)){
-            $saldo = 0;
+            $saldo = $cantidad;
         }else{
             $saldo = $movimiento->saldo-$cantidad;
         }
         $fecha = Carbon::now()->toDateTimeString();
         $tipoMovimiento = 'VENTA';
+        
         MovimientoExistencia::create([
             'fecha'=>$fecha,
             'usuario_id'=>auth()->id(),
             'producto_id'=>$productoId,
             'sucursal_id'=>$sucursalId,
-            'tipMovimiento'=>$tipoMovimiento,
+            'tipoMovimiento'=>$tipoMovimiento,
             'cantidad'=>$cantidad,
             'saldo' => $saldo,
         ]);
@@ -79,7 +80,7 @@ class MovimientoExistencia extends Model
         $sucursalId = $sucursal->id;
         $movimiento = MovimientoExistencia::where('producto_id',$productoId)->where('sucursal_id',$sucursalId)->latest()->first();
         if (empty($movimiento)){
-            $saldo = 0;
+            $saldo = $cantidad;
         }else{
             $saldo = $movimiento->saldo+$cantidad;
         }
@@ -90,9 +91,9 @@ class MovimientoExistencia extends Model
             'usuario_id'=>auth()->id(),
             'producto_id'=>$productoId,
             'sucursal_id'=>$sucursalId,
-            'tipMovimiento'=>$tipoMovimiento,
+            'tipoMovimiento'=>$tipoMovimiento,
             'cantidad'=>$cantidad,
-            'saldo' => $saldo,
+            'saldo'=>$saldo,
         ]);
         
     }

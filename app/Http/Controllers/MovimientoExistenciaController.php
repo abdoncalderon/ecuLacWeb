@@ -29,7 +29,7 @@ class MovimientoExistenciaController extends Controller
     public function store(StoreMovimientoExistenciaRequest $request){
         $producto = Producto::find($request->input('producto_id'));
         MovimientoExistencia::reposicion($request->input('sucursal_id'), $request->input('producto_id'), $request->input('cantidad'));
-        Producto::actualizarExistencia($request->input('producto_id'),$request->input('tipoMovimiento'),$request->input('cantidad'));
+        Producto::actualizarExistencia($request->input('producto_id'),'REPOSICION',$request->input('cantidad'));
         return redirect()->route('movimientosexistencias.index',$producto);
     }
 }

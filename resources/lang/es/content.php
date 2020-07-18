@@ -135,6 +135,7 @@ return [
     'data'=>'Datos',
     'summary'=>'Resumen',
     'balance'=>'Saldo',
+    'date'=>'Fecha',
 
     'currency'=>'US$',
     

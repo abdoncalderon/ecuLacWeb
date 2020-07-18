@@ -26,7 +26,7 @@
             <div class="index">
                 <div>
                     <span>
-                    <a class="btn btn-success " href="{{ route('movimientosexistencias.create',$producto) }}">{{ __('content.create') }}  {{ __('content.order') }}</a>
+                    <a class="btn btn-success " href="{{ route('movimientosexistencias.create',$producto) }}">{{ __('content.add') }}  {{ __('content.stock') }}</a>
                     </span>
                 </div>
                 <div class="table-responsive">

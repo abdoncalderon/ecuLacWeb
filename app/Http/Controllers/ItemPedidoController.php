@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Producto;
 use App\Pedido;
 use App\ItemPedido;
+use App\MovimientoExistencia;
 use App\Http\Requests\StoreItemPedidoRequest;
 
 
@@ -40,6 +41,7 @@ class ItemPedidoController extends Controller
                     'iva'=>$producto->iva,
                     'subtotal'=>$subtotal,
                 ]);
+                MovimientoExistencia::venta($request->input('cliente_id'), $request->input('producto_id'), $request->input('cantidad'));
                 Producto::actualizarExistencia($producto->id,'VENTA',$cantidad);
                 return back();
             }else{
