@@ -5,7 +5,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home')}}">{{ __('content.home') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('content.order') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('clientes.pedido') }}">{{ __('content.order') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('content.preorder') }}</li>
             </ol>
         </nav>
     </div>
@@ -71,9 +72,8 @@
                     </div>
                     <div>
                         <div class="precio">{{ __('content.currency').' '.$item->precioUnitario }}</div>
-                        <div class="descuento">{{ __('content.discount') }} {{ __('content.currency') }} {{ $item->producto($item)->valorDescuento($item->producto_id) }}</div>
-                        <div class="subtotal">{{ __('content.currency').' '.$item->producto($item)->precioDescuento($item->producto_id) }}</div>
-                        <a class="eliminar" href="{{ route('itemspedidos.destroy',$item->id) }}">{{ __('content.delete') }}</a>
+                        <div class="descuento">{{ __('content.discount') }} {{ __('content.currency') }} {{ number_format($item->producto($item)->valorDescuento($item->producto_id),2) }}</div>
+                        <div class="subtotal">{{ __('content.currency') }} {{ $item->producto($item)->precioDescuento($item->producto_id) }}</div>
                     </div>
                     
                 </article>
@@ -91,7 +91,7 @@
             </div>
             
             <div class="total">{{ __('messages.valueToPay') }} {{ __('content.currency') }} {{ $pedido->total($pedido) }}</div>
-            <button class="pagar" type="button" data-toggle="modal" data-target="#exampleModalCenter">{{ __('content.toOrder') }}</button>
+            <button class="pagar" type="button" data-toggle="modal" data-target="#exampleModalCenter">{{ __('content.toOrder') }} {{ __('content.order') }} </button>
             <a class="seguir" href="{{ route('home') }}">{{ __('messages.shopcontinue') }}</a>
             <a class="cancelar" href="{{ route('pedidos.destroy',$pedido->id) }}">{{ __('content.cancel') }} {{ __('content.order') }}</a>
         </div>

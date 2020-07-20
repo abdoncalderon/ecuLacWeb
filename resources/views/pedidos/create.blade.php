@@ -5,7 +5,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home')}}">{{ __('content.home') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('pedidos.index', $vista)}}">{{ $vista }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('pedidos.vendedor')}}">{{ __('content.orders') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('content.create') }}</li>
             </ol>
         </nav>
@@ -23,7 +23,7 @@
         <div class="titulo">{{ __('content.create') }}  {{ __('content.order') }}</div>
             <div class="contenido">
                 <div class="formulario">
-                    <form method="POST" action="{{ route('pedidos.store', $vista) }}">
+                    <form method="POST" action="{{ route('pedidos.store') }}">
                         @csrf
 
                         <input id="fechaCreacion" name="fechaCreacion" hidden type="text" value="{{ Carbon\Carbon::now()->toDateTimeString() }}">
@@ -46,7 +46,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary ">{{ __('content.create') }}</button>
-                                <a class="btn btn-secondary " href="{{ route('pedidos.index',$vista) }}">{{ __('content.cancel') }}</a>
+                                <a class="btn btn-secondary " href="{{ route('pedidos.vendedor') }}">{{ __('content.cancel') }}</a>
                             </div>
                         </div>
                         

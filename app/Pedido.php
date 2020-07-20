@@ -21,10 +21,10 @@ class Pedido extends Model
 
     static public function crear()
     {
-        $hoy=Carbon::now()->toDateTimeString();
+        $fecha=Carbon::now()->toDateTimeString();
         $cliente=auth()->id();
         Pedido::create([
-            'fechaCreacion'=> $hoy,
+            'fechaCreacion'=>$fecha,
             'cliente_id'=>$cliente,
         ]);
     }
@@ -78,6 +78,18 @@ class Pedido extends Model
     static public function items($pedidoId){
         $items = ItemPedido::where('pedido_id',$pedidoId)->get();
         return $items;
+    }
+
+    static public function itemsEstado(Pedido $pedido, $estado){
+        $itemsPedido = $pedido::items($pedido->id);
+        $itemsEstado = true;
+        foreach ($itemsPedido as $item){
+            if($item->estado!=$estado){
+                $itemsEstado = false;
+            break;
+            }
+        }
+        return $itemsEstado;
     }
     
 }

@@ -12,57 +12,85 @@ use Illuminate\Http\Request;
 
 class PedidoController extends Controller
 {
-    public function index($vista){
-        switch ($vista){
-            case 'Pedidos':
-                $pedidos = Pedido::where('vendedor_id',auth()->id())->orWhere('vendedor_id',NULL)->paginate(10);
-                break;
-            case 'Despachos':
-                $pedidos = Pedido::where('repartidor_id',auth()->id())->orWhere('estado','!=','ABIERTO')->paginate(10);
-                break;
-        }
-        return view('pedidos.index')
-        ->with(compact('pedidos'))
-        ->with(compact('vista'));
+
+    public function vendedor(){
+        $pedidos = Pedido::where('vendedor_id',auth()->id())->orWhere('vendedor_id',NULL)->orderBy('created_at','DESC')->paginate(10);
+        return view('pedidos.vendedor.index')
+        ->with(compact('pedidos'));
     }
 
-    public function show($vista, Pedido $pedido){
-        
+    public function repartidor(){
+        $pedidos = Pedido::where('repartidor_id',auth()->id())->orWhere('estado','!=','ABIERTO')->orderBy('created_at','DESC')->paginate(10);
+        return view('pedidos.repartidor.index')
+        ->with(compact('pedidos'));
+    }
+
+    public function showOrder(Pedido $pedido){
         $itemsPedido = Pedido::items($pedido->id);
-        return view('pedidos.show')
+        return view('pedidos.vendedor.show')
         ->with(compact('pedido'))
-        ->with(compact('itemsPedido'))
-        ->with(compact('vista'));
+        ->with(compact('itemsPedido'));
     }
 
-    public function edit($vista, Pedido $pedido){
-        
+    public function showDelivery(Pedido $pedido){
+        $itemsPedido = Pedido::items($pedido->id);
+        return view('pedidos.repartidor.show')
+        ->with(compact('pedido'))
+        ->with(compact('itemsPedido'));
+    }
+
+    public function edit(Pedido $pedido){
         $itemsPedido = Pedido::items($pedido->id);
         return view('pedidos.edit')
         ->with(compact('pedido'))
-        ->with(compact('itemsPedido'))
-        ->with(compact('vista'));
+        ->with(compact('itemsPedido'));
     }
 
-    public function create($vista){
+    public function update(Pedido $pedido){
+        $itemsPedido = Pedido::items($pedido->id);
+        return view('pedidos.update')
+        ->with(compact('pedido'))
+        ->with(compact('itemsPedido'));
+    }
+
+    public function change($pedidoId, $estado){
+        $fecha = Carbon::now()->toDateTimeString();
+        switch($estado){
+            case 'DESPACHADO': 
+                Pedido::where('id',$pedidoId)->update([
+                    'estado'=>$estado,
+                    'fechaDespacho'=>$fecha,
+                    'repartidor_id'=>auth()->id(),
+                ]);
+                break;
+            case 'ENTREGADO': 
+                Pedido::where('id',$pedidoId)->update([
+                    'estado'=>$estado,
+                    'fechaEntrega'=>$fecha,
+                    'repartidor_id'=>auth()->id(),
+                ]);
+                break;
+        }
+        return redirect()->route('pedidos.repartidor');
+    }
+
+    public function create(){
         $clientes = User::select('users.id as user','users.nombreCompleto')
                     ->join('roles','users.rol_id','=','roles.id')
                     ->where('roles.esExterno',1)
                     ->get();
         return view('pedidos.create')
-        ->with(compact('clientes'))
-        ->with(compact('vista'));
+        ->with(compact('clientes'));
     }
 
-    public function store(StorePedidoRequest $request, $vista)
+    public function store(StorePedidoRequest $request)
     {
         if (Pedido::abierto($request->input('cliente_id'))==0){
             Pedido::create($request->validated());
-            return redirect()->route('pedidos.index',$vista);
+            return redirect()->route('pedidos.vendedor');
         }else{
             return back()->withErrors(__('messages.orderExist'));
         }
-        
     }
 
     public function destroy($id){

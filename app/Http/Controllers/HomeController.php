@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Rol;
-use App\Categoria;
-use App\Producto;
-use App\Pedido;
-use App\ItemPedido;
+use App\MenuRol;
 
 use Illuminate\Support\Facades\Auth;
 

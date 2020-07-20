@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class ItemPedido extends Model
 {
     protected $table = 'items_pedidos';
@@ -18,11 +18,27 @@ class ItemPedido extends Model
     }
 
     static public function estado($itemPedidoId, $estado){
-        
-        ItemPedido::where('id',$itemPedidoId)->update([
-            'estado'=>$estado,
-        ]);
-        
+        $fecha = Carbon::now()->toDateTimeString();
+        switch($estado){
+            case 'CONFIRMADO': 
+                ItemPedido::where('id',$itemPedidoId)->update([
+                    'estado'=>$estado,
+                    'fechaConfirmacion'=>$fecha,
+                ]);
+                break;
+            case 'DESPACHADO': 
+                ItemPedido::where('id',$itemPedidoId)->update([
+                    'estado'=>$estado,
+                    'fechaDespacho'=>$fecha,
+                ]);
+                break;
+            case 'ENTREGADO': 
+                ItemPedido::where('id',$itemPedidoId)->update([
+                    'estado'=>$estado,
+                    'fechaEntrega'=>$fecha,
+                ]);
+                break;
+        }
     }
 
     

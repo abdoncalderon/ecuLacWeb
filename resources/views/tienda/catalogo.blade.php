@@ -62,7 +62,7 @@
                     <div class="imagen" style="background-image: url({{ asset('img/productos/'.$producto->imagenPredeterminada($producto->id)) }})">
                         <div class="{{ $producto->estado }}">{{ $producto->estado }}</div>
                         @if( $producto->descuento>0 )
-                            <div class="descuento">-{{ $producto->descuento }}%</div>
+                            <div class="descuento">-{{ number_format($producto->descuento,0) }}%</div>
                         @endif
                     </div>
                     <div class="nombre"><p>{{ $producto->nombre }}</p></div>

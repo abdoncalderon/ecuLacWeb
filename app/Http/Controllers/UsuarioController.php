@@ -13,12 +13,12 @@ use Exception;
 class UsuarioController extends Controller
 {
     public function index(){
-        $usuarios=User::where('rol_id','!=','1')->paginate(10);
+        $usuarios=User::join('roles','users.rol_id','=','roles.id')->where('roles.esExterno','=','0')->paginate(10);
         return  view('usuarios.index',compact('usuarios'));
     }
 
     public function create(){
-        $roles=Rol::where('esExterno',0)->get();
+        $roles=Rol::where('esExterno',0)->where('id','!=',1)->get();
         return view('usuarios.create',compact('roles'));
     }
 
@@ -35,8 +35,16 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios.index');
     }
 
-    public function edit(){
+    public function edit(User $usuario){
+        $roles=Rol::where('esExterno',0)->get();
+        return view('usuarios.edit')
+        ->with(compact('usuario'))
+        ->with(compact('roles'));
+    }
 
+    public function update(UpdateUsuarioRequest $request, User $usuario){
+        $usuario->update($request->validated());
+        return redirect()->route('usuarios.index');
     }
 
     public function destroy(User $usuario){

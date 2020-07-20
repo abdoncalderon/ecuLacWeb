@@ -85,7 +85,7 @@ class MovimientoExistencia extends Model
             $saldo = $movimiento->saldo+$cantidad;
         }
         $fecha = Carbon::now()->toDateTimeString();
-        $tipoMovimiento = 'VENTA';
+        $tipoMovimiento = 'CANCELACION';
         MovimientoExistencia::create([
             'fecha'=>$fecha,
             'usuario_id'=>auth()->id(),

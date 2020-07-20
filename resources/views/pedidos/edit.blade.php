@@ -5,7 +5,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home')}}">{{ __('content.home') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('pedidos.index',$vista)}}">{{ $vista }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('pedidos.vendedor')}}">{{ __('content.orders') }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('content.edit') }}</li>
             </ol>
         </nav>
@@ -49,9 +49,9 @@
                 @endforeach
             </div>
             <div class="resumen">
-                <div class="total">Total</div>
+                <div class="total">Subtotal</div>
                 <div class="productos">{{ count($itemsPedido).' '.__('content.products')}}</div>
-                <div class="valor">{{ __('content.currency') }} {{ $pedido->total($pedido) }}</div>
+                <div class="valor">{{ __('content.currency') }} {{ $pedido->subtotal($pedido->id) }}</div>
                 <button type="button" class="agregar" data-toggle="modal" data-target="#agregarProductosModal">{{ __('content.add') }} {{ __('content.products') }}</button>
                 <a class="seguir" href="{{ route('pedidos.destroy',$pedido->id) }}">{{ __('content.cancel') }} {{ __('content.order') }}</a>
             </div>

@@ -30,12 +30,30 @@
                                     maxlength="50" 
                                     class="form-control @error('nombre') is-invalid @enderror" 
                                     value="{{ old('nombre',$categoria->nombre) }}" 
-                                    placeholder="Nombre Categoria"
                                     disabled
                                     autocomplete="nombre" 
                                     autofocus>
 
                                 @error('nombre')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="descripcion" class="col-md-4 col-form-label text-md-right">{{ __('content.description') }}</label>
+                            <div class="col-md-6">
+                                <textarea
+                                    id="descripcion" 
+                                    name="descripcion" 
+                                    maxlength="255" 
+                                    class="form-control @error('contenido') is-invalid @enderror" 
+                                    required
+                                    autofocus>{{ old('descripcion',$categoria->descripcion) }}</textarea>
+
+                                @error('descripcion')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

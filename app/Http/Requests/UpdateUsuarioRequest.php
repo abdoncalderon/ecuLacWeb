@@ -6,25 +6,20 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateUsuarioRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
-        return false;
+        return true;
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+    
     public function rules()
     {
         return [
-            //
+            'nombreCompleto'=>'required',
+            'cedula'=>'required|max:10',
+            'telefono'=>'required|max:15',
+            'email'=>'required|email',
+            'rol_id'=>'required',
+            'usuario'=>'required|max:50',
         ];
     }
 }

@@ -21,6 +21,11 @@ class ItemPedidoController extends Controller
         ->with(compact('itemsPedido'));
     }
 
+    public function update($itemPedidoId, $estado){
+        ItemPedido::estado($itemPedidoId,$estado);
+        return back();
+    }
+
     public function store(StoreItemPedidoRequest $request){
         if (!empty($request->input('cantidad'))){
             if(Pedido::abierto($request->input('cliente_id'))==0){

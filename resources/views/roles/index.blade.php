@@ -45,8 +45,9 @@
                                 <tr>
                                     <td>{{ $rol->nombre }}</td>
                                     <td>
-                                        <a class="accion" id="editar" name="editar" href="{{route('roles.edit',$rol)}}">{{ __('content.edit') }}</a>
-                                        <a class="accion" id="eliminar" name="eliminar" href="{{route('roles.destroy',$rol->id)}}">{{ __('content.delete') }}</a>
+                                        <a class="accion" id="editar" name="editar" href="{{ route('roles.edit',$rol) }}">{{ __('content.edit') }}</a>
+                                        <a class="accion" id="eliminar" name="eliminar" href="{{ route('roles.destroy',$rol->id) }}">{{ __('content.delete') }}</a>
+                                        <a class="accion" id="agregar" name="agregar" href="{{ route('menusroles.add',$rol) }}">{{ __('content.menus') }}</a>
                                     </td>
                                 </tr>
                             @endforeach

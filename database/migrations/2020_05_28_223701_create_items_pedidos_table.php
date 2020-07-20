@@ -21,6 +21,9 @@ class CreateItemsPedidosTable extends Migration
             $table->decimal('iva',4,2);
             $table->decimal('subtotal',8,2);
             $table->string('estado',10)->default('AGREGADO'); /* {agregado, confirmado, despachado, entregado} */
+            $table->dateTime('fechaConfirmacion')->nullable();
+            $table->dateTime('fechaDespacho')->nullable();
+            $table->dateTime('fechaEntrega')->nullable();
             $table->timestamps();
         });
     }

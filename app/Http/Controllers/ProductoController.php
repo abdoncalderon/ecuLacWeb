@@ -18,6 +18,7 @@ class ProductoController extends Controller
         return view('productos.index',compact('productos'));
     }
 
+
     public function create()
     {
         $categorias=Categoria::all();
@@ -36,14 +37,13 @@ class ProductoController extends Controller
         return redirect()->route('productos.index');
     }
 
-    public function edit(producto $producto)
+    public function edit(Producto $producto)
     {
         $categorias=Categoria::all();
         $tipos=Tipo::all();
         $presentaciones=Presentacion::all();
-        return view('productos.edit',[
-            'producto'=>$producto
-            ])
+        return view('productos.edit')
+        ->with(compact('producto'))
         ->with(compact('categorias'))
         ->with(compact('tipos'))
         ->with(compact('presentaciones'));
@@ -51,7 +51,20 @@ class ProductoController extends Controller
 
     public function update(UpdateProductoRequest $request, Producto $producto)
     {
-        $producto->update($request->validated());
+        $request->validated();
+        if($request->has('esDestacado')){
+            $esDestacado = '1';
+        }else{
+            $esDestacado = '0';
+        }
+        $producto->update([
+            'descripcion'=>$request->descripcion,
+            'precioUnitario'=>$request->precioUnitario,
+            'descuento'=>$request->descuento,
+            'iva'=>$request->iva,
+            'esDestacado'=>$esDestacado,
+            'estado'=>$request->estado,
+        ]);
         return redirect()->route('productos.index');
     }
 

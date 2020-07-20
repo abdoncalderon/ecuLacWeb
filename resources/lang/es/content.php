@@ -20,6 +20,7 @@ return [
     'search'=>'Buscar',
     'buy'=>'Comprar',
     'open'=>'Abrir',
+    'print'=>'Imprimir',
     
 
     'login' => 'Iniciar Sesión',
@@ -40,8 +41,9 @@ return [
     'sales'=>'Ventas',
     'orders'=>'Pedidos',
     'order'=>'Pedido',
-    'delivery'=>'Despacho',
-    'deliveries'=>'Despachos',
+    'dispatch'=>'Despachar',
+    'deliveries'=>'Entregas',
+    'deliver'=>'Entregar',
     'record'=>'Historial',
     'provinces'=>'Provincias',
     'cities'=>'Ciudades',
@@ -51,11 +53,14 @@ return [
     'presentations'=>'Presentaciones',
     'containers'=>'Envases',
     'menus'=>'Menús',
+    'menu'=>'Menu',
     'offices'=>'Sucursales',
     'products'=>'Productos',
     'images'=>'Imágenes',
     'clients'=>'Clientes',
     'client'=>'Cliente',
+    'invoice'=>'Factura',
+    'invoices'=>'Facturas',
 
     
     'user' => 'Usuario',
@@ -119,7 +124,8 @@ return [
     'external'=>'Externo',
     'created'=>'Creado',
     'confirmed'=>'Confirmado',
-    'delivered'=>'Despachado',
+    'dispatched'=>'Despachado',
+    'delivered'=>'Entregado',
     'received'=>'Recibido',
     'since'=>'Desde',
     'subtotal'=>'Subtotal',
@@ -136,6 +142,14 @@ return [
     'summary'=>'Resumen',
     'balance'=>'Saldo',
     'date'=>'Fecha',
+    'soldout'=>'Agotado',
+    'discontinued'=>'Descontinuado',
+    'inventory'=>'Inventario',
+    'route'=>'Ruta',
+    'multilanguage'=>'Multilenguaje',
+    'code'=>'Código',
+    'value'=>'Valor',
+    
 
     'currency'=>'US$',
     

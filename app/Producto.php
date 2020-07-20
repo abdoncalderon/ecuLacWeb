@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
 
-    protected $fillable = ['nombre','descripcion','categoria_id','tipo_id','presentacion_id','precioUnitario','descuento','iva'];
+    protected $fillable = ['nombre','descripcion','categoria_id','tipo_id','presentacion_id','precioUnitario','descuento','iva','estado','esDestacado'];
 
     public function categoria($id){
         $categoria = Categoria::find($id);

@@ -38,7 +38,7 @@
                 <article class="categoria">
                     <div class="nombre">{{ $categoria->nombre }}</div>
                     <div class="descripcion">{{ $categoria->descripcion }}</div>
-                    <a href="#">
+                    <a href="{{ route('tienda.filtroCategoria',$categoria) }}">
                         <div class="imagen" style="background-image: url({{ asset('img/categorias/'.$categoria->imagen) }});"></div>
                     </a>
                 </article>
@@ -57,7 +57,7 @@
                     <div class="imagen" style="background-image: url({{ asset('img/productos/'.$destacado->imagenPredeterminada($destacado->id)) }})">
                         <div class="{{ $destacado->estado }}">{{ $destacado->estado }}</div>
                         @if($destacado->descuento>0)
-                            <div class="descuento">-{{ $destacado->descuento }}%</div>
+                            <div class="descuento">-{{ number_format($destacado->descuento,0) }}%</div>
                         @endif
                     </div>
                     <div class="nombre"><p>{{ $destacado->nombre}}</p></div>

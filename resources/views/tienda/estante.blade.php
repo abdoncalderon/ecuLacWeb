@@ -20,13 +20,11 @@
         <div class="imagenes">
             <div class="otras">
                 @foreach ($imagenes as $imagen)
-                    <a href="#">
-                        <div class="imagen" style="background-image: url({{ asset('img/productos/'.$imagen->imagen) }})"></div>
-                    </a>
+                    <div id="imagenGaleria" class="imagen" style="background-image: url({{ asset('img/productos/'.$imagen->imagen) }})"></div>
                 @endforeach
             </div>
-            <div class="predeterminada" style="background-image: url({{ asset('img/productos/'.$imagenPredeterminada) }})">
-                <div class="logo" style="background-image: url({{ asset('img/logos/ecolac3.png') }})" ></div>
+            <div id="imagenPredeterminada" class="predeterminada" style="background-image: url({{ asset('img/productos/'.$imagenPredeterminada) }})">
+                <div class="logo" style="background-image: url({{ asset('img/logos/ecolac1.png') }})" ></div>
             </div>
         </div>
 
@@ -64,10 +62,10 @@
                             name="cantidad" 
                             id="cantidad" 
                             autocomplete="off"
-                            {{ $producto->existenciaActual<=0 ? 'disabled' : '' }} 
+                            {{ $producto->estado!='Disponible' ? 'disabled' : '' }} 
                             onchange="document.getElementById('cantidadCompra').value=this.value"
                         >
-                    <div class="existencia">{{ __('content.availables').' '.$producto->existenciaActual.' '.__('content.products') }}</div>
+                    <div class="existencia" {{ $producto->estado!='Disponible' ? 'hidden' : '' }}>{{ __('content.availables').' '.$producto->existenciaActual.' '.__('content.products') }}</div>
                 </div>
                 
                 @if($errors->any())

@@ -33,9 +33,14 @@ return [
     'shopcontinue'=>'Continue Comprando',
     'confirmPay'=>'Por favor necesitamos su confirmación para proceder al pago',
     'confirmOrder'=>'Por favor necesitamos su confirmación para proceder con la orden',
+    'confirmChangeStatus'=>'Por favor necesitamos su confirmación para proceder con el cambio de estado del pedido',
     'valueToPay'=>'Valor a Pagar',
+    'valuePaid'=>'Valor Pagado',
     'noStock'=>'No hay existencia suficiente de este Producto',
-
+    'backTo'=>'Regresar a',
+    'changeTo'=>'Cambiar a',
+    'myAccount'=>'Mi Cuenta',
+    'routeNoExist'=>'Ruta Laravel No Existe en esta aplicación',
 
 
     

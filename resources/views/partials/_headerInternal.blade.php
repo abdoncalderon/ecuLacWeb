@@ -4,7 +4,18 @@
             <img src="{{ asset('img/logos/ecolac4.png') }}" alt="">
         </div>
         <div class="cinta">
-            <div class="opcion">
+            @foreach (App\MenuRol::menusrol(auth()->user()->rol_id) as $menurol)
+                <div class="opcion">
+                    <a href="{{ route($menurol->menu($menurol->menu_id)->ruta) }}">
+                        <div class="icono" style="background-image: url({{ asset('img/iconos/'.$menurol->menu($menurol->menu_id)->icono) }})"></div>
+                        <div class="titulo">
+                            {{ __($menurol->menu($menurol->menu_id)->nombre) }}
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+
+            {{-- <div class="opcion">
                 <a href="{{ route('provincias.index') }}">
                     <div class="icono" style="background-image: url({{ asset('img/iconos/provincias.png') }})"></div>
                     <div class="titulo">
@@ -69,7 +80,7 @@
                 </a>
             </div>
             <div class="opcion">
-                <a class="" href="#">
+                <a class="" href="{{ route('menus.index') }}">
                     <div class="icono" style="background-image: url({{ asset('img/iconos/menus.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.menus') }}
@@ -92,14 +103,7 @@
                     </div>
                 </a>
             </div>
-            <div class="opcion">
-                <a class="" href="#">
-                    <div class="icono" style="background-image: url({{ asset('img/iconos/ventas.png') }})"></div>
-                    <div class="titulo">
-                        {{ __('content.sales') }}
-                    </div>
-                </a>
-            </div>
+          
             <div class="opcion">
                 <a class="" href="{{ route('pedidos.index','Despachos') }}">
                     <div class="icono" style="background-image: url({{ asset('img/iconos/despachos.png') }})"></div>
@@ -109,13 +113,13 @@
                 </a>
             </div>
             <div class="opcion">
-                <a class="" href="#">
+                <a class="" href="{{ route('reportes.index') }}">
                     <div class="icono" style="background-image: url({{ asset('img/iconos/reportes.png') }})"></div>
                     <div class="titulo">
                         {{ __('content.reports') }}
                     </div>
                 </a>
-            </div>
+            </div> --}}
          
         </div>
     </div>

@@ -35,8 +35,8 @@
                                 <th>{{ __('content.client') }}</th>
                                 <th>{{ __('content.created') }}</th>
                                 <th>{{ __('content.confirmed') }}</th>
+                                <th>{{ __('content.dispatched') }}</th>
                                 <th>{{ __('content.delivered') }}</th>
-                                <th>{{ __('content.received') }}</th>
                                 <th>{{ __('content.status') }}</th>
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
@@ -55,18 +55,20 @@
                                             @case('Pedidos')
                                                 @if($pedido->estado=='ABIERTO')
                                                     <a class="accion" href="{{ route('pedidos.edit',['vista'=>$vista, 'pedido'=>$pedido]) }}">{{ __('content.edit') }}</a>
+                                                    <a class="accion" href="{{ route('pedidos.destroy',$pedido->id) }}">{{ __('content.cancel') }}</a>
                                                 @else
                                                     <a class="accion" href="{{ route('pedidos.show',['vista'=>$vista, 'pedido'=>$pedido]) }}">{{ __('content.show') }}</a>
                                                 @endif
                                                 @break
+
                                             @case('Despachos')
-                                                
+                                                @if($pedido->estado!='ENTREGADO')
+                                                    <a class="accion" href="{{ route('pedidos.update',['vista'=>$vista, 'pedido'=>$pedido]) }}">{{ __('content.update') }}</a>
+                                                @else
+                                                    <a class="accion" href="{{ route('pedidos.show',['vista'=>$vista, 'pedido'=>$pedido]) }}">{{ __('content.show') }}</a>
+                                                @endif
                                                 @break
-                                            @default
-                                                
                                         @endswitch
-                                        {{-- <a class="accion" href="{{ route('pedidos.show',['vista'=>$vista, 'pedido'=>$pedido]) }}">{{ __('content.show') }}</a> --}}
-                                        <a class="accion" href="{{ route('pedidos.destroy',$pedido->id) }}">{{ __('content.delete') }}</a>
                                     </td>
                                 </tr>
                             @endforeach

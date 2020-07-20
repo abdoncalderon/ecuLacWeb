@@ -38,7 +38,7 @@
             </div>
         @else
             <div class="cuenta">
-                <a href="{{ route('clientes.cuenta') }}">{{ __('content.account') }}</a>
+                <a href="{{ route('clientes.cuenta') }}">{{ __('messages.myAccount') }}</a>
             </div>
             <div class="logout">
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('content.logout')}}</a>
