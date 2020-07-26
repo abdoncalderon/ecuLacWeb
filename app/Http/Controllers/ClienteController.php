@@ -6,6 +6,7 @@ use App\Cliente;
 use App\Pedido;
 use App\ItemPedido;
 use App\User;
+use Illuminate\Http\Request;
 class ClienteController extends Controller
 {
     public function cuenta(){
@@ -18,8 +19,56 @@ class ClienteController extends Controller
         ->with(compact('cliente'));
     }
 
-    public function historial(){
-        $pedidos = Pedido::where('cliente_id',auth()->id())->orderBy('id','DESC')->get();
+    public function historial(Request $request){
+        if (count($request->all())>0){
+            $desde = $request->get('desde');
+            $hasta = $request->get('hasta');
+            $estado = $request->get('estado');
+            
+            if ($desde <= $hasta){
+                if($estado!=null){
+                    switch ($estado){
+                        case 2: 
+                            $pedidos = Pedido::where('cliente_id',auth()->id())
+                                                ->Where('estado','=','CONFIRMADO')
+                                                ->whereBetween('fechaConfirmacion',[$desde,$hasta])
+                                                ->orderBy('created_at','DESC')
+                                                ->paginate(10);
+                            break;
+                        case 3: 
+                            $pedidos = Pedido::where('cliente_id',auth()->id())
+                                                ->Where('estado','=','DESPACHADO')
+                                                ->whereBetween('fechaDespacho',[$desde,$hasta])
+                                                ->orderBy('created_at','DESC')
+                                                ->paginate(10);
+                            break;
+                        case 4: 
+                            $pedidos = Pedido::where('cliente_id',auth()->id())
+                                                ->Where('estado','=','ENTREGADO')
+                                                ->whereBetween('fechaEntrega',[$desde,$hasta])
+                                                ->orderBy('created_at','DESC')
+                                                ->paginate(10);
+                            break;
+                        default: 
+                            $pedidos = Pedido::where('cliente_id',auth()->id())
+                                                ->Where('estado','=','ABIERTO')
+                                                ->whereBetween('fechaCreacion',[$desde,$hasta])
+                                                ->orderBy('created_at','DESC')
+                                                ->paginate(10);
+                            break;
+                    }
+                }else{
+                    $pedidos = Pedido::where('cliente_id',auth()->id())
+                    ->whereBetween('fechaCreacion',[$desde,$hasta])
+                    ->orderBy('created_at','DESC')
+                    ->paginate(10);
+                }
+            }else{
+                return back()->withErrors(__('messages.dateRange'));
+            }
+        }else{
+            $pedidos = Pedido::where('cliente_id',auth()->id())->orderBy('id','DESC')->get();
+        }
         return view('clientes.historial')
         ->with(compact('pedidos'));
     }

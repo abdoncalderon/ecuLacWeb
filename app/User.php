@@ -24,12 +24,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    
+
     public function rol($id){
         $rol = Rol::find($id);
         return $rol->nombre;
     }
 
-    static public function crearSuperUsuario(){
+
+
+    /* static public function crearSuperUsuario(){
         $usuarios = User::all();
         if(count($usuarios)<1){
             $roles=Rol::all();
@@ -50,7 +55,7 @@ class User extends Authenticatable
             ]);
         }
         
-    }
+    } */
 
     static public function ciudad($ciudadId){
         $ciudad = Ciudad::find($ciudadId);

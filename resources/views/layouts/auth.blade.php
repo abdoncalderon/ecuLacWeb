@@ -19,6 +19,8 @@
     @include('partials._mainFooter')
 
     @include('partials._scripts')
+
+    @yield('script')
     
 </body>
 

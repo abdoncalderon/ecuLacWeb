@@ -282,10 +282,38 @@ section{
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 
-.auth{
+
+.login{
 	width: 50%;
-	margin: auto;
+	margin: auto;	
 }
+
+.registro{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 1em;
+}
+
+	.registro .datos{
+		border: 1px solid rgb(211,211,211);
+		padding: 1em;
+	}
+
+	.registro .ubicacion{
+		border: 1px solid rgb(211,211,211);
+		padding: 1em;
+		
+	}
+
+		.registro .ubicacion .mapa{
+			width: 500px;
+			height: 500px;
+			margin: auto;
+			border: 1px solid rgb(211,211,211);
+
+		}
+
+
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 
@@ -725,12 +753,9 @@ section{
 					width: 40px;
 					margin-top: 10px;
 					margin-left: 10px;
-					/* background-color: white; */
 					background-color: red;
 					padding: 8px 0px;
-					/* border: 2px solid rgb(0,174,239); */
 					border-radius: 25px;
-					/* color: rgb(0,174,239);; */
 					color: white;
 					text-align: center;
 					font-size: 1.1em;
@@ -1123,7 +1148,18 @@ section{
 				}
 
 			.pedido .items .item .precio{
-				margin: 1em;
+				margin: 1em 1em 0px 1em;
+				text-align: right;
+			}
+
+			.pedido .items .item .descuento{
+				margin: 0em 1em;
+				text-align: right;
+			}
+
+			.pedido .items .item .subtotal{
+				border-top: 1px solid rgb(211, 211, 211);
+				margin: 0em 1em;
 				text-align: right;
 			}
 
@@ -1395,11 +1431,12 @@ section{
 		grid-gap: 0em;
 		border: 1px solid rgb(211, 211, 211);
 		padding: 15px;
+		margin: 1em 1em;
 	}
 
 		.historial .pedido .resumido{
 			display: grid;
-			grid-template-columns: repeat(7, 1fr);
+			grid-template-columns: repeat(8, 1fr);
 			grid-template-rows: 20px;
 			grid-gap: 0em;
 			padding: 10px 15px;
@@ -1411,7 +1448,6 @@ section{
 			}
 
 			.historial .pedido .resumido .estado{
-				text-align: right;
 				grid-column: 2/3;
 				margin: 0px 5px;
 			}
@@ -1422,17 +1458,19 @@ section{
 				margin: 0px 5px;
 			}
 
-			.historial .pedido .resumido .enviado{
+			.historial .pedido .resumido .usuario{
 				text-align: left;
-				grid-column: 4/5;
+				grid-column: 4/6;
 				margin: 0px 5px;
 			}
+
+		
 
 			.historial .pedido .resumido .total{
 				text-align: center;
 				font-size: 1em;
 				color:black;
-				grid-column: 7/8;
+				grid-column: 8/9;
 			}
 
 		.historial .pedido .titulo{
@@ -1853,8 +1891,10 @@ section{
 
 .encabezado{
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 3fr;
 	grid-gap: 1em;
+	width: 98%;
+	margin: auto;
 }
 
 	.encabezado .resumen{
@@ -1874,24 +1914,62 @@ section{
 			text-align: left;
 			font-size: 1em;
 		}
+	
 
-	.encabezado .filtros{
+	.encabezado .acciones{
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr;
 		border: 1px solid rgb(211,211,211);
 		border-radius: 5px;
 		padding: 0.5em;
 	}
 
-		.encabezado .filtros .total{
-			text-align: left;
-			font-size: 1em;
+		.encabezado .acciones .boton{
+			align-self: center;
+		}
+	
+	.encabezado .filtros{
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		border: 1px solid rgb(211,211,211);
+		border-radius: 5px;
+		padding: 0.5em;
+	}
+
+		.encabezado .filtros .boton{
+			align-self: center;
 		}
 
-		.encabezado .filtros .cantidad{
+		.encabezado .filtros .etiqueta{
 			text-align: left;
 			font-size: 1em;
+			align-self: center;
+			margin: 0.5em;
+			text-align: right;
 		}
+
+		.encabezado .filtros .select{
+			text-align: left;
+			font-size: 1em;
+			margin: 0.5em;
+			padding: 0.25em 0.5em;
+		}
+
+		.encabezado .filtros .text{
+			text-align: left;
+			font-size: 1em;
+			margin: 0.5em;
+			padding: 0.25em 0.5em;
+		}
+
+		.encabezado .filtros .date{
+			text-align: left;
+			font-size: 1em;
+			margin: 0.5em;
+			padding: 0.1em 0.5em;
+		}
+
+	
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 
@@ -1901,6 +1979,11 @@ section{
 }
 
 /*-------------------------------------------------------------------------------------------------------------------*/
+
+.googlemap{
+	
+}
+
 
 .tabla{
 	width: 100%;

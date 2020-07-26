@@ -17,6 +17,7 @@ class StorePedidoRequest extends FormRequest
         return [
             'fechaCreacion'=>'date_format:Y-m-d H:i:s',
             'cliente_id'=>'required',
+            'vendedor_id'=>'required',
         ];
     }
 }

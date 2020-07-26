@@ -20,4 +20,10 @@ class MenuRol extends Model
         return $menusRol;
     }
 
+    static public function existe($rol, $ruta){
+        return MenuRol::join('menus','menus_roles.menu_id','=','menus.id')->where('menus_roles.rol_id',$rol)->where('menus.ruta',$ruta)->exists();
+    }
+
+    
+
 }

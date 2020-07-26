@@ -19,7 +19,7 @@ return [
     'load'=>'Cargar',
     'search'=>'Buscar',
     'buy'=>'Comprar',
-    'open'=>'Abrir',
+    'open'=>'Abierto',
     'print'=>'Imprimir',
     
 
@@ -41,8 +41,9 @@ return [
     'sales'=>'Ventas',
     'orders'=>'Pedidos',
     'order'=>'Pedido',
-    'dispatch'=>'Despachar',
+    'dispatch'=>'Envio',
     'deliveries'=>'Entregas',
+    'delivery'=>'Entrega',
     'deliver'=>'Entregar',
     'record'=>'Historial',
     'provinces'=>'Provincias',
@@ -104,6 +105,7 @@ return [
     'deactivate'=>'Desactivar',
     'buy'=>'Comprar',
     'filter'=>'Filtro',
+    'toFilter'=>'Filtrar',
     'unity'=>'Unidad',
     'unities'=>'Unidades',
     'highLight'=>'Destacado',
@@ -149,6 +151,12 @@ return [
     'multilanguage'=>'Multilenguaje',
     'code'=>'Código',
     'value'=>'Valor',
+    'all'=>'Todo',
+    'from'=>'Desde',
+    'To'=>'Hasta',
+    'confirmation'=>'Confirmación',
+    'creation'=>'Creación',
+    'seller'=>'Vendedor',
     
 
     'currency'=>'US$',

@@ -11,17 +11,19 @@ class TiendaController extends Controller
 {
     public function busqueda(Request $request){
         $busqueda = $request->input('busqueda');
-        return redirect()->route('tienda.catalogo',$busqueda);
+        $orden = $request->input('orden');
+        return redirect()->route('tienda.catalogo',['busqueda'=>$busqueda, 'orden'=>$orden]);
     }
 
-    public function catalogo($busqueda = null){
+    public function catalogo($orden = null, $busqueda = null){
+        
         if(empty($busqueda)){
-            $productos = Producto::where('id','!=','0')->paginate(12);
+            $productos = Producto::where('id','!=','0')->orderBy($this->campo($orden), $this->forma($orden))->paginate(12);
             $categorias= Producto::select('categoria_id')->distinct()->get();
             $tipos= Producto::select('tipo_id')->distinct()->get();
             $presentaciones= Producto::select('presentacion_id')->distinct()->get();
         }else{
-            $productos = Producto::where('nombre','like', '%'.$busqueda.'%')->paginate(12);
+            $productos = Producto::where('nombre','like', '%'.$busqueda.'%')->orderBy($this->campo($orden), $this->forma($orden))->paginate(12);
             $categorias = Producto::select('categoria_id')->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
             $tipos = Producto::select('tipo_id')->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
             $presentaciones = Producto::select('presentacion_id')->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
@@ -31,7 +33,8 @@ class TiendaController extends Controller
         ->with(compact('categorias'))
         ->with(compact('tipos'))
         ->with(compact('presentaciones'))
-        ->with(compact('busqueda'));
+        ->with(compact('busqueda'))
+        ->with(compact('orden'));
     }
 
     public function vitrina(){
@@ -53,7 +56,8 @@ class TiendaController extends Controller
 
     public function filtroBorrar(){
         $busqueda = null;
-        $productos = Producto::where('id','!=',0)->paginate(12);
+        $orden = null;
+        $productos = Producto::where('id','!=',0)->orderBy('precioUnitario','ASC')->paginate(12);
         $categorias = Producto::select('categoria_id')->where('id','!=',0)->distinct()->get();
         $tipos = Producto::select('tipo_id')->where('id','!=',0)->distinct()->get();
         $presentaciones = Producto::select('presentacion_id')->where('id','!=',0)->distinct()->get();
@@ -62,12 +66,14 @@ class TiendaController extends Controller
         ->with(compact('categorias'))
         ->with(compact('tipos'))
         ->with(compact('presentaciones'))
-        ->with(compact('busqueda'));
+        ->with(compact('busqueda'))
+        ->with(compact('orden'));
     }
 
     public function filtroDestacados(){
         $busqueda = null;
-        $productos = Producto::where('esDestacado',1)->paginate(12);
+        $orden = null;
+        $productos = Producto::where('esDestacado',1)->orderBy('precioUnitario','ASC')->paginate(12);
         $categorias = Producto::select('categoria_id')->where('esDestacado',1)->distinct()->get();
         $tipos = Producto::select('tipo_id')->where('esDestacado',1)->distinct()->get();
         $presentaciones = Producto::select('presentacion_id')->where('esDestacado',1)->distinct()->get();
@@ -76,12 +82,13 @@ class TiendaController extends Controller
         ->with(compact('categorias'))
         ->with(compact('tipos'))
         ->with(compact('presentaciones'))
-        ->with(compact('busqueda'));
+        ->with(compact('busqueda'))
+        ->with(compact('orden'));
     }
 
-    public function filtroCategoria($categoria, $busqueda = null){
+    public function filtroCategoria($categoria, $orden = null, $busqueda = null){
        
-        $productos = Producto::where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->paginate(12);
+        $productos = Producto::where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->orderBy($this->campo($orden), $this->forma($orden))->paginate(12);
         $categorias = Producto::select('categoria_id')->where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
         $tipos = Producto::select('tipo_id')->where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
         $presentaciones = Producto::select('presentacion_id')->where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
@@ -91,11 +98,12 @@ class TiendaController extends Controller
         ->with(compact('categorias'))
         ->with(compact('tipos'))
         ->with(compact('presentaciones'))
-        ->with(compact('busqueda'));
+        ->with(compact('busqueda'))
+        ->with(compact('orden'));
     }
 
-    public function filtroTipo($tipo, $busqueda = null){
-        $productos = Producto::where('tipo_id','=',$tipo)->where('nombre','like', '%'.$busqueda.'%')->paginate(12);
+    public function filtroTipo($tipo, $orden = null, $busqueda = null){
+        $productos = Producto::where('tipo_id','=',$tipo)->where('nombre','like', '%'.$busqueda.'%')->orderBy($this->campo($orden), $this->forma($orden))->paginate(12);
         $tipos = Producto::select('tipo_id')->where('tipo_id','=',$tipo)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
         $categorias = Producto::select('categoria_id')->where('tipo_id','=',$tipo)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
         $presentaciones = Producto::select('presentacion_id')->where('tipo_id','=',$tipo)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
@@ -105,11 +113,12 @@ class TiendaController extends Controller
         ->with(compact('categorias'))
         ->with(compact('tipos'))
         ->with(compact('presentaciones'))
-        ->with(compact('busqueda'));
+        ->with(compact('busqueda'))
+        ->with(compact('orden'));
     }
 
-    public function filtroPresentacion($presentacion, $busqueda = null){
-        $productos = Producto::where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->paginate(12);;
+    public function filtroPresentacion($presentacion, $orden = null, $busqueda = null){
+        $productos = Producto::where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->orderBy($this->campo($orden), $this->forma($orden))->paginate(12);;
         $tipos = Producto::select('tipo_id')->where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
         $categorias = Producto::select('categoria_id')->where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
         $presentaciones = Producto::select('presentacion_id')->where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
@@ -119,9 +128,46 @@ class TiendaController extends Controller
         ->with(compact('categorias'))
         ->with(compact('tipos'))
         ->with(compact('presentaciones'))
-        ->with(compact('busqueda'));
+        ->with(compact('busqueda'))
+        ->with(compact('orden'));
     }
 
-    
+    private function campo($orden){
+        if(! empty($orden)){
+            switch ($orden){
+                case 1:
+                    $campo = 'precioUnitario';
+                    break;
+                case 2:
+                    $campo = 'precioUnitario';
+                    break;
+                case 3:
+                    $campo = 'esDestacado';
+                    break;
+            }
+        }else{
+            $campo = 'precioUnitario';
+        }
+        return $campo;
+    }
+
+    private function forma($orden){
+        if(! empty($orden)){
+            switch ($orden){
+                case 1:
+                    $forma = 'ASC';
+                    break;
+                case 2:
+                    $forma = 'DESC';
+                    break;
+                case 3:
+                    $forma = 'DESC';
+                    break;
+            }
+        }else{
+            $forma= 'ASC';
+        }
+        return $forma;
+    }
    
 }

@@ -20,15 +20,36 @@
             {{ $errors->first() }}
         </div>
     @endif
+
     <div class='ventana'>
         <div class="titulo">{{ __('content.move').' '.__('content.stock') }} {{ $producto->nombre }}</div>
+        <div class="encabezado">
+            <div class="acciones">
+                <span class="boton">
+                    <a class="btn btn-success " href="{{ route('movimientosexistencias.create',$producto) }}">{{ __('content.add') }}  {{ __('content.stock') }}</a>
+                </span>
+            </div>
+            <form method="GET" action="{{ route('movimientosexistencias.index',$producto) }}">
+                <div class="filtros">
+                    <span class="boton">
+                        <button class="btn btn-secondary" type="submit">{{ __('content.toFilter') }}</button>
+                    </span>
+                    <div class="etiqueta">{{ __('content.office') }}</div>
+                    <select class="select"  name="sucursal" id="sucursal">
+                        <option value="">{{ __('content.all') }}</option>
+                        @foreach ($sucursales as $sucursal)
+                            <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}</option>
+                        @endforeach
+                    </select>
+                    <div class="etiqueta">{{ __('content.from') }}</div>
+                    <input class="date" type="date" id="desde" name="desde" value="{{ Carbon\Carbon::now()->toDateString() }}" min="1900-01-01" max="2999-12-31">
+                    <div class="etiqueta">{{ __('content.To') }}</div>
+                    <input class="date" type="date" id="hasta" name="hasta" value="{{ Carbon\Carbon::now()->toDateString() }}" min="1900-01-01" max="2999-12-31">
+                </div>
+            </form>
+        </div>
         <div class="contenido">
             <div class="index">
-                <div>
-                    <span>
-                    <a class="btn btn-success " href="{{ route('movimientosexistencias.create',$producto) }}">{{ __('content.add') }}  {{ __('content.stock') }}</a>
-                    </span>
-                </div>
                 <div class="table-responsive">
                     <table class="tabla">
                         <thead>

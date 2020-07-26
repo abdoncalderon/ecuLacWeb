@@ -28,11 +28,24 @@
                 <div class="cantidad">{{ __('content.quantity') }} {{ __('content.sales') }}: {{ $cantidadVentas }}</div>
                 <div class="total"> Total {{ __('content.sales') }}: {{ $totalVentas }}</div>
             </div>
-
-            <div class="filtros">
-                <div class="cantidad">{{ __('content.quantity') }} {{ __('content.sales') }}: {{ $cantidadVentas }}</div>
-                <div class="total"> Total {{ __('content.sales') }}: {{ $totalVentas }}</div>
-            </div>
+            <form method="GET" action="{{ route('reportes.ventas') }}">
+                <div class="filtros">
+                    <span class="boton">
+                        <button class="btn btn-secondary" type="submit">{{ __('content.search') }}  {{ __('content.sales') }}</button>
+                    </span>
+                    <div class="etiqueta">{{ __('content.seller') }}</div>
+                    <select class="select"  name="vendedor" id="vendedor">
+                        <option value="">{{ __('content.all') }}</option>
+                        @foreach ($vendedores as $vendedor)
+                            <option value="{{ $vendedor->id }}">{{ $vendedor->nombreCompleto }}</option>
+                        @endforeach
+                    </select>
+                    <div class="etiqueta">{{ __('content.from') }}</div>
+                    <input class="date" type="date" id="desde" name="desde" value="{{ Carbon\Carbon::now()->toDateString() }}" min="1900-01-01" max="2999-12-31">
+                    <div class="etiqueta">{{ __('content.To') }}</div>
+                    <input class="date" type="date" id="hasta" name="hasta" value="{{ Carbon\Carbon::now()->toDateString() }}" min="1900-01-01" max="2999-12-31">
+                </div>
+            </form>
         </div>
         <div class="contenido">
             <div class="index">
@@ -77,7 +90,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $facturas->links() }}
+                {{ $facturas->withQueryString()->links() }}
             </div>
         </div>
     </div>

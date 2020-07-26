@@ -20,13 +20,41 @@
     @endif
     <div class='ventana'>
         <div class="titulo">{{ __('content.products') }}</div>
+        <div class="encabezado">
+           
+            <div class="acciones">
+                <span class="boton">
+                    <a class="btn btn-success" href="{{ route('productos.create')}}">{{ __('content.add') }}  {{ __('content.product') }}</a>
+                </span>
+            </div>
+            <form method="GET" action="{{ route('productos.index') }}">
+                <div class="filtros">
+                    <span class="boton">
+                        <button class="btn btn-secondary" type="submit">{{ __('content.search') }}  {{ __('content.product') }}</button>
+                    </span>
+                    <div class="etiqueta">{{ __('content.name') }}</div>
+                    <input type="text" class="text" id="nombre" name="nombre">
+                    <div class="etiqueta">{{ __('content.category') }}</div>
+                    <select class="select"  name="categoria" id="categoria">
+                        <option value="">{{ __('content.all') }}</option>
+                        @foreach ($categorias as $categoria)
+                            <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                        @endforeach
+                    </select>
+                    <div class="etiqueta">{{ __('content.status') }}</div>
+                    <select class="select" name="estado" id="estado">
+                        <option value="">{{ __('content.all') }}</option>
+                        <option value="{{ __('content.available') }}">{{ __('content.available') }}</option>
+                        <option value="{{ __('content.soldout') }}">{{ __('content.soldout') }}</option>
+                        <option value="{{ __('content.discontinued') }}">{{ __('content.discontinued') }}</option>
+                    </select>
+                    
+                </div>
+            </form>
+        </div>
         <div class="contenido">
             <div class="index">
-                <div>
-                    <span>
-                    <a class="btn btn-success " href="{{ route('productos.create')}}">{{ __('content.add') }}  {{ __('content.product') }}</a>
-                    </span>
-                </div>
+                
                 <div class="table-responsive">
                     <table class="tabla">
                         <thead>
@@ -67,8 +95,9 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $productos->links() }}
+                {{ $productos->withQueryString()->links() }}
             </div>
         </div>
     </div>
 @endsection
+

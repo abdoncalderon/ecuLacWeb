@@ -2,7 +2,8 @@
 
 @section('section')
 
-    <div class="auth">
+<section>
+    <div class="login">
 
         <div class="ventana">
 
@@ -87,5 +88,8 @@
         </div>
 
     </div>
+</section>
+
+    
 
 @endsection

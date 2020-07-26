@@ -29,6 +29,43 @@ class MenusRolesTableSeeder extends Seeder
                 "menu_id" => '4',
                 "rol_id" => '1',
             ],
+            [
+                "menu_id" => '5',
+                "rol_id" => '1',
+            ],
+            [
+                "menu_id" => '5',
+                "rol_id" => '1',
+            ],
+            [
+                "menu_id" => '7',
+                "rol_id" => '1',
+            ],
+            [
+                "menu_id" => '8',
+                "rol_id" => '1',
+            ],
+            [
+                "menu_id" => '9',
+                "rol_id" => '1',
+            ],
+            [
+                "menu_id" => '10',
+                "rol_id" => '1',
+            ],
+            [
+                "menu_id" => '11',
+                "rol_id" => '1',
+            ],
+            [
+                "menu_id" => '12',
+                "rol_id" => '1',
+            ],
+            [
+                "menu_id" => '13',
+                "rol_id" => '1',
+            ],
+
             
         ]);
     }

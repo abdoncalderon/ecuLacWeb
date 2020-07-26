@@ -11,10 +11,24 @@ use Illuminate\Http\Request;
 class MovimientoExistenciaController extends Controller
 {
     
-    public function index(Producto $producto){
-        $movimientosExistencias = MovimientoExistencia::where('producto_id',$producto->id)->paginate(10);
+    public function index(Producto $producto, Request $request){
+        $sucursales = Sucursal::all();
+        if(count($request->all())>0){
+            $desde = $request->get('desde');
+            $hasta = $request->get('hasta');
+            $sucursal = $request->get('sucursal');
+            if ($sucursal == null){
+                $movimientosExistencias = MovimientoExistencia::whereBetween('fecha',[$desde,$hasta])->where('producto_id',$producto->id)->paginate(20);
+            }else{
+                $movimientosExistencias = MovimientoExistencia::whereBetween('fecha',[$desde,$hasta])->where('producto_id',$producto->id)->where('sucursal_id',$sucursal)->paginate(20);
+            }
+        }else{
+            $movimientosExistencias = MovimientoExistencia::where('producto_id',$producto->id)->paginate(10);
+        }
+        
         return view('movimientosexistencias.index')
         ->with(compact('movimientosExistencias'))
+        ->with(compact('sucursales'))
         ->with(compact('producto'));
     }
     

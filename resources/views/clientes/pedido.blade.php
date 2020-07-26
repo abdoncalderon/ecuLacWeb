@@ -30,7 +30,10 @@
                         <div class="cantidad">{{ __('content.quantity').': '.$item->cantidad.' '.__('content.unities') }}</div>
                     </div>
                     <div>
-                        <div class="precio">{{ __('content.currency') }} {{ number_format($item->producto($item)->precioDescuento($item->producto_id),2) }}</div>
+                        <div class="precio">{{ __('content.currency').' '.$item->precioUnitario }}</div>
+                        <div class="descuento">{{ __('content.discount') }} {{ __('content.currency') }} {{ number_format($item->producto($item)->valorDescuento($item->producto_id),2) }}</div>
+                        <div class="subtotal">{{ __('content.currency') }} {{ $item->producto($item)->precioDescuento($item->producto_id) }}</div>
+                        {{-- <div class="precio">{{ __('content.currency') }} {{ number_format($item->producto($item)->precioDescuento($item->producto_id),2) }}</div> --}}
                         <a class="eliminar" href="{{ route('itemspedidos.destroy',$item->id) }}">{{ __('content.delete') }}</a>
                     </div>
                     

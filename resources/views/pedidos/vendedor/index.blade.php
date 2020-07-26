@@ -21,13 +21,33 @@
     @endif
     <div class='ventana'>
         <div class="titulo">{{ __('content.orders') }} {{ __('content.clients')}}</div>
+        <div class="encabezado">
+            <div class="acciones">
+                <span class="boton">
+                    <a class="btn btn-success " href="{{ route('pedidos.create')}}">{{ __('content.create') }}  {{ __('content.order') }}</a>
+                </span>
+            </div>
+            <form method="GET" action="{{ route('pedidos.vendedor') }}">
+                <div class="filtros">
+                    <span class="boton">
+                        <button class="btn btn-secondary" type="submit">{{ __('content.search') }}  {{ __('content.order') }}</button>
+                    </span>
+                    <div class="etiqueta">{{ __('content.date') }}</div>
+                    <select class="select" name="fecha" id="fecha">
+                        <option value="1">{{ __('content.creation') }}</option>
+                        <option value="2">{{ __('content.confirmation') }}</option>
+                        <option value="3">{{ __('content.dispatch') }}</option>
+                        <option value="4">{{ __('content.delivery') }}</option>
+                    </select>
+                    <div class="etiqueta">{{ __('content.from') }}</div>
+                    <input class="date" type="date" id="desde" name="desde" value="{{ Carbon\Carbon::now()->toDateString() }}" min="1900-01-01" max="2999-12-31">
+                    <div class="etiqueta">{{ __('content.To') }}</div>
+                    <input class="date" type="date" id="hasta" name="hasta" value="{{ Carbon\Carbon::now()->toDateString() }}" min="1900-01-01" max="2999-12-31">
+                </div>
+            </form>
+        </div>
         <div class="contenido">
             <div class="index">
-                <div>
-                    <span>
-                    <a class="btn btn-success " href="{{ route('pedidos.create')}}">{{ __('content.create') }}  {{ __('content.order') }}</a>
-                    </span>
-                </div>
                 <div class="table-responsive">
                     <table class="tabla">
                         <thead>
@@ -63,7 +83,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $pedidos->links() }}
+                {{ $pedidos->withQueryString()->links() }}
             </div>
         </div>
     </div>

@@ -14,14 +14,52 @@
 @endsection
 
 @section('contenidoPrincipal')
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ $errors->first() }}
+        </div>
+    @endif
+    <div class="encabezado">
+        <div class="resumen">
+           
+        </div>
+        <form method="GET" action="{{ route('clientes.historial') }}">
+            <div class="filtros">
+                <span class="boton">
+                    <button class="btn btn-secondary" type="submit">{{ __('content.search') }}  {{ __('content.order') }}</button>
+                </span>
+                <div class="etiqueta">{{ __('content.status') }}</div>
+                <select class="select" name="estado" id="estado">
+                    <option value="">{{ __('content.all') }}</option>
+                    <option value="1">{{ __('content.open') }}</option>
+                    <option value="2">{{ __('content.confirmed') }}</option>
+                    <option value="3">{{ __('content.dispatched') }}</option>
+                    <option value="4">{{ __('content.delivered') }}</option>
+                </select>
+                <div class="etiqueta">{{ __('content.from') }}</div>
+                <input class="date" type="date" id="desde" name="desde" value="{{ Carbon\Carbon::now()->toDateString() }}" min="1900-01-01" max="2999-12-31">
+                <div class="etiqueta">{{ __('content.To') }}</div>
+                <input class="date" type="date" id="hasta" name="hasta" value="{{ Carbon\Carbon::now()->toDateString() }}" min="1900-01-01" max="2999-12-31">
+            </div>
+        </form>
+    </div>
     <div class="historial">
         @foreach ($pedidos as $pedido)
             <div class="pedido">
                 <div class="resumido">
-                    <div class="numeracion">{{ __('content.order')}} # {{ $pedido->id }}</div>
+                    <div class="numeracion">{{ __('content.order')}} # {{ sprintf('%08d',$pedido->id) }}</div>
                     <div class="estado">{{ $pedido->estado }}</div>
-                    <div class="fecha">{{ $pedido->fechaCreacion }}</div>
-                    <div class="enviado">{{ $pedido->cliente($pedido->cliente_id) }}</div>
+                    @if($pedido->estado=='ABIERTO')
+                        <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaCreacion)->format('d-M-Y') }}</div>
+                    @elseif($pedido->estado=='CONFIRMADO')
+                        <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaConfirmacion)->format('d-M-Y') }}</div>
+                        <div class="usuario">{{ __('messages.soldBy') }} {{ $pedido->repartidor($pedido->vendedor_id) ?? '' }}</div>
+                    @else
+                        <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaCreacion)->format('d-M-Y') }}</div>
+                        <div class="usuario">{{ __('messages.dispatchedBy') }} {{ $pedido->repartidor($pedido->repartidor_id) ?? '' }}</div>
+                    @endif
+                    
                     <div class="total">Total: {{ $pedido->total($pedido) }}</div>
                 </div>                    
                 <div class="titulo">
@@ -43,7 +81,7 @@
                             <div class="estado">{{ $item->estado }}  {{ Carbon\Carbon::parse($item->created_at)->format('d M Y')}}</div>
                             <div class="cantidad">{{ __('content.quantity').': '.$item->cantidad.' '.__('content.unities') }}</div>
                             <div class="precio">{{ __('content.currency').' '.$item->precioUnitario }}</div>
-                            <div class="subtotal">{{ $item->subtotal }}</div>
+                            <div class="subtotal">{{ __('content.currency') }} {{ $item->subtotal }}</div>
                         </article>
                     @endforeach
                 </div>

@@ -24,19 +24,22 @@
         </div>
 
         <div class="filtros">
-            
-            <div class="orden">
-                <p class="titulo">{{ __('messages.orderBy') }}</p>
-                <select class="seleccion" name="orden" id="orden">
-                    <option value="1">{{  __('messages.cheapexpensive') }}</option>
-                    <option value="2">{{  __('messages.expensivecheap') }}</option>
-                    <option value="2">{{  __('messages.ourHighlights') }}</option>
-                </select>
-            </div>
+            <form method="GET" action="{{ route('tienda.busqueda') }}">
+                <div class="orden">
+                    <p class="titulo">{{ __('messages.orderBy') }}</p>
+                    <select class="seleccion" name="orden" id="orden" onchange="document.getElementById('submit').click()">
+                        <option value="1" {{ $orden==1 ? 'selected' : '' }}>{{  __('messages.cheapexpensive') }}</option>
+                        <option value="2" {{ $orden==2 ? 'selected' : '' }}>{{  __('messages.expensivecheap') }}</option>
+                        <option value="3" {{ $orden==3 ? 'selected' : '' }}>{{  __('messages.ourHighlights') }}</option>
+                    </select>
+                    <input type="text" name="busqueda" hidden value="{{ $busqueda }}">
+                    <input type="submit" id="submit" name="submit" hidden>
+                </div>
+            </form>
             <div class="categorias">
                 <p class="titulo">{{ __('content.categories')}}</p>
                 @foreach ($categorias as $categoria)
-                    <a class="categoria" href="{{ route('tienda.filtroCategoria',['categoria'=>$categoria->categoria_id, 'busqueda'=> $busqueda]) }}">{{ $categoria->categoria($categoria->categoria_id) }}</a>
+                    <a class="categoria" href="{{ route('tienda.filtroCategoria',['categoria'=>$categoria->categoria_id, 'busqueda'=> $busqueda, 'orden'=>$orden]) }}">{{ $categoria->categoria($categoria->categoria_id) }}</a>
                 @endforeach
             </div>
             <div class="tipos">

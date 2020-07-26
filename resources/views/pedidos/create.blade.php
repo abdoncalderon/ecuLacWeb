@@ -28,6 +28,8 @@
 
                         <input id="fechaCreacion" name="fechaCreacion" hidden type="text" value="{{ Carbon\Carbon::now()->toDateTimeString() }}">
 
+                        <input id="vendedor_id" name="vendedor_id" hidden type="text" value="{{ auth()->id() }}">
+
                         <div class="form-group row">
                             <label for="cliente_id" class="col-md-4 col-form-label text-md-right">{{ __('content.order') }}</label>
                             <div class="col-md-6">

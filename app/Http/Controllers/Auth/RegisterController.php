@@ -40,7 +40,11 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    
+    public function registro1(){
+        return view('auth.register1');
+    }
+
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -54,8 +58,8 @@ class RegisterController extends Controller
             'password'=> ['required', 'string', 'min:8', 'confirmed'],
             'ciudad_id'=> ['required'],
             'direccion'=> ['required', 'string', 'max:255'],
-            'latitud'=> ['string', 'max:50'],
-            'longitud'=> ['string', 'max:50'], 
+            'latitud'=> ['max:50'],
+            'longitud'=> ['max:50'], 
 
         ]);
     }
@@ -77,6 +81,8 @@ class RegisterController extends Controller
             'usuario_id'=>$nuevoUsuario->id,
             'ciudad_id'=>$data['ciudad_id'],
             'direccion'=>$data['direccion'],
+            'latitud'=>$data['latitud'],
+            'longitud'=>$data['longitud'],
         ]);
 
         return $nuevoUsuario;

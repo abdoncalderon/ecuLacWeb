@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="busqueda">
-            <form method="POST" action="{{ route('tienda.busqueda') }}">
+            <form method="GET" action="{{ route('tienda.busqueda') }}">
                 @csrf
                 <input 
                     id="busqueda"

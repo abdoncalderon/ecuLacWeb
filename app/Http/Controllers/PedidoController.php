@@ -12,15 +12,99 @@ use Illuminate\Http\Request;
 
 class PedidoController extends Controller
 {
+    public function vendedor(Request $request){ 
+        if (count($request->all())>0){
+            $desde = $request->get('desde');
+            $hasta = $request->get('hasta');
+            $fecha = $request->get('fecha');
+            
+            if ($desde <= $hasta){
+                switch ($fecha){
+                    case 2: 
+                        $pedidos = Pedido::Where(function($query) {
+                                            $query->where('vendedor_id',auth()->id())
+                                                ->orWhere('vendedor_id',NULL);
+                                            })->whereBetween('fechaConfirmacion',[$desde,$hasta])
+                                            ->orderBy('created_at','DESC')
+                                            ->paginate(10);
+                        break;
+                    case 3: 
+                        $pedidos = Pedido::Where(function($query) {
+                                            $query->where('vendedor_id',auth()->id())
+                                                ->orWhere('vendedor_id',NULL);
+                                            })->whereBetween('fechaDespacho',[$desde,$hasta])
+                                            ->orderBy('created_at','DESC')
+                                            ->paginate(10);
 
-    public function vendedor(){
-        $pedidos = Pedido::where('vendedor_id',auth()->id())->orWhere('vendedor_id',NULL)->orderBy('created_at','DESC')->paginate(10);
+                        break;
+                    case 4: 
+                        $pedidos = Pedido::Where(function($query) {
+                                            $query->where('vendedor_id',auth()->id())
+                                                ->orWhere('vendedor_id',NULL);
+                                            })->whereBetween('fechaEntrega',[$desde,$hasta])
+                                            ->orderBy('created_at','DESC')
+                                            ->paginate(10);
+                        break;
+                    default: 
+                        $pedidos = Pedido::Where(function($query) {
+                                            $query->where('vendedor_id',auth()->id())
+                                                ->orWhere('vendedor_id',NULL);
+                                            })->whereBetween('fechaCreacion',[$desde,$hasta])
+                                            ->orderBy('created_at','DESC')
+                                            ->paginate(10);
+                        break;
+                }
+            }else{
+                return back()->withErrors(__('messages.dateRange'));
+            }
+        }else{
+            $pedidos = Pedido::where('vendedor_id',auth()->id())
+                                ->orWhere('vendedor_id',NULL)
+                                ->orderBy('created_at','DESC')
+                                ->paginate(10);
+        }
         return view('pedidos.vendedor.index')
         ->with(compact('pedidos'));
     }
 
-    public function repartidor(){
-        $pedidos = Pedido::where('repartidor_id',auth()->id())->orWhere('estado','!=','ABIERTO')->orderBy('created_at','DESC')->paginate(10);
+    public function repartidor(Request $request){
+        if (count($request->all())>0){
+            $desde = $request->get('desde');
+            $hasta = $request->get('hasta');
+            $fecha = $request->get('fecha');
+            
+            if ($desde <= $hasta){
+                switch ($fecha){
+                    case 2: 
+                        $pedidos = Pedido::where('repartidor_id',auth()->id())
+                                            ->Where('estado','=','DESPACHADO')
+                                            ->whereBetween('fechaDespacho',[$desde,$hasta])
+                                            ->orderBy('created_at','DESC')
+                                            ->paginate(10);
+                        break;
+                    case 3: 
+                        $pedidos = Pedido::where('repartidor_id',auth()->id())
+                                            ->Where('estado','=','ENTREGADO')
+                                            ->whereBetween('fechaEntrega',[$desde,$hasta])
+                                            ->orderBy('created_at','DESC')
+                                            ->paginate(10);
+                        break;
+                    default: 
+                        $pedidos = Pedido::Where('estado','=','CONFIRMADO')
+                                            ->whereBetween('fechaConfirmacion',[$desde,$hasta])
+                                            ->orderBy('created_at','DESC')
+                                            ->paginate(10);
+                        break;
+                }
+            }else{
+                return back()->withErrors(__('messages.dateRange'));
+            }
+        }else{
+            $pedidos = Pedido::where(function($query){
+                                $query->where('repartidor_id',auth()->id())
+                                    ->orWhere('repartidor_id', null);
+                                })->where('estado','!=','ABIERTO')->orderBy('created_at','DESC')->paginate(10);    
+        }
         return view('pedidos.repartidor.index')
         ->with(compact('pedidos'));
     }
@@ -51,27 +135,6 @@ class PedidoController extends Controller
         return view('pedidos.update')
         ->with(compact('pedido'))
         ->with(compact('itemsPedido'));
-    }
-
-    public function change($pedidoId, $estado){
-        $fecha = Carbon::now()->toDateTimeString();
-        switch($estado){
-            case 'DESPACHADO': 
-                Pedido::where('id',$pedidoId)->update([
-                    'estado'=>$estado,
-                    'fechaDespacho'=>$fecha,
-                    'repartidor_id'=>auth()->id(),
-                ]);
-                break;
-            case 'ENTREGADO': 
-                Pedido::where('id',$pedidoId)->update([
-                    'estado'=>$estado,
-                    'fechaEntrega'=>$fecha,
-                    'repartidor_id'=>auth()->id(),
-                ]);
-                break;
-        }
-        return redirect()->route('pedidos.repartidor');
     }
 
     public function create(){
@@ -124,4 +187,26 @@ class PedidoController extends Controller
 
         return redirect()->route('home');
     }     
+
+
+    public function change($pedidoId, $estado){
+        $fecha = Carbon::now()->toDateTimeString();
+        switch($estado){
+            case 'DESPACHADO': 
+                Pedido::where('id',$pedidoId)->update([
+                    'estado'=>$estado,
+                    'fechaDespacho'=>$fecha,
+                    'repartidor_id'=>auth()->id(),
+                ]);
+                break;
+            case 'ENTREGADO': 
+                Pedido::where('id',$pedidoId)->update([
+                    'estado'=>$estado,
+                    'fechaEntrega'=>$fecha,
+                    'repartidor_id'=>auth()->id(),
+                ]);
+                break;
+        }
+        return redirect()->route('pedidos.repartidor');
+    }
 }

@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        User::crearSuperUsuario();
+        // User::crearSuperUsuario();
         if(Auth::guest()){
            return redirect()->route('tienda.vitrina');
         }else{

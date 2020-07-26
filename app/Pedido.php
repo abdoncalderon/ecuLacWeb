@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pedido extends Model
 {
-    protected $fillable = ['fechaCreacion','cliente_id',];
+    protected $fillable = ['fechaCreacion','fechaConfirmacion','FechaDespacho','FechaEntrega','cliente_id','vendedor_id','repartidor_id','estado',];
 
     static public function abierto($clienteId){
         $pedido = Pedido::where('cliente_id',$clienteId)->where('estado','ABIERTO')->first();
@@ -36,6 +36,7 @@ class Pedido extends Model
     static public function subtotal($pedidoId){
         $itemsPedido = Pedido::items($pedidoId);
         $total=0;
+
         foreach ($itemsPedido as $item){
             $total=$total+$item->subtotal;
         }
@@ -73,6 +74,28 @@ class Pedido extends Model
     {
         $cliente = User::find($clienteId);
         return $cliente->nombreCompleto;
+    }
+
+    static public function vendedor($vendedorId)
+    {
+        $vendedor = User::find($vendedorId);
+        if(empty($vendedor)){
+            return null;
+        }else{
+            return $vendedor->nombreCompleto;
+        }
+
+        
+    }
+
+    static public function repartidor($repartidorId)
+    {
+        $repartidor = User::find($repartidorId);
+        if(empty($repartidor)){
+            return null;
+        }else{
+            return $repartidor->nombreCompleto;
+        }
     }
 
     static public function items($pedidoId){

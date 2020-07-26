@@ -13,38 +13,73 @@ class MenusTableSeeder extends Seeder
     public function run()
     {
         return DB::table('menus')->insert([
+            
+            [
+                "nombre" => 'content.provinces',
+                "ruta"  => 'provincias.index',
+                "icono" => 'provincias.png',
+            ],
+            [
+                "nombre" => 'content.cities',
+                "ruta"  => 'ciudades.index',
+                "icono" => 'ciudades.png',
+            ],
+            [
+                "nombre" => 'content.offices',
+                "ruta"  => 'sucursales.index',
+                "icono" => 'sucursales.png',
+            ],
+            [
+                "nombre" => 'content.categories',
+                "ruta"  => 'categorias.index',
+                "icono" => 'categorias.png',
+            ],
+            [
+                "nombre" => 'content.types',
+                "ruta"  => 'tipos.index',
+                "icono" => 'tipos.png',
+            ],
+            [
+                "nombre" => 'content.presentations',
+                "ruta"  => 'presentaciones.index',
+                "icono" => 'presentaciones.png',
+            ],
             [
                 "nombre" => 'content.products',
-                "icono" => 'cheese',
+                "ruta"  => 'productos.index',
+                "icono" => 'productos.png',
             ],
+            [
+                "nombre" => 'content.roles',
+                "ruta"  => 'roles.index',
+                "icono" => 'roles.png',
+            ],    
+            [
+                "nombre" => 'content.menus',
+                "ruta"  => 'menus.index',
+                "icono" => 'menus.png',
+            ],     
             [
                 "nombre" => 'content.users',
-                "icono" => 'user',
-            ],
-            [
-                "nombre" => 'content.reports',
-                "icono" => 'print',
-            ],
-            [
-                "nombre" => 'content.settings',
-                "icono" => 'cog',
+                "ruta"  => 'usuarios.index',
+                "icono" => 'usuarios.png',
             ],
             [
                 "nombre" => 'content.orders',
-                "icono" => 'list',
-            ],
-            [
-                "nombre" => 'content.sales',
-                "icono" => 'chart-pie',
+                "ruta"  => 'pedidos.vendedor',
+                "icono" => 'pedidos.png',
             ],
             [
                 "nombre" => 'content.deliveries',
-                "icono" => 'truck',
+                "ruta"  => 'pedidos.repartidor',
+                "icono" => 'entregas.png',
             ],
             [
-                "nombre" => 'content.record',
-                "icono" => 'archive',
+                "nombre" => 'content.reports',
+                "ruta"  => 'reportes.index',
+                "icono" => 'reportes.png',
             ],
+            
         ]);
     }
 }

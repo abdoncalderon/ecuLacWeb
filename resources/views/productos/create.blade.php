@@ -191,3 +191,36 @@
         </div>
     </div>
 @endsection
+
+@section('script')
+    <script>
+        $(function () { 
+            $("#categoria_id").change(
+                function(event){
+                    $("#tipo_id").empty();
+                    $.get("/getTiposCategoria/"+event.target.value+"", 
+                        function(response,state){
+                            console.log(response)
+                            
+                            for(i=0;i<response.length;i++){
+                                $("#tipo_id").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+                            }
+                            
+                        });
+                    $("#presentacion_id").empty();
+                    $.get("/getPresentacionesCategoria/"+event.target.value+"", 
+                        function(response,state){
+                            console.log(response)
+                            
+                            for(i=0;i<response.length;i++){
+                                $("#presentacion_id").append("<option value='"+response[i].id+"'> "+response[i].envase+" / "+response[i].contenido+" / "+response[i].medida+"</option>");
+                            }
+                        
+                        });
+                }
+            );
+            
+        });
+
+    </script>
+@endsection
