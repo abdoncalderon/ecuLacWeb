@@ -3,7 +3,8 @@
 @section('section')
 
 <section>
-    <div class="login">
+
+    <div class="sesion">
 
         <div class="ventana">
 

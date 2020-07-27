@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
                 "telefono"=>'0000000000',
                 "email" => 'example@email.com',
                 "usuario" => 'superusuario',
-                "password" => Hash::make('Ecolac2020'),
+                "password" => Hash::make('Ecolac@2020'),
                 "rol_id" => '1',
                 "estaActivo" => '1',
             ],

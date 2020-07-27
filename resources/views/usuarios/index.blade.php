@@ -43,10 +43,10 @@
                                 <tr>
                                     <td>{{ $usuario->nombreCompleto }}</td>
                                     <td>{{ $usuario->rol($usuario->rol_id) }}</td>
-                                    <td>{{ $usuario->estaActivo==1 ? __('content.active') : __('content.inactive') }}</td>
+                                    <td>{{ $usuario->estaActivo ? __('content.active') : __('content.inactive') }}</td>
                                     <td>
                                         <a class="accion" href="{{route('usuarios.edit',$usuario)}}">{{ __('content.edit') }}</a>
-                                        <a class="accion" href="{{route('usuarios.activate',$usuario)}}">{{ $usuario->estaActivo==0 ? __('content.activate') : __('content.deactivate')  }}</a>
+                                        <a class="accion" href="{{route('usuarios.activate',$usuario)}}">{{ $usuario->estaActivo ? __('content.activate') : __('content.deactivate')  }}</a>
                                         <a class="accion" href="{{route('usuarios.destroy',$usuario)}}">{{ __('content.delete') }}</a>
                                     </td>
                                 </tr>

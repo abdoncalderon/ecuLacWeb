@@ -12,8 +12,10 @@ class CreateMenusTable extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
+            $table->string('multilenguaje')->nullable();
             $table->string('ruta')->nullable();
             $table->string('icono')->nullable();
+            $table->boolean('esVisible')->nullable()->default('0');
             $table->timestamps();
         });
     }

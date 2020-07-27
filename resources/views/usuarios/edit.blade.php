@@ -161,6 +161,25 @@
                     </div>
                 </div>
 
+                <div class="form-group row">
+                    <label for="estaActivo" class="col-md-4 col-form-label text-md-right">{{ __('content.active') }}</label>
+                    <div class="col-md-6 custom-control custom-switch">
+                        <input 
+                            id="estaActivo" 
+                            name="estaActivo" 
+                            type="checkbox"
+                            class="form-control @error('estaActivo') is-invalid @enderror"
+                            {{ $usuario->estaActivo==1 ? 'checked' : '' }}
+                        >
+                        
+                        @error('estaActivo')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-primary ">{{ __('content.save') }}</button>

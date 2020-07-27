@@ -9,7 +9,7 @@
                     <a href="{{ route($menurol->menu($menurol->menu_id)->ruta) }}">
                         <div class="icono" style="background-image: url({{ asset('img/iconos/'.$menurol->menu($menurol->menu_id)->icono) }})"></div>
                         <div class="titulo">
-                            {{ __($menurol->menu($menurol->menu_id)->nombre) }}
+                            {{ __($menurol->menu($menurol->menu_id)->multilenguaje) }}
                         </div>
                     </a>
                 </div>

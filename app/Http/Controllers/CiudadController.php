@@ -55,7 +55,6 @@ class CiudadController extends Controller
             return back()->withErrors(__('messages.isFather'));
         }else{
             $ciudad->delete();
-            
             return redirect()->route('ciudades.index');
         }
     }

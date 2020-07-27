@@ -39,10 +39,32 @@
                                     value="{{ old('nombre') }}" 
                                     required 
                                     autocomplete="nombre" 
-                                    placeholder="Nombre Menu"
+                                    placeholder="{{ __('content.name') }} Menu"
                                     autofocus>
 
                                 @error('nombre')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="multilenguaje" class="col-md-4 col-form-label text-md-right">{{ __('content.code') }} {{ __('content.multilanguage') }}</label>
+                            <div class="col-md-6">
+                                <input 
+                                    id="multilenguaje" 
+                                    name="multilenguaje" 
+                                    type="text" 
+                                    maxlength="50" 
+                                    class="form-control @error('multilenguaje') is-invalid @enderror" 
+                                    value="{{ old('multilenguaje') }}" 
+                                    autocomplete="multilenguaje" 
+                                    placeholder="{{ __('content.code') }} {{ __('content.multilanguage') }}"
+                                    autofocus>
+
+                                @error('multilnguaje')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -59,7 +81,7 @@
                                     name="ruta" 
                                     type="text" 
                                     maxlength="255" 
-                                    class="form-control @error('direccion') is-invalid @enderror" 
+                                    class="form-control @error('ruta') is-invalid @enderror" 
                                     value="{{ old('ruta') }}" 
                                     required 
                                     autocomplete="ruta" 
@@ -81,7 +103,7 @@
                                     id="icono" 
                                     name="icono" 
                                     type="file" 
-                                    class="form-control-file @error('nombre') is-invalid @enderror" 
+                                    class="form-control-file @error('icono') is-invalid @enderror" 
                                     autofocus>
 
                                 @error('icono')

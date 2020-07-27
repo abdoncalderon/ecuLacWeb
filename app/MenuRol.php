@@ -16,12 +16,15 @@ class MenuRol extends Model
     }
 
     static public function menusRol($rolId){
-        $menusRol = MenuRol::where('rol_id',$rolId)->get();
+        $menusRol = MenuRol::join('menus','menus_roles.menu_id','=','menus.id')->where('rol_id',$rolId)->where('esVisible',1)->get();
         return $menusRol;
     }
 
     static public function existe($rol, $ruta){
-        return MenuRol::join('menus','menus_roles.menu_id','=','menus.id')->where('menus_roles.rol_id',$rol)->where('menus.ruta',$ruta)->exists();
+        
+        $permiso = MenuRol::join('menus','menus_roles.menu_id','=','menus.id')->where('menus_roles.rol_id',$rol)->where('menus.ruta',$ruta)->first();
+        
+        return (! empty($permiso));
     }
 
     

@@ -13,8 +13,14 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
-    public function index(){
-        $menus = Menu::where('id','!=','0')->paginate(10);
+    public function index(Request $request){
+                    
+        if(count($request->all())>0){
+            $nombre = $request->get('nombre');
+            $menus = Menu::Where('nombre','LIKE','%'.$nombre.'%')->paginate(10);
+        }else{
+            $menus = Menu::where('id','!=','0')->paginate(10);
+        }
         return view('menus.index',compact('menus'));
     }
 
@@ -36,9 +42,9 @@ class MenuController extends Controller
         if($this->checkRoute($request->ruta)){
             Menu::create([
                 'nombre'=>$request->nombre,
+                'multilenguaje'=>$request->multilenguaje,
                 'ruta'=>$request->ruta,
                 'icono'=>$nombreArchivo,
-                
             ]);
             return redirect()->route('menus.index');
         }else{
@@ -63,10 +69,17 @@ class MenuController extends Controller
             $nombreArchivo = $menu->icono;
         }
         $request->validated();
+        if($request->has('esVisible')){
+            $esVisible = '1';
+        }else{
+            $esVisible = '0';
+        }
         $menu->update([
             'nombre'=>$request->nombre,
+            'multilenguaje'=>$request->multilenguaje,
             'ruta'=>$request->ruta,
             'icono'=>$nombreArchivo,
+            'esVisible'=>$esVisible,
         ]);
         return redirect()->route('menus.index');
     }
@@ -91,14 +104,6 @@ class MenuController extends Controller
     }
 
     private function checkRoute($route) {
-        /* $routes = Route::getRoutes()->getRoutes();
-        foreach($routes as $r){
-            if($r->getUri() == $route){
-                return true;
-            }
-        }
-    
-        return false; */
         return Route::has($route);
     }
     

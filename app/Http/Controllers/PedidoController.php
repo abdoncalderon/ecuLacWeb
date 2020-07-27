@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pedido;
 use App\User;
+use App\Cliente;
 use App\Factura;
 use Carbon\Carbon;
 use App\Http\Requests\StorePedidoRequest;
@@ -188,7 +189,6 @@ class PedidoController extends Controller
         return redirect()->route('home');
     }     
 
-
     public function change($pedidoId, $estado){
         $fecha = Carbon::now()->toDateTimeString();
         switch($estado){
@@ -208,5 +208,11 @@ class PedidoController extends Controller
                 break;
         }
         return redirect()->route('pedidos.repartidor');
+    }
+
+    public function location($clienteId){
+        $cliente = Cliente::join('users','clientes.usuario_id','=','users.id')->where('usuario_id',$clienteId)->first();
+        return view('pedidos.location')
+        ->with(compact('cliente'));
     }
 }

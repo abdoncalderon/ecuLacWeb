@@ -15,7 +15,9 @@
                     type="text"
                     placeholder="Busque su producto" 
                 >
+                <button type="submit" hidden></button>
                 <i class="fas fa-search"></i>
+                <input type="text" hidden id="orden" name="orden" value="1">
             </form>
         </div>
         <div class="favoritos">

@@ -153,7 +153,7 @@ header{
 			.cabeceraExterna .login a{
 				text-decoration: none;
 				border: 1px solid rgb(0,174,239);
-				padding: 5px 5px;
+				padding: 0.5em 0.5em;
 				color: white;
 				background-color: rgb(0,174,239);
 				font-size: 0.9em;
@@ -168,7 +168,7 @@ header{
 			.cabeceraExterna .registro a{
 				text-decoration: none;
 				border: 1px solid rgb(0,174,239);
-				padding: 5px 15px;
+				padding: 0.28em 1em;
 				color: rgb(0,174,239);
 				font-size: 0.9em;
 			}
@@ -283,7 +283,7 @@ section{
 /*-------------------------------------------------------------------------------------------------------------------*/
 
 
-.login{
+.sesion{
 	width: 50%;
 	margin: auto;	
 }
@@ -313,7 +313,39 @@ section{
 
 		}
 
+/*-------------------------------------------------------------------------------------------------------------------*/	
 
+.ubicacion{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 1em;
+}
+
+	.ubicacion .mapa{
+		width: 500px;
+		height: 500px;
+		margin: auto;
+	}
+
+	.ubicacion .direccion{
+		display: grid;
+		grid-template-columns: 1fr 3fr;
+		grid-auto-rows: 2em;
+		grid-gap: 1em;
+		border-left: 1px solid rgb(211,211,211) ;
+	}
+
+		.ubicacion .direccion .etiqueta{
+			font-size: 1em;		
+			text-align: right;
+			padding: 0em 1em;
+			align-self: center;
+		}
+
+		.ubicacion .direccion .dato{
+			font-size: 1em;		
+			padding: 0em 1em;
+		}
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 
@@ -1194,7 +1226,7 @@ section{
 		.pedido .resumen .valor{
 			font-size: 1.8em;
 			text-align: center;
-			margin: 1em;
+			
 		}
 
 		.pedido .resumen .titulo{
@@ -1228,7 +1260,6 @@ section{
 			grid-template-rows: auto;
 			padding: 0px 10px;
 			margin-bottom: 15px;
-			
 		}
 
 			.pedido .resumen .impuesto .tipo{
@@ -1265,7 +1296,7 @@ section{
 		.pedido .resumen .regresar{
 			display: block;
 			width: 80%;
-			margin: auto;
+			margin: 0.5em auto;
 			padding: 5px 0px;
 			background-color:rgb(0,174,239); 
 			color: white;

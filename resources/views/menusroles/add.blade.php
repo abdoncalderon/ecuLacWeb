@@ -6,7 +6,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home')}}">{{ __('content.home') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('roles.index')}}">{{ __('content.roles') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('content.add') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('content.add') }} {{ __('content.menu') }}</li>
             </ol>
         </nav>
     </div>
@@ -20,7 +20,7 @@
     </div>
     @endif
     <div class="ventana">
-        <div class="titulo">{{ __('content.add') }}  {{ __('content.menus') }} {{ $rol->nombre }}</div>
+        <div class="titulo">{{ __('content.add') }}  {{ __('content.menus') }} - {{ $rol->nombre }}</div>
             <div class="contenido">
                 <div class="formulario">
                     <form method="POST" action="{{ route('menusroles.store',$rol) }}">

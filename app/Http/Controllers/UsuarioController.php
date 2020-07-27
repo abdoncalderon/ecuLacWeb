@@ -14,7 +14,8 @@ class UsuarioController extends Controller
 {
     public function index(){
         $usuarios=User::join('roles','users.rol_id','=','roles.id')->where('roles.esExterno','=','0')->paginate(10);
-        return  view('usuarios.index',compact('usuarios'));
+        return  view('usuarios.index')
+        ->with(compact('usuarios'));
     }
 
     public function create(){
@@ -43,7 +44,21 @@ class UsuarioController extends Controller
     }
 
     public function update(UpdateUsuarioRequest $request, User $usuario){
-        $usuario->update($request->validated());
+        $request->validated();
+        if($request->has('estaActivo')){
+            $estaActivo = '1';
+        }else{
+            $estaActivo = '0';
+        }
+        $usuario->update([
+            'nombreCompleto' => $request['nombreCompleto'],
+            'cedula'  => $request['cedula'],
+            'email' =>  $request['email'],
+            'telefono' => $request['telefono'],
+            'rol_id' => $request['rol_id'],
+            'usuario' => $request['usuario'],
+            'estaActivo'=>$estaActivo,
+        ]);
         return redirect()->route('usuarios.index');
     }
 
@@ -64,11 +79,11 @@ class UsuarioController extends Controller
     }
 
     public function activate(User $usuario){
-        
+        DD($usuario);
         if($usuario->estaActivo==0){
-            $usuario=DB::table('users')->where('id',$usuario->id)->update(['estaActivo'=>1]);
+            $usuario=User::where('id',$usuario->id)->update(['estaActivo'=>1]);
         }else{
-            $usuario=DB::table('users')->where('id',$usuario->id)->update(['estaActivo'=>0]);
+            $usuario=User::where('id',$usuario->id)->update(['estaActivo'=>0]);
         }
         return redirect()->route('usuarios.index');
     }

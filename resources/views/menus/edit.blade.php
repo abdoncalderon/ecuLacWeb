@@ -20,6 +20,7 @@
                     <form method="POST" action="{{ route('menus.update',$menu) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
+
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('content.name') }} {{ __('content.multilanguage') }}</label>
                             <div class="col-md-6">
@@ -36,6 +37,28 @@
                                     autofocus>
 
                                 @error('nombre')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="multilenguaje" class="col-md-4 col-form-label text-md-right">{{ __('content.name') }} {{ __('content.multilanguage') }}</label>
+                            <div class="col-md-6">
+                                <input 
+                                    id="multilenguaje" 
+                                    name="multilenguaje" 
+                                    type="text" 
+                                    maxlength="50" 
+                                    class="form-control @error('multilenguaje') is-invalid @enderror" 
+                                    value="{{ old('multilenguaje',$menu->multilenguaje) }}" 
+                                    autocomplete="multilenguaje" 
+                                    placeholder="Nombre Menu Multilenguaje"
+                                    autofocus>
+
+                                @error('multilnguaje')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -86,6 +109,25 @@
                         </div>
 
                         <div class="categoria-imagen" style="background-image: url({{ asset('img/iconos/'.$menu->icono)}});"></div>
+
+                        <div class="form-group row">
+                            <label for="esVisible" class="col-md-4 col-form-label text-md-right">{{ __('content.visible') }}</label>
+                            <div class="col-md-6 custom-control custom-switch">
+                                <input 
+                                    id="esVisible" 
+                                    name="esVisible" 
+                                    type="checkbox"
+                                    class="form-control @error('esVisible') is-invalid @enderror"
+                                    {{ $menu->esVisible==1 ? 'checked' : '' }}
+                                >
+                                
+                                @error('esVisible')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

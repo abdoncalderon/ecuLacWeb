@@ -225,24 +225,26 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="latitud" class="col-md-4 col-form-label text-md-right">{{ __('content.latitude') }}</label>
+                        {{-- <label for="latitud" class="col-md-4 col-form-label text-md-right">{{ __('content.latitude') }}</label> --}}
                         <div class="col-md-6">
                             <input 
                             id="latitud" 
                             name="latitud"
                             type="text" 
+                            hidden
                             class="form-control @error('latitud') is-invalid @enderror">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="longitud" class="col-md-4 col-form-label text-md-right">{{ __('content.longitude') }}</label>
+                        {{-- <label for="longitud" class="col-md-4 col-form-label text-md-right">{{ __('content.longitude') }}</label> --}}
 
                         <div class="col-md-6">
                             <input 
                             id="longitud"
                             name="longitud" 
                             type="text" 
+                            hidden
                             class="form-control @error('longitud') is-invalid @enderror">
                         </div>
                     </div>
@@ -254,7 +256,7 @@
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary btn-lg">{{ __('content.save') }}</button>
-                            <button type="button" id="ubicacion" class="btn btn-secondary btn-lg">{{ __('content.location') }}</button>
+                            {{-- <button type="button" id="ubicacion" class="btn btn-secondary btn-lg">{{ __('content.location') }}</button> --}}
                             <a class="btn btn-secondary btn-lg" href="{{ route('home') }}">{{ __('content.cancel') }}</a>
                         </div>
                     </div>
@@ -291,12 +293,16 @@
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
                 var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
                 };
+                document.getElementById('latitud').setAttribute('value',pos.lat);
+                document.getElementById('longitud').setAttribute('value',pos.lng);
 
                 infoWindow.setPosition(pos);
+
                 infoWindow.setContent('Location found.');
+
                 infoWindow.open(map);
                 map.setCenter(pos);
             }, function() {

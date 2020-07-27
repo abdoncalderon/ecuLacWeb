@@ -45,13 +45,13 @@
             <div class="tipos">
                 <p class="titulo">{{ __('content.types')}}</p>
                 @foreach ($tipos as $tipo)
-                    <a class="tipo" href="{{ route('tienda.filtroTipo',['tipo'=>$tipo->tipo_id, 'busqueda'=>$busqueda]) }}">{{ $tipo->tipo($tipo->tipo_id) }}</a>
+                    <a class="tipo" href="{{ route('tienda.filtroTipo',['tipo'=>$tipo->tipo_id, 'busqueda'=>$busqueda, 'orden'=>$orden]) }}">{{ $tipo->tipo($tipo->tipo_id) }}</a>
                 @endforeach
             </div>
             <div class="presentaciones">
                 <p class="titulo">{{ __('content.presentations')}}</p>
                 @foreach ($presentaciones as $presentacion)
-                    <a class="presentacion" href="{{ route('tienda.filtroPresentacion',['presentacion'=>$presentacion->presentacion_id,'busqueda'=>$busqueda]) }}">{{ $presentacion->presentacion($presentacion->presentacion_id) }}</a>
+                    <a class="presentacion" href="{{ route('tienda.filtroPresentacion',['presentacion'=>$presentacion->presentacion_id,'busqueda'=>$busqueda, 'orden'=>$orden]) }}">{{ $presentacion->presentacion($presentacion->presentacion_id) }}</a>
                 @endforeach
             </div>
             <a class="eliminar" href="{{ route('tienda.filtroBorrar')}}" class="borrar">{{ __('content.clean') }} {{ __('content.filter') }}</a>

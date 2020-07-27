@@ -70,7 +70,7 @@ return [
     'name' => 'Nombre',
     'role' => 'Rol',
     'email' => 'Correo electrónico',
-    'emailaddress' => 'Dirección de correo electrónico',
+    'emailaddress' => 'Correo electrónico',
     'state' => 'Estado',
     'password' => 'Contraseña',
     'confirmpassword' => 'Confirmar Contraseña',
@@ -157,6 +157,7 @@ return [
     'confirmation'=>'Confirmación',
     'creation'=>'Creación',
     'seller'=>'Vendedor',
+    'visible'=>'Visible',
     
 
     'currency'=>'US$',

@@ -12,12 +12,10 @@ class CategoriaController extends Controller
         $categorias = Categoria::where('id','!=','0')->paginate(10);
         return view('categorias.index',compact('categorias'));
     }
-    
 
     public function create(){
         return view('categorias.create');
     }
-
 
     public function store(StoreCategoriaRequest $request ){
         if($request->hasFile('imagen'))
@@ -37,14 +35,12 @@ class CategoriaController extends Controller
         return redirect()->route('categorias.index');
     }
 
-
     public function edit(Categoria $categoria)
     {
         return view('categorias.edit',[
             'categoria'=>$categoria
             ]);
     }
-
 
     public function update(UpdateCategoriaRequest $request, Categoria $categoria)
     {
@@ -72,7 +68,6 @@ class CategoriaController extends Controller
         }
         return redirect()->route('categorias.index');
     }
-
     
     public function destroy(Categoria $categoria)
     {

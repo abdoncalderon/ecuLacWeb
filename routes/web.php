@@ -10,8 +10,6 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('getTiposCategoria/{categoria}','ProductoController@getTiposCategoria')->name('productos.getTiposCategoria')->middleware('auth');;
 Route::get('getPresentacionesCategoria/{categoria}','ProductoController@getPresentacionesCategoria')->name('productos.getPresentacionesCategoria')->middleware('auth');
 
-// Route::get('/configuracion','ConfiguracionController@index')->name('configuracion.index')->middleware('auth');
-
 Route::get('/provincias','ProvinciaController@index')->name('provincias.index')->middleware('auth','permiso');
 Route::get('/provincias/create','ProvinciaController@create')->name('provincias.create')->middleware('auth','permiso');
 Route::post('/provincias','ProvinciaController@store')->name('provincias.store')->middleware('auth','permiso');
@@ -52,13 +50,6 @@ Route::get('/presentaciones/{presentacion}/edit','PresentacionController@edit')-
 Route::patch('/presentaciones/{presentacion}','PresentacionController@update')->name('presentaciones.update')->middleware('auth','permiso');
 Route::get('/presentaciones/{presentacion}','PresentacionController@destroy')->name('presentaciones.destroy')->middleware('auth','permiso');
 
-Route::get('/roles','RolController@index')->name('roles.index')->middleware('auth','permiso');
-Route::get('/roles/create','RolController@create')->name('roles.create')->middleware('auth','permiso');
-Route::post('/roles','RolController@store')->name('roles.store')->middleware('auth','permiso');
-Route::get('/roles/{rol}/edit','RolController@edit')->name('roles.edit')->middleware('auth','permiso');
-Route::patch('/roles/{rol}','RolController@update')->name('roles.update')->middleware('auth','permiso');
-Route::get('/roles/{rol}','RolController@destroy')->name('roles.destroy')->middleware('auth','permiso');
-
 Route::get('/productos','ProductoController@index')->name('productos.index')->middleware('auth','permiso');
 Route::get('/productos/create','ProductoController@create')->name('productos.create')->middleware('auth','permiso');
 Route::post('/productos','ProductoController@store')->name('productos.store')->middleware('auth','permiso');
@@ -66,23 +57,32 @@ Route::get('/productos/edit/{producto}','ProductoController@edit')->name('produc
 Route::patch('/productos/{producto}','ProductoController@update')->name('productos.update')->middleware('auth','permiso');
 Route::get('/productos/{producto}','ProductoController@destroy')->name('productos.destroy')->middleware('auth','permiso');
 
-Route::get('/imagenesproductos/{producto}','ImagenProductoController@index')->name('imagenesproductos.index')->middleware('auth','permiso');
-Route::post('/imagenesproductos','ImagenProductoController@store')->name('imagenesproductos.store')->middleware('auth','permiso');
-Route::get('/imagenesproductos/default/{imagen}','ImagenProductoController@default')->name('imagenesproductos.default')->middleware('auth','permiso');
-Route::get('/imagenesproductos/destroy/{imagen}','ImagenProductoController@destroy')->name('imagenesproductos.destroy')->middleware('auth','permiso');
+Route::get('/roles','RolController@index')->name('roles.index')->middleware('auth','permiso');
+Route::get('/roles/create','RolController@create')->name('roles.create')->middleware('auth','permiso');
+Route::post('/roles','RolController@store')->name('roles.store')->middleware('auth','permiso');
+Route::get('/roles/{rol}/edit','RolController@edit')->name('roles.edit')->middleware('auth','permiso');
+Route::patch('/roles/{rol}','RolController@update')->name('roles.update')->middleware('auth','permiso');
+Route::get('/roles/{rol}','RolController@destroy')->name('roles.destroy')->middleware('auth','permiso');
+
+Route::get('/menus','MenuController@index')->name('menus.index')->middleware('auth','permiso');
+Route::get('/menus/create','MenuController@create')->name('menus.create')->middleware('auth','permiso');
+Route::post('/menus','MenuController@store')->name('menus.store')->middleware('auth','permiso');
+Route::get('/menus/{menu}/edit','MenuController@edit')->name('menus.edit')->middleware('auth','permiso');
+Route::patch('/menus/{menu}','MenuController@update')->name('menus.update')->middleware('auth','permiso');
+Route::get('/menus/{menu}','MenuController@destroy')->name('menus.destroy')->middleware('auth','permiso');
 
 Route::get('/usuarios','UsuarioController@index')->name('usuarios.index')->middleware('auth','permiso');
 Route::get('/usuarios/create','UsuarioController@create')->name('usuarios.create')->middleware('auth','permiso');
 Route::post('/usuarios','UsuarioController@store')->name('usuarios.store')->middleware('auth','permiso');
 Route::get('/usuarios/{usuario}/edit','UsuarioController@edit')->name('usuarios.edit')->middleware('auth','permiso');
-Route::get('/usuarios/activate/{usuario}','UsuarioController@activate')->name('usuarios.activate')->middleware('auth','permiso');
+Route::get('/usuarios/activate/{usuario}','UsuarioController@activate')->name('usuarios.activate')->middleware('auth');
 Route::patch('/usuarios/{usuario}','UsuarioController@update')->name('usuarios.update')->middleware('auth','permiso');
 Route::get('/usuarios/{usuario}','UsuarioController@destroy')->name('usuarios.destroy')->middleware('auth','permiso');
 
-Route::get('/itemspedidos','ItemPedidoController@index')->name('itemspedidos.index')->middleware('auth','permiso');
-Route::post('/itemspedidos','ItemPedidoController@store')->name('itemspedidos.store')->middleware('auth','permiso');
-Route::get('/itemspedidos/{itempedido}/{estado}','ItemPedidoController@update')->name('itemspedidos.update')->middleware('auth','permiso');
-Route::get('/itemspedidos/{itempedido}','ItemPedidoController@destroy')->name('itemspedidos.destroy')->middleware('auth','permiso');
+Route::get('/imagenesproductos/{producto}','ImagenProductoController@index')->name('imagenesproductos.index')->middleware('auth','permiso');
+Route::post('/imagenesproductos','ImagenProductoController@store')->name('imagenesproductos.store')->middleware('auth','permiso');
+Route::get('/imagenesproductos/default/{imagen}','ImagenProductoController@default')->name('imagenesproductos.default')->middleware('auth','permiso');
+Route::get('/imagenesproductos/destroy/{imagen}','ImagenProductoController@destroy')->name('imagenesproductos.destroy')->middleware('auth','permiso');
 
 Route::get('/movimientosexistencias/{producto}','MovimientoExistenciaController@index')->name('movimientosexistencias.index')->middleware('auth','permiso');
 Route::get('/movimientosexistencias/crear/{producto}','MovimientoExistenciaController@create')->name('movimientosexistencias.create')->middleware('auth','permiso');
@@ -99,19 +99,18 @@ Route::get('/pedidos/change/{pedido}/{estado}','PedidoController@change')->name(
 Route::post('/pedidos','PedidoController@store')->name('pedidos.store')->middleware('auth','permiso');
 Route::get('/pedidos/eliminar/{pedido}','PedidoController@destroy')->name('pedidos.destroy')->middleware('auth','permiso');
 Route::post('/pedidos/pagar/{pedido}','PedidoController@toPay')->name('pedidos.toPay')->middleware('auth','permiso');
+Route::get('/pedidos/ubicacion/{cliente}','PedidoController@location')->name('pedidos.location')->middleware('auth','permiso');
 
-Route::get('/clientes/cuenta','ClienteController@cuenta')->name('clientes.cuenta')->middleware('auth','permiso');
-Route::get('/clientes/historial','ClienteController@historial')->name('clientes.historial')->middleware('auth','permiso');
-Route::get('/clientes/pedido','ClienteController@pedido')->name('clientes.pedido')->middleware('auth','permiso');
-Route::get('/clientes/preorden/{pedido}','ClienteController@preorden')->name('clientes.preorden')->middleware('auth','permiso');
 
-Route::get('/menus','MenuController@index')->name('menus.index')->middleware('auth','permiso');
-Route::get('/menus/create','MenuController@create')->name('menus.create')->middleware('auth','permiso');
-Route::post('/menus','MenuController@store')->name('menus.store')->middleware('auth','permiso');
-Route::get('/menus/{menu}/edit','MenuController@edit')->name('menus.edit')->middleware('auth','permiso');
-Route::patch('/menus/{menu}','MenuController@update')->name('menus.update')->middleware('auth','permiso');
-Route::get('/menus/{menu}','MenuController@destroy')->name('menus.destroy')->middleware('auth','permiso');
+Route::get('/clientes/cuenta','ClienteController@cuenta')->name('clientes.cuenta')->middleware('auth');
+Route::get('/clientes/historial','ClienteController@historial')->name('clientes.historial')->middleware('auth');
+Route::get('/clientes/pedido','ClienteController@pedido')->name('clientes.pedido')->middleware('auth');
+Route::get('/clientes/preorden/{pedido}','ClienteController@preorden')->name('clientes.preorden')->middleware('auth');
 
+Route::get('/itemspedidos','ItemPedidoController@index')->name('itemspedidos.index')->middleware('auth');
+Route::post('/itemspedidos','ItemPedidoController@store')->name('itemspedidos.store')->middleware('auth');
+Route::get('/itemspedidos/{itempedido}/{estado}','ItemPedidoController@update')->name('itemspedidos.update')->middleware('auth','permiso');
+Route::get('/itemspedidos/{itempedido}','ItemPedidoController@destroy')->name('itemspedidos.destroy')->middleware('auth');
 
 Route::get('/menusroles/add/{rol}','MenuRolController@add')->name('menusroles.add')->middleware('auth','permiso');
 Route::post('/menusroles/{rol}','MenuRolController@store')->name('menusroles.store')->middleware('auth','permiso');
@@ -122,7 +121,6 @@ Route::get('/menusroles/{menu}/{rol}','MenuRolController@destroy')->name('menusr
 Route::get('/reportes','ReporteController@index')->name('reportes.index')->middleware('auth','permiso');
 Route::get('/reportes/ventas','ReporteController@ventas')->name('reportes.ventas')->middleware('auth','permiso');
 Route::get('/reportes/inventario','ReporteController@inventario')->name('reportes.inventario')->middleware('auth','permiso');
-
 
 Route::get('/tienda/busqueda','TiendaController@busqueda')->name('tienda.busqueda');
 Route::get('/tienda/catalogo/{orden?}/{busqueda?}','TiendaController@catalogo')->name('tienda.catalogo');

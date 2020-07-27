@@ -20,9 +20,25 @@
     @endif
     <div class='ventana'>
         <div class="titulo">{{ __('content.menus') }}</div>
+        <div class="encabezado">
+            <div class="acciones">
+                <span class="boton">
+                    <a class="btn btn-success " href="{{ route('menus.create')}}">{{ __('content.add') }}  {{ __('content.menus') }}</a>
+                </span>
+            </div>
+            <form method="GET" action="{{ route('menus.index') }}">
+                <div class="filtros">
+                    <span class="boton">
+                        <button class="btn btn-secondary" type="submit">{{ __('content.search') }}  {{ __('content.menu') }}</button>
+                    </span>
+                    <div class="etiqueta">{{ __('content.name') }}</div>
+                    <input type="text" class="text" id="nombre" name="nombre">
+                </div>
+            </form>
+        </div>
         <div class="contenido">
             <div class="index">
-                <div>
+               {{--  <div>
                     <span>
                     <a class="btn btn-success " href="{{ route('menus.create')}}">{{ __('content.add') }}  {{ __('content.menus') }}</a>
                     </span>
@@ -31,12 +47,13 @@
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
-                @enderror
+                @enderror --}}
                 <div class="table-responsive">
                     <table class="tabla">
                         <thead>
                             <tr>
-                                <th>{{ __('content.name') }} {{ __('content.multilanguage') }}</th>
+                                <th>{{ __('content.name') }}</th>
+                                <th>{{ __('content.code') }} {{ __('content.multilanguage') }}</th>
                                 <th>{{ __('content.route') }} Laravel</th>
                                 <th>{{ __('content.image') }}</th>
                                 <th>{{ __('content.actions') }}</th>
@@ -46,6 +63,7 @@
                             @foreach ($menus as $menu)
                                 <tr>
                                     <td>{{ $menu->nombre }}</td>
+                                    <td>{{ $menu->multilenguaje }}</td>
                                     <td>{{ $menu->ruta }}</td>
                                     <td>{{ $menu->icono }}</td>
                                     <td>

@@ -56,7 +56,7 @@ class TiendaController extends Controller
 
     public function filtroBorrar(){
         $busqueda = null;
-        $orden = null;
+        $orden = 1;
         $productos = Producto::where('id','!=',0)->orderBy('precioUnitario','ASC')->paginate(12);
         $categorias = Producto::select('categoria_id')->where('id','!=',0)->distinct()->get();
         $tipos = Producto::select('tipo_id')->where('id','!=',0)->distinct()->get();
@@ -72,7 +72,7 @@ class TiendaController extends Controller
 
     public function filtroDestacados(){
         $busqueda = null;
-        $orden = null;
+        $orden = 1;
         $productos = Producto::where('esDestacado',1)->orderBy('precioUnitario','ASC')->paginate(12);
         $categorias = Producto::select('categoria_id')->where('esDestacado',1)->distinct()->get();
         $tipos = Producto::select('tipo_id')->where('esDestacado',1)->distinct()->get();

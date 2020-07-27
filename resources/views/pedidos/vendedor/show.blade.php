@@ -76,6 +76,9 @@
                 
                 <div class="total">{{ __('messages.valuePaid') }} {{ __('content.currency') }} {{ $pedido->total($pedido) }}</div>
                 <a class="regresar" href="{{ route('pedidos.vendedor') }}">{{ __('messages.backTo') }} {{ __('content.orders') }}</a>
+                @if($pedido->estado!='ABIERTO')
+                    <a class="regresar" href="{{ route('pedidos.location',$pedido->cliente_id) }}">{{ __('content.location') }} {{ __('content.client') }}</a>
+                @endif
             </div>
         </div>
     {{-- </div> --}}
