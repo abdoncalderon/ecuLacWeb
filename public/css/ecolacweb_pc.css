@@ -1,759 +1,488 @@
-/*-------------------------------------------------------------------------------------------------------------------*/
 
-*{
-	margin:0px;
-	padding: 0px;
-	font-family: 'Roboto Condensed', sans-serif;
-	font-size: 14px; 
-}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-body{
-	background-color: rgb(236,240,245)
-}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-nav{
+@media only screen and (min-width: 1200px){
+	*{
+		margin:0px;
+		padding: 0px;
+		font-family: 'Roboto Condensed', sans-serif;
+		font-size: 14px; 
+	}
 	
-}
-
-	.menuPrincipal{
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 40px;
-		background-color:  rgb(0,174,239) ;
-		overflow: hidden;
-		z-index: 1000;
-	}
-
-		.menuPrincipal .bienvenida{
-			float: left;
-			color: white;
-			margin: 7px 10px;
-		}
-
-		.menuPrincipal .logout{
-			float: right;
-			color: white;
-			margin: 7px 10px;
-			text-decoration: none;
-		}
-
-		
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-header{
-	border-bottom: 1px solid rgb(211,211,211);
-	margin-top: 40px;
-}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-	.cabeceraExterna{
-		width: 1200px;
-		margin: auto;
-		display: grid;
-		grid-template-columns: repeat(14, 1fr);
-		grid-row: minmax(95px);
-	}
-
-		.cabeceraExterna .logo{
-			grid-column: 1/4;
-			align-self: start;
-		}
-
-			.cabeceraExterna .logo img{
-				display: block;
-				width: 80%;
-			}
-
-		.cabeceraExterna .busqueda{
-			grid-column: 4/11;
-			align-self: center;
-			border-bottom: 1px solid rgb(211,211,211);
-		}
-
-			.cabeceraExterna .busqueda input{
-				display: inline-block;
-				width: 95%;
-				border: 0px;
-				padding: 5px 15px;
-				background-color: transparent;
-			}
-
-			.cabeceraExterna .busqueda input:focus{
-				outline: 0px;
-			}
-
-			 .cabeceraExterna .busqueda i{
-				display: inline-block;
-				font-size: 18px;
-			}
-
-		.cabeceraExterna .favoritos{
-			grid-column: 11/12;
-			justify-content: none;
-			align-self: center;
-			justify-self: end;
-		}
-
-			.cabeceraExterna .favoritos a{
-				border: 1px solid rgb(211,211,211);
-				background-color: white;
-				border-radius: 30px;
-				padding: 15px 12px 10px 12px;
-				box-shadow: 2px 2px 10px rgb(211,211,211);
-			}
-
-				.cabeceraExterna .favoritos a i{
-					font-size: 19px;
-					color: black;
-				}
-
-		.cabeceraExterna .carrito{
-			grid-column: 12/13;
-			align-self: center;
-			justify-self: start;
-		}
-
-			.cabeceraExterna .carrito a{
-				border: 1px solid rgb(211,211,211);
-				background-color: white;
-				border-radius: 30px;
-				padding: 15px 12px 10px 12px;
-				box-shadow: 2px 2px 10px rgb(211,211,211);
-			}
-
-				.cabeceraExterna .carrito a i{
-					font-size: 19px;
-					color: black;
-				}
-
-				.cabeceraExterna .carrito p{
-					font-size: 0.7em;
-					position: absolute;
-					float: left;
-					padding: 2px 7px;
-					background-color: rgb(0,174,239);
-					border-radius: 10px;
-					color: white;
-				}
-
-		.cabeceraExterna .login{
-			grid-column: 13/14;
-			align-self: center;
-			justify-self: center;
-		}
-		
-			.cabeceraExterna .login a{
-				text-decoration: none;
-				border: 1px solid rgb(0,174,239);
-				padding: 0.5em 0.5em;
-				color: white;
-				background-color: rgb(0,174,239);
-				font-size: 0.9em;
-			}
-
-		.cabeceraExterna .registro{
-			grid-column: 14/15;
-			align-self: center;
-			justify-self: center;
-		}
-
-			.cabeceraExterna .registro a{
-				text-decoration: none;
-				border: 1px solid rgb(0,174,239);
-				padding: 0.28em 1em;
-				color: rgb(0,174,239);
-				font-size: 0.9em;
-			}
-
-		.cabeceraExterna .cuenta{
-			grid-column: 13/14;
-			align-self: center;
-			justify-self: center;
-		}
-		
-			.cabeceraExterna .cuenta a{
-				text-decoration: none;
-				border: 1px solid rgb(0,174,239);
-				padding: 3px 8px;
-				color: white;
-				background-color: rgb(0,174,239);
-				font-size: 0.9em;
-			}
-		
-		.cabeceraExterna .logout{
-			grid-column: 14/15;
-			align-self: center;
-			justify-self: center;
-		}
-
-			.cabeceraExterna .logout a{
-				text-decoration: none;
-				border: 1px solid rgb(0,174,239);
-				padding: 5px 5px;
-				color: rgb(0,174,239);
-				font-size: 0.9em;
-			}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
+	/*-------------------------------------------------------------------------------------------------------------------*/
 	
-	.cabeceraInterna{
-		width: 1200px;
-		margin: auto;
+	body{
+		background-color: rgb(236,240,245)
 	}
-
-		.cabeceraInterna .logo{
-			width: 200px;
-			margin: auto;
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	nav{
+		
+	}
+	
+		.menuPrincipal{
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 40px;
+			background-color:  rgb(0,174,239) ;
+			overflow: hidden;
+			z-index: 1000;
 		}
-
-		.cabeceraInterna .logo img{
-			width: 95%;
+	
+			.menuPrincipal .bienvenida{
+				float: left;
+				color: white;
+				margin: 7px 10px;
+			}
+	
+			.menuPrincipal .logout{
+				float: right;
+				color: white;
+				margin: 7px 10px;
+				text-decoration: none;
+			}
+	
+			
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	header{
+		border-bottom: 1px solid rgb(211,211,211);
+		margin-top: 40px;
+	}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+		.cabeceraExterna{
+			width: 1200px;
 			margin: auto;
-		}
-
-		.cabeceraInterna .cinta{
 			display: grid;
-			grid-template-columns: repeat(13, 1fr);
-			grid-row: auto;
-			margin-top: 10px;
-			border-top: 1px solid rgb(211,211,211);
+			grid-template-columns: repeat(14, 1fr);
+			grid-row: minmax(95px);
 		}
+	
+			.cabeceraExterna .logo{
+				grid-column: 1/4;
+				align-self: start;
+			}
+	
+				.cabeceraExterna .logo img{
+					display: block;
+					width: 80%;
+				}
+	
+			.cabeceraExterna .busqueda{
+				grid-column: 4/11;
+				align-self: center;
+				border-bottom: 1px solid rgb(211,211,211);
+			}
+	
+				.cabeceraExterna .busqueda input{
+					display: inline-block;
+					width: 95%;
+					border: 0px;
+					padding: 5px 15px;
+					background-color: transparent;
+				}
+	
+				.cabeceraExterna .busqueda input:focus{
+					outline: 0px;
+				}
+	
+				 .cabeceraExterna .busqueda i{
+					display: inline-block;
+					font-size: 18px;
+				}
 
-			.cabeceraInterna .cinta .opcion{
-				display: inline-block;
-				width: 100%;
-				background-color: whitesmoke;
-				border-radius: 5px;
-				height: auto;
-				margin: 5px 0px 5px 5px;
-				padding: 2px;
+			.cabeceraExterna .icono1{
+				display: none;
+			}
+				
+			.cabeceraExterna .icono2{
+				display: none;
+			}
+	
+			.cabeceraExterna .favoritos{
+				grid-column: 11/12;
+				justify-content: none;
+				align-self: center;
+				justify-self: end;
+			}
+	
+				.cabeceraExterna .favoritos a{
+					border: 1px solid rgb(211,211,211);
+					background-color: white;
+					border-radius: 30px;
+					padding: 15px 12px 10px 12px;
+					box-shadow: 2px 2px 10px rgb(211,211,211);
+				}
+	
+					.cabeceraExterna .favoritos a i{
+						font-size: 19px;
+						color: black;
+					}
+	
+
+			
+			.cabeceraExterna .carrito{
+				grid-column: 12/13;
+				align-self: center;
+				justify-self: start;
+			}
+	
+				.cabeceraExterna .carrito a{
+					border: 1px solid rgb(211,211,211);
+					background-color: white;
+					border-radius: 30px;
+					padding: 15px 12px 10px 12px;
+					box-shadow: 2px 2px 10px rgb(211,211,211);
+				}
+	
+					.cabeceraExterna .carrito a i{
+						font-size: 19px;
+						color: black;
+					}
+	
+					.cabeceraExterna .carrito p{
+						font-size: 0.7em;
+						position: absolute;
+						float: left;
+						padding: 2px 7px;
+						background-color: rgb(0,174,239);
+						border-radius: 10px;
+						color: white;
+					}
+	
+			.cabeceraExterna .login{
+				grid-column: 13/14;
+				align-self: center;
+				justify-self: center;
 			}
 			
-				.cabeceraInterna .cinta .opcion a{
+				.cabeceraExterna .login a{
 					text-decoration: none;
+					border: 1px solid rgb(0,174,239);
+					padding: 0.5em 0.5em;
 					color: white;
+					background-color: rgb(0,174,239);
+					font-size: 0.9em;
 				}
-				
-				.cabeceraInterna .cinta .opcion a:hover{
-					background-color: rgb(235, 235, 235);
+	
+			.cabeceraExterna .registro{
+				grid-column: 14/15;
+				align-self: center;
+				justify-self: center;
+			}
+	
+				.cabeceraExterna .registro a{
+					text-decoration: none;
+					border: 1px solid rgb(0,174,239);
+					padding: 0.28em 1em;
+					color: rgb(0,174,239);
+					font-size: 0.9em;
+				}
+	
+			.cabeceraExterna .cuenta{
+				grid-column: 13/14;
+				align-self: center;
+				justify-self: center;
+			}
+			
+				.cabeceraExterna .cuenta a{
+					text-decoration: none;
+					border: 1px solid rgb(0,174,239);
+					padding: 3px 8px;
+					color: white;
+					background-color: rgb(0,174,239);
+					font-size: 0.9em;
 				}
 			
-				.cabeceraInterna .cinta .opcion a:hover > .icono{
-					opacity: 90%;
-				}
-				
-				.cabeceraInterna .cinta .opcion a:hover > .titulo{
-					background-color:rgb(0,174,239);
-				}
-			
-				.cabeceraInterna .cinta .opcion .icono{
-					width: 100%;
-					height: 80px;
-					padding: 2px;
-					opacity: 50%;
-					background-position: center;
-					background-size: contain;
-				}
-				
-				.cabeceraInterna .cinta .opcion .titulo{
-					display: block;
-					font-size: 0.8em;
-					border-radius: 0px 0px 5px 5px;
-					background-color: lightskyblue;
-					border: 0px;
+			.cabeceraExterna .logout{
+				grid-column: 14/15;
+				align-self: center;
+				justify-self: center;
+			}
+	
+				.cabeceraExterna .logout a{
+					text-decoration: none;
+					border: 1px solid rgb(0,174,239);
 					padding: 5px 5px;
-					text-align: center;
+					color: rgb(0,174,239);
+					font-size: 0.9em;
 				}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-section{
-	width: 1200px;
-	margin: 15px auto;
-}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-
-.sesion{
-	width: 50%;
-	margin: auto;	
-}
-
-.registro{
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: 1em;
-}
-
-	.registro .datos{
-		border: 1px solid rgb(211,211,211);
-		padding: 1em;
-	}
-
-	.registro .ubicacion{
-		border: 1px solid rgb(211,211,211);
-		padding: 1em;
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
 		
+		.cabeceraInterna{
+			width: 1200px;
+			margin: auto;
+		}
+	
+			.cabeceraInterna .logo{
+				width: 200px;
+				margin: auto;
+			}
+	
+			.cabeceraInterna .logo img{
+				width: 95%;
+				margin: auto;
+			}
+	
+			.cabeceraInterna .cinta{
+				display: grid;
+				grid-template-columns: repeat(13, 1fr);
+				grid-row: auto;
+				margin-top: 10px;
+				border-top: 1px solid rgb(211,211,211);
+			}
+	
+				.cabeceraInterna .cinta .opcion{
+					display: inline-block;
+					width: 100%;
+					background-color: whitesmoke;
+					border-radius: 5px;
+					height: auto;
+					margin: 5px 0px 5px 5px;
+					padding: 2px;
+				}
+				
+					.cabeceraInterna .cinta .opcion a{
+						text-decoration: none;
+						color: white;
+					}
+					
+					.cabeceraInterna .cinta .opcion a:hover{
+						background-color: rgb(235, 235, 235);
+					}
+				
+					.cabeceraInterna .cinta .opcion a:hover > .icono{
+						opacity: 90%;
+					}
+					
+					.cabeceraInterna .cinta .opcion a:hover > .titulo{
+						background-color:rgb(0,174,239);
+					}
+				
+					.cabeceraInterna .cinta .opcion .icono{
+						width: 100%;
+						height: 80px;
+						padding: 2px;
+						opacity: 50%;
+						background-position: center;
+						background-size: contain;
+					}
+					
+					.cabeceraInterna .cinta .opcion .titulo{
+						display: block;
+						font-size: 0.8em;
+						border-radius: 0px 0px 5px 5px;
+						background-color: lightskyblue;
+						border: 0px;
+						padding: 5px 5px;
+						text-align: center;
+					}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	section{
+		width: 1200px;
+		margin: 15px auto;
 	}
-
-		.registro .ubicacion .mapa{
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	
+	.sesion{
+		width: 50%;
+		margin: auto;	
+	}
+	
+	.registro{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 1em;
+	}
+	
+		.registro .datos{
+			border: 1px solid rgb(211,211,211);
+			padding: 1em;
+		}
+	
+		.registro .ubicacion{
+			border: 1px solid rgb(211,211,211);
+			padding: 1em;
+			
+		}
+	
+			.registro .ubicacion .mapa{
+				width: 500px;
+				height: 500px;
+				margin: auto;
+				border: 1px solid rgb(211,211,211);
+	
+			}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/	
+	
+	.ubicacion{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		padding: 1em;
+	}
+	
+		.ubicacion .mapa{
 			width: 500px;
 			height: 500px;
 			margin: auto;
-			border: 1px solid rgb(211,211,211);
-
-		}
-
-/*-------------------------------------------------------------------------------------------------------------------*/	
-
-.ubicacion{
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	padding: 1em;
-}
-
-	.ubicacion .mapa{
-		width: 500px;
-		height: 500px;
-		margin: auto;
-	}
-
-	.ubicacion .direccion{
-		display: grid;
-		grid-template-columns: 1fr 3fr;
-		grid-auto-rows: 2em;
-		grid-gap: 1em;
-		border-left: 1px solid rgb(211,211,211) ;
-	}
-
-		.ubicacion .direccion .etiqueta{
-			font-size: 1em;		
-			text-align: right;
-			padding: 0em 1em;
-			align-self: center;
-		}
-
-		.ubicacion .direccion .dato{
-			font-size: 1em;		
-			padding: 0em 1em;
-		}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.vitrina{
-	display: grid;
-	grid-template-columns: repeat(10, 1fr);
-	grid-template-rows: 350px auto auto auto auto auto 200px;
-	margin-bottom: 50px;
-}
-
-	.vitrina .titulo{
-		grid-column: 1/11;
-		margin-top: 100px;
-		
-	}
-
-		.vitrina .titulo p{
-			float: left;
-			font-size: 1em;
-			font-weight: normal;
-			color: white;
-			padding: 10px 15px;
-			background: rgb(0,174,239);
-			align-self: center;
-		}
-
-		.vitrina .titulo a{
-			float: right;
-			font-size: 1em;
-			font-weight: normal;
-			color: rgb(0,174,239);
-			background-color: white;
-			padding: 10px 15px;
-			border: 1px solid rgb(0,174,239);
-			text-decoration: none;
-		}
-
-	.vitrina .carrusel{
-		grid-column: 1/11;
-		background-color: rgb(211,211,211);
-		
-	}
-
-		.vitrina .carrusel .imagen{
-			width: 100%;
-			height: 350px;
-			overflow: hidden;
-			border-radius: 4px 4px;
-		}
-
-	.vitrina .categorias{
-		display: grid;
-		grid-template-columns: repeat(3,1fr);
-		grid-auto-rows: 450px;
-		grid-gap: 2em;
-		grid-column: 1/11;
-	}
-
-		.vitrina .categorias a{
-			text-decoration: none;
-        	color: grey;
-		}
-
-		.vitrina .categorias .categoria{
-			background-color: rgb(250,250,250);
-			overflow: hidden;
-		}
-
-			.vitrina .categorias .categoria:hover{
-				box-shadow: 10px 10px 20px -10px rgb(211,211,211), -10px -10px 20px -10px rgb(211,211,211);
-			}
-
-			.vitrina .categorias .categoria .nombre{
-				font-size: 2em;
-				text-align: center;
-				padding: 10px 0px;
-				height: 70px;
-				border-bottom: 1px solid rgb(211,211,211);
-			}
-
-			.vitrina .categorias .categoria .descripcion{
-				font-size: 1em;
-				text-align: center;
-				height: 120px;
-				padding: 10px 15px;
-				color: gray;
-			}
-
-			.vitrina .categorias .categoria .imagen{
-				width: 300px;
-				height: 400px;
-				margin: 0px auto;
-				margin-top: 20px;
-				transition: 0.5s;
-				background-size: 100% 100%;
-        		background-position: center;
-			}
-
-			.vitrina .categorias .categoria .imagen:hover{
-				margin-top: 0px;
-			}
-
-	.vitrina .destacados{
-		display: grid;
-		grid-template-columns: repeat(4,1fr);
-		grid-auto-rows: 430px;
-		grid-gap: 3em;
-		grid-column: 1/11;
-	}
-
-		.vitrina .destacados .destacado{
-			border: 0px;
-			background-color: rgb(250,250,250);
-		}
-
-		.vitrina .destacados .destacado:hover{
-			box-shadow: 10px 10px 20px -10px rgb(211,211,211), -10px -10px 20px -10px rgb(211,211,211);
-		}
-		
-
-		.vitrina .destacados .destacado .imagen{
-			height: 250px;
-			background-size: cover;
-			background-position: center;
-		}
-
-			.vitrina .destacados .destacado .imagen .Disponible{
-				float: right;
-				background-color: green;
-				margin-top: 15px;
-				color: white;
-				font-size: 0.75em;
-				padding: 5px 10px;
-			}
-
-			.vitrina .destacados .destacado .imagen .Agotado{
-				float: right;
-				background-color: red;
-				margin-top: 15px;
-				color: white;
-				font-size: 0.75em;
-				padding: 5px 10px;
-			}
-
-			.vitrina .destacados .destacado .imagen .Descontinuado{
-				float: right;
-				background-color: gray;
-				margin-top: 15px;
-				color: white;
-				font-size: 0.75em;
-				padding: 5px 10px;
-			}
-			
-			.vitrina .destacados .destacado .imagen .descuento{
-				float: left;
-				width: 40px;
-				margin-top: 10px;
-				margin-left: 10px;
-				background-color: red;
-				padding: 8px 0px;
-				border-radius: 25px;
-				color: white;
-				text-align: center;
-				font-size: 1.1em;
-				font-weight: bold;
-			}
-
-
-		.vitrina .destacados .destacado .nombre{
-			float: none;
-			width: 100%;
-			height: 75px;
-		}
-
-			.vitrina .destacados .destacado .nombre p{
-				font-size: 1em;
-				text-align: center;
-				padding: 	10px 10px;
-				color: gray;
-			}
-
-		.vitrina .destacados .destacado .acciones{
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			grid-gap: 1em;
-			padding: 10px 10px;
-			height: 55px;
-			border-top: 1px solid rgb(211,211,211);
-			border-bottom: 1px solid rgb(211,211,211);
-		}
-
-			.vitrina .destacados .destacado .acciones .ver{
-				background-color:  rgb(0,174,239);
-				text-decoration: none;
-				font-size: 1em;
-				padding: 5px 10px;
-				color: white;
-				text-align: center;
-			}
-
-			.vitrina .destacados .destacado .acciones .ver:hover{
-				background-color:  rgb(0,174,239);
-			}
-
-			.vitrina .destacados .destacado .acciones .comprar{
-				width: 100%;
-				background-color:  rgb(0,174,239);
-				text-decoration: none;
-				font-size: 1em;
-				padding: 5px 10px;
-				color: white;
-				text-align: center;
-				border: 0px;
-			}
-
-		.vitrina .destacados .destacado .precio{
-			width: 100%;
-			height: 20px;
-		}
-
-			.vitrina .destacados .destacado .precio p{
-				color: black;
-				text-align: center;
-				padding: 10px 10px;
-				font-size: 1.1em;
-				font-weight: bold;
-			}
-
-	.vitrina .informacion{
-		display: grid;
-		grid-template-columns: repeat(3,1fr);
-		grid-template-rows: 200px;
-		grid-gap: 1em;
-		grid-column: 1/11;
-	}
-
-		.vitrina .informacion div{
-			background-color: white;
-			border: 1px solid rgb(0,174,239);
-		}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.catalogo{
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	margin-bottom: 50px;
-}
-
-	.catalogo .cabecera{
-		grid-column: 1/6;
-		height: 200px;
-	}
-
-	.catalogo .resultados{
-		border-bottom: 1px solid rgb(211,211,211);
-		border-top: 1px solid rgb(211,211,211);
-		height: auto;
-		grid-column: 1/6;
-		margin-bottom: 3em;
-		padding-top: 1em;
-	}
-
-		.catalogo .resultados .totales{
-			float: left;
-			color: gray;
-		}
-
-		.catalogo .resultados .paginacion{
-			float: right;
-		}
-
-	.catalogo .filtros{
-		width: 300px;
-		background-color: rgb(250,250,250);
-		padding: 0px 20px;
-		grid-column: 1/2;
-		margin-right: 3em;
-	}
-
-		.catalogo .filtros .orden{
-			width: 100%;
-			height: 100px;
-			border-bottom: 1px solid rgb(211,211,211);
-			
-		}
-			.catalogo .filtros .orden .titulo{
-				color: gray;
-				font-size: 1.5em;
-				margin-top: 10px;
-			}
-
-			.catalogo .filtros .orden .seleccion{
-				display: block;
-				width: 100%;
-				height: 30px;
-				padding: 5px 10px;
-				font-size: 1em;
-			}
-
-		.catalogo .filtros .categorias{
-			width: 100%;
-			height: auto;
-			border-bottom: 1px solid rgb(211,211,211);
-			padding: 10px 0px;
-		}
-
-			.catalogo .filtros .categorias .titulo{
-				color: gray;
-				font-size: 1.5em;
-				margin-top: 10px;
-			}
-
-			.catalogo .filtros .categorias .categoria{
-				display: block;
-				text-decoration: none;
-				color: gray;
-				padding-left: 15px;
-			}
-
-
-		.catalogo .filtros .tipos{
-			width: 100%;
-			height: auto;
-			border-bottom: 1px solid rgb(211,211,211);
-			padding: 10px 0px;
-		}
-
-			.catalogo .filtros .tipos .titulo{
-				color: gray;
-				font-size: 1.5em;
-				margin-top: 10px;
-			}
-
-			.catalogo .filtros .tipos .tipo{
-				display: block;
-				text-decoration: none;
-				color: gray;
-				padding-left: 15px;
-			}
-
-		.catalogo .filtros .presentaciones{
-			width: 100%;
-			height: auto;
-			border-bottom: 1px solid rgb(211,211,211);
-			padding: 10px 0px;
-		}
-
-			.catalogo .filtros .presentaciones .titulo {
-				color: gray;
-				font-size: 1.5em;
-				margin-top: 10px;
-			}
-
-			.catalogo .filtros .presentaciones .presentacion{
-				display: block;
-				text-decoration: none;
-				color: gray;
-				padding-left: 15px;
-			}
-
-		.catalogo .filtros .precios{
-
-		}
-
-		.catalogo .filtros .eliminar{
-			display: block;
-			text-decoration: none;
-			text-align: center;
-			padding: 0.5em;
-			background-color: rgb(0,174,239);
-			color: white;
-			margin: 1em;
-		}
-
-		.catalogo .productos{
-			display: grid;
-			grid-template-columns: repeat(3,1fr);
-			grid-auto-rows: 430px;
-			grid-gap: 3em;
-			grid-column: 2/6;
 		}
 	
-			.catalogo .productos .producto{
+		.ubicacion .direccion{
+			display: grid;
+			grid-template-columns: 1fr 3fr;
+			grid-auto-rows: 2em;
+			grid-gap: 1em;
+			border-left: 1px solid rgb(211,211,211) ;
+		}
+	
+			.ubicacion .direccion .etiqueta{
+				font-size: 1em;		
+				text-align: right;
+				padding: 0em 1em;
+				align-self: center;
+			}
+	
+			.ubicacion .direccion .dato{
+				font-size: 1em;		
+				padding: 0em 1em;
+			}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	.vitrina{
+		display: grid;
+		grid-template-columns: repeat(10, 1fr);
+		grid-template-rows: 350px auto auto auto auto auto 200px;
+		margin-bottom: 50px;
+	}
+	
+		.vitrina .titulo{
+			grid-column: 1/11;
+			margin-top: 100px;
+			
+		}
+	
+			.vitrina .titulo p{
+				float: left;
+				font-size: 1em;
+				font-weight: normal;
+				color: white;
+				padding: 10px 15px;
+				background: rgb(0,174,239);
+				align-self: center;
+			}
+	
+			.vitrina .titulo a{
+				float: right;
+				font-size: 1em;
+				font-weight: normal;
+				color: rgb(0,174,239);
+				background-color: white;
+				padding: 10px 15px;
+				border: 1px solid rgb(0,174,239);
+				text-decoration: none;
+			}
+	
+		.vitrina .carrusel{
+			grid-column: 1/11;
+			background-color: rgb(211,211,211);
+			
+		}
+	
+			.vitrina .carrusel .imagen{
+				width: 100%;
+				height: 350px;
+				overflow: hidden;
+				border-radius: 4px 4px;
+			}
+	
+		.vitrina .categorias{
+			display: grid;
+			grid-template-columns: repeat(3,1fr);
+			grid-auto-rows: 450px;
+			grid-gap: 2em;
+			grid-column: 1/11;
+		}
+	
+			.vitrina .categorias a{
+				text-decoration: none;
+				color: grey;
+			}
+	
+			.vitrina .categorias .categoria{
+				background-color: rgb(250,250,250);
+				overflow: hidden;
+			}
+	
+				.vitrina .categorias .categoria:hover{
+					box-shadow: 10px 10px 20px -10px rgb(211,211,211), -10px -10px 20px -10px rgb(211,211,211);
+				}
+	
+				.vitrina .categorias .categoria .nombre{
+					font-size: 2em;
+					text-align: center;
+					padding: 10px 0px;
+					height: 70px;
+					border-bottom: 1px solid rgb(211,211,211);
+				}
+	
+				.vitrina .categorias .categoria .descripcion{
+					font-size: 1em;
+					text-align: center;
+					height: 120px;
+					padding: 10px 15px;
+					color: gray;
+				}
+	
+				.vitrina .categorias .categoria .imagen{
+					width: 300px;
+					height: 400px;
+					margin: 0px auto;
+					margin-top: 20px;
+					transition: 0.5s;
+					background-size: 100% 100%;
+					background-position: center;
+				}
+	
+				.vitrina .categorias .categoria .imagen:hover{
+					margin-top: 0px;
+				}
+	
+		.vitrina .destacados{
+			display: grid;
+			grid-template-columns: repeat(4,1fr);
+			grid-auto-rows: 430px;
+			grid-gap: 3em;
+			grid-column: 1/11;
+		}
+	
+			.vitrina .destacados .destacado{
 				border: 0px;
 				background-color: rgb(250,250,250);
 			}
 	
-			.catalogo .productos .producto:hover{
+			.vitrina .destacados .destacado:hover{
 				box-shadow: 10px 10px 20px -10px rgb(211,211,211), -10px -10px 20px -10px rgb(211,211,211);
 			}
+			
 	
-			.catalogo .productos .producto .imagen{
+			.vitrina .destacados .destacado .imagen{
 				height: 250px;
 				background-size: cover;
 				background-position: center;
 			}
 	
-				.catalogo .productos .producto .imagen .estado{
-					float: right;
-					background-color: rgb(0,174,239);
-					margin-top: 15px;
-					color: white;
-					font-size: 0.75em;
-					padding: 5px 10px;
-				}
-
-				.catalogo .productos .producto .imagen .Disponible{
+				.vitrina .destacados .destacado .imagen .Disponible{
 					float: right;
 					background-color: green;
 					margin-top: 15px;
@@ -762,7 +491,7 @@ section{
 					padding: 5px 10px;
 				}
 	
-				.catalogo .productos .producto .imagen .Agotado{
+				.vitrina .destacados .destacado .imagen .Agotado{
 					float: right;
 					background-color: red;
 					margin-top: 15px;
@@ -771,7 +500,7 @@ section{
 					padding: 5px 10px;
 				}
 	
-				.catalogo .productos .producto .imagen .Descontinuado{
+				.vitrina .destacados .destacado .imagen .Descontinuado{
 					float: right;
 					background-color: gray;
 					margin-top: 15px;
@@ -780,7 +509,7 @@ section{
 					padding: 5px 10px;
 				}
 				
-				.catalogo .productos .producto .imagen .descuento{
+				.vitrina .destacados .destacado .imagen .descuento{
 					float: left;
 					width: 40px;
 					margin-top: 10px;
@@ -795,20 +524,20 @@ section{
 				}
 	
 	
-			.catalogo .productos .producto .nombre{
+			.vitrina .destacados .destacado .nombre{
 				float: none;
 				width: 100%;
 				height: 75px;
 			}
 	
-				.catalogo .productos .producto .nombre p{
+				.vitrina .destacados .destacado .nombre p{
 					font-size: 1em;
 					text-align: center;
 					padding: 	10px 10px;
 					color: gray;
 				}
 	
-			.catalogo .productos .producto .acciones{
+			.vitrina .destacados .destacado .acciones{
 				display: grid;
 				grid-template-columns: 1fr 1fr;
 				grid-gap: 1em;
@@ -818,7 +547,7 @@ section{
 				border-bottom: 1px solid rgb(211,211,211);
 			}
 	
-				.catalogo .productos .producto .acciones .ver{
+				.vitrina .destacados .destacado .acciones .ver{
 					background-color:  rgb(0,174,239);
 					text-decoration: none;
 					font-size: 1em;
@@ -827,1296 +556,1581 @@ section{
 					text-align: center;
 				}
 	
-				.catalogo .productos .producto .acciones .ver:hover{
+				.vitrina .destacados .destacado .acciones .ver:hover{
 					background-color:  rgb(0,174,239);
 				}
-
-				.catalogo .productos .producto .acciones .comprar{
-					padding: 5px 15px;
-					border: 1px solid rgb(0,174,239);
-					color:  rgb(0,174,239);
-					background-color: white;
-				}
-
 	
-			.catalogo .productos .producto .precio{
+				.vitrina .destacados .destacado .acciones .comprar{
+					width: 100%;
+					background-color:  rgb(0,174,239);
+					text-decoration: none;
+					font-size: 1em;
+					padding: 5px 10px;
+					color: white;
+					text-align: center;
+					border: 0px;
+				}
+	
+			.vitrina .destacados .destacado .precio{
 				width: 100%;
 				height: 20px;
 			}
 	
-				.catalogo .productos .producto .precio p{
+				.vitrina .destacados .destacado .precio p{
 					color: black;
 					text-align: center;
 					padding: 10px 10px;
 					font-size: 1.1em;
 					font-weight: bold;
 				}
-			
-			
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.estante{
-	display: grid;
-	grid-template-columns: 5fr 3fr 2fr;
 	
-}
-
-	.estante .imagenes{
-		display: grid;
-		grid-template-columns: 1fr 3fr;
-		border-right: 1px solid rgb(211,211,211);
-	}
-
-		.estante .imagenes .otras {
-			display: grip;
-			grid-template-columns: 1fr;
-			padding: 2em;
-			overflow: auto;
-			border-left: 1px solid rgb(211,211,211);
-			border-right: 1px solid rgb(211,211,211);
-		}
-
-			.estante .imagenes .otras .imagen{
-				border: 1px solid rgb(211, 211, 211);
-				height: 100px;
-				background-position: center;
-				background-size: cover;
-				margin-bottom: 5px;
-			}
-
-		.estante .imagenes .predeterminada{
-			margin: 2em;
-			height: 450px;
-			background-position: center;
-			background-size: cover;
-		}
-
-		.estante .imagenes .predeterminada .logo{
-			float: right;
-			width: 100px;
-			height: 50px;
-			margin-right: 20px;
-			margin-top: 380px;
-			background-position: center;
-			background-size: cover;
-			border: 1px solid rgb(211,211,211);
-		}
-
-
-	.estante .detalles{
-		border-right: 1px solid rgb(211, 211, 211);
-		
-	}
-
-		.estante .detalles .etiquetas{
-			margin: 5px 15px;
-			border-bottom: 1px solid rgb(211, 211, 211);
-			height: 45px;
-		}
-
-			.estante .detalles .etiquetas .destacado {
-				display: inline-block;
-				font-size: 1em;
-				text-align: center;
-				padding: 5px 10px;
-				background-color: yellow;
-				color: black;
-			}
-
-			.estante .detalles .etiquetas .Disponible {
-				display: inline-block;
-				font-size: 1em;
-				text-align: center;
-				padding: 5px 10px;
-				background-color:green;
-				color: white;
-			}
-
-			.estante .detalles .etiquetas .Agotado {
-				display: inline-block;
-				font-size: 1em;
-				text-align: center;
-				padding: 5px 10px;
-				background-color:red;
-				color: white;
-			}
-
-			.estante .detalles .etiquetas .Descontinuado {
-				display: inline-block;
-				text-align: center;
-				padding: 5px 10px;
-				background-color:gray;
-				color: white;
-				font-size: 1em;
-			}
-
-		.estante .detalles .nombre {
-			font-size: 2em;
-			font-weight: bold;
-			margin: 10px 15px;
-			line-height: 35px;
-
-
-		}
-
-		.estante .detalles .descripcion {
-			margin: 15px 15px;
-			font-size: 1em;
-		}
-
-		.estante .detalles .categoria {
-			margin: 10px 15px;
-			font-size: 1.5em;
-		}
-
-		.estante .detalles .tipo {
-			margin: 10px 15px;
-			font-size: 1em;
-		}
-
-		.estante .detalles .precio {
-			font-size: 2em;
-			text-align: center;
-			color: rgb(0,174,239);
-			margin: 0px 15px;
-			border: 1px solid rgb(0,174,239)
-		}
-
-		.estante .detalles .descuento {
-			font-size: 1.5em;
-			text-align: center;
-			color: rgb(211,211,211);
-			margin: 0px 15px;
-			text-decoration: line-through ;
-		}
-
-	.estante .pedido{
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-auto-rows: 100px;
-		border-right: 1px solid rgb(211,211,211);
-		padding: 0px 15px;
-	}	
-		.estante .pedido .datos{
-			border-bottom: 1px solid rgb(211,211,211);
-		}
-
-			.estante .pedido .datos .precio{
-				text-align: center;
-				font-size: 1.8em;
-				margin-top: 5px;
-			}
-
-			.estante .pedido .datos .unidades{
-				text-align: center;
-				font-size: 0.85em;
-			}
-
-			.estante .pedido .datos .Disponible{
-				text-align: center;
-				padding: 5px 10px;
-				font-size: 1em;
-				background-color: green;
-				color:	white;
-			}
-
-			.estante .pedido .datos .Agotado{
-				text-align: center;
-				padding: 5px 10px;
-				font-size: 1em;
-				background-color: red;
-				color:	white;
-			}
-
-			.estante .pedido .datos .Descontinuado{
-				text-align: center;
-				padding: 5px 10px;
-				font-size: 1em;
-				background-color: gray;
-				color:	white;
-			}
-
-		.estante .pedido .cantidad{
+		.vitrina .informacion{
 			display: grid;
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: 25px;
+			grid-template-columns: repeat(3,1fr);
+			grid-template-rows: 200px;
 			grid-gap: 1em;
-			margin: 20px 0px;
+			grid-column: 1/11;
 		}
-
-			.estante .pedido .cantidad .etiqueta{
-				font-size: 1.1em;
-				text-align: right;
-			}
-
-			.estante .pedido .cantidad .valor{
-				width: 50px;
-				background-color: white;
-				border: 1px solid rgb(211,211,211); 
-				font-size: 1em;
-				text-align: center;
-			}
-
-				.estante .pedido .cantidad .valor:focus{
-					outline: 0px;
-				}
-			
-			.estante .pedido .cantidad .existencia{
-				color: gray;
-				font-size: 0.8em;
-				text-align: center;
-				grid-column: 1/3;
-			}
-
-		.estante .pedido .acciones{
-			padding: 10px 20px; 
-		}
-
-			.estante .pedido .acciones .agregar{
-		
-				width: 100%;
-				display: block;
-				margin: 10px 0px;
-				border: 0px;
-				background-color: rgb(0,174,239);
-				color: white;
-				padding: 5px 0px;
-			}
-
-			.estante .pedido .acciones .agregar:focus{
-				outline: none;
-			}
-
-
-			.estante .pedido .acciones .comprar{
-				display: block;
-				background-color: rgb(0,174,239);
-				text-align: center;
-				padding: 5px 0px;
-				color: white;
-				text-decoration: none;
-			}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.pedido{
-	display: grid;
-	grid-template-columns: 3fr 1fr;
-	grid-gap: 3em;
 	
-}
-
-	.pedido .items{
-		
-	}
-
-		.pedido .items .titulo{
-		
-			border-bottom: 1px solid rgb(211, 211, 211); 
-			height: 30px;
-			
-		}
-
-			.pedido .items .titulo .orden{
-				float: left;
-				font-size: 1em;
-				color: black;
-				margin: 0px 10px;
+			.vitrina .informacion div{
+				background-color: white;
+				border: 1px solid rgb(0,174,239);
 			}
-
-			.pedido .items .titulo .precio{
-				float: right;
-				font-size: 1em;
-				color: black;
-				margin: 0px 10px;
-			}
-
-		.pedido .items .item{
-			display: grid;
-			grid-template-columns: 1fr 4fr 1fr;
-			grid-template-rows: 250px;
-			border-bottom: 1px solid rgb(211, 211, 211);
-		}
-
-			.pedido .items .item .imagen{
-				background-position: center;
-				background-size: cover;
-				margin: 2em 0em;
-			}
-		
-			.pedido .items .item .detalles{
-				display: grid;
-				grid-template-columns: 2fr 1fr 1fr;
-			}
-
-				.pedido .items .item .detalles .nombre{
-					font-size: 1.3em;
-					margin: 1em;
-				}
-
-				.pedido .items .item .detalles .descripcion{
-					font-size: 1em;
-					color: gray;
-					margin: 1em;
-				}
-
-				.pedido .items .item .detalles .estado{
-					font-size: 1em;
-					padding: 5px 10px;
-					color: rgb(0,174,239);
-					margin: 1em;
-				}
-
-				.pedido .items .item .detalles .fecha{
-					font-size: 0.9em;
-					padding: 0px;
-					color: rgb(0,174,239);
-					margin: 0.5em;
-				}
-
-				.pedido .items .item .detalles .cantidad{
-					margin: 1em;
-				}
-
-			.pedido .items .item .precio{
-				margin: 1em 1em 0px 1em;
-				text-align: right;
-			}
-
-			.pedido .items .item .descuento{
-				margin: 0em 1em;
-				text-align: right;
-			}
-
-			.pedido .items .item .subtotal{
-				border-top: 1px solid rgb(211, 211, 211);
-				margin: 0em 1em;
-				text-align: right;
-			}
-
-			.pedido .items .item .eliminar{
-				text-decoration: none;
-				color: white;
-				padding: 0.5em 0.5em;
-				background-color: red;
-				margin: 0.5em;
-				float: right; 
-				font-size: 0.85em;
-			}
-
-	.pedido .resumen{
-		border: 1px solid rgb(211, 211, 211);
-		padding: 20px 0px;
-	}
-
-		.pedido .resumen .total{
-			font-size: 1.5em;
-			text-align: center;
-			color: gray;
-			margin: 1em;
-			border-bottom: 1px solid rgb(211,211,211);
-		}
-
-		.pedido .resumen .productos{
-			font-size: 1em;
-			text-align: center;
-		}
-
-		.pedido .resumen .valor{
-			font-size: 1.8em;
-			text-align: center;
-			
-		}
-
-		.pedido .resumen .titulo{
-			font-size: 1.5em;
-			text-align: center;
-			color: gray;
-			border-bottom: 1px solid rgb(211,211,211);
-		}
-
-		.pedido .resumen .subtotal{
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: auto;
-			padding: 0px 10px;
-			margin-top: 15px;
-		}
-
-			.pedido .resumen .subtotal .cantidad{
-				text-align: left;
-				font-size: 1em;
-			}
-
-			.pedido .resumen .subtotal .precio{
-				text-align: right;
-				font-size: 1em;
-			}
-
-		.pedido .resumen .impuesto{
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: auto;
-			padding: 0px 10px;
-			margin-bottom: 15px;
-		}
-
-			.pedido .resumen .impuesto .tipo{
-				text-align: left;
-				font-size: 1em;
-			}
-
-			.pedido .resumen .impuesto .valor{
-				text-align: right;
-				font-size: 1em;
-			}
-
-		.pedido .resumen .pagar{
-			display: block;
-			margin: 15px 30px;
-			background-color:rgb(0,174,239); 
-			color: white;
-			text-align: center;
-			font-size: 1.5em;
-			text-decoration: none;
-		}
-
-		.pedido .resumen .agregar{
-			display: block;
-			width: 80%;
-			margin: auto;
-			padding: 5px 0px;
-			border: 0px;
-			background-color:rgb(0,174,239); 
-			color: white;
-			font-size: 1.5em;
-		}
-
-		.pedido .resumen .regresar{
-			display: block;
-			width: 80%;
-			margin: 0.5em auto;
-			padding: 5px 0px;
-			background-color:rgb(0,174,239); 
-			color: white;
-			text-align: center;
-			font-size: 1.5em;
-			text-decoration: none;
-		}
-
-		.pedido .resumen .seguir{
-			display: block;
-			margin: 15px 30px;
-			border: 1px solid rgb(0,174,239); 
-			color: rgb(0,174,239);
-			text-align: center;
-			font-size: 1.5em;
-			text-decoration: none;
-		}
-
-		.pedido .resumen .cancelar{
-			display: block;
-			margin: 15px 30px;
-			border: 1px solid rgb(0,174,239); 
-			color: rgb(0,174,239);
-			text-align: center;
-			font-size: 1.5em;
-			text-decoration: none;
-		}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-
-.galeria{
-}
-
-	.galeria .formulario{
-		width: 50%;
-		margin: auto;
-		
-	}
-
-		.galeria .formulario .etiqueta{
-			display: inline-block;
-			color: gray;
-			width: 15%;
-			text-align: center;
-			background-color: rgb(0,174,239);
-			color: white;
-			padding: 5px 10px;
-			border-radius: 3px;
-		}
-
-		.galeria .formulario .archivo{
-			display: inline-block;
-			background-color: transparent;
-			width: 60%;
-			border-radius: 3px;
-			padding: 4px 10px;
-		}
-
-		.galeria .formulario .dialogo{
-			display: none;
-		}
-
-
-	.galeria .imagenes{
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	.catalogo{
 		display: grid;
-		grid-template-columns: repeat(6, 1fr);
-		grid-template-rows: 200px;
-		grid-gap: 2em;
-		border-top: 1px solid rgb(211, 211, 211);
-		margin: 20px;
-		padding: 2em;
+		grid-template-columns: repeat(5, 1fr);
+		margin-bottom: 50px;
 	}
-
-		.galeria .imagenes .imagen{
-
+	
+		.catalogo .cabecera{
+			grid-column: 1/6;
+			height: 200px;
 		}
-
-			.galeria .imagenes .imagen .foto{
-				height: 200px;
-				background-position: center;
-				background-size: cover;
+	
+		.catalogo .resultados{
+			border-bottom: 1px solid rgb(211,211,211);
+			border-top: 1px solid rgb(211,211,211);
+			height: auto;
+			grid-column: 1/6;
+			margin-bottom: 3em;
+			padding-top: 1em;
+		}
+	
+			.catalogo .resultados .totales{
+				float: left;
+				color: gray;
+			}
+	
+			.catalogo .resultados .paginacion{
+				float: right;
+			}
+	
+		.catalogo .filtros{
+			width: 300px;
+			background-color: rgb(250,250,250);
+			padding: 0px 20px;
+			grid-column: 1/2;
+			margin-right: 3em;
+		}
+	
+			.catalogo .filtros .orden{
+				width: 100%;
+				height: 100px;
+				border-bottom: 1px solid rgb(211,211,211);
 				
 			}
-
-			.galeria .imagenes .imagen .predeterminada{
+				.catalogo .filtros .orden .titulo{
+					color: gray;
+					font-size: 1.5em;
+					margin-top: 10px;
+				}
+	
+				.catalogo .filtros .orden .seleccion{
+					display: block;
+					width: 100%;
+					height: 30px;
+					padding: 5px 10px;
+					font-size: 1em;
+				}
+	
+			.catalogo .filtros .categorias{
+				width: 100%;
+				height: auto;
+				border-bottom: 1px solid rgb(211,211,211);
+				padding: 10px 0px;
+			}
+	
+				.catalogo .filtros .categorias .titulo{
+					color: gray;
+					font-size: 1.5em;
+					margin-top: 10px;
+				}
+	
+				.catalogo .filtros .categorias .categoria{
+					display: block;
+					text-decoration: none;
+					color: gray;
+					padding-left: 15px;
+				}
+	
+	
+			.catalogo .filtros .tipos{
+				width: 100%;
+				height: auto;
+				border-bottom: 1px solid rgb(211,211,211);
+				padding: 10px 0px;
+			}
+	
+				.catalogo .filtros .tipos .titulo{
+					color: gray;
+					font-size: 1.5em;
+					margin-top: 10px;
+				}
+	
+				.catalogo .filtros .tipos .tipo{
+					display: block;
+					text-decoration: none;
+					color: gray;
+					padding-left: 15px;
+				}
+	
+			.catalogo .filtros .presentaciones{
+				width: 100%;
+				height: auto;
+				border-bottom: 1px solid rgb(211,211,211);
+				padding: 10px 0px;
+			}
+	
+				.catalogo .filtros .presentaciones .titulo {
+					color: gray;
+					font-size: 1.5em;
+					margin-top: 10px;
+				}
+	
+				.catalogo .filtros .presentaciones .presentacion{
+					display: block;
+					text-decoration: none;
+					color: gray;
+					padding-left: 15px;
+				}
+	
+			.catalogo .filtros .precios{
+	
+			}
+	
+			.catalogo .filtros .eliminar{
 				display: block;
+				text-decoration: none;
+				text-align: center;
+				padding: 0.5em;
 				background-color: rgb(0,174,239);
 				color: white;
-				text-decoration: none;
-				text-align: center;
-				padding: 5px 0px;
-				border-top: 1px solid white;
+				margin: 1em;
 			}
-
-			.galeria .imagenes .imagen .noPredeterminada{
-				display: block;
-				background-color: rgb(211,211,211);
-				color: white;
-				text-decoration: none;
-				text-align: center;
-				padding: 5px 0px;
-				border-top: 1px solid white;
-			}
-
-			.galeria .imagenes .imagen .eliminar{
-				display: block;
-				background-color: lightpink;;
-				color: white;
-				text-decoration: none;
-				text-align: center;
-				padding: 5px 0px;
-				border-top: 1px solid white;
-			}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.categoria-imagen{
-	width: 12%;
-	height: 150px;
-	margin: auto;
-	background-position: center;
-	background-size: cover;
-}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.cuenta{
-	display: grid;
-	grid-template-columns: 4fr 1fr;
-
-}
-
-	.cuenta .datos{
-
-	}
-
-	.cuenta .acciones{
-		border-left: 1px solid rgb(211, 211, 211);
-		padding: 0em 2em;
-	}
-
-		.cuenta .acciones .accion{
-			display: block;
-			font-size: 1rem;
-			background-color: rgb(0,174,239);
-			color: white;
-			padding: 5px 10px;
-			margin-bottom: 1em;
-			text-decoration: none;
-			text-align: center;
-		}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.historial{
 	
-}
-	.historial .pedido{
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: auto;
-		grid-gap: 0em;
-		border: 1px solid rgb(211, 211, 211);
-		padding: 15px;
-		margin: 1em 1em;
-	}
-
-		.historial .pedido .resumido{
-			display: grid;
-			grid-template-columns: repeat(8, 1fr);
-			grid-template-rows: 20px;
-			grid-gap: 0em;
-			padding: 10px 15px;
-			background-color: rgb(211, 211, 211);
-		}
-
-			.historial .pedido .resumido .numeracion{
-				grid-column: 1/2;
-			}
-
-			.historial .pedido .resumido .estado{
-				grid-column: 2/3;
-				margin: 0px 5px;
-			}
-
-			.historial .pedido .resumido .fecha{
-				text-align: left;
-				grid-column: 3/4;
-				margin: 0px 5px;
-			}
-
-			.historial .pedido .resumido .usuario{
-				text-align: left;
-				grid-column: 4/6;
-				margin: 0px 5px;
-			}
-
-		
-
-			.historial .pedido .resumido .total{
-				text-align: center;
-				font-size: 1em;
-				color:black;
-				grid-column: 8/9;
-			}
-
-		.historial .pedido .titulo{
-			display: grid;
-			grid-template-columns: repeat(7, 1fr);
-			grid-template-rows: 20px;
-			border-bottom: 1px solid rgb(211, 211, 211); 
-			padding: 10px 0px;
-		}
-
-			.historial .pedido .titulo .orden{
-				grid-column: 1/2;
-				font-size: 1em;
-				color: black;
-				margin: 0px 10px;
-			}
-
-			.historial .pedido  .titulo .precio{
-				grid-column: 6/7;
-				font-size: 1em;
-				color: black;
-				margin: 0px 10px;
-				text-align: center;
-			}
-
-			.historial .pedido .titulo .subtotal{
-				grid-column: 7/8;
-				font-size: 1em;
-				color: black;
-				margin: 0px 10px;
-				text-align: center;
-			}
-
-
-		.historial .pedido .items{
-		}
-
-			.historial .pedido .items .item{
+			.catalogo .productos{
 				display: grid;
-				grid-template-columns: repeat(7, 1fr);
+				grid-template-columns: repeat(3,1fr);
+				grid-auto-rows: 430px;
+				grid-gap: 3em;
+				grid-column: 2/6;
+			}
+		
+				.catalogo .productos .producto{
+					border: 0px;
+					background-color: rgb(250,250,250);
+				}
+		
+				.catalogo .productos .producto:hover{
+					box-shadow: 10px 10px 20px -10px rgb(211,211,211), -10px -10px 20px -10px rgb(211,211,211);
+				}
+		
+				.catalogo .productos .producto .imagen{
+					height: 250px;
+					background-size: cover;
+					background-position: center;
+				}
+		
+					.catalogo .productos .producto .imagen .estado{
+						float: right;
+						background-color: rgb(0,174,239);
+						margin-top: 15px;
+						color: white;
+						font-size: 0.75em;
+						padding: 5px 10px;
+					}
+	
+					.catalogo .productos .producto .imagen .Disponible{
+						float: right;
+						background-color: green;
+						margin-top: 15px;
+						color: white;
+						font-size: 0.75em;
+						padding: 5px 10px;
+					}
+		
+					.catalogo .productos .producto .imagen .Agotado{
+						float: right;
+						background-color: red;
+						margin-top: 15px;
+						color: white;
+						font-size: 0.75em;
+						padding: 5px 10px;
+					}
+		
+					.catalogo .productos .producto .imagen .Descontinuado{
+						float: right;
+						background-color: gray;
+						margin-top: 15px;
+						color: white;
+						font-size: 0.75em;
+						padding: 5px 10px;
+					}
+					
+					.catalogo .productos .producto .imagen .descuento{
+						float: left;
+						width: 40px;
+						margin-top: 10px;
+						margin-left: 10px;
+						background-color: red;
+						padding: 8px 0px;
+						border-radius: 25px;
+						color: white;
+						text-align: center;
+						font-size: 1.1em;
+						font-weight: bold;
+					}
+		
+		
+				.catalogo .productos .producto .nombre{
+					float: none;
+					width: 100%;
+					height: 75px;
+				}
+		
+					.catalogo .productos .producto .nombre p{
+						font-size: 1em;
+						text-align: center;
+						padding: 	10px 10px;
+						color: gray;
+					}
+		
+				.catalogo .productos .producto .acciones{
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					grid-gap: 1em;
+					padding: 10px 10px;
+					height: 55px;
+					border-top: 1px solid rgb(211,211,211);
+					border-bottom: 1px solid rgb(211,211,211);
+				}
+		
+					.catalogo .productos .producto .acciones .ver{
+						background-color:  rgb(0,174,239);
+						text-decoration: none;
+						font-size: 1em;
+						padding: 5px 10px;
+						color: white;
+						text-align: center;
+					}
+		
+					.catalogo .productos .producto .acciones .ver:hover{
+						background-color:  rgb(0,174,239);
+					}
+	
+					.catalogo .productos .producto .acciones .comprar{
+						padding: 5px 15px;
+						border: 1px solid rgb(0,174,239);
+						color:  rgb(0,174,239);
+						background-color: white;
+					}
+	
+		
+				.catalogo .productos .producto .precio{
+					width: 100%;
+					height: 20px;
+				}
+		
+					.catalogo .productos .producto .precio p{
+						color: black;
+						text-align: center;
+						padding: 10px 10px;
+						font-size: 1.1em;
+						font-weight: bold;
+					}
+				
+				
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	.estante{
+		display: grid;
+		grid-template-columns: 5fr 3fr 2fr;
+		
+	}
+	
+		.estante .imagenes{
+			display: grid;
+			grid-template-columns: 1fr 3fr;
+			border-right: 1px solid rgb(211,211,211);
+		}
+	
+			.estante .imagenes .otras {
+				display: grip;
+				grid-template-columns: 1fr;
+				padding: 2em;
+				overflow: auto;
+				border-left: 1px solid rgb(211,211,211);
+				border-right: 1px solid rgb(211,211,211);
+			}
+	
+				.estante .imagenes .otras .imagen{
+					border: 1px solid rgb(211, 211, 211);
+					height: 100px;
+					background-position: center;
+					background-size: cover;
+					margin-bottom: 5px;
+				}
+	
+			.estante .imagenes .predeterminada{
+				margin: 2em;
+				height: 450px;
+				background-position: center;
+				background-size: cover;
+			}
+	
+			.estante .imagenes .predeterminada .logo{
+				float: right;
+				width: 100px;
+				height: 50px;
+				margin-right: 20px;
+				margin-top: 380px;
+				background-position: center;
+				background-size: cover;
+				border: 1px solid rgb(211,211,211);
+			}
+	
+	
+		.estante .detalles{
+			border-right: 1px solid rgb(211, 211, 211);
+			
+		}
+	
+			.estante .detalles .etiquetas{
+				margin: 5px 15px;
+				border-bottom: 1px solid rgb(211, 211, 211);
+				height: 45px;
+			}
+	
+				.estante .detalles .etiquetas .destacado {
+					display: inline-block;
+					font-size: 1em;
+					text-align: center;
+					padding: 5px 10px;
+					background-color: yellow;
+					color: black;
+				}
+	
+				.estante .detalles .etiquetas .Disponible {
+					display: inline-block;
+					font-size: 1em;
+					text-align: center;
+					padding: 5px 10px;
+					background-color:green;
+					color: white;
+				}
+	
+				.estante .detalles .etiquetas .Agotado {
+					display: inline-block;
+					font-size: 1em;
+					text-align: center;
+					padding: 5px 10px;
+					background-color:red;
+					color: white;
+				}
+	
+				.estante .detalles .etiquetas .Descontinuado {
+					display: inline-block;
+					text-align: center;
+					padding: 5px 10px;
+					background-color:gray;
+					color: white;
+					font-size: 1em;
+				}
+	
+			.estante .detalles .nombre {
+				font-size: 2em;
+				font-weight: bold;
+				margin: 10px 15px;
+				line-height: 35px;
+	
+	
+			}
+	
+			.estante .detalles .descripcion {
+				margin: 15px 15px;
+				font-size: 1em;
+			}
+	
+			.estante .detalles .categoria {
+				margin: 10px 15px;
+				font-size: 1.5em;
+			}
+	
+			.estante .detalles .tipo {
+				margin: 10px 15px;
+				font-size: 1em;
+			}
+	
+			.estante .detalles .precio {
+				font-size: 2em;
+				text-align: center;
+				color: rgb(0,174,239);
+				margin: 0px 15px;
+				border: 1px solid rgb(0,174,239)
+			}
+	
+			.estante .detalles .descuento {
+				font-size: 1.5em;
+				text-align: center;
+				color: rgb(211,211,211);
+				margin: 0px 15px;
+				text-decoration: line-through ;
+			}
+	
+		.estante .pedido{
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-auto-rows: 100px;
+			border-right: 1px solid rgb(211,211,211);
+			padding: 0px 15px;
+		}	
+			.estante .pedido .datos{
+				border-bottom: 1px solid rgb(211,211,211);
+			}
+	
+				.estante .pedido .datos .precio{
+					text-align: center;
+					font-size: 1.8em;
+					margin-top: 5px;
+				}
+	
+				.estante .pedido .datos .unidades{
+					text-align: center;
+					font-size: 0.85em;
+				}
+	
+				.estante .pedido .datos .Disponible{
+					text-align: center;
+					padding: 5px 10px;
+					font-size: 1em;
+					background-color: green;
+					color:	white;
+				}
+	
+				.estante .pedido .datos .Agotado{
+					text-align: center;
+					padding: 5px 10px;
+					font-size: 1em;
+					background-color: red;
+					color:	white;
+				}
+	
+				.estante .pedido .datos .Descontinuado{
+					text-align: center;
+					padding: 5px 10px;
+					font-size: 1em;
+					background-color: gray;
+					color:	white;
+				}
+	
+			.estante .pedido .cantidad{
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: 25px;
+				grid-gap: 1em;
+				margin: 20px 0px;
+			}
+	
+				.estante .pedido .cantidad .etiqueta{
+					font-size: 1.1em;
+					text-align: right;
+				}
+	
+				.estante .pedido .cantidad .valor{
+					width: 50px;
+					background-color: white;
+					border: 1px solid rgb(211,211,211); 
+					font-size: 1em;
+					text-align: center;
+				}
+	
+					.estante .pedido .cantidad .valor:focus{
+						outline: 0px;
+					}
+				
+				.estante .pedido .cantidad .existencia{
+					color: gray;
+					font-size: 0.8em;
+					text-align: center;
+					grid-column: 1/3;
+				}
+	
+			.estante .pedido .acciones{
+				padding: 10px 20px; 
+			}
+	
+				.estante .pedido .acciones .agregar{
+			
+					width: 100%;
+					display: block;
+					margin: 10px 0px;
+					border: 0px;
+					background-color: rgb(0,174,239);
+					color: white;
+					padding: 5px 0px;
+				}
+	
+				.estante .pedido .acciones .agregar:focus{
+					outline: none;
+				}
+	
+	
+				.estante .pedido .acciones .comprar{
+					display: block;
+					background-color: rgb(0,174,239);
+					text-align: center;
+					padding: 5px 0px;
+					color: white;
+					text-decoration: none;
+				}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	.pedido{
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+		grid-gap: 3em;
+		
+	}
+	
+		.pedido .items{
+			
+		}
+	
+			.pedido .items .titulo{
+			
+				border-bottom: 1px solid rgb(211, 211, 211); 
+				height: 30px;
+				
+			}
+	
+				.pedido .items .titulo .orden{
+					float: left;
+					font-size: 1em;
+					color: black;
+					margin: 0px 10px;
+				}
+	
+				.pedido .items .titulo .precio{
+					float: right;
+					font-size: 1em;
+					color: black;
+					margin: 0px 10px;
+				}
+	
+			.pedido .items .item{
+				display: grid;
+				grid-template-columns: 1fr 4fr 1fr;
 				grid-template-rows: 250px;
 				border-bottom: 1px solid rgb(211, 211, 211);
 			}
-
-				.historial .pedido .items .item .imagen{
+	
+				.pedido .items .item .imagen{
 					background-position: center;
 					background-size: cover;
 					margin: 2em 0em;
-					grid-column: 1/2;
 				}
 			
-				.historial .pedido .items .item .detalles{
+				.pedido .items .item .detalles{
 					display: grid;
-					grid-template-columns: 1fr;
-					grid-column: 2/4;
+					grid-template-columns: 2fr 1fr 1fr;
 				}
-
-					.historial .pedido .items .item .detalles .nombre{
+	
+					.pedido .items .item .detalles .nombre{
 						font-size: 1.3em;
 						margin: 1em;
 					}
-
-					.historial .pedido .items .item .detalles .descripcion{
+	
+					.pedido .items .item .detalles .descripcion{
 						font-size: 1em;
 						color: gray;
 						margin: 1em;
 					}
-
-				
-				.historial .pedido .items .item .estado{
-					margin: 1em;
-				}
-		
-
-				.historial .pedido .items .item .cantidad{
-					margin: 1em;
-				}
-
-				.historial .pedido .items .item .precio{
-					margin: 1em;
-					text-align: center;
-				}
-
-				.historial .pedido .items .item .subtotal{
-					margin: 1em;
-					text-align: center;
-				}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-
-
-.preorden{
-	display: grid;
-	grid-template-columns: 3fr 1fr;
-	grid-template-rows: auto;
-	grid-gap: 2em;
 	
-}
-
-	.preorden .items{
-			
-	}
-
-		.preorden .items .cabecera{
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
-			grid-template-rows: auto;
-			grid-gap: 1em;
-			margin-bottom: 2em;
-		}
-
-			.preorden .items .cabecera .cliente{
-				border: 1px solid rgb(211, 211, 211);
-				background-color: white;
-			}
-
-				.preorden .items .cabecera .cliente .titulo{
-					background-color: rgb(0,174,239) ;
-					color: white;
-					text-align: center;
-					padding: 5px 15px;
-					font-size: 1em;
-					height: auto;
-					margin: 0px;
-				}
-
-				.preorden .items .cabecera .cliente .nombre{
-					padding: 3px 15px;
-					text-transform: uppercase;
-					font-weight: bold;
-					margin:0px ;
-				}
-
-				.preorden .items .cabecera .cliente .identificacion{
-					padding: 3px 15px;
-					margin:0px ;
-				}
-
-				.preorden .items .cabecera .cliente .email{
-					padding: 3px 15px;
-					margin:0px ;
-				}
-	
-			.preorden .items .cabecera .direccion{
-				border: 1px solid rgb(211, 211, 211);
-				background-color: white;
-			}
-
-				.preorden .items .cabecera .direccion .titulo{
-					background-color: rgb(0,174,239) ;
-					color: white;
-					text-align: center;
-					padding: 5px 15px;
-					font-size: 1em;
-					height: auto;
-					margin: 0px;
-				}
-
-				.preorden .items .cabecera .direccion .calle{
-					padding: 3px 15px;
-					text-transform: uppercase;
-					font-weight: bold;
-					margin:0px ;
-				}
-
-				.preorden .items .cabecera .direccion .ciudad{
-					padding: 3px 15px;
-					margin:0px ;
-				}
-
-				.preorden .items .cabecera .direccion .telefono{
-					padding: 3px 15px;
-					margin:0px ;
-				}
-
-	
-			.preorden .items .cabecera .pago{
-				border: 1px solid rgb(211, 211, 211);
-				background-color: white;
-			}
-
-				.preorden .items .cabecera .pago .titulo{
-					background-color: rgb(0,174,239) ;
-					color: white;
-					text-align: center;
-					padding: 5px 15px;
-					font-size: 1em;
-					height: auto;
-					margin: 0px;
-				}
-
-				.preorden .items .cabecera .pago .tipos{
-					padding: 15px 20px;
-				}
-
-					.preorden .items .cabecera .pago .tipos .efectivo{
-						padding: 3px 15px;
-						margin:0px ;
+					.pedido .items .item .detalles .estado{
+						font-size: 1em;
+						padding: 5px 10px;
+						color: rgb(0,174,239);
+						margin: 1em;
 					}
-
-					.preorden .items .cabecera .pago .tipos .credito{
-						padding: 3px 15px;
-						margin:0px ;
-					}
-
-
-		.preorden .items .titulo{
-			border-bottom: 1px solid rgb(211, 211, 211); 
-			height: 30px;
-			
-		}
-
-			.preorden .items .titulo .orden{
-				float: left;
-				font-size: 1em;
-				color: black;
-				margin: 0px 10px;
-			}
-
-			.preorden .items .titulo .precio{
-				float: right;
-				font-size: 1em;
-				color: black;
-				margin: 0px 10px;
-			}
-
-		.preorden .items .item{
-			display: grid;
-			grid-template-columns: 1fr 4fr 1fr;
-			grid-template-rows: 250px;
-			border-bottom: 1px solid rgb(211, 211, 211);
-		}
-
-			.preorden .items .item .imagen{
-				background-position: center;
-				background-size: cover;
-				margin: 2em 0em;
-			}
-		
-			.preorden .items .item .detalles{
-				display: grid;
-				grid-template-columns: 2fr 1fr 1fr;
-			}
-
-				.preorden .items .item .detalles .nombre{
-					font-size: 1.3em;
-					margin: 1em;
-				}
-
-				.preorden .items .item .detalles .descripcion{
-					font-size: 1em;
-					color: gray;
-					margin: 1em;
-				}
-
-				.preorden .items .item .detalles .estado{
-					font-size: 1em;
-					padding: 5px 10px;
-					color: rgb(0,174,239);
-					margin: 1em;
-				}
-
-				.preorden .items .item .detalles .cantidad{
-					margin: 1em;
-				}
-
-			.preorden .items .item .precio{
-				margin: 1em 1em 0px 1em;
-				text-align: right;
-			}
-
-			.preorden .items .item .descuento{
-				margin: 0em 1em;
-				text-align: right;
-			}
-
-			
-			.preorden .items .item .subtotal{
-				border-top: 1px solid rgb(211, 211, 211);
-				margin: 0em 1em;
-				text-align: right;
-			}
-
-			.preorden .items .item .eliminar{
-				text-decoration: none;
-				color: red;
-				margin: 1em;
-				float: right;
-			}
 	
-	.preorden .resumen{
-		border: 1px solid rgb(211, 211, 211);
-		padding: 20px 0px;
-	}
-
-		.preorden .resumen .titulo{
-			font-size: 1.5em;
-			text-align: center;
-			color: gray;
-			border-bottom: 1px solid rgb(211,211,211);
-		}
-
-		.preorden .resumen .subtotal{
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: auto;
-			padding: 0px 10px;
-			margin-top: 15px;
-		}
-
-			.preorden .resumen .subtotal .cantidad{
-				text-align: left;
-				font-size: 1em;
-			}
-
-
-			.preorden .resumen .subtotal .precio{
-				text-align: right;
-				font-size: 1em;
-			}
-
-		.preorden .resumen .impuesto{
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: auto;
-			padding: 0px 10px;
-			margin-bottom: 15px;
-		}
-
-			.preorden .resumen .impuesto .tipo{
-				text-align: left;
-				font-size: 1em;
-			}
-
-			.preorden .resumen .impuesto .valor{
-				text-align: right;
-				font-size: 1em;
-			}
-
-
-		.preorden .resumen .total{
-			font-size: 1.5em;
-			color: black;
-			text-align: center;
+					.pedido .items .item .detalles .fecha{
+						font-size: 0.9em;
+						padding: 0px;
+						color: rgb(0,174,239);
+						margin: 0.5em;
+					}
+	
+					.pedido .items .item .detalles .cantidad{
+						margin: 1em;
+					}
+	
+				.pedido .items .item .precio{
+					margin: 1em 1em 0px 1em;
+					text-align: right;
+				}
+	
+				.pedido .items .item .descuento{
+					margin: 0em 1em;
+					text-align: right;
+				}
+	
+				.pedido .items .item .subtotal{
+					border-top: 1px solid rgb(211, 211, 211);
+					margin: 0em 1em;
+					text-align: right;
+				}
+	
+				.pedido .items .item .eliminar{
+					text-decoration: none;
+					color: white;
+					padding: 0.5em 0.5em;
+					background-color: red;
+					margin: 0.5em;
+					float: right; 
+					font-size: 0.85em;
+				}
+	
+		.pedido .resumen{
+			border: 1px solid rgb(211, 211, 211);
 			padding: 20px 0px;
-			border-top: 1px solid rgb(211,211,211);
-
 		}
-
-		.preorden .resumen .pagar{
-			display: block;
-			width: 80%;
-			margin: auto;
-			padding: 3px 0px;
-			border: 0px;
-			background-color:rgb(0,174,239); 
-			color: white;
-			font-size: 1.5em;
-		}
-
-		.preorden .resumen .seguir{
-			display: block;
-			margin: 15px 30px;
-			border: 1px solid rgb(0,174,239); 
-			color: rgb(0,174,239);
-			text-align: center;
-			font-size: 1.5em;
-			text-decoration: none;
-		}
-
-		.preorden .resumen .cancelar{
-			display: block;
-			margin: 15px 30px;
-			border: 1px solid rgb(0,174,239); 
-			color: rgb(0,174,239);
-			text-align: center;
-			font-size: 1.5em;
-			text-decoration: none;
-		}
-		
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.dashboard{
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: auto;
-	grid-gap: 2em;
-	width: 60%;
-	margin: auto;
 	
-}
-
-	.dashboard .item{
-		background-color: white;
-		border-radius: 10px;
-		width: 100%;
-		height: auto;
-		text-decoration: none;
+			.pedido .resumen .total{
+				font-size: 1.5em;
+				text-align: center;
+				color: gray;
+				margin: 1em;
+				border-bottom: 1px solid rgb(211,211,211);
+			}
+	
+			.pedido .resumen .productos{
+				font-size: 1em;
+				text-align: center;
+			}
+	
+			.pedido .resumen .valor{
+				font-size: 1.8em;
+				text-align: center;
+				
+			}
+	
+			.pedido .resumen .titulo{
+				font-size: 1.5em;
+				text-align: center;
+				color: gray;
+				border-bottom: 1px solid rgb(211,211,211);
+			}
+	
+			.pedido .resumen .subtotal{
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: auto;
+				padding: 0px 10px;
+				margin-top: 15px;
+			}
+	
+				.pedido .resumen .subtotal .cantidad{
+					text-align: left;
+					font-size: 1em;
+				}
+	
+				.pedido .resumen .subtotal .precio{
+					text-align: right;
+					font-size: 1em;
+				}
+	
+			.pedido .resumen .impuesto{
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: auto;
+				padding: 0px 10px;
+				margin-bottom: 15px;
+			}
+	
+				.pedido .resumen .impuesto .tipo{
+					text-align: left;
+					font-size: 1em;
+				}
+	
+				.pedido .resumen .impuesto .valor{
+					text-align: right;
+					font-size: 1em;
+				}
+	
+			.pedido .resumen .pagar{
+				display: block;
+				margin: 15px 30px;
+				background-color:rgb(0,174,239); 
+				color: white;
+				text-align: center;
+				font-size: 1.5em;
+				text-decoration: none;
+			}
+	
+			.pedido .resumen .agregar{
+				display: block;
+				width: 80%;
+				margin: auto;
+				padding: 5px 0px;
+				border: 0px;
+				background-color:rgb(0,174,239); 
+				color: white;
+				font-size: 1.5em;
+			}
+	
+			.pedido .resumen .regresar{
+				display: block;
+				width: 80%;
+				margin: 0.5em auto;
+				padding: 5px 0px;
+				background-color:rgb(0,174,239); 
+				color: white;
+				text-align: center;
+				font-size: 1.5em;
+				text-decoration: none;
+			}
+	
+			.pedido .resumen .seguir{
+				display: block;
+				margin: 15px 30px;
+				border: 1px solid rgb(0,174,239); 
+				color: rgb(0,174,239);
+				text-align: center;
+				font-size: 1.5em;
+				text-decoration: none;
+			}
+	
+			.pedido .resumen .cancelar{
+				display: block;
+				margin: 15px 30px;
+				border: 1px solid rgb(0,174,239); 
+				color: rgb(0,174,239);
+				text-align: center;
+				font-size: 1.5em;
+				text-decoration: none;
+			}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	
+	.galeria{
 	}
-		.dashboard .item .titulo{
-			text-align: center;
-			width: 100%;
-			background-color: rgb(0,174,239);
-			color: white;
-			font-size: 1.5em;
-			padding: 0.5em 0em;
+	
+		.galeria .formulario{
+			width: 50%;
+			margin: auto;
+			
 		}
-
-
-		.dashboard .item .grafico{
+	
+			.galeria .formulario .etiqueta{
+				display: inline-block;
+				color: gray;
+				width: 15%;
+				text-align: center;
+				background-color: rgb(0,174,239);
+				color: white;
+				padding: 5px 10px;
+				border-radius: 3px;
+			}
+	
+			.galeria .formulario .archivo{
+				display: inline-block;
+				background-color: transparent;
+				width: 60%;
+				border-radius: 3px;
+				padding: 4px 10px;
+			}
+	
+			.galeria .formulario .dialogo{
+				display: none;
+			}
+	
+	
+		.galeria .imagenes{
+			display: grid;
+			grid-template-columns: repeat(6, 1fr);
+			grid-template-rows: 200px;
+			grid-gap: 2em;
+			border-top: 1px solid rgb(211, 211, 211);
+			margin: 20px;
 			padding: 2em;
 		}
-
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.encabezado{
-	display: grid;
-	grid-template-columns: 1fr 3fr;
-	grid-gap: 1em;
-	width: 98%;
-	margin: auto;
-}
-
-	.encabezado .resumen{
+	
+			.galeria .imagenes .imagen{
+	
+			}
+	
+				.galeria .imagenes .imagen .foto{
+					height: 200px;
+					background-position: center;
+					background-size: cover;
+					
+				}
+	
+				.galeria .imagenes .imagen .predeterminada{
+					display: block;
+					background-color: rgb(0,174,239);
+					color: white;
+					text-decoration: none;
+					text-align: center;
+					padding: 5px 0px;
+					border-top: 1px solid white;
+				}
+	
+				.galeria .imagenes .imagen .noPredeterminada{
+					display: block;
+					background-color: rgb(211,211,211);
+					color: white;
+					text-decoration: none;
+					text-align: center;
+					padding: 5px 0px;
+					border-top: 1px solid white;
+				}
+	
+				.galeria .imagenes .imagen .eliminar{
+					display: block;
+					background-color: lightpink;;
+					color: white;
+					text-decoration: none;
+					text-align: center;
+					padding: 5px 0px;
+					border-top: 1px solid white;
+				}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	.categoria-imagen{
+		width: 12%;
+		height: 150px;
+		margin: auto;
+		background-position: center;
+		background-size: cover;
+	}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	.cuenta{
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		border: 1px solid rgb(211,211,211);
-		border-radius: 5px;
-		padding: 0.5em;
-	}
-
-		.encabezado .resumen .total{
-			text-align: left;
-			font-size: 1em;
-		}
-
-		.encabezado .resumen .cantidad{
-			text-align: left;
-			font-size: 1em;
-		}
+		grid-template-columns: 4fr 1fr;
 	
-
-	.encabezado .acciones{
-		display: grid;
-		grid-template-columns: 1fr;
-		border: 1px solid rgb(211,211,211);
-		border-radius: 5px;
-		padding: 0.5em;
-	}
-
-		.encabezado .acciones .boton{
-			align-self: center;
-		}
-	
-	.encabezado .filtros{
-		display: grid;
-		grid-template-columns: repeat(7, 1fr);
-		border: 1px solid rgb(211,211,211);
-		border-radius: 5px;
-		padding: 0.5em;
-	}
-
-		.encabezado .filtros .boton{
-			align-self: center;
-		}
-
-		.encabezado .filtros .etiqueta{
-			text-align: left;
-			font-size: 1em;
-			align-self: center;
-			margin: 0.5em;
-			text-align: right;
-		}
-
-		.encabezado .filtros .select{
-			text-align: left;
-			font-size: 1em;
-			margin: 0.5em;
-			padding: 0.25em 0.5em;
-		}
-
-		.encabezado .filtros .text{
-			text-align: left;
-			font-size: 1em;
-			margin: 0.5em;
-			padding: 0.25em 0.5em;
-		}
-
-		.encabezado .filtros .date{
-			text-align: left;
-			font-size: 1em;
-			margin: 0.5em;
-			padding: 0.1em 0.5em;
-		}
-
-	
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.menusrol{
-	width: 50%;
-	margin: auto;
-}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-.googlemap{
-	
-}
-
-
-.tabla{
-	width: 100%;
-	text-align: left;
-	border-radius: 5px;
-	margin-top: 5px;
-	margin-bottom: 10px;
-	border-collapse: collapse;
-}
-
-	.tabla thead{
-		background-color:rgb(211,211,211) ;
-		color: gray;
-		border-bottom: 2px solid darkgray;
-	}
-
-	.tabla th, td{
-		padding: 5px 20px;
-		border-bottom: 1px solid lightgrey;
-		text-decoration: none;
-		font-weight: normal;
-		font-size: 12px;
-		width: auto;
-	}
-
-
-
-	.tabla td .accion{
-		display: block;
-	}
-
-	.tabla td span{
-		color: white;
 	}
 	
-
-	.tabla td img{
-		width: 90px;
-		height: 90px;
-		border: 1px solid white;
+		.cuenta .datos{
+	
+		}
+	
+		.cuenta .acciones{
+			border-left: 1px solid rgb(211, 211, 211);
+			padding: 0em 2em;
+		}
+	
+			.cuenta .acciones .accion{
+				display: block;
+				font-size: 1rem;
+				background-color: rgb(0,174,239);
+				color: white;
+				padding: 5px 10px;
+				margin-bottom: 1em;
+				text-decoration: none;
+				text-align: center;
+			}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	.historial{
 		
 	}
-
-	.tabla tbody tr:hover{
-		background-color: rgb(225,225,225);
+		.historial .pedido{
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+			grid-gap: 0em;
+			border: 1px solid rgb(211, 211, 211);
+			padding: 15px;
+			margin: 1em 1em;
+		}
+	
+			.historial .pedido .resumido{
+				display: grid;
+				grid-template-columns: repeat(8, 1fr);
+				grid-template-rows: 20px;
+				grid-gap: 0em;
+				padding: 10px 15px;
+				background-color: rgb(211, 211, 211);
+			}
+	
+				.historial .pedido .resumido .numeracion{
+					grid-column: 1/2;
+				}
+	
+				.historial .pedido .resumido .estado{
+					grid-column: 2/3;
+					margin: 0px 5px;
+				}
+	
+				.historial .pedido .resumido .fecha{
+					text-align: left;
+					grid-column: 3/4;
+					margin: 0px 5px;
+				}
+	
+				.historial .pedido .resumido .usuario{
+					text-align: left;
+					grid-column: 4/6;
+					margin: 0px 5px;
+				}
+	
+			
+	
+				.historial .pedido .resumido .total{
+					text-align: center;
+					font-size: 1em;
+					color:black;
+					grid-column: 8/9;
+				}
+	
+			.historial .pedido .titulo{
+				display: grid;
+				grid-template-columns: repeat(7, 1fr);
+				grid-template-rows: 20px;
+				border-bottom: 1px solid rgb(211, 211, 211); 
+				padding: 10px 0px;
+			}
+	
+				.historial .pedido .titulo .orden{
+					grid-column: 1/2;
+					font-size: 1em;
+					color: black;
+					margin: 0px 10px;
+				}
+	
+				.historial .pedido  .titulo .precio{
+					grid-column: 6/7;
+					font-size: 1em;
+					color: black;
+					margin: 0px 10px;
+					text-align: center;
+				}
+	
+				.historial .pedido .titulo .subtotal{
+					grid-column: 7/8;
+					font-size: 1em;
+					color: black;
+					margin: 0px 10px;
+					text-align: center;
+				}
+	
+	
+			.historial .pedido .items{
+			}
+	
+				.historial .pedido .items .item{
+					display: grid;
+					grid-template-columns: repeat(7, 1fr);
+					grid-template-rows: 250px;
+					border-bottom: 1px solid rgb(211, 211, 211);
+				}
+	
+					.historial .pedido .items .item .imagen{
+						background-position: center;
+						background-size: cover;
+						margin: 2em 0em;
+						grid-column: 1/2;
+					}
+				
+					.historial .pedido .items .item .detalles{
+						display: grid;
+						grid-template-columns: 1fr;
+						grid-column: 2/4;
+					}
+	
+						.historial .pedido .items .item .detalles .nombre{
+							font-size: 1.3em;
+							margin: 1em;
+						}
+	
+						.historial .pedido .items .item .detalles .descripcion{
+							font-size: 1em;
+							color: gray;
+							margin: 1em;
+						}
+	
+					
+					.historial .pedido .items .item .estado{
+						margin: 1em;
+					}
+			
+	
+					.historial .pedido .items .item .cantidad{
+						margin: 1em;
+					}
+	
+					.historial .pedido .items .item .precio{
+						margin: 1em;
+						text-align: center;
+					}
+	
+					.historial .pedido .items .item .subtotal{
+						margin: 1em;
+						text-align: center;
+					}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	
+	
+	.preorden{
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+		grid-template-rows: auto;
+		grid-gap: 2em;
+		
 	}
 	
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-
-.ventana{
-	width: 100%;
-	margin-top: 15px;
-	margin-bottom: 15px;
-}
-
-	.ventana .titulo{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		height: 50px;
-		border-radius: 4px 4px 0px 0px;
-		border-bottom: 1px solid rgb(211, 211, 211);
-		margin-bottom: 20px;
-		padding-left: 18px;
-		color: grey;
-		font-weight: bold;
-		font-size: 16px;
-		font-weight: bolder;
-		text-transform: uppercase;
-	}
-
-	.ventana .contenido{
-		height: auto;
-		width: 100%;
-		padding: 10px;
-	}
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-footer{
-	background-color: rgb(0,174,239);
-	height: 40px;
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-}
-
-	footer .version{
-		float: right;
-		padding: 10px 10px;
-		color: white;
-	}
-
-	footer .copyright{
-		float: left;
-		padding: 10px 10px;
-		color: white;
-	}
-
+		.preorden .items{
+				
+		}
 	
+			.preorden .items .cabecera{
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: auto;
+				grid-gap: 1em;
+				margin-bottom: 2em;
+			}
+	
+				.preorden .items .cabecera .cliente{
+					border: 1px solid rgb(211, 211, 211);
+					background-color: white;
+				}
+	
+					.preorden .items .cabecera .cliente .titulo{
+						background-color: rgb(0,174,239) ;
+						color: white;
+						text-align: center;
+						padding: 5px 15px;
+						font-size: 1em;
+						height: auto;
+						margin: 0px;
+					}
+	
+					.preorden .items .cabecera .cliente .nombre{
+						padding: 3px 15px;
+						text-transform: uppercase;
+						font-weight: bold;
+						margin:0px ;
+					}
+	
+					.preorden .items .cabecera .cliente .identificacion{
+						padding: 3px 15px;
+						margin:0px ;
+					}
+	
+					.preorden .items .cabecera .cliente .email{
+						padding: 3px 15px;
+						margin:0px ;
+					}
+		
+				.preorden .items .cabecera .direccion{
+					border: 1px solid rgb(211, 211, 211);
+					background-color: white;
+				}
+	
+					.preorden .items .cabecera .direccion .titulo{
+						background-color: rgb(0,174,239) ;
+						color: white;
+						text-align: center;
+						padding: 5px 15px;
+						font-size: 1em;
+						height: auto;
+						margin: 0px;
+					}
+	
+					.preorden .items .cabecera .direccion .calle{
+						padding: 3px 15px;
+						text-transform: uppercase;
+						font-weight: bold;
+						margin:0px ;
+					}
+	
+					.preorden .items .cabecera .direccion .ciudad{
+						padding: 3px 15px;
+						margin:0px ;
+					}
+	
+					.preorden .items .cabecera .direccion .telefono{
+						padding: 3px 15px;
+						margin:0px ;
+					}
+	
+		
+				.preorden .items .cabecera .pago{
+					border: 1px solid rgb(211, 211, 211);
+					background-color: white;
+				}
+	
+					.preorden .items .cabecera .pago .titulo{
+						background-color: rgb(0,174,239) ;
+						color: white;
+						text-align: center;
+						padding: 5px 15px;
+						font-size: 1em;
+						height: auto;
+						margin: 0px;
+					}
+	
+					.preorden .items .cabecera .pago .tipos{
+						padding: 15px 20px;
+					}
+	
+						.preorden .items .cabecera .pago .tipos .efectivo{
+							padding: 3px 15px;
+							margin:0px ;
+						}
+	
+						.preorden .items .cabecera .pago .tipos .credito{
+							padding: 3px 15px;
+							margin:0px ;
+						}
+	
+	
+			.preorden .items .titulo{
+				border-bottom: 1px solid rgb(211, 211, 211); 
+				height: 30px;
+				
+			}
+	
+				.preorden .items .titulo .orden{
+					float: left;
+					font-size: 1em;
+					color: black;
+					margin: 0px 10px;
+				}
+	
+				.preorden .items .titulo .precio{
+					float: right;
+					font-size: 1em;
+					color: black;
+					margin: 0px 10px;
+				}
+	
+			.preorden .items .item{
+				display: grid;
+				grid-template-columns: 1fr 4fr 1fr;
+				grid-template-rows: 250px;
+				border-bottom: 1px solid rgb(211, 211, 211);
+			}
+	
+				.preorden .items .item .imagen{
+					background-position: center;
+					background-size: cover;
+					margin: 2em 0em;
+				}
+			
+				.preorden .items .item .detalles{
+					display: grid;
+					grid-template-columns: 2fr 1fr 1fr;
+				}
+	
+					.preorden .items .item .detalles .nombre{
+						font-size: 1.3em;
+						margin: 1em;
+					}
+	
+					.preorden .items .item .detalles .descripcion{
+						font-size: 1em;
+						color: gray;
+						margin: 1em;
+					}
+	
+					.preorden .items .item .detalles .estado{
+						font-size: 1em;
+						padding: 5px 10px;
+						color: rgb(0,174,239);
+						margin: 1em;
+					}
+	
+					.preorden .items .item .detalles .cantidad{
+						margin: 1em;
+					}
+	
+				.preorden .items .item .precio{
+					margin: 1em 1em 0px 1em;
+					text-align: right;
+				}
+	
+				.preorden .items .item .descuento{
+					margin: 0em 1em;
+					text-align: right;
+				}
+	
+				
+				.preorden .items .item .subtotal{
+					border-top: 1px solid rgb(211, 211, 211);
+					margin: 0em 1em;
+					text-align: right;
+				}
+	
+				.preorden .items .item .eliminar{
+					text-decoration: none;
+					color: red;
+					margin: 1em;
+					float: right;
+				}
+		
+		.preorden .resumen{
+			border: 1px solid rgb(211, 211, 211);
+			padding: 20px 0px;
+		}
+	
+			.preorden .resumen .titulo{
+				font-size: 1.5em;
+				text-align: center;
+				color: gray;
+				border-bottom: 1px solid rgb(211,211,211);
+			}
+	
+			.preorden .resumen .subtotal{
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: auto;
+				padding: 0px 10px;
+				margin-top: 15px;
+			}
+	
+				.preorden .resumen .subtotal .cantidad{
+					text-align: left;
+					font-size: 1em;
+				}
+	
+	
+				.preorden .resumen .subtotal .precio{
+					text-align: right;
+					font-size: 1em;
+				}
+	
+			.preorden .resumen .impuesto{
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: auto;
+				padding: 0px 10px;
+				margin-bottom: 15px;
+			}
+	
+				.preorden .resumen .impuesto .tipo{
+					text-align: left;
+					font-size: 1em;
+				}
+	
+				.preorden .resumen .impuesto .valor{
+					text-align: right;
+					font-size: 1em;
+				}
+	
+	
+			.preorden .resumen .total{
+				font-size: 1.5em;
+				color: black;
+				text-align: center;
+				padding: 20px 0px;
+				border-top: 1px solid rgb(211,211,211);
+	
+			}
+	
+			.preorden .resumen .pagar{
+				display: block;
+				width: 80%;
+				margin: auto;
+				padding: 3px 0px;
+				border: 0px;
+				background-color:rgb(0,174,239); 
+				color: white;
+				font-size: 1.5em;
+			}
+	
+			.preorden .resumen .seguir{
+				display: block;
+				margin: 15px 30px;
+				border: 1px solid rgb(0,174,239); 
+				color: rgb(0,174,239);
+				text-align: center;
+				font-size: 1.5em;
+				text-decoration: none;
+			}
+	
+			.preorden .resumen .cancelar{
+				display: block;
+				margin: 15px 30px;
+				border: 1px solid rgb(0,174,239); 
+				color: rgb(0,174,239);
+				text-align: center;
+				font-size: 1.5em;
+				text-decoration: none;
+			}
+			
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	.dashboard{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto;
+		grid-gap: 2em;
+		width: 60%;
+		margin: auto;
+		
+	}
+	
+		.dashboard .item{
+			background-color: white;
+			border-radius: 10px;
+			width: 100%;
+			height: auto;
+			text-decoration: none;
+		}
+			.dashboard .item .titulo{
+				text-align: center;
+				width: 100%;
+				background-color: rgb(0,174,239);
+				color: white;
+				font-size: 1.5em;
+				padding: 0.5em 0em;
+			}
+	
+	
+			.dashboard .item .grafico{
+				padding: 2em;
+			}
+	
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	.encabezado{
+		display: grid;
+		grid-template-columns: 1fr 3fr;
+		grid-gap: 1em;
+		width: 98%;
+		margin: auto;
+	}
+	
+		.encabezado .resumen{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			border: 1px solid rgb(211,211,211);
+			border-radius: 5px;
+			padding: 0.5em;
+		}
+	
+			.encabezado .resumen .total{
+				text-align: left;
+				font-size: 1em;
+			}
+	
+			.encabezado .resumen .cantidad{
+				text-align: left;
+				font-size: 1em;
+			}
+		
+	
+		.encabezado .acciones{
+			display: grid;
+			grid-template-columns: 1fr;
+			border: 1px solid rgb(211,211,211);
+			border-radius: 5px;
+			padding: 0.5em;
+		}
+	
+			.encabezado .acciones .boton{
+				align-self: center;
+			}
+		
+		.encabezado .filtros{
+			display: grid;
+			grid-template-columns: repeat(7, 1fr);
+			border: 1px solid rgb(211,211,211);
+			border-radius: 5px;
+			padding: 0.5em;
+		}
+	
+			.encabezado .filtros .boton{
+				align-self: center;
+			}
+	
+			.encabezado .filtros .etiqueta{
+				text-align: left;
+				font-size: 1em;
+				align-self: center;
+				margin: 0.5em;
+				text-align: right;
+			}
+	
+			.encabezado .filtros .select{
+				text-align: left;
+				font-size: 1em;
+				margin: 0.5em;
+				padding: 0.25em 0.5em;
+			}
+	
+			.encabezado .filtros .text{
+				text-align: left;
+				font-size: 1em;
+				margin: 0.5em;
+				padding: 0.25em 0.5em;
+			}
+	
+			.encabezado .filtros .date{
+				text-align: left;
+				font-size: 1em;
+				margin: 0.5em;
+				padding: 0.1em 0.5em;
+			}
+	
+		
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	.menusrol{
+		width: 50%;
+		margin: auto;
+	}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	.googlemap{
+		
+	}
+	
+	
+	.tabla{
+		width: 100%;
+		text-align: left;
+		border-radius: 5px;
+		margin-top: 5px;
+		margin-bottom: 10px;
+		border-collapse: collapse;
+	}
+	
+		.tabla thead{
+			background-color:rgb(211,211,211) ;
+			color: gray;
+			border-bottom: 2px solid darkgray;
+		}
+	
+		.tabla th, td{
+			padding: 5px 20px;
+			border-bottom: 1px solid lightgrey;
+			text-decoration: none;
+			font-weight: normal;
+			font-size: 12px;
+			width: auto;
+		}
+	
+	
+	
+		.tabla td .accion{
+			display: block;
+		}
+	
+		.tabla td span{
+			color: white;
+		}
+		
+	
+		.tabla td img{
+			width: 90px;
+			height: 90px;
+			border: 1px solid white;
+			
+		}
+	
+		.tabla tbody tr:hover{
+			background-color: rgb(225,225,225);
+		}
+		
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	
+	.ventana{
+		width: 100%;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+	
+		.ventana .titulo{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 50px;
+			border-radius: 4px 4px 0px 0px;
+			border-bottom: 1px solid rgb(211, 211, 211);
+			margin-bottom: 20px;
+			padding-left: 18px;
+			color: grey;
+			font-weight: bold;
+			font-size: 16px;
+			font-weight: bolder;
+			text-transform: uppercase;
+		}
+	
+		.ventana .contenido{
+			height: auto;
+			width: 100%;
+			padding: 10px;
+		}
+	
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	
+	footer{
+		background-color: rgb(0,174,239);
+		height: 40px;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
+	
+		footer .version{
+			float: right;
+			padding: 10px 10px;
+			color: white;
+		}
+	
+		footer .copyright{
+			float: left;
+			padding: 10px 10px;
+			color: white;
+		}
+	
+		
+	
+	
+}
+/*-------------------------------------------------------------------------------------------------------------------*/
 

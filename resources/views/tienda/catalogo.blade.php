@@ -22,8 +22,10 @@
                 {{ $productos->links() }}
             </div>
         </div>
-
+        <label id="filtro" for="check">{{ __('content.view') }} {{ __('content.filter') }}</label>
+        <input type="checkbox" hidden id="check">
         <div class="filtros">
+            
             <form method="GET" action="{{ route('tienda.busqueda') }}">
                 <div class="orden">
                     <p class="titulo">{{ __('messages.orderBy') }}</p>

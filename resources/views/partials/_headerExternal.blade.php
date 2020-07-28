@@ -20,6 +20,22 @@
                 <input type="text" hidden id="orden" name="orden" value="1">
             </form>
         </div>
+        @guest
+            <div class="icono1">
+                <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i></a>
+            </div>
+            <div class="icono2">
+                <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a>
+            </div>
+        @else
+            <div class="icono1">
+                <a href="{{ route('clientes.cuenta') }}"><i class="fas fa-user"></i></a>
+            </div>
+            <div class="icono2">
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        @endguest
+       
         <div class="favoritos">
             <a href="#"><i class="far fa-heart"></i></a>
         </div>
