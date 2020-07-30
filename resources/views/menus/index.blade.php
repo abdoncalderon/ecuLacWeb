@@ -76,7 +76,7 @@
                     </table>
                 </div>
             </div>
-            {{ $menus->links() }}
+            {{ $menus->withQueryString()->links() }}
         </div>
     </div>
 @endsection

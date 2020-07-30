@@ -14,6 +14,12 @@
 @endsection
 
 @section('contenidoPrincipal')
+    @if($errors->any())
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ $errors->first() }}
+    </div>
+    @endif
     
     <div class="estante">
 
@@ -68,12 +74,7 @@
                     <div class="existencia" {{ $producto->estado!='Disponible' ? 'hidden' : '' }}>{{ __('content.availables').' '.$producto->existenciaActual.' '.__('content.products') }}</div>
                 </div>
                 
-                @if($errors->any())
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        {{ $errors->first() }}
-                    </div>
-                @endif
+                
                 
                 @if($producto->existenciaActual>0)
                     <div class="acciones">

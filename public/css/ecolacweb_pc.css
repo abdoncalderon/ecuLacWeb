@@ -224,9 +224,13 @@
 				margin: auto;
 			}
 	
-			.cabeceraInterna .logo img{
-				width: 95%;
-				margin: auto;
+				.cabeceraInterna .logo img{
+					width: 95%;
+					margin: auto;
+				}
+
+			.cabeceraInterna #menu{
+				display: none;
 			}
 	
 			.cabeceraInterna .cinta{
@@ -1596,6 +1600,7 @@
 					}
 	
 					.historial .pedido .items .item .subtotal{
+						border: 0px;
 						margin: 1em;
 						text-align: center;
 					}

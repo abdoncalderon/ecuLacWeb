@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-/* use Illuminate\Support\Facades\DB; */
 use App\Cliente;
 use App\Pedido;
-use App\ItemPedido;
 use App\User;
+use App\Ciudad;
+use App\Http\Requests\UpdateClienteRequest;
 use Illuminate\Http\Request;
+use Exception;
 class ClienteController extends Controller
 {
     public function cuenta(){
@@ -76,7 +77,7 @@ class ClienteController extends Controller
     public function pedido(){
         $pedidoAbierto = Pedido::abierto(auth()->id());
         if($pedidoAbierto == 0){
-            return back();
+            return back()->withErrors(__('messages.noOrder'));
         }else{
             $pedido = Pedido::find($pedidoAbierto);
             $itemsPedido = Pedido::items($pedidoAbierto);
@@ -93,5 +94,45 @@ class ClienteController extends Controller
             ->with(compact('pedido'))
             ->with(compact('cliente'))
             ->with(compact('itemsPedido'));
+    }
+
+    public function edit($clienteId){
+        $ciudades = Ciudad::all();
+        $cliente = Cliente::join('users','clientes.usuario_id','=','users.id')
+        ->where('clientes.usuario_id',auth()->id())
+        ->first();
+        return view('clientes.perfil')
+        ->with(compact('ciudades'))
+        ->with(compact('cliente'));
+
+    }
+
+    public function update(UpdateClienteRequest $request, $clienteId){
+        try{
+            User::where('id',$clienteId)->update([
+                'nombreCompleto'=>$request->post('nombreCompleto'),
+                'cedula'=>$request->post('cedula'),
+                'email'=>$request->post('email'),
+                'telefono'=>$request->post('telefono'),
+                'usuario'=>$request->post('usuario'),
+            ]);
+            if($request->has('conUbicacion')){
+                Cliente::where('usuario_id',$clienteId)->update([
+                    'ciudad_id'=>$request->post('ciudad_id'),
+                    'direccion'=>$request->post('direccion'),
+                    'latitud'=>$request->post('latitud'),
+                    'longitud'=>$request->post('longitud'),
+                ]);
+            }else{
+                Cliente::where('usuario_id',$clienteId)->update([
+                    'ciudad_id'=>$request->post('ciudad_id'),
+                    'direccion'=>$request->post('direccion'),
+                ]);
+            }
+            return redirect()->route('clientes.cuenta');
+        }catch (Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+
     }
 }

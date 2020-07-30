@@ -40,9 +40,9 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function registro1(){
+  /*   public function registro1(){
         return view('auth.register1');
-    }
+    } */
 
 
     protected function validator(array $data)
@@ -88,4 +88,8 @@ class RegisterController extends Controller
         return $nuevoUsuario;
         
     }
+
+    
+
+    
 } 

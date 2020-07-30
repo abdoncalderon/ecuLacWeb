@@ -7,7 +7,6 @@ use App\Rol;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUsuarioRequest;
 use App\Http\Requests\UpdateUsuarioRequest;
-use Illuminate\Support\Facades\DB;
 use Exception;
 
 class UsuarioController extends Controller

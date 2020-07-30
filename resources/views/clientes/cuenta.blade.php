@@ -154,7 +154,7 @@
     
                     </div>
                     <div class="acciones">
-                        <a class="accion" href="#">{{ __('content.edit') }} {{ __('content.profile') }}</a>
+                        <a class="accion" href="{{ route('clientes.edit',$cliente->id) }}">{{ __('content.edit') }} {{ __('content.profile') }}</a>
                         <a class="accion" href="#">{{ __('messages.payments') }}</a>
                         <a class="accion" href="{{ route('clientes.historial') }}">{{ __('messages.myorders') }}</a>
                     </div>

@@ -52,20 +52,21 @@
                     <div class="estado">{{ $pedido->estado }}</div>
                     @if($pedido->estado=='ABIERTO')
                         <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaCreacion)->format('d-M-Y') }}</div>
+                        <div class="usuario">{{ __('content.client') }}: <br> {{ $pedido->cliente($pedido->cliente_id) ?? '' }}</div>
                     @elseif($pedido->estado=='CONFIRMADO')
                         <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaConfirmacion)->format('d-M-Y') }}</div>
-                        <div class="usuario">{{ __('messages.soldBy') }} {{ $pedido->repartidor($pedido->vendedor_id) ?? '' }}</div>
+                        <div class="usuario">{{ __('messages.soldBy') }} <br> {{ $pedido->repartidor($pedido->vendedor_id) ?? '' }}</div>
                     @else
                         <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaCreacion)->format('d-M-Y') }}</div>
-                        <div class="usuario">{{ __('messages.dispatchedBy') }} {{ $pedido->repartidor($pedido->repartidor_id) ?? '' }}</div>
+                        <div class="usuario">{{ __('messages.dispatchedBy') }}  <br>  {{ $pedido->repartidor($pedido->repartidor_id) ?? '' }}</div>
                     @endif
-                    
                     <div class="total">Total: {{ $pedido->total($pedido) }}</div>
-                </div>                    
+                </div>      
+                              
                 <div class="titulo">
                     <div class="orden">{{ __('content.items').' '.__('content.order').': '.count($pedido->items($pedido->id)) }}</div>
-                    <div class="precio">{{ __('content.price').' x '.__('content.unity') }}</div>
-                    <div class="subtotal">{{ __('content.subtotal') }}</div>
+                    <div class="precio"></div>
+                    <div class="subtotal"></div>
                 </div>
 
                 <div class="items">
@@ -78,10 +79,10 @@
                                     <div class="descripcion">{{ $item->producto($item)->descripcion}}</div>
                                 </div>
                             </div>
-                            <div class="estado">{{ $item->estado }}  {{ Carbon\Carbon::parse($item->created_at)->format('d M Y')}}</div>
-                            <div class="cantidad">{{ __('content.quantity').': '.$item->cantidad.' '.__('content.unities') }}</div>
-                            <div class="precio">{{ __('content.currency').' '.$item->precioUnitario }}</div>
-                            <div class="subtotal">{{ __('content.currency') }} {{ $item->subtotal }}</div>
+                            <div class="estado">{{ $item->estado }} <br> {{ Carbon\Carbon::parse($item->created_at)->format('d M Y')}}</div>
+                            <div class="cantidad">{{ __('content.quantity') }} <br> {{ $item->cantidad }} {{ __('content.unities') }}</div>
+                            <div class="precio">{{ __('content.price') }} ({{ __('content.discount') }}) <br> {{ __('content.currency').' '.$item->producto($item)->precioDescuento($item->producto_id) }}</div>
+                            <div class="subtotal">{{ __('content.subtotal') }} <br> {{ __('content.currency') }} {{ $item->subtotal }}</div>
                         </article>
                     @endforeach
                 </div>

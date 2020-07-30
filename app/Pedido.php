@@ -84,8 +84,6 @@ class Pedido extends Model
         }else{
             return $vendedor->nombreCompleto;
         }
-
-        
     }
 
     static public function repartidor($repartidorId)

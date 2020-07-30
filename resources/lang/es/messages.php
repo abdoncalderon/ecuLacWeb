@@ -41,9 +41,12 @@ return [
     'changeTo'=>'Cambiar a',
     'myAccount'=>'Mi Cuenta',
     'routeNoExist'=>'Ruta Laravel No Existe en esta aplicación',
-    'soldBy'=>'Vendido Por:',
+    'soldBy'=>'Vendido por',
     'dispatchedBy'=>'Despachado por',
     'dateRange'=>'Rango de fechas erróneo',
+    'noOrder'=>'No existe un pedido abierto para este cliente',
+    'withLocation'=>'Con Ubicación',
+    'withoutLocation'=>'Sin Ubicación',
 
 
 

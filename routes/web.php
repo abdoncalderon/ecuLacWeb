@@ -101,11 +101,12 @@ Route::get('/pedidos/eliminar/{pedido}','PedidoController@destroy')->name('pedid
 Route::post('/pedidos/pagar/{pedido}','PedidoController@toPay')->name('pedidos.toPay')->middleware('auth','permiso');
 Route::get('/pedidos/ubicacion/{cliente}','PedidoController@location')->name('pedidos.location')->middleware('auth','permiso');
 
-
 Route::get('/clientes/cuenta','ClienteController@cuenta')->name('clientes.cuenta')->middleware('auth');
 Route::get('/clientes/historial','ClienteController@historial')->name('clientes.historial')->middleware('auth');
 Route::get('/clientes/pedido','ClienteController@pedido')->name('clientes.pedido')->middleware('auth');
 Route::get('/clientes/preorden/{pedido}','ClienteController@preorden')->name('clientes.preorden')->middleware('auth');
+Route::get('/clientes/perfil/edit/{cliente}','ClienteController@edit')->name('clientes.edit')->middleware('auth');
+Route::patch('/clientes/perfil/update/{cliente}','ClienteController@update')->name('clientes.update')->middleware('auth');
 
 Route::get('/itemspedidos','ItemPedidoController@index')->name('itemspedidos.index')->middleware('auth');
 Route::post('/itemspedidos','ItemPedidoController@store')->name('itemspedidos.store')->middleware('auth');
