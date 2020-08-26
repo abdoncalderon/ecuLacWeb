@@ -13,13 +13,25 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ $errors->first() }}
+        </div>
+    @endif
+
     <div class="ventana">
         <div class="titulo">{{ __('content.add') }}  {{ __('content.role') }}</div>
             <div class="contenido">
+
+                {{-- FORMULARIO --}}
                 <div class="formulario">
                     <form method="POST" action="{{ route('roles.store') }}">
                         @csrf
 
+                        {{-- NOMBRE --}}
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('content.name') }}</label>
                             <div class="col-md-6">
@@ -41,6 +53,7 @@
                             </div>
                         </div>
 
+                        {{-- BOTONES --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary ">{{ __('content.save') }}</button>

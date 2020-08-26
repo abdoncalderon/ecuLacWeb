@@ -25,14 +25,15 @@
         <div class="titulo">{{ __('content.inventory')}}</div>
         <div class="encabezado">
             <div class="resumen">
-                <div class="cantidad">{{ __('content.quantity') }} {{ __('content.inventory') }}: {{ $cantidadProductos }} {{ __('content.unities') }}</div>
-                <div class="total"> Total {{ __('content.inventory') }}: {{ __('content.currency') }} {{ number_format($totalProductos,2) }}</div>
+                <div class="cantidad">{{ __('content.quantity') }}: <br> {{ $cantidadProductos }} {{ __('content.unities') }}</div>
+                <div class="total"> Total: <br> {{ __('content.currency') }} {{ number_format($totalProductos,2) }}</div>
             </div>
 
             <form method="GET" action="{{ route('reportes.inventario') }}">
                 <div class="filtros">
                     <span class="boton">
-                        <button class="btn btn-secondary" type="submit">{{ __('content.search') }}  {{ __('content.products') }}</button>
+                        <input id="buscar" name="buscar" class="btn btn-secondary" type="submit" value="{{ __('content.search') }}">
+                        <input id="imprimir" name="imprimir" class="btn btn-secondary" type="submit" value="{{ __('content.print') }}">
                     </span>
                     <div class="etiqueta">{{ __('content.category') }}</div>
                     <select class="select"  name="categoria" id="categoria">

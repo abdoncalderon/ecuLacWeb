@@ -104,7 +104,6 @@ class ClienteController extends Controller
         return view('clientes.perfil')
         ->with(compact('ciudades'))
         ->with(compact('cliente'));
-
     }
 
     public function update(UpdateClienteRequest $request, $clienteId){

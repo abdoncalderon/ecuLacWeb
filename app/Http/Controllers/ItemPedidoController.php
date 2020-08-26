@@ -55,7 +55,6 @@ class ItemPedidoController extends Controller
         }else{
             return back()->withErrors(__('messages.fieldEmpty'));
         }
-        
     }
 
     public function destroy($id){

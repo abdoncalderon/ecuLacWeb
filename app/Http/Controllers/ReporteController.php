@@ -5,6 +5,7 @@ use App\Factura;
 use App\Producto;
 use App\Categoria;
 use App\User;
+use PDF;
 
 use Illuminate\Http\Request;
 
@@ -16,7 +17,11 @@ class ReporteController extends Controller
     }
 
     public function ventas(Request $request){
-
+        if ($request->has('imprimir')){
+            $itemsXpagina = Factura::all()->count();
+        }else{
+            $itemsXpagina = 5;
+        }
         $vendedores = User::where('rol_id',3)->get();
         if (count($request->all())>0){
             $desde = $request->get('desde');
@@ -25,35 +30,53 @@ class ReporteController extends Controller
             if ($vendedor == null){
                 $totalVentas = Factura::whereBetween('fecha',[$desde,$hasta])->sum('subtotal');
                 $cantidadVentas = Factura::whereBetween('fecha',[$desde,$hasta])->count();
-                $facturas = Factura::whereBetween('fecha',[$desde,$hasta])->paginate(20);
+                $facturas = Factura::whereBetween('fecha',[$desde,$hasta])->paginate($itemsXpagina);
             }else{
                 $totalVentas = Factura::join('pedidos','facturas.pedido_id','=','pedidos.id')->where('pedidos.vendedor_id',$vendedor)->whereBetween('fecha',[$desde,$hasta])->sum('subtotal');
                 $cantidadVentas = Factura::join('pedidos','facturas.pedido_id','=','pedidos.id')->where('pedidos.vendedor_id',$vendedor)->whereBetween('fecha',[$desde,$hasta])->count();
-                $facturas = Factura::join('pedidos','facturas.pedido_id','=','pedidos.id')->where('pedidos.vendedor_id',$vendedor)->whereBetween('fecha',[$desde,$hasta])->paginate(20);
+                $facturas = Factura::join('pedidos','facturas.pedido_id','=','pedidos.id')->where('pedidos.vendedor_id',$vendedor)->whereBetween('fecha',[$desde,$hasta])->paginate($itemsXpagina);
             }
         }else{
             $totalVentas = Factura::sum('subtotal');
             $cantidadVentas = Factura::count();
-            $facturas = Factura::where('id','!=',0)->paginate(20);
+            $facturas = Factura::where('id','!=',0)->paginate($itemsXpagina);
         }
-        return view('reportes.ventas.index')
-        ->with(compact('totalVentas'))
-        ->with(compact('cantidadVentas'))
-        ->with(compact('vendedores'))
-        ->with(compact('facturas'));
+
+        if ($request->has('imprimir')){
+            $pdf=PDF::loadView('reportes.ventas.print',[
+                'facturas'=>$facturas,
+                'totalVentas'=>$totalVentas,
+                'cantidadVentas'=>$cantidadVentas,
+                'desde'=>$desde,
+                'hasta'=>$hasta,
+                ]);
+            $pdf->setPaper('a4','landscape');
+            return $pdf->stream();
+        }else{
+            return view('reportes.ventas.index')
+            ->with(compact('totalVentas'))
+            ->with(compact('cantidadVentas'))
+            ->with(compact('vendedores'))
+            ->with(compact('facturas'));
+        }
     }
 
     public function inventario(Request $request){
+        if ($request->has('imprimir')){
+            $itemsXpagina = Factura::all()->count();
+        }else{
+            $itemsXpagina = 5;
+        }
         $categorias = Categoria::all();
         if (count($request->all())>0){
             $categoria = $request->get('categoria');
             if ($categoria == null){
-                $productos =Producto::where('id','!=',0)->paginate(20);
+                $productos =Producto::where('id','!=',0)->paginate($itemsXpagina);
             }else{
-                $productos = Producto::where('Categoria_id',$categoria)->paginate(20);
+                $productos = Producto::where('Categoria_id',$categoria)->paginate($itemsXpagina);
             }
         }else{
-            $productos =Producto::where('id','!=',0)->paginate(20);
+            $productos =Producto::where('id','!=',0)->paginate($itemsXpagina);
         }
         $totalProductos = 0;
         $cantidadProductos = 0;
@@ -62,10 +85,24 @@ class ReporteController extends Controller
             $cantidadProductos = $cantidadProductos + $producto->existenciaActual;
         }
        
-        return view('reportes.inventario.index')
-        ->with(compact('totalProductos'))
-        ->with(compact('cantidadProductos'))
-        ->with(compact('categorias'))
-        ->with(compact('productos'));
+        if ($request->has('imprimir')){
+            $pdf=PDF::loadView('reportes.inventario.print',[
+                'productos'=>$productos,
+                'totalPOroductos'=>$totalProductos,
+                'cantidadProductos'=>$cantidadProductos,
+                ]);
+            $pdf->setPaper('a4','landscape');
+            return $pdf->stream();
+        }else{
+            return view('reportes.inventario.index')
+            ->with(compact('totalProductos'))
+            ->with(compact('cantidadProductos'))
+            ->with(compact('categorias'))
+            ->with(compact('productos'));
+        }
+
+
+
+        
     }
 }

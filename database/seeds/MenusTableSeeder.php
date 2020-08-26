@@ -535,7 +535,7 @@ class MenusTableSeeder extends Seeder
                 "nombre" => 'listar pedidos despachados',
                 "multilenguaje" => 'content.deliveries',
                 "ruta"  => 'pedidos.repartidor',
-                "icono" => 'pedidos.png',
+                "icono" => 'despachos.png',
                 "esVisible" => '1',
             ],
             [

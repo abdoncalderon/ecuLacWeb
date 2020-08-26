@@ -1,4 +1,3 @@
-
  <nav>
     <div class="menuPrincipal">
         <p class="bienvenida">{{ __('content.welcome') }} {{ auth()->user()->nombreCompleto ?? ''}}</p>

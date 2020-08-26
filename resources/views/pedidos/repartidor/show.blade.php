@@ -57,10 +57,11 @@
                         <div>
                             <div class="precio">{{ __('content.currency').' '.$item->precioUnitario }}</div>
                         </div>
-                        
                     </article>
                 @endforeach
             </div>
+
+
             <div class="resumen">
               
                 <div class="titulo">{{ __('content.summary') }}</div>

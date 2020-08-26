@@ -3,18 +3,18 @@
 @section('contenidoPrincipal')
 
     <div class="vitrina">
-        
+        {{-- CARRUSEL DE IMAGENES --}}
         <div class="carrusel">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="imagen" src="{{ asset('img/carrusel/carrusel1.jpg') }}"  alt="">
+                        <img class="imagen" src="{{ asset('img/carrusel/carrusel6.jpg') }}"  alt="">
                     </div>
                     <div class="carousel-item">
-                        <img class="imagen" src="{{ asset('img/carrusel/carrusel2.jpg') }}" alt="">
+                        <img class="imagen" src="{{ asset('img/carrusel/carrusel5.jpg') }}" alt="">
                     </div>
                     <div class="carousel-item">
-                        <img class="imagen" src="{{ asset('img/carrusel/carrusel3.jpg') }}" alt="">
+                        <img class="imagen" src="{{ asset('img/carrusel/carrusel7.jpg') }}" alt="">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -32,7 +32,8 @@
             <p><i class="fas fa-th"></i> {{ __('messages.ourCategories') }}</p>
                 <a href="#">{{ __('messages.showAll')}}</a>
         </div>
-        
+
+        {{-- CATEGORIAS DE PRODUCTOS --}}
         <div class="categorias">
             @foreach ($categorias as $categoria)
                 <article class="categoria">
@@ -49,9 +50,9 @@
             <p><i class="fas fa-medal"></i>  {{ __('messages.ourHighlights') }}</p>
             <a href="{{ route('tienda.filtroDestacados') }}">{{ __('messages.showAll')}}</a>
         </div>
-        
-        <div class="destacados">
 
+        {{-- PRODUCTOS DESTACADOS --}}
+        <div class="destacados">
             @foreach ($destacados as $destacado)
                 <article class="destacado">
                     <div class="imagen" style="background-image: url({{ asset('img/productos/'.$destacado->imagenPredeterminada($destacado->id)) }})">
@@ -80,9 +81,10 @@
         </div>
 
         <div class="titulo">
-            <h6>Contactenos</h6>
+            <P>{{ __('content.contactus')}}</P>
         </div>
-        
+
+        {{-- INFORMACION CORPORATIVA --}}
         <div class="informacion">
             <div></div>
             <div></div>

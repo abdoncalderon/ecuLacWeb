@@ -72,7 +72,6 @@ class Producto extends Model
         }else{
             return 0;
         }
-        
     }
 
     static public function actualizarExistencia($productoId,$movimiento,$cantidad)

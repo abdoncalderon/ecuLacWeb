@@ -1,5 +1,4 @@
-
-@media only screen and (min-width: 1200px){
+@media all and (min-width: 1201px){
 	*{
 		margin:0px;
 		padding: 0px;
@@ -42,8 +41,6 @@
 				margin: 7px 10px;
 				text-decoration: none;
 			}
-	
-			
 	
 	/*-------------------------------------------------------------------------------------------------------------------*/
 	
@@ -1937,7 +1934,7 @@
 	
 	.encabezado{
 		display: grid;
-		grid-template-columns: 1fr 3fr;
+		grid-template-columns: 1fr 4fr;
 		grid-gap: 1em;
 		width: 98%;
 		margin: auto;
@@ -1983,6 +1980,9 @@
 		}
 	
 			.encabezado .filtros .boton{
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-gap: 1em;
 				align-self: center;
 			}
 	
@@ -2026,9 +2026,7 @@
 	
 	/*-------------------------------------------------------------------------------------------------------------------*/
 	
-	.googlemap{
-		
-	}
+
 	
 	
 	.tabla{
@@ -2074,7 +2072,7 @@
 		}
 	
 		.tabla tbody tr:hover{
-			background-color: rgb(225,225,225);
+			background-color: rgb(225, 225, 225);
 		}
 		
 	
@@ -2137,5 +2135,6 @@
 	
 	
 }
+
 /*-------------------------------------------------------------------------------------------------------------------*/
 

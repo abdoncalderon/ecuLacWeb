@@ -30,7 +30,8 @@
             <form method="GET" action="{{ route('productos.index') }}">
                 <div class="filtros">
                     <span class="boton">
-                        <button class="btn btn-secondary" type="submit">{{ __('content.search') }}  {{ __('content.product') }}</button>
+                        <input id="buscar" name="buscar" class="btn btn-secondary" type="submit" value="{{ __('content.search') }}">
+                        <input id="imprimir" name="imprimir" class="btn btn-secondary" type="submit" value="{{ __('content.print') }}">
                     </span>
                     <div class="etiqueta">{{ __('content.name') }}</div>
                     <input type="text" class="text" id="nombre" name="nombre">

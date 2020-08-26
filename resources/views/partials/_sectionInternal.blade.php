@@ -1,4 +1,3 @@
-
 <section class="seccion">
 
     @yield('indice')

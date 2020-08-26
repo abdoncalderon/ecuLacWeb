@@ -7,8 +7,6 @@ use App\Producto;
 use App\Http\Requests\StoreImagenProductoRequest;
 use Illuminate\Support\Facades\DB;
 
-
-
 class ImagenProductoController extends Controller
 {
     public function index(Producto $producto){

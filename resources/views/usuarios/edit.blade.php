@@ -13,22 +13,27 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ $errors->first() }}
         </div>
     @endif
+
     <div class="ventana">
         <div class="titulo">{{ __('content.edit') }}  {{ __('content.user') }} - {{ $usuario->nombreCompleto }}</div>
         <div class="contenido">
 
+            {{-- FORMULARIO --}}
             <form method="POST" action="{{ route('usuarios.update',$usuario) }}">
                 @csrf
                 @method('PATCH')
+
+                {{-- NOMBRE COMPLETO --}}
                 <div class="form-group row">
                     <label for="nombreCompleto" class="col-md-4 col-form-label text-md-right">{{ __('content.fullname') }}</label>
-
                     <div class="col-md-6">
                         <input 
                             id="nombreCompleto" 
@@ -49,9 +54,10 @@
                     </div>
                 </div>
 
+
+                {{-- CEDULA --}}
                 <div class="form-group row">
                     <label for="cedula" class="col-md-4 col-form-label text-md-right">{{ __('content.cardid') }}</label>
-
                     <div class="col-md-6">
                         <input 
                             id="cedula" 
@@ -72,9 +78,9 @@
                     </div>
                 </div>
 
+                {{-- EMAIL --}}
                 <div class="form-group row">
                     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('content.emailaddress') }}</label>
-
                     <div class="col-md-6">
                         <input 
                             id="email" 
@@ -94,9 +100,9 @@
                     </div>
                 </div>
 
+                {{-- TELEFONO --}}
                 <div class="form-group row">
                     <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('content.phone') }}</label>
-
                     <div class="col-md-6">
                         <input 
                             id="telefono" 
@@ -116,6 +122,7 @@
                     </div>
                 </div>
 
+                {{-- ROL --}}
                 <div class="form-group row">
                     <label for="rol_id" class="col-md-4 col-form-label text-md-right">{{ __('content.role') }}</label>
                     <div class="col-md-6">
@@ -139,9 +146,9 @@
                     </div>
                 </div>
 
+                {{-- USUARIO --}}
                 <div class="form-group row">
                     <label for="usuario" class="col-md-4 col-form-label text-md-right">{{ __('content.user') }}</label>
-
                     <div class="col-md-6">
                         <input 
                             id="usuario" 
@@ -161,6 +168,7 @@
                     </div>
                 </div>
 
+                {{-- ESTA ACTIVO? --}}
                 <div class="form-group row">
                     <label for="estaActivo" class="col-md-4 col-form-label text-md-right">{{ __('content.active') }}</label>
                     <div class="col-md-6 custom-control custom-switch">
@@ -180,6 +188,7 @@
                     </div>
                 </div>
 
+                {{-- BOTONES --}}
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-primary ">{{ __('content.save') }}</button>

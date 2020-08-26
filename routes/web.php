@@ -56,6 +56,7 @@ Route::post('/productos','ProductoController@store')->name('productos.store')->m
 Route::get('/productos/edit/{producto}','ProductoController@edit')->name('productos.edit')->middleware('auth','permiso');
 Route::patch('/productos/{producto}','ProductoController@update')->name('productos.update')->middleware('auth','permiso');
 Route::get('/productos/{producto}','ProductoController@destroy')->name('productos.destroy')->middleware('auth','permiso');
+Route::get('/productos/imprimir','ProductoController@print')->name('productos.print')->middleware('auth','permiso');
 
 Route::get('/roles','RolController@index')->name('roles.index')->middleware('auth','permiso');
 Route::get('/roles/create','RolController@create')->name('roles.create')->middleware('auth','permiso');

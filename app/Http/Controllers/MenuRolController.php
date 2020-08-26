@@ -27,7 +27,6 @@ class MenuRolController extends Controller
                 array_push($menusdisponibles,$menu);
             }
         }
-        // $menusdisponibles = Menu::all();
         return view('menusroles.add')
         ->with(compact('rol'))
         ->with(compact('mismenus'))

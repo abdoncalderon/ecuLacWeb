@@ -13,23 +13,28 @@
 
 @section('contenidoPrincipal')
 
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ $errors->first() }}
         </div>
     @endif
+    
     <div class='ventana'>
         <div class="titulo">{{ __('content.types') }}</div>
         <div class="contenido">
             <div class="index">
+                {{-- AGREGAR TIPOS --}}
                 <div>
                     <span>
                     <a class="btn btn-success " href="{{ route('tipos.create')}}">{{ __('content.add') }}  {{ __('content.type') }}</a>
                     </span>
                 </div>
+                {{-- LISTA DE TIPOS --}}
                 <div class="table-responsive">
                     <table class="tabla">
+                        {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.category') }}</th>
@@ -37,6 +42,7 @@
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
                         </thead>
+                        {{-- TIPOS --}}
                         <tbody>
                             @foreach ($tipos as $tipo)
                                 <tr>

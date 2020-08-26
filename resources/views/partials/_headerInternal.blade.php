@@ -8,7 +8,7 @@
         </div>
         <label id="menu" for="check"><i class="fas fa-bars"></i> {{ __('content.menu') }}</label>
         <input type="checkbox" hidden id="check">
-        <div class="cinta">
+        <nav class="cinta">
             @foreach (App\MenuRol::menusrol(auth()->user()->rol_id) as $menurol)
                 <div class="opcion">
                     <a href="{{ route($menurol->menu($menurol->menu_id)->ruta) }}">
@@ -19,10 +19,8 @@
                     </a>
                 </div>
             @endforeach
-         
-        </div>
+        </nav>
     </div>
-
 </header>
 
 

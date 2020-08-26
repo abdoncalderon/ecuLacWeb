@@ -14,15 +14,18 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
-    <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ $errors->first() }}
-    </div>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ $errors->first() }}
+        </div>
     @endif
     
     <div class="estante">
 
+        {{-- IMAGENES DEL PRODUCTO --}}
         <div class="imagenes">
             <div class="otras">
                 @foreach ($imagenes as $imagen)
@@ -34,6 +37,7 @@
             </div>
         </div>
 
+        {{-- DETALLES DEL PRODUCTO --}}
         <div class="detalles">
             <div class="etiquetas">
                 @if($producto->esDestacado==1)
@@ -47,9 +51,9 @@
             <p class="descripcion">{{ $producto->descripcion }}</p>
             <p class="precio">US$ {{ $producto->precioDescuento($producto->id) }}</p>
             <p class="descuento">{{ $producto->descuento > 0 ? __('content.before').' US$ '.$producto->precioUnitario : '' }}</p>
-
         </div>
 
+        {{-- OPCIONES DE COMPRA --}}
         <div class="pedido">
             <form method="POST" action="{{ route('itemspedidos.store') }}">
                 @csrf
@@ -73,8 +77,6 @@
                         >
                     <div class="existencia" {{ $producto->estado!='Disponible' ? 'hidden' : '' }}>{{ __('content.availables').' '.$producto->existenciaActual.' '.__('content.products') }}</div>
                 </div>
-                
-                
                 
                 @if($producto->existenciaActual>0)
                     <div class="acciones">

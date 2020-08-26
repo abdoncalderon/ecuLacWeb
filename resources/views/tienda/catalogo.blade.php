@@ -16,16 +16,21 @@
     
     <div class="catalogo">
 
+        {{-- CANTIDAD DE RESULTADOS E INDICE --}}
         <div class="resultados">
             <p class="totales">{{ count($productos) }} {{ __('content.results') }}</p>
             <div class="paginacion">
                 {{ $productos->links() }}
             </div>
         </div>
+
+        {{-- FILTROS --}}
         <label id="filtro" for="check">{{ __('content.view') }} {{ __('content.filter') }}</label>
         <input type="checkbox" hidden id="check">
         <div class="filtros">
             
+
+            {{-- ORDENAMIENTO--}}
             <form method="GET" action="{{ route('tienda.busqueda') }}">
                 <div class="orden">
                     <p class="titulo">{{ __('messages.orderBy') }}</p>
@@ -38,18 +43,24 @@
                     <input type="submit" id="submit" name="submit" hidden>
                 </div>
             </form>
+
+            {{-- FILTROS X CATEGORIA --}}
             <div class="categorias">
                 <p class="titulo">{{ __('content.categories')}}</p>
                 @foreach ($categorias as $categoria)
                     <a class="categoria" href="{{ route('tienda.filtroCategoria',['categoria'=>$categoria->categoria_id, 'busqueda'=> $busqueda, 'orden'=>$orden]) }}">{{ $categoria->categoria($categoria->categoria_id) }}</a>
                 @endforeach
             </div>
+
+            {{-- FILTROS X TIPO --}}
             <div class="tipos">
                 <p class="titulo">{{ __('content.types')}}</p>
                 @foreach ($tipos as $tipo)
                     <a class="tipo" href="{{ route('tienda.filtroTipo',['tipo'=>$tipo->tipo_id, 'busqueda'=>$busqueda, 'orden'=>$orden]) }}">{{ $tipo->tipo($tipo->tipo_id) }}</a>
                 @endforeach
             </div>
+
+            {{-- FILTROS X PRSENTACION --}}
             <div class="presentaciones">
                 <p class="titulo">{{ __('content.presentations')}}</p>
                 @foreach ($presentaciones as $presentacion)
@@ -60,8 +71,8 @@
 
         </div>
 
+        {{-- RESULTADOS DE LA BUSQUEDA --}}
         <div class="productos">
-
             @foreach ($productos as $producto)
                 <article class="producto">
                     <div class="imagen" style="background-image: url({{ asset('img/productos/'.$producto->imagenPredeterminada($producto->id)) }})">
@@ -86,14 +97,9 @@
                     <div class="precio"><p>USD {{ $producto->precioUnitario }} x 1 {{ __('content.unity')}}</p></div>
                 </article>
             @endforeach
-           
-            
         </div>
 
-        
-
     </div>
-    
 
 @endsection
         

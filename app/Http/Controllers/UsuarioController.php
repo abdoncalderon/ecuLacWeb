@@ -12,7 +12,7 @@ use Exception;
 class UsuarioController extends Controller
 {
     public function index(){
-        $usuarios=User::join('roles','users.rol_id','=','roles.id')->where('roles.esExterno','=','0')->paginate(10);
+        $usuarios=User::select('users.id','users.nombreCompleto','users.estaActivo', 'users.rol_id','roles.esExterno')->join('roles','users.rol_id','=','roles.id')->where('roles.esExterno','=','0')->paginate(10);
         return  view('usuarios.index')
         ->with(compact('usuarios'));
     }
@@ -42,7 +42,8 @@ class UsuarioController extends Controller
         ->with(compact('roles'));
     }
 
-    public function update(UpdateUsuarioRequest $request, User $usuario){
+    public function update(UpdateUsuarioRequest $request, $usuarioId){
+        $usuario=User::find($usuarioId);
         $request->validated();
         if($request->has('estaActivo')){
             $estaActivo = '1';
@@ -61,8 +62,9 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios.index');
     }
 
-    public function destroy(User $usuario){
+    public function destroy($usuarioId){
         try {
+            $usuario=User::find($usuarioId);
             if($usuario->rol_id!=1){
                 $usuario->delete();
                 return redirect()->route('usuarios.index');
@@ -77,12 +79,14 @@ class UsuarioController extends Controller
       
     }
 
-    public function activate(User $usuario){
-        DD($usuario);
+    public function activate($usuarioId){
+        $usuario=User::find($usuarioId);
         if($usuario->estaActivo==0){
-            $usuario=User::where('id',$usuario->id)->update(['estaActivo'=>1]);
+            // $usuario=User::where('id',$usuario->id)->update(['estaActivo'=>1]);
+            $usuario->update(['estaActivo'=>1]);
         }else{
-            $usuario=User::where('id',$usuario->id)->update(['estaActivo'=>0]);
+            $usuario->update(['estaActivo'=>0]);
+            // $usuario=User::where('id',$usuario->id)->update(['estaActivo'=>0]);
         }
         return redirect()->route('usuarios.index');
     }

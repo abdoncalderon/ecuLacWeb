@@ -1,0 +1,84 @@
+* {
+    margin:0px;
+    padding: 0px;
+    font-family: 'Arial', sans-serif;
+}
+
+.reporte{
+	padding: 50px;
+}
+
+	.reporte .cabecera{
+        height: auto;
+	}
+
+		.reporte .cabecera .logo{
+            display: inline-block;
+            width: 20%;
+            height: 120px;
+            border: 2px solid rgb(211, 211, 211);
+            
+		}   
+
+		.reporte .cabecera .detalles{
+            display: inline-block;
+            width: 78%;
+            height: 120px;
+            border: 2px solid rgb(211, 211, 211);
+        }
+        
+            .reporte .cabecera .detalles .titulo{
+                background-color:rgb(211, 211, 211) ;
+                color: black;
+                font-size: 18px;
+                text-transform: uppercase;
+                text-align: center;
+                font-weight: bolder;
+                padding: 5px;
+            }
+
+			.reporte .cabecera .detalles .linea{
+                display: block;
+                width: 35%;
+                font-size: 12px;
+                margin: 5px 0px 0px 10px;
+
+			}
+
+
+	.reporte .contenido{
+		margin-bottom: 20px;
+	}
+
+	.reporte .pie{
+        
+    }
+
+    .reporte .pie .resumen{
+        
+    }
+
+    .reporte .pie .resumen .linea{
+        font-size: 12px;
+        text-align: right;
+    }
+    
+.tabla{ 
+    width: 100%;
+}
+
+    .tabla thead{
+        background-color:rgb(211, 211, 211) ;
+        color: black;
+    }
+
+    .tabla th, td{
+        padding: 5px 10px;
+        border-bottom: 1px solid lightgrey;
+        text-decoration: none;
+        font-weight: normal;
+        font-size: 9px;
+        width: auto;
+    }
+
+		

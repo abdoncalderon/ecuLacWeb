@@ -13,13 +13,25 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ $errors->first() }}
+        </div>
+    @endif
+    
     <div class="ventana">
         <div class="titulo">{{ __('content.add') }}  {{ __('content.office') }}</div>
             <div class="contenido">
+
+                {{-- FORMULARIO --}}
                 <div class="formulario">
                     <form method="POST" action="{{ route('sucursales.store') }}">
                         @csrf
-
+                        
+                        {{-- NOMBRE --}}
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('content.name') }}</label>
                             <div class="col-md-6">
@@ -31,7 +43,6 @@
                                     class="form-control @error('nombre') is-invalid @enderror" 
                                     value="{{ old('nombre') }}" 
                                     required 
-                                    autocomplete="nombre" 
                                     placeholder="Nombre Sucursal"
                                     autofocus>
 
@@ -43,6 +54,7 @@
                             </div>
                         </div>
 
+                        {{-- CIUDAD --}}
                         <div class="form-group row">
                             <label for="ciudad_id" class="col-md-4 col-form-label text-md-right">{{ __('content.city') }}</label>
                             <div class="col-md-6">
@@ -60,6 +72,7 @@
                             </div>
                         </div>
 
+                        {{-- DIRECCION --}}
                         <div class="form-group row">
                             <label for="direccion" class="col-md-4 col-form-label text-md-right">{{ __('content.address') }}</label>
                             <div class="col-md-6">
@@ -71,7 +84,6 @@
                                     class="form-control @error('direccion') is-invalid @enderror" 
                                     value="{{ old('direccion') }}" 
                                     required 
-                                    autocomplete="direccion" 
                                     placeholder="Dirección"
                                     autofocus>
 
@@ -82,7 +94,9 @@
                                 @enderror
                             </div>
                         </div>
+                        
 
+                        {{-- TELEFONO --}}
                         <div class="form-group row">
                             <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('content.phone') }}</label>
                             <div class="col-md-6">
@@ -94,7 +108,6 @@
                                     class="form-control @error('telefono') is-invalid @enderror" 
                                     value="{{ old('telefono') }}" 
                                     required 
-                                    autocomplete="telefono" 
                                     placeholder="Teléfono"
                                     autofocus>
 
@@ -105,7 +118,8 @@
                                 @enderror
                             </div>
                         </div>
-
+                        
+                        {{-- BOTONES --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary ">{{ __('content.save') }}</button>

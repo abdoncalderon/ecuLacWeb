@@ -30,7 +30,7 @@
             <form method="GET" action="{{ route('pedidos.repartidor') }}">
                 <div class="filtros">
                     <span class="boton">
-                        <button class="btn btn-secondary" type="submit">{{ __('content.search') }}  {{ __('content.order') }}</button>
+                        <button class="btn btn-secondary" type="submit">{{ __('content.search') }} </button>
                     </span>
                     <div class="etiqueta">{{ __('content.status') }}</div>
                     <select class="select" name="fecha" id="fecha">

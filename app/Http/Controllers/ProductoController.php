@@ -6,6 +6,7 @@ use App\Producto;
 use App\Categoria;
 use App\Tipo;
 use App\Presentacion;
+use PDF;
 
 use App\Http\Requests\StoreProductoRequest;
 use App\Http\Requests\UpdateProductoRequest;
@@ -14,6 +15,11 @@ use Illuminate\Http\Request;
 class ProductoController extends Controller
 {
     public function index(Request $request){
+        if ($request->has('imprimir')){
+            $productosXpagina = Producto::all()->count();
+        }else{
+            $productosXpagina = 5;
+        }
         if(count($request->all())>0){
             $categoria = $request->get('categoria');
             $estado = $request->get('estado');
@@ -21,51 +27,55 @@ class ProductoController extends Controller
             if (($nombre==null)&&($categoria==null)&&($estado==null)){
                 $productos = Producto::where('id','!=','0')
                                     ->orderBy('nombre','ASC')
-                                    ->paginate(5);
+                                    ->paginate($productosXpagina);
             }elseif(($nombre!=null)&&($categoria==null)&&($estado==null)){
                 $productos = Producto::Where('nombre','LIKE','%'.$nombre.'%')
                                     ->orderBy('nombre','ASC')
-                                    ->paginate(5);
+                                    ->paginate($productosXpagina);
             }elseif(($nombre!=null)&&($categoria!=null)&&($estado==null)){
                 $productos = Producto::Where('nombre','LIKE','%'.$nombre.'%')
                                     ->where('categoria_id',$categoria)
                                     ->orderBy('nombre','ASC')
-                                    ->paginate(5);
+                                    ->paginate($productosXpagina);
             }elseif(($nombre!=null)&&($categoria!=null)&&($estado!=null)){
                 $productos = Producto::Where('nombre','LIKE','%'.$nombre.'%')
                                     ->where('categoria_id',$categoria)
                                     ->where('estado',$estado)
                                     ->orderBy('nombre','ASC')
-                                    ->paginate(5);
+                                    ->paginate($productosXpagina);
             }elseif(($nombre==null)&&($categoria!=null)&&($estado!=null)){
                 $productos = Producto::where('categoria_id',$categoria)
                                     ->where('estado',$estado)
                                     ->orderBy('nombre','ASC')
-                                    ->paginate(5);
+                                    ->paginate($productosXpagina);
             }elseif(($nombre==null)&&($categoria==null)&&($estado!=null)){
                 $productos = Producto::where('estado',$estado)
                                     ->orderBy('nombre','ASC')
-                                    ->paginate(5);
+                                    ->paginate($productosXpagina);
             }elseif(($nombre==null)&&($categoria!=null)&&($estado==null)){
                 $productos = Producto::where('categoria_id',$categoria)
                                     ->orderBy('nombre','ASC')
-                                    ->paginate(5);
+                                    ->paginate($productosXpagina);
             }elseif(($nombre!=null)&&($categoria==null)&&($estado!=null)){
                 $productos = Producto::Where('nombre','LIKE','%'.$nombre.'%')
                                     ->where('estado',$estado)
                                     ->orderBy('nombre','ASC')
-                                    ->paginate(5);
+                                    ->paginate($productosXpagina);
             }
         }else{
-            
-            $productos = Producto::where('id','!=','0')->paginate(5);
+            $productos = Producto::where('id','!=','0')->paginate($productosXpagina);
         }
-        $categorias = Categoria::all();
-        return view('productos.index')
-        ->with(compact('productos'))
-        ->with(compact('categorias'));
+        if ($request->has('imprimir')){
+            $pdf=PDF::loadView('productos.print',['productos'=>$productos]);
+            $pdf->setPaper('a4','landscape');
+            return $pdf->stream();
+        }else{
+            $categorias = Categoria::all();
+            return view('productos.index')
+            ->with(compact('productos'))
+            ->with(compact('categorias'));
+        }
     }
-
 
     public function create()
     {

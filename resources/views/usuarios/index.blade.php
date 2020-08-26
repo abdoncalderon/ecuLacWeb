@@ -13,6 +13,7 @@
 
 @section('contenidoPrincipal')
 
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -23,13 +24,18 @@
         <div class="titulo">{{ __('content.users') }}</div>
         <div class="contenido">
             <div class="index">
+
+                {{-- AGREGAR USUARIO --}}
                 <div>
                     <span>
                     <a class="btn btn-success " href="{{ route('usuarios.create')}}">{{ __('content.add') }}  {{ __('content.user') }}</a>
                     </span>
                 </div>
+
+                {{-- LISTA DE USUARIOS --}}
                 <div class="table-responsive">
                     <table class="tabla">
+                        {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.fullname') }}</th>
@@ -38,16 +44,17 @@
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
                         </thead>
+                        {{-- USUARIOS --}}
                         <tbody>
                             @foreach ($usuarios as $usuario)
                                 <tr>
                                     <td>{{ $usuario->nombreCompleto }}</td>
                                     <td>{{ $usuario->rol($usuario->rol_id) }}</td>
-                                    <td>{{ $usuario->estaActivo ? __('content.active') : __('content.inactive') }}</td>
+                                    <td>{{ $usuario->estaActivo==0 ? __('content.active') : __('content.inactive') }}</td>
                                     <td>
-                                        <a class="accion" href="{{route('usuarios.edit',$usuario)}}">{{ __('content.edit') }}</a>
-                                        <a class="accion" href="{{route('usuarios.activate',$usuario)}}">{{ $usuario->estaActivo ? __('content.activate') : __('content.deactivate')  }}</a>
-                                        <a class="accion" href="{{route('usuarios.destroy',$usuario)}}">{{ __('content.delete') }}</a>
+                                        <a class="accion" href="{{route('usuarios.edit',$usuario->id)}}">{{ __('content.edit') }}</a>
+                                        <a class="accion" href="{{route('usuarios.activate',$usuario->id)}}">{{ $usuario->estaActivo==1 ? __('content.activate') : __('content.deactivate')  }}</a>
+                                        <a class="accion" href="{{route('usuarios.destroy',$usuario->id)}}">{{ __('content.delete') }}</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -25,13 +25,14 @@
         <div class="titulo">{{ __('content.sales')}}</div>
         <div class="encabezado">
             <div class="resumen">
-                <div class="cantidad">{{ __('content.quantity') }} {{ __('content.sales') }}: {{ $cantidadVentas }}</div>
-                <div class="total"> Total {{ __('content.sales') }}: {{ $totalVentas }}</div>
+                <div class="cantidad">{{ __('content.quantity') }} {{ __('content.sales') }}: <br> {{ $cantidadVentas }}</div>
+                <div class="total"> Total {{ __('content.sales') }}:  <br> {{ $totalVentas }}</div>
             </div>
             <form method="GET" action="{{ route('reportes.ventas') }}">
                 <div class="filtros">
                     <span class="boton">
-                        <button class="btn btn-secondary" type="submit">{{ __('content.search') }}  {{ __('content.sales') }}</button>
+                        <input id="buscar" name="buscar" class="btn btn-secondary" type="submit" value="{{ __('content.search') }}">
+                        <input id="imprimir" name="imprimir" class="btn btn-secondary" type="submit" value="{{ __('content.print') }}">
                     </span>
                     <div class="etiqueta">{{ __('content.seller') }}</div>
                     <select class="select"  name="vendedor" id="vendedor">
@@ -49,11 +50,7 @@
         </div>
         <div class="contenido">
             <div class="index">
-                <div>
-                    <span>
-                    <a class="btn btn-success" href="#">{{ __('content.print') }}</a>
-                    </span>
-                </div>
+                
                 <div class="table-responsive">
                     <table class="tabla">
                         <thead>

@@ -50,14 +50,12 @@ class MenuController extends Controller
         }else{
             return back()->withErrors(__('messages.routeNoExist'));
         }
-       
     }
 
     public function edit(menu $menu){
         return view('menus.edit')
         ->with(compact('menu'));
     }
-
 
     public function update(UpdateMenuRequest $request, Menu $menu){
         if($request->hasFile('icono'))
@@ -83,7 +81,6 @@ class MenuController extends Controller
         ]);
         return redirect()->route('menus.index');
     }
-
 
     public function destroy(Menu $menu){
         try{

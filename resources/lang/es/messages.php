@@ -47,6 +47,9 @@ return [
     'noOrder'=>'No existe un pedido abierto para este cliente',
     'withLocation'=>'Con Ubicación',
     'withoutLocation'=>'Sin Ubicación',
+    'productsReport'=>'Reporte de Productos',
+    'salesReport'=>'Reporte de Ventas',
+    'stockReport'=>'Reporte de Inventario',
 
 
 
