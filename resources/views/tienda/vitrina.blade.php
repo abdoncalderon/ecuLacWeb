@@ -30,7 +30,7 @@
         
         <div class="titulo">
             <p><i class="fas fa-th"></i> {{ __('messages.ourCategories') }}</p>
-                <a href="#">{{ __('messages.showAll')}}</a>
+                <a href="{{ route('tienda.filtroDestacados') }}">{{ __('messages.showAll')}}</a>
         </div>
 
         {{-- CATEGORIAS DE PRODUCTOS --}}
@@ -84,11 +84,16 @@
             <P>{{ __('content.contactus')}}</P>
         </div>
 
-        {{-- INFORMACION CORPORATIVA --}}
+        {{-- SUCURSALES --}}
         <div class="informacion">
-            <div></div>
-            <div></div>
-            <div></div>
+            @foreach ($sucursales as $sucursal)
+                <article class="sucursal">
+                    <div class="nombre">{{ __('content.office').' '.$sucursal->nombre }}</strong></div>
+                    <div class="ciudad">{{ __('content.city').': '.$sucursal->ciudad($sucursal->ciudad_id) }}</div>
+                    <div class="direccion">{{ __('content.address').': '.$sucursal->direccion }}</div>
+                    <div class="telefono">{{ __('content.phone').': '.$sucursal->telefono }}</div>
+                </article>
+            @endforeach
         </div>
         
     </div>

@@ -52,13 +52,13 @@
                     <div class="estado">{{ $pedido->estado }}</div>
                     @if($pedido->estado=='ABIERTO')
                         <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaCreacion)->format('d-M-Y') }}</div>
-                        <div class="usuario">{{ __('content.client') }}: <br> {{ $pedido->cliente($pedido->cliente_id) ?? '' }}</div>
+                        <div class="usuario">{{ __('content.client') }}: {{ $pedido->cliente($pedido->cliente_id) ?? '' }}</div>
                     @elseif($pedido->estado=='CONFIRMADO')
                         <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaConfirmacion)->format('d-M-Y') }}</div>
-                        <div class="usuario">{{ __('messages.soldBy') }} <br> {{ $pedido->repartidor($pedido->vendedor_id) ?? '' }}</div>
+                        <div class="usuario">{{ __('messages.soldBy') }} {{ $pedido->repartidor($pedido->vendedor_id) ?? '' }}</div>
                     @else
                         <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaCreacion)->format('d-M-Y') }}</div>
-                        <div class="usuario">{{ __('messages.dispatchedBy') }}  <br>  {{ $pedido->repartidor($pedido->repartidor_id) ?? '' }}</div>
+                        <div class="usuario">{{ __('messages.dispatchedBy') }} {{ $pedido->repartidor($pedido->repartidor_id) ?? '' }}</div>
                     @endif
                     <div class="total">Total: {{ $pedido->total($pedido) }}</div>
                 </div>      

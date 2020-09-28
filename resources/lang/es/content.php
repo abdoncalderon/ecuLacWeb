@@ -158,6 +158,7 @@ return [
     'creation'=>'Creación',
     'seller'=>'Vendedor',
     'visible'=>'Visible',
+    'contactus'=>'Contáctenos',
     
 
     'currency'=>'US$',

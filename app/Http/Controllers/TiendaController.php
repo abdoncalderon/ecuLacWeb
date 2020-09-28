@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Producto;
 use App\Categoria;
 use App\ImagenProducto;
+use App\Sucursal;
 
 use Illuminate\Http\Request;
 
@@ -40,9 +41,11 @@ class TiendaController extends Controller
     public function vitrina(){
         $categorias = Categoria::all()->take(3);
         $destacados = Producto::where('esDestacado',1)->take(8)->get();
+        $sucursales = Sucursal::all()->take(3);
         return view('tienda.vitrina')
         ->with(compact('categorias'))
-        ->with(compact('destacados'));
+        ->with(compact('destacados'))
+        ->with(compact('sucursales'));
     }
 
     public function estante(Producto $producto){

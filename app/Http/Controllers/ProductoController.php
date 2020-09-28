@@ -126,6 +126,10 @@ class ProductoController extends Controller
         return redirect()->route('productos.index');
     }
 
+    public function destroy($id){
+        
+    }
+
 
     public function getTiposCategoria(Request $request, $id)
     {

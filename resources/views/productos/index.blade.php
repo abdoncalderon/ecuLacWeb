@@ -88,7 +88,7 @@
                                         <a class="accion" href="{{route('productos.edit',$producto)}}">{{ __('content.edit') }}</a>
                                         <a class="accion" href="{{route('imagenesproductos.index',$producto)}}">{{ __('content.images') }}</a>
                                         <a class="accion" href="{{route('movimientosexistencias.index',$producto)}}">{{ __('content.stock') }}</a>
-                                        <a class="accion" href="{{route('productos.destroy',$producto->id)}}">{{ __('content.delete') }}</a>
+                                        {{-- <a class="accion" href="{{route('productos.destroy',$producto->id)}}">{{ __('content.delete') }}</a> --}}
                                         
                                     </td>
                                 </tr>

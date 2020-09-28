@@ -18,7 +18,7 @@ class UpdateCiudadRequest extends FormRequest
         
         $provincia_id = $this->get('provincia_id');
         
-        $ciudades=DB::table('Ciudades')->where([
+        $ciudades=DB::table('ciudades')->where([
             ['nombre','=',$nombre],
             ['provincia_id','=',$provincia_id],
             ])->get();
