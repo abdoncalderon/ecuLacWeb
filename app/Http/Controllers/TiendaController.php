@@ -10,14 +10,16 @@ use Illuminate\Http\Request;
 
 class TiendaController extends Controller
 {
+          
+    /*************************************************************************************************************************/
     public function busqueda(Request $request){
         $busqueda = $request->input('busqueda');
         $orden = $request->input('orden');
         return redirect()->route('tienda.catalogo',['busqueda'=>$busqueda, 'orden'=>$orden]);
     }
 
+    /*************************************************************************************************************************/
     public function catalogo($orden = null, $busqueda = null){
-        
         if(empty($busqueda)){
             $productos = Producto::where('id','!=','0')->orderBy($this->campo($orden), $this->forma($orden))->paginate(12);
             $categorias= Producto::select('categoria_id')->distinct()->get();
@@ -38,6 +40,7 @@ class TiendaController extends Controller
         ->with(compact('orden'));
     }
 
+    /*************************************************************************************************************************/
     public function vitrina(){
         $categorias = Categoria::all()->take(3);
         $destacados = Producto::where('esDestacado',1)->take(8)->get();
@@ -47,7 +50,8 @@ class TiendaController extends Controller
         ->with(compact('destacados'))
         ->with(compact('sucursales'));
     }
-
+       
+    /*************************************************************************************************************************/
     public function estante(Producto $producto){
         $imagenes = ImagenProducto::where('producto_id',$producto->id)->get();
         $imagenPredeterminada = $producto->imagenPredeterminada($producto->id);
@@ -57,6 +61,7 @@ class TiendaController extends Controller
         ->with(compact('imagenPredeterminada'));
     }
 
+    /*************************************************************************************************************************/
     public function filtroBorrar(){
         $busqueda = null;
         $orden = 1;
@@ -73,6 +78,7 @@ class TiendaController extends Controller
         ->with(compact('orden'));
     }
 
+    /*************************************************************************************************************************/
     public function filtroDestacados(){
         $busqueda = null;
         $orden = 1;
@@ -89,13 +95,12 @@ class TiendaController extends Controller
         ->with(compact('orden'));
     }
 
+    /*************************************************************************************************************************/
     public function filtroCategoria($categoria, $orden = null, $busqueda = null){
-       
         $productos = Producto::where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->orderBy($this->campo($orden), $this->forma($orden))->paginate(12);
         $categorias = Producto::select('categoria_id')->where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
         $tipos = Producto::select('tipo_id')->where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
         $presentaciones = Producto::select('presentacion_id')->where('categoria_id','=',$categoria)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
-        
         return view('tienda.catalogo')
         ->with(compact('productos'))
         ->with(compact('categorias'))
@@ -105,6 +110,7 @@ class TiendaController extends Controller
         ->with(compact('orden'));
     }
 
+    /*************************************************************************************************************************/
     public function filtroTipo($tipo, $orden = null, $busqueda = null){
         $productos = Producto::where('tipo_id','=',$tipo)->where('nombre','like', '%'.$busqueda.'%')->orderBy($this->campo($orden), $this->forma($orden))->paginate(12);
         $tipos = Producto::select('tipo_id')->where('tipo_id','=',$tipo)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
@@ -120,12 +126,12 @@ class TiendaController extends Controller
         ->with(compact('orden'));
     }
 
+    /*************************************************************************************************************************/
     public function filtroPresentacion($presentacion, $orden = null, $busqueda = null){
         $productos = Producto::where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->orderBy($this->campo($orden), $this->forma($orden))->paginate(12);;
         $tipos = Producto::select('tipo_id')->where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
         $categorias = Producto::select('categoria_id')->where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
         $presentaciones = Producto::select('presentacion_id')->where('presentacion_id','=',$presentacion)->where('nombre','like', '%'.$busqueda.'%')->distinct()->get();
-
         return view('tienda.catalogo')
         ->with(compact('productos'))
         ->with(compact('categorias'))
@@ -135,6 +141,7 @@ class TiendaController extends Controller
         ->with(compact('orden'));
     }
 
+    /*************************************************************************************************************************/
     private function campo($orden){
         if(! empty($orden)){
             switch ($orden){
@@ -154,6 +161,7 @@ class TiendaController extends Controller
         return $campo;
     }
 
+    /*************************************************************************************************************************/
     private function forma($orden){
         if(! empty($orden)){
             switch ($orden){

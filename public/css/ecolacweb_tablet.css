@@ -585,18 +585,40 @@ section{
                 font-weight: bold;
             }
 
-    .vitrina .informacion{
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
-        grid-template-rows: 200px;
-        grid-gap: 1em;
-        grid-column: 1/11;
-    }
-
-        .vitrina .informacion div{
-            background-color: white;
-            border: 1px solid rgb(0,174,239);
+        .vitrina .informacion{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: 170px;
+            grid-gap: 1em;
+            grid-column: 1/11;
         }
+    
+            .vitrina .informacion .sucursal{
+                background-color: white;
+                border: 1px solid rgb(0,174,239);
+            }
+
+            .vitrina .informacion .sucursal .nombre{
+                padding: 0.5em 1em;
+                font-size: 1.25em;
+                font-weight: bold;
+                text-align: center;
+                text-transform: uppercase ;
+                border-bottom: 1px solid rgb(211, 211, 211);
+            }
+
+            .vitrina .informacion .sucursal .ciudad{
+                padding: 0.5em 1em;
+            }
+
+            .vitrina .informacion .sucursal .direccion{
+                padding: 0.5em 1em;
+            
+            }
+
+            .vitrina .informacion .sucursal .telefono{
+                padding: 0.5em 1em;
+                    
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 

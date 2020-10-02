@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class ImagenProductoController extends Controller
 {
+           
+    /*************************************************************************************************************************/
     public function index(Producto $producto){
         $imagenes=ImagenProducto::where('producto_id',$producto->id)->get();
         return view('imagenesproductos.index',[
@@ -16,6 +18,7 @@ class ImagenProductoController extends Controller
             ])->with(compact('imagenes'));
     }
 
+    /*************************************************************************************************************************/
     public function store(StoreImagenProductoRequest $request)
     {
         $producto = Producto::find($request->producto_id);
@@ -32,6 +35,7 @@ class ImagenProductoController extends Controller
         return redirect()->route('imagenesproductos.index',$producto);
     }
 
+    /*************************************************************************************************************************/
     public function default(ImagenProducto $imagen)
     {
         $producto = Producto::find($imagen->producto_id);
@@ -42,6 +46,7 @@ class ImagenProductoController extends Controller
         return redirect()->route('imagenesproductos.index',$producto);
     }
 
+    /*************************************************************************************************************************/
     public function destroy(ImagenProducto $imagen)
     {
         $nombreArchivo=$imagen->imagen;

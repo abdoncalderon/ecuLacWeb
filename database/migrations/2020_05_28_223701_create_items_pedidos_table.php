@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateItemsPedidosTable extends Migration
 {
-    
     public function up()
     {
         Schema::create('items_pedidos', function (Blueprint $table) {

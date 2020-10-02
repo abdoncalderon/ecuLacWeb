@@ -20,6 +20,7 @@ class CreatePresentacionesTable extends Migration
         });
     }
    
+    
     public function down()
     {
         Schema::dropIfExists('presentaciones');

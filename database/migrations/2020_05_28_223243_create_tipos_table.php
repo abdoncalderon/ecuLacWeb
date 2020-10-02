@@ -15,11 +15,10 @@ class CreateTiposTable extends Migration
             $table->foreignId('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
-            
         });
     }
-
    
+    
     public function down()
     {
         Schema::dropIfExists('tipos');

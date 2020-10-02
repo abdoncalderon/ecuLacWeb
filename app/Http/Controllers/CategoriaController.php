@@ -8,15 +8,18 @@ use App\Http\Requests\UpdateCategoriaRequest;
 use Exception;
 class CategoriaController extends Controller
 {
+    /*************************************************************************************************************************/
     public function index(){
         $categorias = Categoria::where('id','!=','0')->paginate(10);
         return view('categorias.index',compact('categorias'));
     }
 
+    /*************************************************************************************************************************/
     public function create(){
         return view('categorias.create');
     }
 
+    /*************************************************************************************************************************/
     public function store(StoreCategoriaRequest $request ){
         if($request->hasFile('imagen'))
         {
@@ -35,15 +38,15 @@ class CategoriaController extends Controller
         return redirect()->route('categorias.index');
     }
 
-    public function edit(Categoria $categoria)
-    {
+    /*************************************************************************************************************************/
+    public function edit(Categoria $categoria){
         return view('categorias.edit',[
             'categoria'=>$categoria
             ]);
     }
 
-    public function update(UpdateCategoriaRequest $request, Categoria $categoria)
-    {
+    /*************************************************************************************************************************/
+    public function update(UpdateCategoriaRequest $request, Categoria $categoria){
         if($request->hasFile('imagen'))
         {
             $archivo = $request->file('imagen');
@@ -68,9 +71,9 @@ class CategoriaController extends Controller
         }
         return redirect()->route('categorias.index');
     }
-    
-    public function destroy(Categoria $categoria)
-    {
+
+    /*************************************************************************************************************************/
+    public function destroy(Categoria $categoria){
         try{
             $nombreArchivo=$categoria->imagen;
             $categoria->delete();

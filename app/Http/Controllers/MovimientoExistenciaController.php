@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 
 class MovimientoExistenciaController extends Controller
 {
-    
+
+    /*************************************************************************************************************************/
     public function index(Producto $producto, Request $request){
         $sucursales = Sucursal::all();
         if(count($request->all())>0){
@@ -25,21 +26,21 @@ class MovimientoExistenciaController extends Controller
         }else{
             $movimientosExistencias = MovimientoExistencia::where('producto_id',$producto->id)->paginate(10);
         }
-        
         return view('movimientosexistencias.index')
         ->with(compact('movimientosExistencias'))
         ->with(compact('sucursales'))
         ->with(compact('producto'));
     }
     
+    /*************************************************************************************************************************/
     public function create(Producto $producto){
-
         $sucursales=Sucursal::all();
         return view('movimientosexistencias.create')
         ->with(compact('producto'))
         ->with(compact('sucursales'));
     }
 
+    /*************************************************************************************************************************/
     public function store(StoreMovimientoExistenciaRequest $request){
         $producto = Producto::find($request->input('producto_id'));
         MovimientoExistencia::reposicion($request->input('sucursal_id'), $request->input('producto_id'), $request->input('cantidad'));

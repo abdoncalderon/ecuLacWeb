@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Rol;
-use App\MenuRol;
 
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index()
-    {
-        // User::crearSuperUsuario();
+    public function index(){
         if(Auth::guest()){
            return redirect()->route('tienda.vitrina');
         }else{
@@ -21,7 +17,6 @@ class HomeController extends Controller
             }else{
                 return view('layouts.internal');
             }
-           
         }
     }
     

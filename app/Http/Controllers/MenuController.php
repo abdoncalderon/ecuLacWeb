@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+    /*************************************************************************************************************************/
     public function index(Request $request){
                     
         if(count($request->all())>0){
@@ -28,7 +29,7 @@ class MenuController extends Controller
         return view('menus.create');
     }
 
-   
+   /*************************************************************************************************************************/
     public function store(StoreMenuRequest $request ){
         if($request->hasFile('icono'))
         {
@@ -52,11 +53,13 @@ class MenuController extends Controller
         }
     }
 
+    /*************************************************************************************************************************/
     public function edit(menu $menu){
         return view('menus.edit')
         ->with(compact('menu'));
     }
 
+    /*************************************************************************************************************************/
     public function update(UpdateMenuRequest $request, Menu $menu){
         if($request->hasFile('icono'))
         {
@@ -82,6 +85,7 @@ class MenuController extends Controller
         return redirect()->route('menus.index');
     }
 
+    /*************************************************************************************************************************/
     public function destroy(Menu $menu){
         try{
             
@@ -100,6 +104,7 @@ class MenuController extends Controller
         }
     }
 
+    /*************************************************************************************************************************/
     private function checkRoute($route) {
         return Route::has($route);
     }

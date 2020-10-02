@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
+
+    /*************************************************************************************************************************/
     public function index(Request $request){
         if ($request->has('imprimir')){
             $productosXpagina = Producto::all()->count();
@@ -77,26 +79,27 @@ class ProductoController extends Controller
         }
     }
 
-    public function create()
-    {
+
+    /*************************************************************************************************************************/
+    public function create(){
         $categorias=Categoria::all();
         $tipos=Tipo::all();
         $presentaciones=Presentacion::all();
-
         return view('productos.create')
         ->with(compact('categorias'))
         ->with(compact('tipos'))
         ->with(compact('presentaciones'));
     }
 
-    public function store(StoreProductoRequest $request )
-    {
+
+    /*************************************************************************************************************************/
+    public function store(StoreProductoRequest $request ){
         Producto::create($request->validated());
         return redirect()->route('productos.index');
     }
 
-    public function edit(Producto $producto)
-    {
+    /*************************************************************************************************************************/
+    public function edit(Producto $producto){
         $categorias=Categoria::all();
         $tipos=Tipo::all();
         $presentaciones=Presentacion::all();
@@ -107,8 +110,9 @@ class ProductoController extends Controller
         ->with(compact('presentaciones'));
     }
 
-    public function update(UpdateProductoRequest $request, Producto $producto)
-    {
+
+    /*************************************************************************************************************************/
+    public function update(UpdateProductoRequest $request, Producto $producto){
         $request->validated();
         if($request->has('esDestacado')){
             $esDestacado = '1';
@@ -126,13 +130,8 @@ class ProductoController extends Controller
         return redirect()->route('productos.index');
     }
 
-    public function destroy($id){
-        
-    }
-
-
-    public function getTiposCategoria(Request $request, $id)
-    {
+    /*************************************************************************************************************************/
+    public function getTiposCategoria(Request $request, $id){
         if($request->ajax())
         {
             $tipos = Tipo::where('categoria_id',$id)->get();
@@ -140,8 +139,8 @@ class ProductoController extends Controller
         }
     }
 
-    public function getPresentacionesCategoria(Request $request, $id)
-    {
+    /*************************************************************************************************************************/
+    public function getPresentacionesCategoria(Request $request, $id){
         if($request->ajax())
         {
             $presentaciones = Presentacion::where('categoria_id', $id)->get();

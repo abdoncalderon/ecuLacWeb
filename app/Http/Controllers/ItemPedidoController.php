@@ -8,10 +8,9 @@ use App\ItemPedido;
 use App\MovimientoExistencia;
 use App\Http\Requests\StoreItemPedidoRequest;
 
-
-
 class ItemPedidoController extends Controller
 {
+    /*************************************************************************************************************************/
     public function index(){
         $pedidoAbierto = Pedido::abierto(auth()->id());
         $itemsPedido = Pedido::items($pedidoAbierto);
@@ -21,11 +20,13 @@ class ItemPedidoController extends Controller
         ->with(compact('itemsPedido'));
     }
 
+    /*************************************************************************************************************************/
     public function update($itemPedidoId, $estado){
         ItemPedido::estado($itemPedidoId,$estado);
         return back();
     }
 
+    /*************************************************************************************************************************/
     public function store(StoreItemPedidoRequest $request){
         if (!empty($request->input('cantidad'))){
             if(Pedido::abierto($request->input('cliente_id'))==0){
@@ -57,6 +58,7 @@ class ItemPedidoController extends Controller
         }
     }
 
+    /*************************************************************************************************************************/
     public function destroy($id){
         $itemPedido = ItemPedido::find($id);
         ItemPedido::eliminar($itemPedido);

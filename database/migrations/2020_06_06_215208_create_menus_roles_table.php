@@ -18,6 +18,7 @@ class CreateMenusRolesTable extends Migration
             $table->primary(['menu_id', 'rol_id']);
         });
     }
+    
 
     public function down()
     {

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Exception;
 class ClienteController extends Controller
 {
+    /*************************************************************************************************************************/
     public function cuenta(){
         $cliente = Cliente::select('users.id as id','users.nombreCompleto as nombreCompleto','users.cedula as cedula','users.telefono as telefono','users.email as email','users.usuario as usuario','users.created_at as creadoEn','ciudades.nombre as ciudad', 'clientes.direccion as direccion')
             ->join('users','clientes.usuario_id','=','users.id')
@@ -20,6 +21,7 @@ class ClienteController extends Controller
         ->with(compact('cliente'));
     }
 
+    /*************************************************************************************************************************/
     public function historial(Request $request){
         if (count($request->all())>0){
             $desde = $request->get('desde');
@@ -74,6 +76,7 @@ class ClienteController extends Controller
         ->with(compact('pedidos'));
     }
 
+    /*************************************************************************************************************************/
     public function pedido(){
         $pedidoAbierto = Pedido::abierto(auth()->id());
         if($pedidoAbierto == 0){
@@ -87,6 +90,7 @@ class ClienteController extends Controller
         }
     }
 
+    /*************************************************************************************************************************/
     public function preorden(Pedido $pedido){
         $itemsPedido = Pedido::items($pedido->id);
         $cliente = User::join('clientes','users.id','=','clientes.usuario_id')->where('users.id',$pedido->cliente_id)->first();
@@ -96,6 +100,7 @@ class ClienteController extends Controller
             ->with(compact('itemsPedido'));
     }
 
+    /*************************************************************************************************************************/
     public function edit($clienteId){
         $ciudades = Ciudad::all();
         $cliente = Cliente::join('users','clientes.usuario_id','=','users.id')
@@ -106,6 +111,7 @@ class ClienteController extends Controller
         ->with(compact('cliente'));
     }
 
+    /*************************************************************************************************************************/
     public function update(UpdateClienteRequest $request, $clienteId){
         try{
             User::where('id',$clienteId)->update([

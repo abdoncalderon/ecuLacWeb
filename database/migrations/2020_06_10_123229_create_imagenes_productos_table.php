@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateImagenesProductosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('imagenes_productos', function (Blueprint $table) {
@@ -23,11 +18,7 @@ class CreateImagenesProductosTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
         Schema::dropIfExists('imagenes_productos');

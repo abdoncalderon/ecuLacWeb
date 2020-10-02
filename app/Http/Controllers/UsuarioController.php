@@ -11,17 +11,20 @@ use Exception;
 
 class UsuarioController extends Controller
 {
+    /*************************************************************************************************************************/
     public function index(){
         $usuarios=User::select('users.id','users.nombreCompleto','users.estaActivo', 'users.rol_id','roles.esExterno')->join('roles','users.rol_id','=','roles.id')->where('roles.esExterno','=','0')->paginate(10);
         return  view('usuarios.index')
         ->with(compact('usuarios'));
     }
 
+    /*************************************************************************************************************************/
     public function create(){
         $roles=Rol::where('esExterno',0)->where('id','!=',1)->get();
         return view('usuarios.create',compact('roles'));
     }
 
+    /*************************************************************************************************************************/
     public function store(StoreUsuarioRequest $request){
         User::create([
             'nombreCompleto' => $request['nombreCompleto'],
@@ -35,6 +38,7 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios.index');
     }
 
+    /*************************************************************************************************************************/
     public function edit(User $usuario){
         $roles=Rol::where('esExterno',0)->get();
         return view('usuarios.edit')
@@ -42,6 +46,7 @@ class UsuarioController extends Controller
         ->with(compact('roles'));
     }
 
+    /*************************************************************************************************************************/
     public function update(UpdateUsuarioRequest $request, $usuarioId){
         $usuario=User::find($usuarioId);
         $request->validated();
@@ -62,6 +67,7 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios.index');
     }
 
+    /*************************************************************************************************************************/
     public function destroy($usuarioId){
         try {
             $usuario=User::find($usuarioId);
@@ -71,7 +77,6 @@ class UsuarioController extends Controller
             }else{
                 return back()->withErrors(__('messages.isSuperuser'));
             }
-            
         } catch (Exception $e){
 
             return back()->withErrors(__('messages.isFather'));
@@ -79,14 +84,13 @@ class UsuarioController extends Controller
       
     }
 
+    /*************************************************************************************************************************/
     public function activate($usuarioId){
         $usuario=User::find($usuarioId);
         if($usuario->estaActivo==0){
-            // $usuario=User::where('id',$usuario->id)->update(['estaActivo'=>1]);
             $usuario->update(['estaActivo'=>1]);
         }else{
             $usuario->update(['estaActivo'=>0]);
-            // $usuario=User::where('id',$usuario->id)->update(['estaActivo'=>0]);
         }
         return redirect()->route('usuarios.index');
     }

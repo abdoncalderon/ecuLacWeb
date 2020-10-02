@@ -18,6 +18,7 @@ class CreateCiudadesTable extends Migration
         });
     }
 
+    
     public function down()
     {
         Schema::dropIfExists('ciudades');

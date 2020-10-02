@@ -11,11 +11,12 @@ use Illuminate\Http\Request;
 
 class ReporteController extends Controller
 {
+    /*************************************************************************************************************************/
     public function index(){
-
         return view('reportes.index');
     }
 
+    /*************************************************************************************************************************/
     public function ventas(Request $request){
         if ($request->has('imprimir')){
             $itemsXpagina = Factura::all()->count();
@@ -61,6 +62,7 @@ class ReporteController extends Controller
         }
     }
 
+    /*************************************************************************************************************************/
     public function inventario(Request $request){
         if ($request->has('imprimir')){
             $itemsXpagina = Factura::all()->count();
@@ -100,9 +102,6 @@ class ReporteController extends Controller
             ->with(compact('categorias'))
             ->with(compact('productos'));
         }
-
-
-
         
     }
 }

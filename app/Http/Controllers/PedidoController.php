@@ -10,15 +10,15 @@ use Carbon\Carbon;
 use App\Http\Requests\StorePedidoRequest;
 use Illuminate\Http\Request;
 
-
 class PedidoController extends Controller
 {
+        
+    /*************************************************************************************************************************/
     public function vendedor(Request $request){ 
         if (count($request->all())>0){
             $desde = $request->get('desde');
             $hasta = $request->get('hasta');
             $fecha = $request->get('fecha');
-            
             if ($desde <= $hasta){
                 switch ($fecha){
                     case 2: 
@@ -36,7 +36,6 @@ class PedidoController extends Controller
                                             })->whereBetween('fechaDespacho',[$desde,$hasta])
                                             ->orderBy('created_at','DESC')
                                             ->paginate(10);
-
                         break;
                     case 4: 
                         $pedidos = Pedido::Where(function($query) {
@@ -68,6 +67,8 @@ class PedidoController extends Controller
         ->with(compact('pedidos'));
     }
 
+            
+    /*************************************************************************************************************************/
     public function repartidor(Request $request){
         if (count($request->all())>0){
             $desde = $request->get('desde');
@@ -110,6 +111,7 @@ class PedidoController extends Controller
         ->with(compact('pedidos'));
     }
 
+    /*************************************************************************************************************************/
     public function showOrder(Pedido $pedido){
         $itemsPedido = Pedido::items($pedido->id);
         return view('pedidos.vendedor.show')
@@ -117,6 +119,7 @@ class PedidoController extends Controller
         ->with(compact('itemsPedido'));
     }
 
+    /*************************************************************************************************************************/
     public function showDelivery(Pedido $pedido){
         $itemsPedido = Pedido::items($pedido->id);
         return view('pedidos.repartidor.show')
@@ -124,6 +127,7 @@ class PedidoController extends Controller
         ->with(compact('itemsPedido'));
     }
 
+    /*************************************************************************************************************************/
     public function edit(Pedido $pedido){
         $itemsPedido = Pedido::items($pedido->id);
         return view('pedidos.edit')
@@ -131,6 +135,7 @@ class PedidoController extends Controller
         ->with(compact('itemsPedido'));
     }
 
+    /*************************************************************************************************************************/
     public function update(Pedido $pedido){
         $itemsPedido = Pedido::items($pedido->id);
         return view('pedidos.update')
@@ -138,6 +143,7 @@ class PedidoController extends Controller
         ->with(compact('itemsPedido'));
     }
 
+    /*************************************************************************************************************************/
     public function create(){
         $clientes = User::select('users.id as user','users.nombreCompleto')
                     ->join('roles','users.rol_id','=','roles.id')
@@ -147,6 +153,7 @@ class PedidoController extends Controller
         ->with(compact('clientes'));
     }
 
+    /*************************************************************************************************************************/
     public function store(StorePedidoRequest $request)
     {
         if (Pedido::abierto($request->input('cliente_id'))==0){
@@ -157,6 +164,7 @@ class PedidoController extends Controller
         }
     }
 
+    /*************************************************************************************************************************/
     public function destroy($id){
         $items = Pedido::items($id);
         foreach($items as $item){
@@ -165,7 +173,8 @@ class PedidoController extends Controller
         $pedido=Pedido::find($id)->delete();
         return redirect()->route('home');
     }     
-    
+
+    /*************************************************************************************************************************/    
     public function toPay(Request $request, $id){
         $fecha = Carbon::now()->toDateTimeString();
         if($request->has('efectivo')){
@@ -189,6 +198,7 @@ class PedidoController extends Controller
         return redirect()->route('home');
     }     
 
+    /*************************************************************************************************************************/
     public function change($pedidoId, $estado){
         $fecha = Carbon::now()->toDateTimeString();
         switch($estado){
@@ -210,6 +220,7 @@ class PedidoController extends Controller
         return redirect()->route('pedidos.repartidor');
     }
 
+    /*************************************************************************************************************************/
     public function location($clienteId){
         $cliente = Cliente::join('users','clientes.usuario_id','=','users.id')->where('usuario_id',$clienteId)->first();
         return view('pedidos.location')

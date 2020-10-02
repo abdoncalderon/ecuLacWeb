@@ -5,11 +5,6 @@ use Illuminate\Support\Facades\DB;
 
 class MenusTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         return DB::table('menus')->insert([

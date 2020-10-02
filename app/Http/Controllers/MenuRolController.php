@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class MenuRolController extends Controller
 {
+    /*************************************************************************************************************************/
     public function add(Rol $rol){
         $mismenus = MenuRol::where('rol_id',$rol->id)->get();
         $menusdisponibles = [];
@@ -33,11 +34,13 @@ class MenuRolController extends Controller
         ->with(compact('menusdisponibles'));
     }
 
+    /*************************************************************************************************************************/
     public function store(StoreMenuRolRequest $request, Rol $rol){
         MenuRol::create($request->validated());
         return redirect()->route('menusroles.add',$rol);
     }
 
+    /*************************************************************************************************************************/
     public function destroy($menuId, Rol $rol){
         MenuRol::where('menu_id',$menuId)->where('rol_id',$rol->id)->delete();
         return redirect()->route('menusroles.add',$rol);

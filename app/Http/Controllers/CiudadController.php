@@ -10,19 +10,20 @@ use App\Http\Requests\UpdateCiudadRequest;
 
 class CiudadController extends Controller
 {
+   /*************************************************************************************************************************/
     public function index(){
         $ciudades = Ciudad::where('id','!=','0')->paginate(10);
         return view('ciudades.index',compact('ciudades'));
     }
 
-    public function create()
-    {
+    /*************************************************************************************************************************/
+    public function create(){
         $provincias=Provincia::all();
         return view('ciudades.create',compact('provincias'));
     }
 
-    public function store(StoreCiudadRequest $request )
-    {
+    /*************************************************************************************************************************/
+    public function store(StoreCiudadRequest $request ){
         $request->validated();
         Ciudad::create([
             'nombre'=>$request['nombre'],
@@ -32,8 +33,8 @@ class CiudadController extends Controller
         return redirect()->route('ciudades.index');
     }
 
-    public function edit(Ciudad $ciudad)
-    {
+    /*************************************************************************************************************************/
+    public function edit(Ciudad $ciudad){
         $provincias = Provincia::all();
         return view('ciudades.edit',[
             'ciudad'=>$ciudad
@@ -41,14 +42,14 @@ class CiudadController extends Controller
         ->with(compact('provincias'));
     }
 
-    public function update(UpdateCiudadRequest $request, Ciudad $ciudad)
-    {
+    /*************************************************************************************************************************/
+    public function update(UpdateCiudadRequest $request, Ciudad $ciudad){
         $ciudad->update($request->validated());
         return redirect()->route('ciudades.index');
     }
 
-    public function destroy($id)
-    {
+    /*************************************************************************************************************************/
+    public function destroy($id){
         $ciudad=Ciudad::find($id);
         $sucursales=Sucursal::where('ciudad_id',$ciudad->id)->get();
         if (count($sucursales)>0){
