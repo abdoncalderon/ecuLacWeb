@@ -12,13 +12,16 @@
 @endsection
 
 @section('contenidoPrincipal')
+
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ $errors->first() }}
         </div>
     @endif
+    
     <div class='ventana'>
+
         <div class="titulo">{{ __('content.menus') }}</div>
         <div class="encabezado">
             <div class="acciones">
@@ -36,18 +39,9 @@
                 </div>
             </form>
         </div>
+
         <div class="contenido">
             <div class="index">
-               {{--  <div>
-                    <span>
-                    <a class="btn btn-success " href="{{ route('menus.create')}}">{{ __('content.add') }}  {{ __('content.menus') }}</a>
-                    </span>
-                </div>
-                @error('eliminar')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror --}}
                 <div class="table-responsive">
                     <table class="tabla">
                         <thead>

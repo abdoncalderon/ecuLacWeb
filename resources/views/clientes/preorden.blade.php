@@ -20,15 +20,18 @@
             <div class="cabecera">
                 <div class="cliente">
                     <p class="titulo">{{ __('content.data') }} {{ __('content.client') }}</p>
-                    <p class="nombre">{{ $cliente->nombreCompleto }}</p>
-                    <p class="identificacion">{{ $cliente->cedula }}</p>
-                    <p class="email">{{ $cliente->email }}</p>
+                    {{-- <p class="nombre">{{ $cliente->nombreCompleto }}</p> --}}
+                    <p class="nombre">{{ $pedido->cliente->user->nombreCompleto }}</p>
+                    {{-- <p class="identificacion">{{ $cliente->cedula }}</p> --}}
+                    <p class="identificacion">{{ $pedido->cliente->user->cedula }}</p>
+                    {{-- <p class="email">{{ $cliente->email }}</p> --}}
+                    <p class="email">{{ $pedido->cliente->user->email }}</p>
                 </div>
                 <div class="direccion">
                     <p class="titulo">{{ __('content.address') }} {{ __('content.delivery') }}</p>
-                    <p class="calle">{{ $cliente->direccion }}</p>
-                    <p class="ciudad">{{ $cliente->ciudad($cliente->ciudad_id) }}</p>
-                    <p class="telefono">{{ $cliente->telefono }}</p>
+                    <p class="calle">{{ $pedido->cliente->direccion }}</p>
+                    <p class="ciudad">{{ $pedido->cliente->ciudad->nombre }}</p>
+                    <p class="telefono">{{ $pedido->cliente->user->telefono }}</p>
                 </div>
                 <div class="pago">
                     <p class="titulo">{{ __('messages.payments') }}</p>
@@ -56,24 +59,24 @@
                 </div>
             </div>
             <div class="titulo">
-                <div class="orden">{{ __('content.items').' '.__('content.order').': '.count($itemsPedido) }}</div>
+                <div class="orden">{{ __('content.items').' '.__('content.order').': '.count($pedido->items) }}</div>
                 <div class="precio">{{ __('content.price').' x '.__('content.unity') }}</div>
             </div>
-            @foreach ($itemsPedido as $item)
+            @foreach ($pedido->items as $item)
                 <article class="item">
-                    <div class="imagen" style="background-image: url({{ asset('img/productos/'.$item->producto($item)->imagenPredeterminada($item->producto_id)) }})"></div>
+                    <div class="imagen" style="background-image: url({{ asset('img/productos/'.$item->producto->imagenPredeterminada($item->producto_id)) }})"></div>
                     <div class="detalles">
                         <div>
-                            <div class="nombre">{{ $item->producto($item)->nombre}}</div>
-                            <div class="descripcion">{{ $item->producto($item)->descripcion}}</div>
+                            <div class="nombre">{{ $item->producto->nombre}}</div>
+                            <div class="descripcion">{{ $item->producto->descripcion}}</div>
                         </div>
-                        <div class="estado">{{ $item->producto($item)->estado}}</div>
+                        <div class="estado">{{ $item->producto->estado}}</div>
                         <div class="cantidad">{{ __('content.quantity').': '.$item->cantidad.' '.__('content.unities') }}</div>
                     </div>
                     <div>
                         <div class="precio">{{ __('content.currency').' '.$item->precioUnitario }}</div>
-                        <div class="descuento">{{ __('content.discount') }} {{ __('content.currency') }} {{ number_format($item->producto($item)->valorDescuento($item->producto_id),2) }}</div>
-                        <div class="subtotal">{{ __('content.currency') }} {{ $item->producto($item)->precioDescuento($item->producto_id) }}</div>
+                        <div class="descuento">{{ __('content.discount') }} {{ __('content.currency') }} {{ number_format($item->producto->valorDescuento(),2) }}</div>
+                        <div class="subtotal">{{ __('content.currency') }} {{ $item->producto->precioDescuento() }}</div>
                     </div>
                     
                 </article>
@@ -82,15 +85,15 @@
         <div class="resumen">
             <div class="titulo">{{ __('content.summary') }}</div>
             <div class="subtotal">
-                <div class="cantidad">Subtotal: {{ $pedido->cantidades($pedido->id) }} {{ __('content.products') }}</div>
-                <div class="precio">{{ __('content.currency') }} {{ $pedido->subtotal($pedido->id) }}</div>
+                <div class="cantidad">Subtotal: {{ $pedido->cantidades() }} {{ __('content.products') }}</div>
+                <div class="precio">{{ __('content.currency') }} {{ $pedido->subtotal() }}</div>
             </div>
             <div class="impuesto">
                 <div class="tipo">{{ __('content.tax') }}:</div>
-                <div class="valor">{{ __('content.currency') }} {{ $pedido->valorIva($pedido->id) }}</div>
+                <div class="valor">{{ __('content.currency') }} {{ $pedido->valorIva() }}</div>
             </div>
             
-            <div class="total">{{ __('messages.valueToPay') }} {{ __('content.currency') }} {{ $pedido->total($pedido) }}</div>
+            <div class="total">{{ __('messages.valueToPay') }} {{ __('content.currency') }} {{ $pedido->total() }}</div>
             <button class="pagar" type="button" data-toggle="modal" data-target="#exampleModalCenter">{{ __('content.toOrder') }} {{ __('content.order') }} </button>
             <a class="seguir" href="{{ route('home') }}">{{ __('messages.shopcontinue') }}</a>
             <a class="cancelar" href="{{ route('pedidos.destroy',$pedido->id) }}">{{ __('content.cancel') }} {{ __('content.order') }}</a>

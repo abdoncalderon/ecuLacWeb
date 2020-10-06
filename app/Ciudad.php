@@ -10,8 +10,7 @@ class Ciudad extends Model
 
     protected $fillable = ['nombre','provincia_id',];
 
-    public function provincia($id){
-        $provincia = Provincia::find($id);
-        return $provincia->nombre;
+    public function provincia(){
+        return $this->belongsTo(Provincia::class);
     }
 }

@@ -10,8 +10,7 @@ class Sucursal extends Model
 
     protected $fillable = ['nombre','ciudad_id','direccion','telefono'];
 
-    public function ciudad($id){
-        $ciudad = Ciudad::find($id);
-        return $ciudad->nombre;
+    public function ciudad(){
+        return $this->belongsTo(Ciudad::class);
     }
 }

@@ -19,8 +19,12 @@ class Pedido extends Model
         }
     }
 
-    static public function crear()
-    {
+    static public function itemsPedidoAbierto($pedidoAbierto){
+        $itemsPedido = ItemPedido::where('pedido_id',$pedidoAbierto)->get();
+        return $itemsPedido;
+    }
+
+    static public function crear(){
         $fecha=Carbon::now()->toDateTimeString();
         $cliente=auth()->id();
         Pedido::create([
@@ -29,82 +33,62 @@ class Pedido extends Model
         ]);
     }
 
-    static public function total(Pedido $pedido){
-        return $pedido->subtotal($pedido->id) + $pedido->valorIva($pedido->id);
+    public function items(){
+        return $this->hasMany(ItemPedido::class);
     }
 
-    static public function subtotal($pedidoId){
-        $itemsPedido = Pedido::items($pedidoId);
-        $total=0;
 
-        foreach ($itemsPedido as $item){
+    public function total(){
+        return $this->subtotal() + $this->valorIva();
+    }
+    
+    public function subtotal(){
+        $total = 0;
+        foreach ($this->items as $item){
             $total=$total+$item->subtotal;
         }
         return $total;
     }
-
-    static public function valorDescuento($pedidoId){
-        $itemsPedido = Pedido::items($pedidoId);
-        $valorDescuento=0;
-        foreach ($itemsPedido as $item){
-            $valorDescuento = $valorDescuento + Producto::valorDescuento($item->producto_id);
+    
+    public function valorDescuento(){
+        $valorDescuento = 0;
+        foreach ($this->items as $item){
+            $valorDescuento = $valorDescuento + $item->producto->valorDescuento();
         }
         return $valorDescuento;
     }
 
-    static public function valorIva($pedidoId){
-        $itemsPedido = Pedido::items($pedidoId);
-        $valorIva=0;
-        foreach ($itemsPedido as $item){
-            $valorIva = $valorIva + Producto::valorIva($item->producto_id);
+    public function valorIva(){
+        $valorIva = 0;
+        foreach ($this->items as $item){
+            $valorIva = $valorIva + $item->producto->valorIva();
         }
         return $valorIva;
     }
 
-    static public function cantidades($pedidoId){
-        $itemsPedido = Pedido::items($pedidoId);
-        $cantidades=0;
-        foreach ($itemsPedido as $item){
-            $cantidades=$cantidades+$item->cantidad;
+    public function cantidades(){
+        $cantidades = 0;
+        foreach ($this->items as $item){
+            $cantidades = $cantidades + $item->cantidad;
         }
         return $cantidades;
     }
-
-    static public function cliente($clienteId)
-    {
-        $cliente = User::find($clienteId);
-        return $cliente->nombreCompleto;
+    
+    public function cliente(){
+        return $this->belongsTo(Cliente::class,'cliente_id');
+    }
+    
+    public function vendedor(){
+        return $this->belongsTo(User::class, 'vendedor_id');
     }
 
-    static public function vendedor($vendedorId)
-    {
-        $vendedor = User::find($vendedorId);
-        if(empty($vendedor)){
-            return null;
-        }else{
-            return $vendedor->nombreCompleto;
-        }
+    public function repartidor(){
+        return $this->belongsTo(User::class, 'repartidor_id');
     }
-
-    static public function repartidor($repartidorId)
-    {
-        $repartidor = User::find($repartidorId);
-        if(empty($repartidor)){
-            return null;
-        }else{
-            return $repartidor->nombreCompleto;
-        }
-    }
-
-    static public function items($pedidoId){
-        $items = ItemPedido::where('pedido_id',$pedidoId)->get();
-        return $items;
-    }
-
-    static public function itemsEstado(Pedido $pedido, $estado){
-        $itemsPedido = $pedido::items($pedido->id);
+    
+    public function itemsEstado($estado){
         $itemsEstado = true;
-        foreach ($itemsPedido as $item){
+        foreach ($this->items as $item){
             if($item->estado!=$estado){
                 $itemsEstado = false;
             break;

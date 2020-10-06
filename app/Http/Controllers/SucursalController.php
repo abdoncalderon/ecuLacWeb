@@ -18,22 +18,19 @@ class SucursalController extends Controller
     }
     
     /*************************************************************************************************************************/
-    public function create()
-    {
+    public function create(){
         $ciudades=Ciudad::all();
         return view('sucursales.create',compact('ciudades'));
     }
 
     /*************************************************************************************************************************/
-    public function store(StoreSucursalRequest $request )
-    {
+    public function store(StoreSucursalRequest $request ){
         Sucursal::create($request->validated());
         return redirect()->route('sucursales.index');
     }
 
     /*************************************************************************************************************************/
-    public function edit(sucursal $sucursal)
-    {
+    public function edit(sucursal $sucursal){
         $ciudades = Ciudad::all();
         return view('sucursales.edit',[
             'sucursal'=>$sucursal
@@ -42,15 +39,13 @@ class SucursalController extends Controller
     }
 
     /*************************************************************************************************************************/
-    public function update(UpdateSucursalRequest $request, Sucursal $sucursal)
-    {
+    public function update(UpdateSucursalRequest $request, Sucursal $sucursal){
         $sucursal->update($request->validated());
         return redirect()->route('sucursales.index');
     }
 
     /*************************************************************************************************************************/
-    public function destroy($id)
-    {
+    public function destroy($id){
         $sucursal=Sucursal::find($id);
         $movimientosExistencias=MovimientoExistencia::where('sucursal_id',$sucursal->id)->get();
         if (count($movimientosExistencias)>0){

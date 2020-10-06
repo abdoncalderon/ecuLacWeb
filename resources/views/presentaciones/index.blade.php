@@ -13,23 +13,32 @@
 
 @section('contenidoPrincipal')
 
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ $errors->first() }}
         </div>
     @endif
+
+
     <div class='ventana'>
         <div class="titulo">{{ __('content.presentations') }}</div>
         <div class="contenido">
             <div class="index">
+
+                {{-- AGREGAR PRESENTACION --}}
                 <div>
                     <span>
                     <a class="btn btn-success " href="{{ route('presentaciones.create')}}">{{ __('content.add') }}  {{ __('content.presentation') }}</a>
                     </span>
                 </div>
+
+                {{-- LISTA DE PRESENTACIONES --}}
                 <div class="table-responsive">
                     <table class="tabla">
+
+                        {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.name') }}</th>
@@ -37,11 +46,13 @@
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
                         </thead>
+
+                        {{-- PRESENTACIONES --}}
                         <tbody>
                             @foreach ($presentaciones as $presentacion)
                                 <tr>
                                     <td>{{ $presentacion->envase.' '.$presentacion->contenido.' '.$presentacion->medida }}</td>
-                                    <td>{{ $presentacion->categoria($presentacion->categoria_id) }}</td>
+                                    <td>{{ $presentacion->categoria->nombre }}</td>
                                     <td>
                                         <a class="accion" href="{{route('presentaciones.edit',$presentacion)}}">{{ __('content.edit') }}</a>
                                         <a class="accion" href="{{route('presentaciones.destroy',$presentacion->id)}}">{{ __('content.delete') }}</a>

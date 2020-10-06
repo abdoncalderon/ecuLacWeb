@@ -13,13 +13,17 @@
 @endsection
 
 @section('contenidoPrincipal')
+
     <div class="ventana">
         <div class="titulo">{{ __('content.add') }}  {{ __('content.presentation') }}</div>
             <div class="contenido">
+
+                {{-- FORMULARIO --}}
                 <div class="formulario">
                     <form method="POST" action="{{ route('presentaciones.store') }}">
                         @csrf
 
+                        {{-- CATEGORIA --}}
                         <div class="form-group row">
                             <label for="categoria_id" class="col-md-4 col-form-label text-md-right">{{ __('content.category') }}</label>
                             <div class="col-md-6">
@@ -35,6 +39,7 @@
                             </div>
                         </div>
 
+                        {{-- ENVASE --}}
                         <div class="form-group row">
                             <label for="envase" class="col-md-4 col-form-label text-md-right">{{ __('content.container') }}</label>
                             <div class="col-md-6">
@@ -50,7 +55,7 @@
                             </div>
                         </div>
 
-
+                        {{-- CONTENIDO --}}
                         <div class="form-group row">
                             <label for="contenido" class="col-md-4 col-form-label text-md-right">{{ __('content.content') }}</label>
                             <div class="col-md-6">
@@ -74,6 +79,7 @@
                             </div>
                         </div>
 
+                        {{-- MEDIDA --}}
                         <div class="form-group row">
                             <label for="medida" class="col-md-4 col-form-label text-md-right">{{ __('content.measurement') }}</label>
                             <div class="col-md-6">
@@ -89,6 +95,7 @@
                             </div>
                         </div>
 
+                        {{-- BOTONES --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary ">{{ __('content.save') }}</button>

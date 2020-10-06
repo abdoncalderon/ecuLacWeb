@@ -15,4 +15,10 @@ class Rol extends Model
         return $resultado->esExterno;
     }
 
+    public function menus(){
+        $menus = MenuRol::join('menus','menus_roles.menu_id','=','menus.id')->where('rol_id',$this->id)->where('esVisible',1)->get();
+        return $menus;
+    }
+
+
 }

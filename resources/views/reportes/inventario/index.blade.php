@@ -13,22 +13,27 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
-    <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ $errors->first() }}
-    </div>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ $errors->first() }}
+        </div>
     @endif
    
     <div class='ventana'>
         
         <div class="titulo">{{ __('content.inventory')}}</div>
+
+        {{-- ENCABEZADO --}}
         <div class="encabezado">
             <div class="resumen">
                 <div class="cantidad">{{ __('content.quantity') }}: <br> {{ $cantidadProductos }} {{ __('content.unities') }}</div>
                 <div class="total"> Total: <br> {{ __('content.currency') }} {{ number_format($totalProductos,2) }}</div>
             </div>
 
+            {{-- BUSCAR PRODUCTOS --}}
             <form method="GET" action="{{ route('reportes.inventario') }}">
                 <div class="filtros">
                     <span class="boton">
@@ -45,15 +50,16 @@
                 </div>
             </form>
         </div>
+
+
         <div class="contenido">
             <div class="index">
-                <div>
-                    <span>
-                    <a class="btn btn-success" href="#">{{ __('content.print') }}</a>
-                    </span>
-                </div>
+
+                {{-- LISTAR PRODUCTOS --}}
                 <div class="table-responsive">
                     <table class="tabla">
+
+                        {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.code') }}</th>
@@ -64,6 +70,9 @@
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
                         </thead>
+
+                    
+                        {{-- PRODUCTOS --}}
                         <tbody>
                             @foreach ($productos as $producto)
                                 <tr>
@@ -81,7 +90,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $productos->links() }}
+                {{ $productos->withQueryString()->links() }}
             </div>
         </div>
     </div>

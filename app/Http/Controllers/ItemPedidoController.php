@@ -13,11 +13,9 @@ class ItemPedidoController extends Controller
     /*************************************************************************************************************************/
     public function index(){
         $pedidoAbierto = Pedido::abierto(auth()->id());
-        $itemsPedido = Pedido::items($pedidoAbierto);
         $pedido = Pedido::find($pedidoAbierto);
         return view('clientes.pedido')
-        ->with(compact('pedido'))
-        ->with(compact('itemsPedido'));
+        ->with(compact('pedido'));
     }
 
     /*************************************************************************************************************************/

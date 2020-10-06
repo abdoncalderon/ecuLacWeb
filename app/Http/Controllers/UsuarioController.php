@@ -81,7 +81,6 @@ class UsuarioController extends Controller
 
             return back()->withErrors(__('messages.isFather'));
         }
-      
     }
 
     /*************************************************************************************************************************/

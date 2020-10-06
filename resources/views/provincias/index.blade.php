@@ -12,34 +12,40 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ $errors->first() }}
         </div>
     @endif
+
     <div class='ventana'>
         <div class="titulo">{{ __('content.provinces') }}</div>
         <div class="contenido">
             <div class="index">
+
+                {{-- AGREGAR PROVINCIA --}}
                 <div>
                     <span>
                     <a class="btn btn-success " href="{{ route('provincias.create')}}">{{ __('content.add') }}  {{ __('content.province') }}</a>
                     </span>
                 </div>
-                @error('eliminar')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+
+                {{-- LISTA DE PROVINCIAS --}}
                 <div class="table-responsive">
                     <table class="tabla">
+               
+                        {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.name') }}</th>
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
                         </thead>
+
+                        {{-- PROVINCIAS --}}
                         <tbody>
                             @foreach ($provincias as $provincia)
                                 <tr>

@@ -10,23 +10,17 @@ class MenuRol extends Model
 
     protected $fillable = ['menu_id','rol_id',];
 
-    static public function menu($menuId){
-        $menu = Menu::find($menuId);
-        return $menu;
+    public function menu(){
+        return $this->belongsTo(Menu::class);
     }
 
-    static public function menusRol($rolId){
-        $menusRol = MenuRol::join('menus','menus_roles.menu_id','=','menus.id')->where('rol_id',$rolId)->where('esVisible',1)->get();
-        return $menusRol;
+    public function rol(){
+        return $this->belongsTo(Rol::class);
     }
 
     static public function existe($rol, $ruta){
-        
         $permiso = MenuRol::join('menus','menus_roles.menu_id','=','menus.id')->where('menus_roles.rol_id',$rol)->where('menus.ruta',$ruta)->first();
-        
         return (! empty($permiso));
     }
-
-    
 
 }

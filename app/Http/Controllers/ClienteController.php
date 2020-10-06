@@ -83,21 +83,15 @@ class ClienteController extends Controller
             return back()->withErrors(__('messages.noOrder'));
         }else{
             $pedido = Pedido::find($pedidoAbierto);
-            $itemsPedido = Pedido::items($pedidoAbierto);
             return view('clientes.pedido')
-            ->with(compact('pedido'))
-            ->with(compact('itemsPedido'));
+            ->with(compact('pedido'));
         }
     }
 
     /*************************************************************************************************************************/
     public function preorden(Pedido $pedido){
-        $itemsPedido = Pedido::items($pedido->id);
-        $cliente = User::join('clientes','users.id','=','clientes.usuario_id')->where('users.id',$pedido->cliente_id)->first();
         return view('clientes.preorden')
-            ->with(compact('pedido'))
-            ->with(compact('cliente'))
-            ->with(compact('itemsPedido'));
+            ->with(compact('pedido'));
     }
 
     /*************************************************************************************************************************/

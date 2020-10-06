@@ -24,7 +24,8 @@ class ReporteController extends Controller
             $itemsXpagina = 5;
         }
         $vendedores = User::where('rol_id',3)->get();
-        if (count($request->all())>0){
+        
+        if (($request->has('desde'))||($request->has('hasta'))||($request->has('vendedor'))){
             $desde = $request->get('desde');
             $hasta = $request->get('hasta');
             $vendedor = $request->get('vendedor');
@@ -37,10 +38,11 @@ class ReporteController extends Controller
                 $cantidadVentas = Factura::join('pedidos','facturas.pedido_id','=','pedidos.id')->where('pedidos.vendedor_id',$vendedor)->whereBetween('fecha',[$desde,$hasta])->count();
                 $facturas = Factura::join('pedidos','facturas.pedido_id','=','pedidos.id')->where('pedidos.vendedor_id',$vendedor)->whereBetween('fecha',[$desde,$hasta])->paginate($itemsXpagina);
             }
+            
         }else{
+            $facturas = Factura::where('id','!=',0)->paginate($itemsXpagina);
             $totalVentas = Factura::sum('subtotal');
             $cantidadVentas = Factura::count();
-            $facturas = Factura::where('id','!=',0)->paginate($itemsXpagina);
         }
 
         if ($request->has('imprimir')){
@@ -71,6 +73,7 @@ class ReporteController extends Controller
         }
         $categorias = Categoria::all();
         if (count($request->all())>0){
+            
             $categoria = $request->get('categoria');
             if ($categoria == null){
                 $productos =Producto::where('id','!=',0)->paginate($itemsXpagina);
@@ -78,8 +81,9 @@ class ReporteController extends Controller
                 $productos = Producto::where('Categoria_id',$categoria)->paginate($itemsXpagina);
             }
         }else{
-            $productos =Producto::where('id','!=',0)->paginate($itemsXpagina);
+            $productos = Producto::where('id','!=',0)->paginate($itemsXpagina);
         }
+
         $totalProductos = 0;
         $cantidadProductos = 0;
         foreach($productos as $producto){

@@ -8,8 +8,7 @@ class Tipo extends Model
 {
     protected $fillable = ['nombre','categoria_id',];
 
-    public function categoria($id){
-        $categoria = Categoria::find($id);
-        return $categoria->nombre;
+    public function categoria(){
+        return $this->belongsTo(Categoria::class);
     }
 }

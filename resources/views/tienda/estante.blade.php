@@ -46,10 +46,10 @@
                 <p class="{{ $producto->estado }}">{{ $producto->estado }}</p>
             </div>
             <p class="nombre">{{ $producto->nombre }}</p>
-            <p class="categoria">{{ $producto->categoria($producto->categoria_id) }}</p>
-            <p class="tipo">{{ $producto->tipo($producto->tipo_id) }}</p>
+            <p class="categoria">{{ $producto->categoria->nombre }}</p>
+            <p class="tipo">{{ $producto->tipo->nombre }}</p>
             <p class="descripcion">{{ $producto->descripcion }}</p>
-            <p class="precio">US$ {{ $producto->precioDescuento($producto->id) }}</p>
+            <p class="precio">US$ {{ $producto->precioDescuento() }}</p>
             <p class="descuento">{{ $producto->descuento > 0 ? __('content.before').' US$ '.$producto->precioUnitario : '' }}</p>
         </div>
 
@@ -59,7 +59,7 @@
                 @csrf
                 <div class="datos">
                     <div class="{{ $producto->estado }}">{{ $producto->estado }}</div>
-                    <div class="precio">US$ {{ $producto->precioDescuento($producto->id) }}</div>
+                    <div class="precio">US$ {{ $producto->precioDescuento() }}</div>
                     <div class="unidades">(x 1 {{ __('content.unity') }})</div>
                 </div>
 

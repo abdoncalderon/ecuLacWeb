@@ -1,7 +1,10 @@
 @extends('layouts.print')
 
 @section('contenidoPrincipal')
+    
     <div class="reporte">
+
+        {{-- ENCABEZADO --}}
         <div class="cabecera">
             <img class="logo" src="{{ asset('img/logos/ecolac2.png') }}"  alt="">
             <div class="detalles">
@@ -11,8 +14,12 @@
                 <div class="linea">{{ __('content.date')}}: {{ auth()->user()->nombreCompleto }}</div>
             </div>
         </div>
+
+        {{-- CONTENIDO --}}
         <div class="contenido">
             <table class="tabla">
+
+                {{--CABECERA --}}
                 <thead>
                     <tr>
                         <th>{{ __('content.name') }}</th>
@@ -25,6 +32,9 @@
                         <th>{{ __('content.status') }}</th>
                     </tr>
                 </thead>
+
+
+                {{-- PRODUCTOS --}}
                 <tbody>
                     @foreach ($productos as $producto)
                         <tr>
@@ -36,15 +46,15 @@
                             <td>{{ $producto->existenciaActual }}</td>
                             <td>{{ $producto->esDestacado == true ? 'Destacado' : '' }}</td>
                             <td>{{ $producto->estado }}</td>
-                            
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+                            
+        {{-- PIE DE PAGINA --}}
         <div class="pie">
             <div class="resumen">
-
             </div>
         </div>
         

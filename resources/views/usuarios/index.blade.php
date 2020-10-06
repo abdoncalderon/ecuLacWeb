@@ -49,7 +49,7 @@
                             @foreach ($usuarios as $usuario)
                                 <tr>
                                     <td>{{ $usuario->nombreCompleto }}</td>
-                                    <td>{{ $usuario->rol($usuario->rol_id) }}</td>
+                                    <td>{{ $usuario->rol->nombre }}</td>
                                     <td>{{ $usuario->estaActivo==0 ? __('content.active') : __('content.inactive') }}</td>
                                     <td>
                                         <a class="accion" href="{{route('usuarios.edit',$usuario->id)}}">{{ __('content.edit') }}</a>

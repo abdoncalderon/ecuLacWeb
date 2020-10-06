@@ -13,23 +13,32 @@
 
 @section('contenidoPrincipal')
 
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ $errors->first() }}
         </div>
     @endif
+    
     <div class='ventana'>
         <div class="titulo">{{ $vista }} {{ __('content.clients')}}</div>
         <div class="contenido">
             <div class="index">
+
+                {{-- CREAR PEDIDO --}}
                 <div>
                     <span>
                     <a class="btn btn-success " href="{{ route('pedidos.create',$vista)}}">{{ __('content.create') }}  {{ __('content.order') }}</a>
                     </span>
                 </div>
+
+                {{-- LISTAR PEDIDOS --}}
                 <div class="table-responsive">
                     <table class="tabla">
+
+                        {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.client') }}</th>
@@ -41,6 +50,8 @@
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
                         </thead>
+
+                        {{-- PEDIDOS --}}
                         <tbody>
                             @foreach ($pedidos as $pedido)
                                 <tr>

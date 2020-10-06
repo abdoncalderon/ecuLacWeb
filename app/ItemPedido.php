@@ -10,11 +10,12 @@ class ItemPedido extends Model
 
     protected $fillable = ['pedido_id','producto_id','cantidad','precioUnitario','descuento','iva','subtotal'];
 
-    
+    public function producto(){
+        return $this->belongsTo(Producto::class);
+    }
 
-    static public function producto(ItemPedido $itemPedido){
-        $producto = Producto::find($itemPedido->producto_id);
-        return $producto;
+    public function pedido(){
+        return $this->belongsTo(Pedido::class);
     }
 
     static public function estado($itemPedidoId, $estado){
@@ -40,8 +41,6 @@ class ItemPedido extends Model
                 break;
         }
     }
-
-    
 
     static public function eliminar(ItemPedido $itemPedido){
         $pedido = Pedido::find($itemPedido->pedido_id);

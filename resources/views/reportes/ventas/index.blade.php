@@ -13,21 +13,27 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
-    <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ $errors->first() }}
-    </div>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ $errors->first() }}
+        </div>
     @endif
    
     <div class='ventana'>
         
         <div class="titulo">{{ __('content.sales')}}</div>
+
+        {{-- ENCABEZADO --}}
         <div class="encabezado">
             <div class="resumen">
                 <div class="cantidad">{{ __('content.quantity') }} {{ __('content.sales') }}: <br> {{ $cantidadVentas }}</div>
                 <div class="total"> Total {{ __('content.sales') }}:  <br> {{ $totalVentas }}</div>
             </div>
+
+            {{-- BUSCAR VENTAS --}}
             <form method="GET" action="{{ route('reportes.ventas') }}">
                 <div class="filtros">
                     <span class="boton">
@@ -47,12 +53,17 @@
                     <input class="date" type="date" id="hasta" name="hasta" value="{{ Carbon\Carbon::now()->toDateString() }}" min="1900-01-01" max="2999-12-31">
                 </div>
             </form>
+
         </div>
+
         <div class="contenido">
             <div class="index">
-                
+
+                {{-- LISTAR VENTAS --}}
                 <div class="table-responsive">
                     <table class="tabla">
+                
+                        {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.date') }}</th>
@@ -67,16 +78,18 @@
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
                         </thead>
+
+                        {{-- VENTAS --}}
                         <tbody>
                             @foreach ($facturas as $factura)
                                 <tr>
                                     <td>{{ $factura->fecha }}</td>
-                                    <td>{{ $factura->cliente($factura->pedido_id)->nombreCompleto }}</td>
+                                    <td>{{ $factura->pedido->cliente->user->nombreCompleto }}</td>
                                     <td>{{ sprintf('%08d',$factura->id) }}</td>
                                     <td>{{ number_format($factura->subtotal,2) }}</td>
                                     <td>{{ number_format($factura->valorDescuento,2) }}</td>
                                     <td>{{ number_format($factura->valorIva,2) }}</td>
-                                    <td>{{ number_format($factura->pedido($factura->pedido_id)->total($factura->pedido($factura->pedido_id)),2) }}</td>
+                                    <td>{{ number_format($factura->pedido->total(),2) }}</td>
                                     <td>{{ $factura->tipoPago }}</td>
                                     <td>{{ $factura->estado }}</td>
                                     <td>

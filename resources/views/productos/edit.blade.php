@@ -13,19 +13,26 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
-    <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ $errors->first() }}
-    </div>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ $errors->first() }}
+        </div>
     @endif
+
     <div class="ventana">
         <div class="titulo">{{ __('content.add') }}  {{ __('content.products') }}</div>
             <div class="contenido">
+
+                {{-- FORMULARIO --}}
                 <div class="formulario">
                     <form method="POST" action="{{ route('productos.update',$producto) }}">
                         @csrf
                         @method('PATCH')
+
+                        {{-- NOMBRE --}}
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('content.name') }}</label>
                             <div class="col-md-6">
@@ -40,6 +47,7 @@
                             </div>
                         </div>
 
+                        {{-- DESCRIPCION --}}
                         <div class="form-group row">
                             <label for="descripcion" class="col-md-4 col-form-label text-md-right">{{ __('content.description') }}</label>
                             <div class="col-md-6">
@@ -60,6 +68,7 @@
                             </div>
                         </div>
 
+                        {{-- CATEGORIA --}}
                         <div class="form-group row">
                             <label for="categoria_id" class="col-md-4 col-form-label text-md-right">{{ __('content.category') }}</label>
                             <div class="col-md-6">
@@ -76,6 +85,7 @@
                             </div>
                         </div>
 
+                        {{-- TYPE --}}
                         <div class="form-group row">
                             <label for="tipo_id" class="col-md-4 col-form-label text-md-right">{{ __('content.type') }}</label>
                             <div class="col-md-6">
@@ -92,6 +102,7 @@
                             </div>
                         </div>
 
+                        {{-- PRESENTACION --}}
                         <div class="form-group row">
                             <label for="presentacion_id" class="col-md-4 col-form-label text-md-right">{{ __('content.presentation') }}</label>
                             <div class="col-md-6">
@@ -108,6 +119,7 @@
                             </div>
                         </div>
 
+                        {{-- PRECIO --}}
                         <div class="form-group row">
                             <label for="precioUnitario" class="col-md-4 col-form-label text-md-right">{{ __('content.price') }}</label>
                             <div class="col-md-6">
@@ -131,6 +143,7 @@
                             </div>
                         </div>
 
+                        {{-- DESCUENTO --}}
                         <div class="form-group row">
                             <label for="descuento" class="col-md-4 col-form-label text-md-right">{{ __('content.discount') }}</label>
                             <div class="col-md-6">
@@ -154,6 +167,7 @@
                             </div>
                         </div>
 
+                        {{-- IMPUESTO --}}
                         <div class="form-group row">
                             <label for="iva" class="col-md-4 col-form-label text-md-right">{{ __('content.tax') }}</label>
                             <div class="col-md-6">
@@ -177,6 +191,7 @@
                             </div>
                         </div>
 
+                        {{-- ESTADO --}}
                         <div class="form-group row">
                             <label for="estado" class="col-md-4 col-form-label text-md-right">{{ __('content.status') }}</label>
                             <div class="col-md-6">
@@ -198,6 +213,7 @@
                             </div>
                         </div>
 
+                        {{-- DESTACADO --}}
                         <div class="form-group row">
                             <label for="esDestacado" class="col-md-4 col-form-label text-md-right">{{ __('content.highLight') }}</label>
                             <div class="col-md-6 custom-control custom-switch">
@@ -209,7 +225,6 @@
                                     @if($producto->esDestacado==1)
                                         checked
                                     @endif>
-                                
 
                                 @error('esDestacado')
                                     <span class="invalid-feedback" role="alert">
@@ -218,9 +233,8 @@
                                 @enderror
                             </div>
                         </div>
-
                         
-
+                        {{-- BOTONES --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary ">{{ __('content.update') }}</button>

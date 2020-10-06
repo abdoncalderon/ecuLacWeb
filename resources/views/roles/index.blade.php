@@ -12,34 +12,40 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ $errors->first() }}
         </div>
     @endif
+
     <div class='ventana'>
         <div class="titulo">{{ __('content.roles') }}</div>
         <div class="contenido">
             <div class="index">
+
+                {{-- AGREGAR ROL --}}
                 <div>
                     <span>
                     <a class="btn btn-success " href="{{ route('roles.create')}}">{{ __('content.add') }}  {{ __('content.role') }}</a>
                     </span>
                 </div>
-                @error('eliminar')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+
+                {{-- LISTA DE ROLES --}}
                 <div class="table-responsive">
                     <table class="tabla">
+
+                         {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.name') }}</th>
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
                         </thead>
+
+                        {{-- ROLES --}}
                         <tbody>
                             @foreach ($roles as $rol)
                                 <tr>

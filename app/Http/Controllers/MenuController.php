@@ -25,6 +25,7 @@ class MenuController extends Controller
         return view('menus.index',compact('menus'));
     }
 
+    /*************************************************************************************************************************/
     public function create(){
         return view('menus.create');
     }

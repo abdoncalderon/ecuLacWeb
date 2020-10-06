@@ -110,7 +110,6 @@ class ProductoController extends Controller
         ->with(compact('presentaciones'));
     }
 
-
     /*************************************************************************************************************************/
     public function update(UpdateProductoRequest $request, Producto $producto){
         $request->validated();

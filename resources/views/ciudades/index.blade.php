@@ -44,7 +44,7 @@
                         @foreach ($ciudades as $ciudad)
                             <tr>
                                 <td>{{ $ciudad->nombre }}</td>
-                                <td>{{ $ciudad->provincia($ciudad->provincia_id) }}</td>
+                                <td>{{ $ciudad->provincia->nombre }}</td>
                                 <td>
                                     <a class="accion" href="{{route('ciudades.edit',$ciudad)}}">{{ __('content.edit') }}</a>
                                     <a class="accion" href="{{route('ciudades.destroy',$ciudad->id)}}">{{ __('content.delete') }}</a>

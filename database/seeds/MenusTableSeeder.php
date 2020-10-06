@@ -679,6 +679,14 @@ class MenusTableSeeder extends Seeder
                 "icono" => 'nofoto.png',
                 "esVisible" => '0',
             ],
+            [
+                "nombre" => 'ubicacion pedido',
+                "multilenguaje" => NULL,
+                "ruta"  => 'pedidos.location',
+                "icono" => 'nofoto.png',
+                "esVisible" => '0',
+            ],
+
 
             
         ]);

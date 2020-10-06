@@ -41,7 +41,8 @@
                             @foreach ($categorias as $categoria)
                                 <tr>
                                     <td>{{ $categoria->nombre }}</td>
-                                    <td>{{ $categoria->estado($categoria->estaActivo) }}</td>
+                                    {{-- <td>{{ $categoria->estado($categoria->estaActivo) }}</td> --}}
+                                    <td>{{ $categoria->estado() }}</td>
                                     <td>
                                         <a class="accion" href="{{route('categorias.edit',$categoria)}}">{{ __('content.edit') }}</a>
                                         <a class="accion" href="{{route('categorias.destroy',$categoria->id)}}">{{ __('content.delete') }}</a>

@@ -10,8 +10,7 @@ class Presentacion extends Model
 
     protected $fillable = ['categoria_id','envase','contenido','medida',];
 
-    public function categoria($id){
-        $categoria = Categoria::find($id);
-        return $categoria->nombre;
+    public function categoria(){
+        return $this->belongsTo(Categoria::class);
     }
 }

@@ -12,13 +12,19 @@
 @endsection
 
 @section('contenidoPrincipal')
+                        
+    {{-- UBICACION CLIENTE --}}
     <div class="ventana">
         <div class="titulo">
             {{ __('content.location') }} {{ __('content.client') }} - {{ $cliente->nombreCompleto }}
         </div>
         <div class="contenido">
             <div class="ubicacion">
+
+                {{-- MAPA DE GOOGLE --}}
                 <div id="map" class="mapa"></div>
+
+                {{--DATOS CLIENTE --}}
                 <div class="direccion">
                     <label class="etiqueta" for="cliente">{{ __('content.client') }}:</label>
                     <input class="dato" type="text" id="cliente" name="cliente" disabled value="{{ $cliente->nombreCompleto }}">
@@ -36,10 +42,7 @@
 
         </div>
     </div>
-    
-    
-    
-    
+
 @endsection
 
 @section('script')

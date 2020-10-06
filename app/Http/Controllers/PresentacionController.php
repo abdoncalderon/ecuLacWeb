@@ -49,15 +49,13 @@ class PresentacionController extends Controller
     }
                
     /*************************************************************************************************************************/
-    public function update(UpdatePresentacionRequest $request, Presentacion $presentacion)
-    {
+    public function update(UpdatePresentacionRequest $request, Presentacion $presentacion){
         $presentacion->update($request->validated());
         return redirect()->route('presentaciones.index');
     }
 
     /*************************************************************************************************************************/
-    public function destroy($id)
-    {
+    public function destroy($id){
         Presentacion::destroy($id);
         return redirect()->route('presentaciones.index');
     }

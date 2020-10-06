@@ -254,7 +254,6 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary btn-lg">{{ __('content.save') }}</button>
-                                    {{-- <button type="button" id="ubicacion" class="btn btn-secondary btn-lg">{{ __('content.location') }}</button> --}}
                                     <a class="btn btn-secondary btn-lg" href="{{ route('home') }}">{{ __('content.cancel') }}</a>
                                 </div>
                             </div>
@@ -270,12 +269,6 @@
                 </div>
             </div>
         </div>
-
-        
-
-
-
-       
 
     </section>
 

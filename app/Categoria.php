@@ -8,13 +8,13 @@ class Categoria extends Model
 {
     protected $fillable = ['nombre','descripcion','imagen','estaActivo',];
     
-
-    public function estado($estaActivo){
-        if($estaActivo==1){
-            $estado=__('content.active');
+    
+    public function estado(){
+        if($this->estaActivo==1){
+            return __('content.active');
         }else{
-            $estado=__('content.inactive');
-        }
-        return $estado; 
+            return __('content.inactive');
+        } 
     }
+
 }

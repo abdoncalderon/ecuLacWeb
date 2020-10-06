@@ -13,12 +13,14 @@
 @endsection
 
 @section('contenidoPrincipal')
+
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ $errors->first() }}
         </div>
     @endif
+    
     <div class='ventana'>
 
         <div class="titulo">{{ __('content.images') }}  {{ $producto->nombre }}</div>

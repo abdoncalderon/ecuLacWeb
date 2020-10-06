@@ -13,12 +13,16 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
-    <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ $errors->first() }}
-    </div>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ $errors->first() }}
+        </div>
     @endif
+
+
     <div class="ventana">
         <div class="titulo">{{ __('content.add') }}  {{ __('content.products') }}</div>
             <div class="contenido">
@@ -26,6 +30,7 @@
                     <form method="POST" action="{{ route('productos.store') }}">
                         @csrf
 
+                        {{-- NOMBRE --}}
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('content.name') }}</label>
                             <div class="col-md-6">
@@ -49,6 +54,7 @@
                             </div>
                         </div>
 
+                        {{-- DESCRIPCION --}}
                         <div class="form-group row">
                             <label for="descripcion" class="col-md-4 col-form-label text-md-right">{{ __('content.description') }}</label>
                             <div class="col-md-6">
@@ -69,6 +75,7 @@
                             </div>
                         </div>
 
+                        {{-- CATEGORIA --}}
                         <div class="form-group row">
                             <label for="categoria_id" class="col-md-4 col-form-label text-md-right">{{ __('content.category') }}</label>
                             <div class="col-md-6">
@@ -85,6 +92,7 @@
                             </div>
                         </div>
 
+                        {{-- TIPO --}}
                         <div class="form-group row">
                             <label for="tipo_id" class="col-md-4 col-form-label text-md-right">{{ __('content.type') }}</label>
                             <div class="col-md-6">
@@ -98,6 +106,8 @@
                             </div>
                         </div>
 
+
+                        {{-- PRESENTACION --}}
                         <div class="form-group row">
                             <label for="presentacion_id" class="col-md-4 col-form-label text-md-right">{{ __('content.presentation') }}</label>
                             <div class="col-md-6">
@@ -110,6 +120,7 @@
                             </div>
                         </div>
 
+                        {{-- PRECIO --}}
                         <div class="form-group row">
                             <label for="precioUnitario" class="col-md-4 col-form-label text-md-right">{{ __('content.price') }}</label>
                             <div class="col-md-6">
@@ -133,6 +144,8 @@
                             </div>
                         </div>
 
+
+                        {{-- DESCUENTO --}}
                         <div class="form-group row">
                             <label for="descuento" class="col-md-4 col-form-label text-md-right">{{ __('content.discount') }}</label>
                             <div class="col-md-6">
@@ -156,6 +169,7 @@
                             </div>
                         </div>
 
+                        {{-- IMPUESTO --}}
                         <div class="form-group row">
                             <label for="iva" class="col-md-4 col-form-label text-md-right">{{ __('content.tax') }}</label>
                             <div class="col-md-6">
@@ -179,6 +193,7 @@
                             </div>
                         </div>
 
+                        {{-- BOTONES --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary ">{{ __('content.save') }}</button>
@@ -205,7 +220,6 @@
                             for(i=0;i<response.length;i++){
                                 $("#tipo_id").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
                             }
-                            
                         });
                     $("#presentacion_id").empty();
                     $.get("/getPresentacionesCategoria/"+event.target.value+"", 

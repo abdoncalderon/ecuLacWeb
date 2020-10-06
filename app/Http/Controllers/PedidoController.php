@@ -113,34 +113,26 @@ class PedidoController extends Controller
 
     /*************************************************************************************************************************/
     public function showOrder(Pedido $pedido){
-        $itemsPedido = Pedido::items($pedido->id);
         return view('pedidos.vendedor.show')
-        ->with(compact('pedido'))
-        ->with(compact('itemsPedido'));
+        ->with(compact('pedido'));
     }
 
     /*************************************************************************************************************************/
     public function showDelivery(Pedido $pedido){
-        $itemsPedido = Pedido::items($pedido->id);
         return view('pedidos.repartidor.show')
-        ->with(compact('pedido'))
-        ->with(compact('itemsPedido'));
+        ->with(compact('pedido'));
     }
 
     /*************************************************************************************************************************/
     public function edit(Pedido $pedido){
-        $itemsPedido = Pedido::items($pedido->id);
         return view('pedidos.edit')
-        ->with(compact('pedido'))
-        ->with(compact('itemsPedido'));
+        ->with(compact('pedido'));
     }
 
     /*************************************************************************************************************************/
     public function update(Pedido $pedido){
-        $itemsPedido = Pedido::items($pedido->id);
         return view('pedidos.update')
-        ->with(compact('pedido'))
-        ->with(compact('itemsPedido'));
+        ->with(compact('pedido'));
     }
 
     /*************************************************************************************************************************/
@@ -154,8 +146,7 @@ class PedidoController extends Controller
     }
 
     /*************************************************************************************************************************/
-    public function store(StorePedidoRequest $request)
-    {
+    public function store(StorePedidoRequest $request){
         if (Pedido::abierto($request->input('cliente_id'))==0){
             Pedido::create($request->validated());
             return redirect()->route('pedidos.vendedor');
@@ -166,11 +157,11 @@ class PedidoController extends Controller
 
     /*************************************************************************************************************************/
     public function destroy($id){
-        $items = Pedido::items($id);
-        foreach($items as $item){
+        $pedido=Pedido::find($id);
+        foreach($pedido->items as $item){
             $item->eliminar($item);
         }
-        $pedido=Pedido::find($id)->delete();
+        $pedido->delete();
         return redirect()->route('home');
     }     
 
@@ -184,17 +175,15 @@ class PedidoController extends Controller
             $tipoPago='CREDITO';
             $estado='PENDIENTE';
         }
-        $items = Pedido::items($id);
-        foreach($items as $item){
+        $pedido = Pedido::find($id);
+        foreach($pedido->items as $item){
             $item->estado($item->id, 'CONFIRMADO');
         }
-        $pedido = Pedido::find($id);
         Pedido::where('id',$pedido->id)->update([
             'fechaConfirmacion'=>$fecha,
             'estado'=>'CONFIRMADO',
         ]);
         Factura::crear($pedido, $tipoPago, $estado);
-
         return redirect()->route('home');
     }     
 

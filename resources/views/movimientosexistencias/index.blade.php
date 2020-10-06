@@ -14,6 +14,7 @@
 
 @section('contenidoPrincipal')
 
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -23,12 +24,17 @@
 
     <div class='ventana'>
         <div class="titulo">{{ __('content.move').' '.__('content.stock') }} {{ $producto->nombre }}</div>
+
+        {{-- ENCABEZADO --}}
         <div class="encabezado">
             <div class="acciones">
+                {{-- AGREGAR MOVIMIENTO DE STOCK --}}
                 <span class="boton">
                     <a class="btn btn-success " href="{{ route('movimientosexistencias.create',$producto) }}">{{ __('content.add') }}  {{ __('content.stock') }}</a>
                 </span>
             </div>
+
+            {{-- BUSCAR MOVIMIENTO --}}
             <form method="GET" action="{{ route('movimientosexistencias.index',$producto) }}">
                 <div class="filtros">
                     <span class="boton">
@@ -48,10 +54,16 @@
                 </div>
             </form>
         </div>
+
+
         <div class="contenido">
             <div class="index">
+
+                {{-- LISTA DE MOVIMIENTOS--}}
                 <div class="table-responsive">
                     <table class="tabla">
+
+                        {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.date') }}</th>
@@ -62,12 +74,14 @@
                                 <th>{{ __('content.balance') }}</th>
                             </tr>
                         </thead>
+
+                        {{-- MOVIMIENTOS DE EXISTENCIA --}}
                         <tbody>
                             @foreach ($movimientosExistencias as $movimientoExistencia)
                                 <tr>
                                     <td>{{ $movimientoExistencia->fecha }}</td>
-                                    <td>{{ $movimientoExistencia->sucursal($movimientoExistencia->sucursal_id) }}</td>
-                                    <td>{{ $movimientoExistencia->usuario($movimientoExistencia->usuario_id) }}</td>
+                                    <td>{{ $movimientoExistencia->sucursal->nombre }}</td>
+                                    <td>{{ $movimientoExistencia->user->usuario }}</td>
                                     <td>{{ $movimientoExistencia->tipoMovimiento }}</td>
                                     <td>{{ $movimientoExistencia->cantidad }}</td>
                                     <td>{{ $movimientoExistencia->saldo }}</td>

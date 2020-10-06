@@ -1,5 +1,4 @@
-                
-                
+              
 @extends('layouts.external')
 
 @section('indice')

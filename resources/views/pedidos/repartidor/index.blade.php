@@ -13,20 +13,27 @@
 
 @section('contenidoPrincipal')
 
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ $errors->first() }}
         </div>
     @endif
+
+
     <div class='ventana'>
         <div class="titulo">{{ __('content.deliveries') }} {{ __('content.clients') }}</div>
+
+        {{-- ENCABEZADO --}}
         <div class="encabezado">
             <div class="acciones">
                 <span class="boton">
                     <a class="btn btn-success " href="{{ route('pedidos.create')}}">{{ __('content.create') }}  {{ __('content.order') }}</a>
                 </span>
             </div>
+
+            {{-- BUSCAR PEDIDO --}}
             <form method="GET" action="{{ route('pedidos.repartidor') }}">
                 <div class="filtros">
                     <span class="boton">
@@ -45,11 +52,16 @@
                 </div>
             </form>
         </div>
+
+
         <div class="contenido">
             <div class="index">
-                
+
+                {{-- LISTA DE PEDIDOS CONFIRMADOS --}}
                 <div class="table-responsive">
                     <table class="tabla">
+
+                        {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.client') }}</th>
@@ -61,10 +73,12 @@
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
                         </thead>
+
+                        {{-- PEDIDOS --}}
                         <tbody>
                             @foreach ($pedidos as $pedido)
                                 <tr>
-                                    <td>{{ $pedido->cliente($pedido->cliente_id) }}</td>
+                                    <td>{{ $pedido->cliente->user->nombreCompleto }}</td>
                                     <td>{{ $pedido->fechaCreacion }}</td>
                                     <td>{{ $pedido->fechaConfirmacion }}</td>
                                     <td>{{ $pedido->fechaDespacho }}</td>

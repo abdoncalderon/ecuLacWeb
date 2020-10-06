@@ -13,19 +13,26 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
-    <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ $errors->first() }}
-    </div>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ $errors->first() }}
+        </div>
     @endif
+
+
     <div class="ventana">
         <div class="titulo">{{ __('content.add') }}  {{ __('content.menus') }} - {{ $rol->nombre }}</div>
             <div class="contenido">
+
+                {{-- FORMULARIO --}}
                 <div class="formulario">
                     <form method="POST" action="{{ route('menusroles.store',$rol) }}">
                         @csrf
 
+                        {{-- ROL --}}
                         <input 
                             id="rol_id"
                             name="rol_id"
@@ -34,6 +41,7 @@
                             value="{{ $rol->id}}"
                         >
 
+                        {{-- MENU --}}
                         <div class="form-group row">
                             <label for="menu_id" class="col-md-4 col-form-label text-md-right">{{ __('content.menu') }}</label>
                             <div class="col-md-6">
@@ -49,6 +57,7 @@
                             </div>
                         </div>
 
+                        {{-- BOTONES --}}
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary ">{{ __('content.add') }}</button>
@@ -57,18 +66,24 @@
                         </div>
 
                     </form>
+
+                    {{-- LISTAR MENUS DE ROL --}}
                     <div class="table-responsive">
                         <table class="tabla">
+
+                            {{-- CABECERA --}}
                             <thead>
                                 <tr>
                                     <th>{{ __('content.menu') }}</th>
                                     <th>{{ __('content.actions') }}</th>
                                 </tr>
                             </thead>
+
+                            {{-- MENUS --}}
                             <tbody>
                                 @foreach ($mismenus as $mimenu)
                                     <tr>
-                                        <td>{{$mimenu->menu($mimenu->menu_id)->nombre}}</td>
+                                        <td>{{$mimenu->menu->nombre}}</td>
                                         <td>
                                             <a class="accion" href="{{ route('menusroles.destroy',['menu'=>$mimenu->menu_id,'rol'=>$rol])}}">{{ __('content.delete') }}</a>
                                         </td>

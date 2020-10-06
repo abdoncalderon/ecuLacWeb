@@ -357,6 +357,10 @@ class MenusRolesTableSeeder extends Seeder
                 "rol_id" => '1',
             ],
             [
+                "menu_id" => '92',
+                "rol_id" => '1',
+            ],
+            [
                 "menu_id" => '88',
                 "rol_id" => '5',
             ],

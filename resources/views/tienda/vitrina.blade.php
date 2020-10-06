@@ -89,7 +89,7 @@
             @foreach ($sucursales as $sucursal)
                 <article class="sucursal">
                     <div class="nombre">{{ __('content.office').' '.$sucursal->nombre }}</strong></div>
-                    <div class="ciudad">{{ __('content.city').': '.$sucursal->ciudad($sucursal->ciudad_id) }}</div>
+                    <div class="ciudad">{{ __('content.city').': '.$sucursal->ciudad->nombre }}</div>
                     <div class="direccion">{{ __('content.address').': '.$sucursal->direccion }}</div>
                     <div class="telefono">{{ __('content.phone').': '.$sucursal->telefono }}</div>
                 </article>

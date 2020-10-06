@@ -17,22 +17,19 @@ class TipoController extends Controller
     }
     
     /*************************************************************************************************************************/
-    public function create()
-    {
+    public function create(){
         $categorias=Categoria::all();
         return view('tipos.create',compact('categorias'));
     }
 
     /*************************************************************************************************************************/
-    public function store(StoreTipoRequest $request )
-    {
+    public function store(StoreTipoRequest $request ){
         Tipo::create($request->validated());
         return redirect()->route('tipos.index');
     }
 
     /*************************************************************************************************************************/
-    public function edit(Tipo $tipo)
-    {
+    public function edit(Tipo $tipo){
         $categorias = Categoria::all();
         return view('tipos.edit',[
             'tipo'=>$tipo
@@ -41,16 +38,14 @@ class TipoController extends Controller
     }
 
     /*************************************************************************************************************************/
-    public function update(UpdateTipoRequest $request, Tipo $tipo)
-    {
+    public function update(UpdateTipoRequest $request, Tipo $tipo){
         $tipo->update($request->validated());
         $pestana='tipos';
         return redirect()->route('tipos.index');
     }
 
     /*************************************************************************************************************************/
-    public function destroy($id)
-    {
+    public function destroy($id){
         Tipo::destroy($id);
         $pestana='tipos';
         return redirect()->route('tipos.index');

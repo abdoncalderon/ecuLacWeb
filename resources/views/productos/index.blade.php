@@ -12,21 +12,29 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ $errors->first() }}
         </div>
     @endif
+
     <div class='ventana'>
         <div class="titulo">{{ __('content.products') }}</div>
+
+        {{-- ENCABEZADO --}}
         <div class="encabezado">
            
+            {{-- AGREGAR PRODUCTO --}}
             <div class="acciones">
                 <span class="boton">
                     <a class="btn btn-success" href="{{ route('productos.create')}}">{{ __('content.add') }}  {{ __('content.product') }}</a>
                 </span>
             </div>
+
+            {{-- BUSQUEDA DE PRODUCTOS --}}
             <form method="GET" action="{{ route('productos.index') }}">
                 <div class="filtros">
                     <span class="boton">
@@ -53,11 +61,16 @@
                 </div>
             </form>
         </div>
+
+
         <div class="contenido">
             <div class="index">
                 
+                {{-- LISTA DE PRODUCTOS --}}
                 <div class="table-responsive">
                     <table class="tabla">
+
+                        {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.image') }} {{ __('content.default') }} </th>
@@ -72,12 +85,14 @@
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
                         </thead>
+
+                        {{-- PRODUCTOS --}}
                         <tbody>
                             @foreach ($productos as $producto)
                                 <tr>
                                     <td><img src="{{ asset('img/productos/'.$producto->imagenPredeterminada($producto->id)) }}" alt=""></td>
                                     <td>{{ $producto->nombre }}</td>
-                                    <td>{{ $producto->categoria($producto->categoria_id) }} / {{ $producto->tipo($producto->tipo_id) }} / {{ $producto->presentacion($producto->presentacion_id) }}</td>
+                                    <td>{{ $producto->categoria->nombre }} / {{ $producto->tipo->nombre }} / {{ $producto->presentacion->envase }}</td>
                                     <td>{{ $producto->precioUnitario }}</td>
                                     <td>{{ $producto->descuento }}</td>
                                     <td>{{ $producto->iva }}</td>
@@ -88,8 +103,6 @@
                                         <a class="accion" href="{{route('productos.edit',$producto)}}">{{ __('content.edit') }}</a>
                                         <a class="accion" href="{{route('imagenesproductos.index',$producto)}}">{{ __('content.images') }}</a>
                                         <a class="accion" href="{{route('movimientosexistencias.index',$producto)}}">{{ __('content.stock') }}</a>
-                                        {{-- <a class="accion" href="{{route('productos.destroy',$producto->id)}}">{{ __('content.delete') }}</a> --}}
-                                        
                                     </td>
                                 </tr>
                             @endforeach

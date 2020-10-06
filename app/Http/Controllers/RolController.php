@@ -20,7 +20,6 @@ class RolController extends Controller
         return view('roles.create');
     }
 
-
     /*************************************************************************************************************************/
     public function store(StoreRolRequest $request ){
         Rol::create($request->validated());

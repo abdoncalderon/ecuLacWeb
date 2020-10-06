@@ -16,6 +16,7 @@
 
 @section('contenidoPrincipal')
 
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -24,14 +25,19 @@
     @endif
     
     <div class="ventana">
+
+        {{-- AGREGAR MOVIMIENTO DE STOCK --}}
         <div class="titulo">
             {{ __('content.add').' '.__('content.move').' '.__('content.stock')}}
         </div>
         <div class="contenido">
+
+            {{-- FORMULARIO --}}
             <div class="formulario">
                 <form method="POST" action="{{ route('movimientosexistencias.store') }}">
                     @csrf
 
+                    {{-- FECHA --}}
                     <input 
                         id="fecha" 
                         name="fecha" 
@@ -39,6 +45,7 @@
                         hidden
                     >
 
+                    {{-- USUARIO --}}
                     <input 
                         id="usuario_id" 
                         name="usuario_id" 
@@ -46,6 +53,7 @@
                         hidden
                     >
 
+                    {{-- ID PRODUCTO --}}
                     <input 
                         id="producto_id" 
                         name="producto_id" 
@@ -53,6 +61,7 @@
                         hidden
                     >
 
+                    {{-- NOMBRE PRODUCTO --}}
                     <div class="form-group row">
                         <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('content.product') }}</label>
                         <div class="col-md-6">
@@ -77,6 +86,7 @@
                         </div>
                     </div>
 
+                    {{-- SUCURSAL --}}
                     <div class="form-group row">
                         <label for="sucursal_id" class="col-md-4 col-form-label text-md-right">{{ __('content.office') }}</label>
                         <div class="col-md-6">
@@ -100,6 +110,7 @@
                         </div>
                     </div>
 
+                    {{-- CANTIDAD ANTERIOR --}}
                     <div class="form-group row">
                         <label for="cantidad" class="col-md-4 col-form-label text-md-right">{{ __('content.quantity').' '.__('content.previous') }}</label>
                         <div class="col-md-6">
@@ -112,6 +123,7 @@
                         </div>
                     </div>
 
+                    {{-- NUEVA CANTIDAD --}}
                     <div class="form-group row">
                         <label for="cantidad" class="col-md-4 col-form-label text-md-right">{{ __('content.new').' '.__('content.quantity') }}</label>
                         <div class="col-md-6">
@@ -132,6 +144,7 @@
                         </div>
                     </div>
 
+                    {{-- BOTONES --}}
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary ">{{ __('content.save') }}</button>

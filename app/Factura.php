@@ -9,16 +9,8 @@ class Factura extends Model
 {
     protected $fillable = ['fecha','pedido_id','subtotal','valorDescuento','valorIva','tipoPago','estado'];
 
-    static public function cliente($pedidoId){
-        $clienteId = Pedido::find($pedidoId)->cliente_id;
-        $cliente = User::select('nombreCompleto')->join('clientes','users.id','=','clientes.usuario_id')->where('users.id',$clienteId)->first();
-        
-        return $cliente;
-    }
-
-    static public function pedido($pedidoId){
-        $pedido = Pedido::find($pedidoId);
-        return $pedido;
+    public function pedido(){
+        return $this->belongsTo(Pedido::class);
     }
 
     static public function crear(Pedido $pedido, $tipoPago, $estado){
@@ -31,7 +23,6 @@ class Factura extends Model
             'valorIva'=>$pedido->valorIva($pedido->id),
             'tipoPago'=>$tipoPago,
             'estado'=>$estado,
-
         ]);
     }
 }

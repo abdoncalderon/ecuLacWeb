@@ -46,7 +46,7 @@
                         <tbody>
                             @foreach ($tipos as $tipo)
                                 <tr>
-                                    <td>{{ $tipo->categoria($tipo->categoria_id) }}</td>
+                                    <td>{{ $tipo->categoria->nombre }}</td>
                                     <td>{{ $tipo->nombre }}</td>
                                     <td>
                                         <a class="accion" href="{{route('tipos.edit',$tipo)}}">{{ __('content.edit') }}</a>

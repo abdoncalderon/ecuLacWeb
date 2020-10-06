@@ -53,7 +53,7 @@
                             @foreach ($sucursales as $sucursal)
                                 <tr>
                                     <td>{{ $sucursal->nombre }}</td>
-                                    <td>{{ $sucursal->ciudad($sucursal->ciudad_id) }}</td>
+                                    <td>{{ $sucursal->ciudad->nombre }}</td>
                                     <td>{{ $sucursal->direccion }}</td>
                                     <td>{{ $sucursal->telefono }}</td>
                                     <td>

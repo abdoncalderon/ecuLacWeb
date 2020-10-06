@@ -43,7 +43,7 @@
             <a href="{{ route('clientes.pedido') }}"><i class="fas fa-shopping-cart"></i></a>
             @auth
                 @if(App\Pedido::abierto(auth()->id())!=0)
-                    <p>{{ count( App\Pedido::items(App\Pedido::abierto(auth()->id()))) ?? '0' }}</p>
+                    <p>{{ count( App\Pedido::itemsPedidoAbierto(App\Pedido::abierto(auth()->id()))) ?? '0' }}</p>
                 @endif
             @endauth
         </div>

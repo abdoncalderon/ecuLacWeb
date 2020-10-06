@@ -27,7 +27,7 @@
         <form method="GET" action="{{ route('clientes.historial') }}">
             <div class="filtros">
                 <span class="boton">
-                    <button class="btn btn-secondary" type="submit">{{ __('content.search') }}  {{ __('content.order') }}</button>
+                    <button class="btn btn-secondary" type="submit">{{ __('content.search') }} </button>
                 </span>
                 <div class="etiqueta">{{ __('content.status') }}</div>
                 <select class="select" name="estado" id="estado">
@@ -52,36 +52,36 @@
                     <div class="estado">{{ $pedido->estado }}</div>
                     @if($pedido->estado=='ABIERTO')
                         <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaCreacion)->format('d-M-Y') }}</div>
-                        <div class="usuario">{{ __('content.client') }}: {{ $pedido->cliente($pedido->cliente_id) ?? '' }}</div>
+                        <div class="usuario">{{ __('content.client') }}: {{ $pedido->cliente->user->nombreCompleto ?? '' }}</div>
                     @elseif($pedido->estado=='CONFIRMADO')
                         <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaConfirmacion)->format('d-M-Y') }}</div>
-                        <div class="usuario">{{ __('messages.soldBy') }} {{ $pedido->repartidor($pedido->vendedor_id) ?? '' }}</div>
+                        <div class="usuario">{{ __('messages.soldBy') }} {{ $pedido->vendedor->nombreCompleto ?? '' }}</div>
                     @else
                         <div class="fecha">{{ Carbon\Carbon::parse($pedido->fechaCreacion)->format('d-M-Y') }}</div>
-                        <div class="usuario">{{ __('messages.dispatchedBy') }} {{ $pedido->repartidor($pedido->repartidor_id) ?? '' }}</div>
+                        <div class="usuario">{{ __('messages.dispatchedBy') }} {{ $pedido->repartidor->nombreCompleto ?? '' }}</div>
                     @endif
-                    <div class="total">Total: {{ $pedido->total($pedido) }}</div>
+                    <div class="total">Total: {{ $pedido->total() }}</div>
                 </div>      
                               
                 <div class="titulo">
-                    <div class="orden">{{ __('content.items').' '.__('content.order').': '.count($pedido->items($pedido->id)) }}</div>
+                    <div class="orden">{{ __('content.items').' '.__('content.order').': '.count($pedido->items) }}</div>
                     <div class="precio"></div>
                     <div class="subtotal"></div>
                 </div>
 
                 <div class="items">
-                    @foreach ($pedido->items($pedido->id) as $item)
+                    @foreach ($pedido->items as $item)
                         <article class="item">
-                            <div class="imagen" style="background-image: url({{ asset('img/productos/'.$item->producto($item)->imagenPredeterminada($item->producto_id)) }})"></div>
+                            <div class="imagen" style="background-image: url({{ asset('img/productos/'.$item->producto->imagenPredeterminada($item->producto_id)) }})"></div>
                             <div class="detalles">
                                 <div>
-                                    <div class="nombre">{{ $item->producto($item)->nombre}}</div>
-                                    <div class="descripcion">{{ $item->producto($item)->descripcion}}</div>
+                                    <div class="nombre">{{ $item->producto->nombre}}</div>
+                                    <div class="descripcion">{{ $item->producto->descripcion}}</div>
                                 </div>
                             </div>
                             <div class="estado">{{ $item->estado }} <br> {{ Carbon\Carbon::parse($item->created_at)->format('d M Y')}}</div>
                             <div class="cantidad">{{ __('content.quantity') }} <br> {{ $item->cantidad }} {{ __('content.unities') }}</div>
-                            <div class="precio">{{ __('content.price') }} ({{ __('content.discount') }}) <br> {{ __('content.currency').' '.$item->producto($item)->precioDescuento($item->producto_id) }}</div>
+                            <div class="precio">{{ __('content.price') }} ({{ __('content.discount') }}) <br> {{ __('content.currency').' '.$item->producto->precioDescuento() }}</div>
                             <div class="subtotal">{{ __('content.subtotal') }} <br> {{ __('content.currency') }} {{ $item->subtotal }}</div>
                         </article>
                     @endforeach

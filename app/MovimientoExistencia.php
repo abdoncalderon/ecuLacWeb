@@ -10,14 +10,17 @@ class MovimientoExistencia extends Model
 
     protected $fillable = ['fecha','usuario_id','producto_id','sucursal_id','tipoMovimiento','cantidad','saldo'];
 
-    static public function sucursal($sucursalId){
-        $sucursal = Sucursal::find($sucursalId);
-        return $sucursal->nombre;
+   
+    public function user(){
+        return $this->belongsTo(User::class,'usuario_id');
     }
 
-    static public function usuario($usuarioId){
-        $usuario = User::find($usuarioId);
-        return $usuario->nombreCompleto;
+    public function producto(){
+        return $this->belongsTo(Producto::class);
+    }
+
+    public function sucursal(){
+        return $this->belongsTo(Sucursal::class);
     }
 
     static public function reposicion($sucursalId, $productoId, $cantidad){

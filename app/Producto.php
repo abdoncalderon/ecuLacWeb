@@ -9,23 +9,19 @@ class Producto extends Model
 
     protected $fillable = ['nombre','descripcion','categoria_id','tipo_id','presentacion_id','precioUnitario','descuento','iva','estado','esDestacado'];
 
-    public function categoria($id){
-        $categoria = Categoria::find($id);
-        return $categoria->nombre;
+    public function categoria(){
+        return $this->belongsTo(Categoria::class);
     }
 
-    public function tipo($id){
-        $tipo = Tipo::find($id);
-        return $tipo->nombre;
+    public function tipo(){
+        return $this->belongsTo(Tipo::class);
     }
 
-    public function presentacion($id){
-        $presentacion = Presentacion::find($id);
-        return $presentacion->envase.'/'.$presentacion->contenido.'/'.$presentacion->medida;
+    public function presentacion(){
+        return $this->belongsTo(Presentacion::class);
     }
 
-    static public function imagenPredeterminada($producto)
-    {
+    static public function imagenPredeterminada($producto){
         $producto=ImagenProducto::where('producto_id',$producto)->where('predeterminada',1)->first();
         if(!(empty($producto))){
             return $producto->imagen;
@@ -33,49 +29,37 @@ class Producto extends Model
             return "nofoto.jpg";
         }
     }
-
-    static public function subtotal($productoId){
-        $producto = Producto::find($productoId);
-        return $producto::precioDescuento($productoId) + $producto::valorIva($productoId);
+   
+    public function subtotal(){
+        return $this->precioDescuento() + $this->valorIva();
     }
-
-
-    static public function precioDescuento($productoId){
-        $producto = Producto::find($productoId);
-        $precio = $producto->precioUnitario;
-        $descuento = $producto::valorDescuento($productoId);
-        if ($descuento > 0){
-            return round(($precio - $descuento),2);
-        }else{
-            return round($precio,2);
-        }
+   
+    public function precioDescuento(){
+        $precio = $this->precioUnitario;
+        $descuento = $this->valorDescuento();
+        return round(($precio - $descuento),2);
     }
-
-    static public function valorDescuento($productoId){
-        $producto = Producto::find($productoId);
-        $precio = $producto->precioUnitario;
-        $descuento = $producto->descuento;
+   
+    public function valorDescuento(){
+        $precio = $this->precioUnitario;
+        $descuento = $this->descuento;
         if ($descuento > 0){
             return round($precio * ($descuento / 100),2);
         }else{
             return 0;
         }
-        
     }
 
-    static public function valorIva($productoId){
-        $producto = Producto::find($productoId);
-        $precioDescuento = $producto->precioDescuento($productoId);
-        $iva = $producto->iva;
+    public function valorIva(){
+        $iva = $this->iva;
         if ($iva > 0){
-            return round($precioDescuento * ($iva / 100),2);
+            return round($this->precioDescuento() * ($iva / 100),2);
         }else{
             return 0;
         }
     }
 
-    static public function actualizarExistencia($productoId,$movimiento,$cantidad)
-    {
+    static public function actualizarExistencia($productoId,$movimiento,$cantidad){
         $producto = Producto::find($productoId);
         $existenciaActual=$producto->existenciaActual;
         switch ($movimiento){
