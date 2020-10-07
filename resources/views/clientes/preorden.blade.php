@@ -13,18 +13,21 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+{{-- FORMULARIO --}}
 <form method="POST" action="{{ route('pedidos.toPay', $pedido) }}">
     @csrf
+
+    {{-- DATOS PREORDEN --}}
     <div class="preorden">
         <div class="items">
+
+            {{-- DATOS CLIENTE --}}
             <div class="cabecera">
                 <div class="cliente">
                     <p class="titulo">{{ __('content.data') }} {{ __('content.client') }}</p>
-                    {{-- <p class="nombre">{{ $cliente->nombreCompleto }}</p> --}}
                     <p class="nombre">{{ $pedido->cliente->user->nombreCompleto }}</p>
-                    {{-- <p class="identificacion">{{ $cliente->cedula }}</p> --}}
                     <p class="identificacion">{{ $pedido->cliente->user->cedula }}</p>
-                    {{-- <p class="email">{{ $cliente->email }}</p> --}}
                     <p class="email">{{ $pedido->cliente->user->email }}</p>
                 </div>
                 <div class="direccion">
@@ -58,10 +61,14 @@
                     </div>
                 </div>
             </div>
+
+            {{-- DATOS PEDIDO --}}
             <div class="titulo">
                 <div class="orden">{{ __('content.items').' '.__('content.order').': '.count($pedido->items) }}</div>
                 <div class="precio">{{ __('content.price').' x '.__('content.unity') }}</div>
             </div>
+
+            {{-- ITEMS --}}
             @foreach ($pedido->items as $item)
                 <article class="item">
                     <div class="imagen" style="background-image: url({{ asset('img/productos/'.$item->producto->imagenPredeterminada($item->producto_id)) }})"></div>
@@ -82,6 +89,8 @@
                 </article>
             @endforeach
         </div>
+
+        {{-- RESUMEN --}}
         <div class="resumen">
             <div class="titulo">{{ __('content.summary') }}</div>
             <div class="subtotal">
@@ -100,7 +109,7 @@
         </div>
     </div>
 
-
+    {{-- VENTANA MODAL --}}
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">

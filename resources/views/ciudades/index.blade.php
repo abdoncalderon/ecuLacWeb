@@ -13,51 +13,58 @@
 
 @section('contenidoPrincipal')
 
-<div class='ventana'>
-    <div class="titulo">{{ __('content.cities') }}</div>
-    <div class="contenido">
+    {{-- MENSAJES DE ERROR --}}
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ $errors->first() }}
+        </div>
+    @endif
 
-        @if($errors->any())
-            <div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                {{ $errors->first() }}
-            </div>
-        @endif
+    <div class='ventana'>
+        <div class="titulo">{{ __('content.cities') }}</div>
+        <div class="contenido">
+            <div class="index">
 
-        <div class="index">
-            
-            <div>
-                <span>
-                <a class="btn btn-success " href="{{ route('ciudades.create')}}">{{ __('content.add') }}  {{ __('content.city') }}</a>
-                </span>
-            </div>
-            <div class="table-responsive">
-                <table class="tabla">
-                    <thead>
-                        <tr>
-                            <th>{{ __('content.name') }}</th>
-                            <th>{{ __('content.province') }}</th>
-                            <th>{{ __('content.actions') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($ciudades as $ciudad)
+                {{-- AGREGAR CIUDAD --}}
+                <div>
+                    <span>
+                    <a class="btn btn-success " href="{{ route('ciudades.create')}}">{{ __('content.add') }}  {{ __('content.city') }}</a>
+                    </span>
+                </div>
+
+                {{-- LISTA DE CIUDADES--}}
+                <div class="table-responsive">
+                    <table class="tabla">
+
+                        {{-- CABECERA --}}
+                        <thead>
                             <tr>
-                                <td>{{ $ciudad->nombre }}</td>
-                                <td>{{ $ciudad->provincia->nombre }}</td>
-                                <td>
-                                    <a class="accion" href="{{route('ciudades.edit',$ciudad)}}">{{ __('content.edit') }}</a>
-                                    <a class="accion" href="{{route('ciudades.destroy',$ciudad->id)}}">{{ __('content.delete') }}</a>
-                                </td>
+                                <th>{{ __('content.name') }}</th>
+                                <th>{{ __('content.province') }}</th>
+                                <th>{{ __('content.actions') }}</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+
+                        {{-- CIUDADES --}}
+                        <tbody>
+                            @foreach ($ciudades as $ciudad)
+                                <tr>
+                                    <td>{{ $ciudad->nombre }}</td>
+                                    <td>{{ $ciudad->provincia->nombre }}</td>
+                                    <td>
+                                        <a class="accion" href="{{route('ciudades.edit',$ciudad)}}">{{ __('content.edit') }}</a>
+                                        <a class="accion" href="{{route('ciudades.destroy',$ciudad->id)}}">{{ __('content.delete') }}</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                {{ $ciudades->links() }}
             </div>
-            {{ $ciudades->links() }}
         </div>
     </div>
-</div>
 
 @endsection
 

@@ -13,12 +13,15 @@
 
 @section('contenidoPrincipal')
 
+    {{-- PEDIDO --}}
     <div class="pedido">
         <div class="items">
             <div class="titulo">
                 <div class="orden">{{ __('content.items').' '.__('content.order').': '.count($pedido->items) }}</div>
                 <div class="precio">{{ __('content.price').' x '.__('content.unity') }}</div>
             </div>
+
+            {{-- ITEMS --}}
             @foreach ($pedido->items as $item)
                 <article class="item">
                     <div class="imagen" style="background-image: url({{ asset('img/productos/'.$item->producto->imagenPredeterminada($item->producto_id)) }})"></div>
@@ -41,6 +44,7 @@
             @endforeach
         </div>
 
+        {{-- RESUMEN --}}
         <div class="resumen">
             <div class="total">Total</div>
             <div class="productos">{{ $pedido->cantidades().' '.__('content.products')}}</div>

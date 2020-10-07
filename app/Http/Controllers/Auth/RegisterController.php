@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Cliente;
+use App\Rol;
+use App\Ciudad;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -44,6 +46,20 @@ class RegisterController extends Controller
         return view('auth.register1');
     } */
 
+
+    public function showRegistrationForm()
+    {
+        $rol = Rol::where('nombre','CLIENTE')->first();
+        $ciudades = Ciudad::all();
+        if(!(empty($rol))){
+            $clienteId= $rol->id;
+        }else{
+            $clienteId=0;
+        }
+        return view('auth.register')
+        ->with('clienteId',$clienteId)
+        ->with(compact('ciudades'));
+    }
 
     protected function validator(array $data)
     {

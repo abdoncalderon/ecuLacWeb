@@ -13,25 +13,31 @@
 @endsection
 
 @section('contenidoPrincipal')
-    @if($errors->any())
-    <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ $errors->first() }}
-    </div>
-    @endif
-    <article class="ventana">
 
+     {{-- MENSAJES DE ERROR --}}
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ $errors->first() }}
+        </div>
+    @endif
+
+
+    <article class="ventana">
         <div class="titulo">{{ __('content.edit') }} {{ __('messages.myaccount') }}</div>
-        
         <div class="contenido">
 
             <div class="registro">
 
+                {{-- DATOS --}}
                 <div class="datos">
-
+        
+                    {{-- FORMULARIO --}}
                     <form method="POST" action="{{ route('clientes.update', $cliente->id) }}">
                         @csrf
                         @method('PATCH')
+
+                        {{-- NOMBRE COMPLETO --}}
                         <div class="form-group row">
                             <label for="nombreCompleto" class="col-md-4 col-form-label text-md-right">{{ __('content.fullname') }}</label>
     
@@ -54,7 +60,8 @@
                                 @enderror
                             </div>
                         </div>
-    
+
+                        {{-- CEDULA --}}
                         <div class="form-group row">
                             <label for="cedula" class="col-md-4 col-form-label text-md-right">{{ __('content.cardid') }}</label>
     
@@ -78,6 +85,7 @@
                             </div>
                         </div>
     
+                        {{-- EMAIL --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('content.emailaddress') }}</label>
     
@@ -100,6 +108,7 @@
                             </div>
                         </div>
     
+                        {{-- TELEFONO --}}
                         <div class="form-group row">
                             <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('content.phone') }}</label>
     
@@ -122,6 +131,7 @@
                             </div>
                         </div>
     
+                        {{-- ROL --}}
                         <div class="form-group">
                             
                             <div class="col-md-6" >
@@ -135,6 +145,7 @@
                             </div>
                         </div>
     
+                        {{-- USUARIO --}}
                         <div class="form-group row">
                             <label for="usuario" class="col-md-4 col-form-label text-md-right">{{ __('content.user') }}</label>
     
@@ -158,7 +169,7 @@
                             </div>
                         </div>
     
-                        
+                        {{-- CIUDAD --}}
                         <div class="form-group row">
                             <label for="ciudad_id" class="col-md-4 col-form-label text-md-right">{{ __('content.city') }}</label>
                             <div class="col-md-6">
@@ -182,6 +193,7 @@
                             </div>
                         </div>
     
+                        {{-- DIRECCION --}}
                         <div class="form-group row">
                             <label for="direccion" class="col-md-4 col-form-label text-md-right">{{ __('content.address') }}</label>
     
@@ -203,6 +215,7 @@
                             </div>
                         </div>
     
+                        {{-- LATITUD --}}
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <input 
@@ -215,6 +228,7 @@
                             </div>
                         </div>
     
+                        {{-- LONGITUD --}}
                         <div class="form-group row">
     
                             <div class="col-md-6">
@@ -228,7 +242,7 @@
                             </div>
                         </div>
                    
-    
+                        {{-- BOTONES --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4 offset-sm-4">
                                 <input class="btn btn-primary" type="submit" name="conUbicacion" value="{{ __('content.save') }} {{ __('messages.withLocation') }}">
@@ -241,6 +255,7 @@
 
                 </div>
 
+                {{-- UBICACION --}}
                 <div class="ubicacion">
                     <div id="map" class="mapa"></div>
                 </div>

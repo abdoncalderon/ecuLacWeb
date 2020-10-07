@@ -13,13 +13,18 @@
 @endsection
 
 @section('contenidoPrincipal')
+
     <div class="ventana">
         <div class="titulo">{{ __('content.edit') }}  {{ __('content.category') }}</div>
             <div class="contenido">
+
+                {{-- FORMULARIO --}}
                 <div class="formulario">
                     <form method="POST" action="{{ route('categorias.update',$categoria) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
+
+                        {{-- NOMBRE --}}
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('content.name') }}</label>
                             <div class="col-md-6">
@@ -41,7 +46,8 @@
                                 @enderror
                             </div>
                         </div>
-
+                        
+                        {{-- DESCRIPCION --}}
                         <div class="form-group row">
                             <label for="descripcion" class="col-md-4 col-form-label text-md-right">{{ __('content.description') }}</label>
                             <div class="col-md-6">
@@ -61,6 +67,7 @@
                             </div>
                         </div>
 
+                        {{-- IMAGE --}}
                         <div class="form-group row">
                             <label for="imagen" class="col-md-4 col-form-label text-md-right">{{ __('content.image') }}</label>
                             <div class="col-md-6">
@@ -81,8 +88,8 @@
                         </div>
 
                         <div class="categoria-imagen" style="background-image: url({{ asset('img/categorias/'.$categoria->imagen)}});"></div>
-                            
 
+                        {{-- ESTA ACTIVO? --}}
                         <div class="form-group row">
                             <label for="estaActivo" class="col-md-4 col-form-label text-md-right">{{ __('content.active') }}</label>
                             <div class="col-md-6">
@@ -101,7 +108,8 @@
                             </div>
 
                         </div>
-
+                            
+                        {{-- BOTONES --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">{{ __('content.update') }}</button>

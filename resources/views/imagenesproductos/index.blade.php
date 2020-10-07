@@ -14,6 +14,7 @@
 
 @section('contenidoPrincipal')
 
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -29,6 +30,7 @@
 
                 <div class="galeria">
 
+                    {{-- BUSCAR Y AGREGAR IMAGEN --}}
                     <form method="POST" action="{{ route('imagenesproductos.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="formulario">
@@ -40,6 +42,7 @@
                         </div>
                     </form>
                     
+                    {{-- LISTA DE IMAGENES--}}
                     <div class="imagenes">
                         @foreach($imagenes as $imagen)
                             <div class="imagen">

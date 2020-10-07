@@ -13,6 +13,7 @@
 
 @section('contenidoPrincipal')
 
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -23,12 +24,17 @@
     <div class='ventana'>
 
         <div class="titulo">{{ __('content.menus') }}</div>
+
+        {{-- ENCABEZADO --}}
         <div class="encabezado">
             <div class="acciones">
+                {{-- AGREGAR MENU --}}
                 <span class="boton">
                     <a class="btn btn-success " href="{{ route('menus.create')}}">{{ __('content.add') }}  {{ __('content.menus') }}</a>
                 </span>
             </div>
+
+            {{-- BUSCAR MENU --}}
             <form method="GET" action="{{ route('menus.index') }}">
                 <div class="filtros">
                     <span class="boton">
@@ -42,8 +48,12 @@
 
         <div class="contenido">
             <div class="index">
+
+                {{-- LISTA DE MENUS --}}
                 <div class="table-responsive">
                     <table class="tabla">
+
+                        {{-- CABECERA --}}
                         <thead>
                             <tr>
                                 <th>{{ __('content.name') }}</th>
@@ -53,6 +63,8 @@
                                 <th>{{ __('content.actions') }}</th>
                             </tr>
                         </thead>
+
+                        {{-- MENUS --}}
                         <tbody>
                             @foreach ($menus as $menu)
                                 <tr>

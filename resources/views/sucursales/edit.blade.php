@@ -31,7 +31,6 @@
                     <form method="POST" action="{{ route('sucursales.update',$sucursal) }}">
                         @csrf
                         @method('PATCH')
-                            
 
                         {{-- NOMBRE --}}
                         <div class="form-group row">

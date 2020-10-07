@@ -38,7 +38,7 @@
                 <div class="filtros">
                     <span class="boton">
                         <input id="buscar" name="buscar" class="btn btn-secondary" type="submit" value="{{ __('content.search') }}">
-                        <input id="imprimir" name="imprimir" class="btn btn-secondary" type="submit" value="{{ __('content.print') }}">
+                        {{-- <input id="imprimir" name="imprimir" class="btn btn-secondary" type="submit" value="{{ __('content.print') }}"> --}}
                     </span>
                     <div class="etiqueta">{{ __('content.category') }}</div>
                     <select class="select"  name="categoria" id="categoria">
@@ -83,7 +83,7 @@
                                     <td>{{ number_format($producto->existenciaActual * $producto->precioUnitario,2) }}</td>
 
                                     <td>
-                                        <a class="accion" href="#">{{ __('content.print') }} {{ __('content.move') }}</a>
+                                        {{-- <a class="accion" href="#">{{ __('content.print') }} {{ __('content.move') }}</a> --}}
                                     </td>
                                 </tr>
                             @endforeach

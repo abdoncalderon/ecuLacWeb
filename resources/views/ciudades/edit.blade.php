@@ -16,11 +16,14 @@
     <div class="ventana">
         <div class="titulo">{{ __('content.edit') }}  {{ __('content.city') }}</div>
             <div class="contenido">
+
+                {{-- FORMULARIO --}}
                 <div class="formulario">
                     <form method="POST" action="{{ route('ciudades.update',$ciudad) }}">
                         @csrf
                         @method('PATCH')
 
+                        {{-- NOMBRE --}}
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('content.name') }}</label>
                             <div class="col-md-6">
@@ -44,6 +47,7 @@
                             </div>
                         </div>
 
+                        {{-- PROVINCIA --}}
                         <div class="form-group row">
                             <label for="provincia" class="col-md-4 col-form-label text-md-right">{{ __('content.province') }}</label>
                             <div class="col-md-6">
@@ -64,6 +68,7 @@
                             </div>
                         </div>
 
+                        {{-- BOTONES --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary ">{{ __('content.update') }}</button>

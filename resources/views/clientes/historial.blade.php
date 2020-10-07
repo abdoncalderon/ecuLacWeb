@@ -14,16 +14,22 @@
 @endsection
 
 @section('contenidoPrincipal')
+
+    {{-- MENSAJES DE ERROR --}}
     @if($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ $errors->first() }}
         </div>
     @endif
+
+    {{-- ENCABEZADO --}}
     <div class="encabezado">
+
         <div class="resumen">
-           
         </div>
+
+        {{-- BUSCAR PEDIDO --}}
         <form method="GET" action="{{ route('clientes.historial') }}">
             <div class="filtros">
                 <span class="boton">
@@ -43,10 +49,17 @@
                 <input class="date" type="date" id="hasta" name="hasta" value="{{ Carbon\Carbon::now()->toDateString() }}" min="1900-01-01" max="2999-12-31">
             </div>
         </form>
+
     </div>
+
     <div class="historial">
+        {{-- PEDIDOS --}}
         @foreach ($pedidos as $pedido)
+
+            {{-- PEDIDO --}}
             <div class="pedido">
+
+                {{-- RESUMEN --}}
                 <div class="resumido">
                     <div class="numeracion">{{ __('content.order')}} # {{ sprintf('%08d',$pedido->id) }}</div>
                     <div class="estado">{{ $pedido->estado }}</div>
@@ -69,6 +82,7 @@
                     <div class="subtotal"></div>
                 </div>
 
+                {{-- ITEMS --}}
                 <div class="items">
                     @foreach ($pedido->items as $item)
                         <article class="item">

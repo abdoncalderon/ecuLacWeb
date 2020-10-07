@@ -27,6 +27,7 @@
 
                     <div class="datos">
 
+                        {{-- CLIENTE ID --}}
                         <div class="form-group">
                             <div class="col-md-6" >
                             <input 
@@ -39,6 +40,7 @@
                             </div>
                         </div>
             
+                        {{-- NOMBRE COMPLETO --}}
                         <div class="form-group row">
                             <label for="nombreCompleto" class="col-md-4 col-form-label text-md-right">{{ __('content.fullname') }}</label>
                             <div class="col-md-6">
@@ -53,6 +55,7 @@
                             </div>
                         </div>
             
+                        {{-- CEDULA --}}
                         <div class="form-group row">
                             <label for="cedula" class="col-md-4 col-form-label text-md-right">{{ __('content.cardid') }}</label>
                             <div class="col-md-6">
@@ -67,6 +70,7 @@
                             </div>
                         </div>
             
+                        {{-- EMAIL --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('content.emailaddress') }}</label>
                             <div class="col-md-6">
@@ -81,6 +85,7 @@
                             </div>
                         </div>
             
+                        {{-- TELEFONO --}}
                         <div class="form-group row">
                             <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('content.phone') }}</label>
                             <div class="col-md-6">
@@ -95,6 +100,7 @@
                             </div>
                         </div>
             
+                        {{-- USUARIO --}}
                         <div class="form-group row">
                             <label for="usuario" class="col-md-4 col-form-label text-md-right">{{ __('content.user') }}</label>
                             <div class="col-md-6">
@@ -109,7 +115,7 @@
                             </div>
                         </div>
                         
-            
+                        {{-- CIUDAD --}}
                         <div class="form-group row">
                             <label for="ciudad_id" class="col-md-4 col-form-label text-md-right">{{ __('content.city') }}</label>
                             <div class="col-md-6">
@@ -124,6 +130,7 @@
                             </div>
                         </div>
             
+                        {{-- DIRECCION --}}
                         <div class="form-group row">
                             <label for="direccion" class="col-md-4 col-form-label text-md-right">{{ __('content.address') }}</label>
                             <div class="col-md-6">
@@ -138,6 +145,7 @@
                             </div>
                         </div>
 
+                        {{-- ACTIVO DESDE --}}
                         <div class="form-group row">
                             <label for="direccion" class="col-md-4 col-form-label text-md-right">{{ __('content.active') }} {{ __('content.since') }}</label>
                             <div class="col-md-6">
@@ -153,9 +161,11 @@
                         </div>
     
                     </div>
+                    
+                    {{-- OPCIONES --}}
                     <div class="acciones">
                         <a class="accion" href="{{ route('clientes.edit',$cliente->id) }}">{{ __('content.edit') }} {{ __('content.profile') }}</a>
-                        <a class="accion" href="#">{{ __('messages.payments') }}</a>
+                        {{-- <a class="accion" href="#">{{ __('messages.payments') }}</a> --}}
                         <a class="accion" href="{{ route('clientes.historial') }}">{{ __('messages.myorders') }}</a>
                     </div>
                 </div>

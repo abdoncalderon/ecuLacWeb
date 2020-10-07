@@ -38,7 +38,7 @@
                 <div class="filtros">
                     <span class="boton">
                         <input id="buscar" name="buscar" class="btn btn-secondary" type="submit" value="{{ __('content.search') }}">
-                        <input id="imprimir" name="imprimir" class="btn btn-secondary" type="submit" value="{{ __('content.print') }}">
+                        {{-- <input id="imprimir" name="imprimir" class="btn btn-secondary" type="submit" value="{{ __('content.print') }}"> --}}
                     </span>
                     <div class="etiqueta">{{ __('content.seller') }}</div>
                     <select class="select"  name="vendedor" id="vendedor">
@@ -93,7 +93,7 @@
                                     <td>{{ $factura->tipoPago }}</td>
                                     <td>{{ $factura->estado }}</td>
                                     <td>
-                                        <a class="accion" href="#">{{ __('content.print') }} {{ __('content.invoice') }}</a>
+                                        {{-- <a class="accion" href="#">{{ __('content.print') }} {{ __('content.invoice') }}</a> --}}
                                     </td>
                                 </tr>
                             @endforeach
